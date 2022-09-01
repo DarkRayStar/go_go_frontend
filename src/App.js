@@ -8,9 +8,9 @@ import ViewCart from "./components/customer-components/view-cart-component";
 import PaidPage from "./components/payment_components/paidPage";
 
 //user management
-import CustomerRegistration from "./components/userManagement-component/customer/registration/customerRegistration.component";
-import CustomerLogin from "./components/userManagement-component/customer/login/customerLogin.component";
-import AdminLogin from "./components/userManagement-component/admin/adminLogin.component";
+import SignUp from "./components/userManagement-component/Registration/registration";
+import SignIn from "./components/userManagement-component/Login/login";
+
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
 import adminInsert from './components/admin-components/admin-insert';
@@ -32,13 +32,14 @@ function App() {
         backgroundSize: 'cover',
       }}>
 
-        <Route path="/customer-signIn" component={CustomerLogin} />
-        <Route path="/admin-signIn" component={AdminLogin} />
-        <Route path="/" exact component={CustomerLogin} />
-        <Route path="/customer-signUp" component={CustomerRegistration} />
+
+        {/* user-Management-Routes */}
+        <Route path="/login" component={SignIn} />
+        <Route path="/registration" component={SignUp} />
+
 
         <div>
-          <Navbar />
+          {/* <Navbar /> */}
           <div className="container" >
 
             <Route path="/home" component={HomePage} />
