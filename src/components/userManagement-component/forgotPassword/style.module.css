@@ -9,7 +9,8 @@
 .form_container {
 	width: 400px;
 	padding: 10px;
-	background-color: white;
+	/* background-color: white; */
+	background-color: rgba(255, 255, 255, 0.9);
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
@@ -33,7 +34,8 @@
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: #484848be;
+	/* background-color: #784BA0; */
+    background-image: linear-gradient(to left,#FDA7DF,#9980FA);
 	color: white;
 	border-radius: 20px;
 	width: 180px;

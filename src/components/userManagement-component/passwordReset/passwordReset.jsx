@@ -91,41 +91,86 @@ export default function PasswordReset() {
 
 			{validUrl ? (
 
-				<div style={{ marginTop: "-100px", marginLeft: "-200px" }} className={styles.container}>
+				// <div style={{ marginTop: "-100px", marginLeft: "-200px" }} className={styles.container}>
 
+				// 	<form className={styles.form_container} onSubmit={onsubmit}>
+
+				// 		<h1>Add New Password</h1>
+
+				// 		{/* <input
+				// 			type="password"
+				// 			placeholder="Password"
+				// 			name="password"
+				// 			pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+				// 			title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+				// 			onChange={(e) => setPassword(e.target.value)}
+				// 			value={password}
+				// 			required
+				// 			className={styles.input}
+				// 		/> */}
+
+				// 		<div>
+				// 			<label htmlFor="password">Password</label>
+				// 			<input
+				// 				id="password"
+				// 				type="password"
+				// 				placeholder='Ex: Password'
+				// 				name='password'
+				// 				value={password}
+				// 				onChange={(e) => setPassword(e.target.value)}
+				// 				onFocus={handleOnFocus}
+				// 				onBlur={handleOnBlur}
+				// 				onKeyUp={handleOnKeyUp}
+				// 				className={styles.input}
+				// 				required
+
+				// 			/>
+				// 		</div>
+				// 		{pwdRequisite ? <PWDRequiesite
+				// 			capsLetterCheckFlag={checks.capsLetterCheck ? "valid" : "invalid"}
+				// 			numberCheckFlag={checks.numberCheck ? "valid" : "invalid"}
+				// 			pwdLengthCheckFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
+				// 			specialCharacterCheckFlag={checks.specialCharacterCheck ? "valid" : "invalid"}
+				// 		/> : null}
+
+				// 		{/* display invalid password message */}
+				// 		{error && <div className={styles.error_msg}>{error}</div>}
+				// 		{/* display password reset success message */}
+				// 		{msg && <div className={styles.success_msg}>{msg}</div>}
+
+				// 		<button type="submit" className={styles.green_btn}>
+				// 			Submit
+				// 		</button>
+
+				// 	</form>
+
+
+
+				// 	{/* aaaaaaaaaaaaaaaaaaa */}
+
+
+				// </div>
+
+				<div className={styles.container}>
 					<form className={styles.form_container} onSubmit={onsubmit}>
-
 						<h1>Add New Password</h1>
 
-						{/* <input
+						<label style={{ marginLeft: '-290px' }}>Password    :</label>
+						<input
+							id="password"
 							type="password"
-							placeholder="Password"
-							name="password"
-							pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
-							title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-							onChange={(e) => setPassword(e.target.value)}
+							placeholder='Ex: Password'
+							name='password'
 							value={password}
-							required
+							onChange={(e) => setPassword(e.target.value)}
+							onFocus={handleOnFocus}
+							onBlur={handleOnBlur}
+							onKeyUp={handleOnKeyUp}
 							className={styles.input}
-						/> */}
+							required
 
-						<div>
-							<label htmlFor="password">Password</label>
-							<input
-								id="password"
-								type="password"
-								placeholder='Ex: Password'
-								name='password'
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-								onFocus={handleOnFocus}
-								onBlur={handleOnBlur}
-								onKeyUp={handleOnKeyUp}
-								className={styles.input}
-								required
+						/>
 
-							/>
-						</div>
 						{pwdRequisite ? <PWDRequiesite
 							capsLetterCheckFlag={checks.capsLetterCheck ? "valid" : "invalid"}
 							numberCheckFlag={checks.numberCheck ? "valid" : "invalid"}
@@ -133,17 +178,18 @@ export default function PasswordReset() {
 							specialCharacterCheckFlag={checks.specialCharacterCheck ? "valid" : "invalid"}
 						/> : null}
 
-						{/* display invalid password message */}
-						{error && <div className={styles.err_msg}>{error}</div>}
-						{/* display password reset success message */}
-						{msg && <div className={styles.suc_msg}>{msg}</div>}
+							{/* display invalid password message */}
+							{error && <div className={styles.error_msg}>{error}</div>}
+							{/* display password reset success message */}
+							{msg && <div className={styles.success_msg}>{msg}</div>}
 
-						<button type="submit" className={styles.g_btn}>
-							Submit
-						</button>
-
-					</form>
+							<button type="submit" className={styles.g_btn}>
+								Reset Password
+							</button>
+						</form>
 				</div>
+
+
 			) : (
 
 				<h1>404 Not Found</h1>
