@@ -3,9 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
+//customer
 import ViewOneMovie from "./components/customer-components/view-movie-component";
 import ViewCart from "./components/customer-components/view-cart-component";
 import PaidPage from "./components/payment_components/paidPage";
+import ViewFavItems from "./components/customer-components/view-fav-items-component";
 
 //user management
 import SignUp from "./components/userManagement-component/Registration/registration";
@@ -16,7 +18,7 @@ import adminRetrieve from './components/admin-components/admin-retrieve';
 import adminInsert from './components/admin-components/admin-insert';
 import adminUpdate from './components/admin-components/admin-update';
 import HomePage from './components/user-components/HomePage';
-import Navbar from './components/navbar.component';
+// import Navbar from './components/navbar.component';
 import QrGencomponent from './components/admin-components/qr-gencomponent';
 
 import successPage from "./components/payment_components/successPage";
@@ -26,38 +28,40 @@ import successPage from "./components/payment_components/successPage";
 function App() {
   return (
     <Router>
-      <div style={{
+      {/* <div style={{
         backgroundImage: `url("https://img.freepik.com/free-photo/rows-red-seats-theater_53876-64710.jpg?t=st=1653584762~exp=1653585362~hmac=7d41cd4ebbbb62a68e83b36fec07daacff290ce05b89258592391b35c426e0dd&w=1060")`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-      }}>
+      }}> */}
 
 
-        {/* user-Management-Routes */}
-        <Route path="/login" component={SignIn} />
-        <Route path="/registration" component={SignUp} />
+      {/* user-Management-Routes */}
+      <Route path="/login" component={SignIn} />
+      <Route path="/registration" component={SignUp} />
 
 
-        <div>
-          {/* <Navbar /> */}
-          <div className="container" >
+      <div>
+        {/* <Navbar /> */}
+        <div className="container" >
 
-            <Route path="/home" component={HomePage} />
-            <Route path="/admin-retrieve" component={adminRetrieve} />
-            <Route path="/admin-insert" component={adminInsert} />
-            <Route path="/admin-update/:id" component={adminUpdate} />
-            <Route path="/qrgen" component={QrGencomponent} />
+          <Route path="/home" component={HomePage} />
+          <Route path="/admin-retrieve" component={adminRetrieve} />
+          <Route path="/admin-insert" component={adminInsert} />
+          <Route path="/admin-update/:id" component={adminUpdate} />
+          <Route path="/qrgen" component={QrGencomponent} />
 
-            <Route path="/one-movie/view/:id" component={ViewOneMovie} />
-            <Route path="/cart/view/" component={ViewCart} />
+          {/* Customer */}
+          <Route path="/one-movie/view/:id" component={ViewOneMovie} />
+          <Route path="/cart/view/" component={ViewCart} />
+          <Route path='/fav/view/' component={ViewFavItems} />
 
-            <Route path="/payment-success" component={successPage} />
-            <Route path="/payment-paid" component={PaidPage} />
+          <Route path="/payment-success" component={successPage} />
+          <Route path="/payment-paid" component={PaidPage} />
 
-          </div>
         </div>
       </div>
-    </Router>
+      {/* </div> */}
+    </Router >
   );
 }
 
