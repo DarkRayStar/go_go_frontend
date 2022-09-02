@@ -120,18 +120,18 @@ const Registration = () => {
                 <div className={styles.signup_form_container}>
 
                     <div className={styles.left}>
-                        <h1>Already have an Account?</h1>
+                        <h1 style={{textAlign: 'center'}}>Already have an Account?</h1>
                         <Link to="/login">
-                            <button type='button' className={styles.login_btn}>Sign in</button>
+                            <button type='button' className={styles.white_btn}>Sign in</button>
                         </Link>
                     </div>
 
                     <div className={styles.right}>
 
                         <form className={styles.form_container} onSubmit={handleSubmit}>
-                            <h1>Create Account</h1>
+                            <h1 style={{marginTop: "50px"}}>Create Account</h1>
 
-                            <label>First Name</label>
+                            <label style={{marginLeft: '-290px'}}>First Name    :</label>
                             <input
                                 type="text"
                                 placeholder='Ex: John'
@@ -142,7 +142,7 @@ const Registration = () => {
                                 className={styles.input}
                             />
 
-                            <label>Last Name </label>
+                            <label style={{marginLeft: '-290px'}}>Last Name    :</label>
                             <input
                                 type="text"
                                 placeholder='Ex: Smith'
@@ -153,7 +153,7 @@ const Registration = () => {
                                 className={styles.input}
                             />
 
-                            <label>Mobile Number </label>
+                            <label style={{marginLeft: '-255px'}}>Mobile Number    :</label>
                             <input
                                 type="text"
                                 placeholder='Ex: 0712345678'
@@ -164,7 +164,7 @@ const Registration = () => {
                                 className={styles.input}
                             />
 
-                            <label>Phone Number  </label>
+                            <label style={{marginLeft: '-265px'}}>Phone Number    :</label>
                             <input
                                 type="text"
                                 placeholder='Ex: 0812345678'
@@ -175,7 +175,7 @@ const Registration = () => {
                                 className={styles.input}
                             />
 
-                            <label>Email  </label>
+                            <label style={{marginLeft: '-330px'}}>Email    :</label>
                             <input
                                 type="email"
                                 placeholder='Ex: someone@gmail.com'
@@ -186,7 +186,7 @@ const Registration = () => {
                                 className={styles.input}
                             />
 
-                            <label>Address  </label>
+                            <label style={{marginLeft: '-310px'}}>Address    :</label>
                             <input
                                 type="text"
                                 placeholder='Ex: No:170/A, Kandy'
@@ -197,7 +197,7 @@ const Registration = () => {
                                 className={styles.input}
                             />
 
-                            <label>District   </label>
+                            <label style={{marginLeft: '-315px'}}>District    :</label>
                             <select
                                 className={styles.input}
                                 // value={selected}
@@ -212,7 +212,7 @@ const Registration = () => {
                                 ))}
                             </select>
 
-                            <label>Postal/Zip Code </label>
+                            <label style={{marginLeft: '-255px'}}>Postal/Zip Code    :</label>
                             <input
                                 type="text"
                                 placeholder='Ex: 00000'
@@ -247,7 +247,8 @@ const Registration = () => {
                             </div> */}
 
                             <div>
-                                <label htmlFor="password">Password</label>
+                                {/* <label htmlFor="password">Password</label> */}
+                                <label >Password    :</label><br></br>
                                 <input
                                     id="password"
                                     type="password"
@@ -273,7 +274,7 @@ const Registration = () => {
 
                             {error && <div className={styles.error_msg}>{error}</div>}
 
-                            <button type='submit' className={styles.register_btn}>Sign Up</button>
+                            <button type='submit' style={{marginBottom: "50px"}} className={styles.green_btn}>Sign Up</button>
                         </form>
                     </div>
 

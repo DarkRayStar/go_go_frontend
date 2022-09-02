@@ -33,7 +33,8 @@ function App() {
   return (
     <Router>
       <div style={{
-        backgroundImage: `url("https://img.freepik.com/free-photo/rows-red-seats-theater_53876-64710.jpg?t=st=1653584762~exp=1653585362~hmac=7d41cd4ebbbb62a68e83b36fec07daacff290ce05b89258592391b35c426e0dd&w=1060")`,
+        // backgroundImage: `url("https://media.istockphoto.com/photos/light-pink-and-purple-defocused-blurred-motion-abstract-background-picture-id1138288771?k=20&m=1138288771&s=170667a&w=0&h=L4OSlBIrwzPYhGJx88zofN7zvShPDCjhDAHZ0iRk_u0=")`,
+        backgroundImage: `url("https://cdn.wallpapersafari.com/29/63/FBkusA.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       }}>
