@@ -40,7 +40,7 @@ function App() {
         backgroundImage: `url("https://cdn.wallpapersafari.com/29/63/FBkusA.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-      }}> */}
+      }}>
 
 
 
@@ -51,27 +51,27 @@ function App() {
         <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
 
 
-      <div>
-        {/* <Navbar /> */}
-        <div className="container" >
+        <div>
+          {/* <Navbar /> */}
+          <div className="container" >
 
-          <Route path="/home" component={HomePage} />
-          <Route path="/admin-retrieve" component={adminRetrieve} />
-          <Route path="/admin-insert" component={adminInsert} />
-          <Route path="/admin-update/:id" component={adminUpdate} />
-          <Route path="/qrgen" component={QrGencomponent} />
+            <Route path="/home" component={HomePage} />
+            <Route path="/admin-retrieve" component={adminRetrieve} />
+            <Route path="/admin-insert" component={adminInsert} />
+            <Route path="/admin-update/:id" component={adminUpdate} />
+            <Route path="/qrgen" component={QrGencomponent} />
 
-          {/* Customer */}
-          <Route path="/one-movie/view/:id" component={ViewOneMovie} />
-          <Route path="/cart/view/" component={ViewCart} />
-          <Route path='/fav/view/' component={ViewFavItems} />
+            {/* Customer */}
+            <Route path="/one-movie/view/:id" component={ViewOneMovie} />
+            <Route path="/cart/view/" component={ViewCart} />
+            <Route path='/fav/view/' component={ViewFavItems} />
 
-          <Route path="/payment-success" component={successPage} />
-          <Route path="/payment-paid" component={PaidPage} />
+            <Route path="/payment-success" component={successPage} />
+            <Route path="/payment-paid" component={PaidPage} />
 
+          </div>
         </div>
       </div>
-      {/* </div> */}
     </Router >
   );
 }
