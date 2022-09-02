@@ -2,9 +2,11 @@ import React, { Fragment, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
 import Navbar from "../navbar.component";
+import { useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 
 const CompletedDeliveries = () => {
+  let history = useHistory();
   const [submissionList, setSubmissionList] = useState("");
   const [data, setData] = useState("");
   // const [records, setRecords] = useState("");
@@ -170,8 +172,9 @@ const CompletedDeliveries = () => {
         }}
         href="#"
         class="previous"
+        onClick={() => history.goBack()}
       >
-        &laquo; Previous
+        &laquo; GO BACK
       </a>
       <div style={{ marginTop: "30px" }}>
         <div

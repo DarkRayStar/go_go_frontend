@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./paymentSuccess.css";
 import "./correct.png"
-import QrGencomponent from "../admin-components/qr-gencomponent";
+// import QrGencomponent from "../admin-components/qr-gencomponent";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 

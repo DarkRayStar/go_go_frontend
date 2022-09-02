@@ -1,17 +1,32 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
 import Navbar from "../navbar.component";
+import { useHistory } from "react-router-dom";
 import "./delivery-styles.css";
+import { useCallback } from "react";
 
 const OngoingDeliveries = () => {
+  let history = useHistory();
   const [submissionList, setSubmissionList] = useState("");
   const [data, setData] = useState("");
-  // const [records, setRecords] = useState("");
+
+  const [count, setCount] = useState(0);
+
+  const logResult = useCallback(() => {
+    return 2 + 2;
+  }, []); //logResult is memoized now.
+
+  useEffect(() => {
+    axios.get("http://localhost:5050/delivery/").then((res) => {
+      setData(res.data);
+      console.log(data);
+    });
+  }, [logResult]);
 
   const columns = [
     {
-      key: "deliveryID",
+      key: "_id",
       text: "DELIVERY ID",
       className: "name",
       align: "left",
@@ -65,7 +80,7 @@ const OngoingDeliveries = () => {
                 style={{ marginRight: "5px" }}
                 name="update"
                 className="btn btn-danger btn-sm"
-                onClick={() => deleteRecord(record)}
+                onClick={() => updateRecord(record)}
               >
                 UPDATE
               </button>
@@ -190,14 +205,6 @@ const OngoingDeliveries = () => {
     },
   ];
 
-  // componentDidMount(props) {
-  //   axios.get(`${API_URL}/admin/submissionType/`)
-  //     .then(res => {
-  //       this.setState({ records: res.data });
-  //     }
-  //     )
-  // }
-
   const editRecord = (record) => {
     this.props.history.push("/admin-submission-type-edit/" + record._id);
   };
@@ -219,6 +226,11 @@ const OngoingDeliveries = () => {
     }
   };
 
+  const updateRecord = (record) => {
+    sessionStorage.setItem("currentDeliveryUpdateID", record._id);
+    window.location = "/delivery-update";
+  };
+
   return (
     <div
       style={{
@@ -235,9 +247,10 @@ const OngoingDeliveries = () => {
           backgroundColor: "rgb(34, 139, 34, 0.5)",
         }}
         href="#"
-        class="previous"
+        className="previous"
+        onClick={() => history.goBack()}
       >
-        &laquo; Previous
+        &laquo; GO BACK
       </a>
       <div style={{ marginTop: "30px" }}>
         <div
@@ -259,7 +272,7 @@ const OngoingDeliveries = () => {
           <br />
           <ReactDatatable
             config={config}
-            records={records}
+            records={data}
             columns={columns}
             extraButtons={extraButtons}
           />

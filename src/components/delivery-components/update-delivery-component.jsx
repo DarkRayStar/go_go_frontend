@@ -1,18 +1,90 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../navbar.component";
 import { useForm } from "react-hook-form";
 import { Grid } from "@mui/material";
+import { useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 
 export default function UpdateDelivery() {
+  let history = useHistory();
+
+  const [data, setData] = useState("");
+  const [customerName, setCustomerName] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [landlineNo, setLandlineNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [district, setDistrict] = useState("");
+  const [province, setProvince] = useState("");
+  const [zip, setZip] = useState("");
+  const [service, setService] = useState("");
+  const [trackingID, setTrackingID] = useState("");
+  const [fee, setFee] = useState("");
+
+  const deliveryID = sessionStorage.getItem("currentDeliveryUpdateID");
+
+  const logResult = useCallback(() => {
+    return 2 + 2;
+  }, []); //logResult is memoized now.
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+
+  const onSubmit = () => {
+    const delivery = {
+      customerName: customerName,
+      mobileNumber: mobileNo,
+      landlineNumber: landlineNo,
+      email: email,
+      address: address,
+      district: district,
+      province: province,
+      zip: zip,
+      service: service,
+      trackingID: trackingID,
+      fee: fee,
+    };
+
+    console.log(delivery);
+
+    var answer = window.confirm(
+      "You are about to update an existing delivery information. Do you want to proceed?"
+    );
+    if (answer) {
+      axios
+        .post(`http://localhost:5050/delivery/update/${deliveryID}`, delivery)
+        .then((res) => console.log(res.data));
+
+      window.location = "/delivery-ongoing";
+    } else {
+      window.location.reload(true);
+    }
+  };
+
+  const cancelButton = () =>{
+    window.location = '/delivery-update';
+  }
+
+  useEffect(() => {
+    axios.get(`http://localhost:5050/delivery/${deliveryID}`).then((res) => {
+      setData(res.data);
+      setCustomerName(res.data.customerName);
+      setMobileNo(res.data.mobileNumber);
+      setLandlineNo(res.data.landlineNumber);
+      setEmail(res.data.email);
+      setAddress(res.data.address);
+      setZip(res.data.zip);
+      setService(res.data.service);
+      setTrackingID(res.data.trackingID);
+      setFee(res.data.fee);
+      setProvince(res.data.province);
+      setDistrict(res.data.district);
+    });
+  }, [logResult]);
 
   return (
     <div>
@@ -26,9 +98,10 @@ export default function UpdateDelivery() {
           marginBottom: "5vh",
         }}
         href="#"
-        class="previous"
+        className="previous"
+        onClick={() => history.goBack()}
       >
-        &laquo; Previous
+        &laquo; GO BACK
       </a>
 
       <div
@@ -38,7 +111,7 @@ export default function UpdateDelivery() {
           width: "80%",
           backgroundColor: "rgb(207, 210, 207,0.5)",
           height: "520px",
-          marginBottom: '50px'
+          marginBottom: "50px",
         }}
       >
         <h3
@@ -70,10 +143,11 @@ export default function UpdateDelivery() {
                   type="text"
                   placeholder="Customer Name"
                   {...register("Customer Name", {
-                    required: true,
                     maxLength: 80,
                   })}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  value={customerName}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -83,6 +157,8 @@ export default function UpdateDelivery() {
                 <select
                   {...register("State/Province")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
+                  value={province}
+                  onChange={(e) => setProvince(e.target.value)}
                 >
                   <option value="Central">Central</option>
                   <option value="North Central">North Central</option>
@@ -104,9 +180,10 @@ export default function UpdateDelivery() {
                   type="tel"
                   placeholder="Mobile Number"
                   {...register("Mobile Number", {
-                    required: true,
                     maxLength: 12,
                   })}
+                  onChange={(e) => setMobileNo(e.target.value)}
+                  value={mobileNo}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -118,6 +195,8 @@ export default function UpdateDelivery() {
                   type="text"
                   placeholder="Postal/Zip Code"
                   {...register("Postal/Zip Code", {})}
+                  onChange={(e) => setZip(e.target.value)}
+                  value={zip}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -129,6 +208,8 @@ export default function UpdateDelivery() {
                   type="tel"
                   placeholder="Landline Number"
                   {...register("Landline Number", {})}
+                  onChange={(e) => setLandlineNo(e.target.value)}
+                  value={landlineNo}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -138,6 +219,8 @@ export default function UpdateDelivery() {
                 <select
                   {...register("Delivery Partner")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
+                  onChange={(e) => setService(e.target.value)}
+                  value={service}
                 >
                   <option value="DOMEX">DOMEX</option>
                   <option value="PRONTO">PRONTO</option>
@@ -157,9 +240,10 @@ export default function UpdateDelivery() {
                   type="text"
                   placeholder="Email"
                   {...register("Email", {
-                    required: true,
                     pattern: /^\S+@\S+$/i,
                   })}
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -171,6 +255,8 @@ export default function UpdateDelivery() {
                   type="text"
                   placeholder="Tracking ID"
                   {...register("Tracking ID", {})}
+                  onChange={(e) => setTrackingID(e.target.value)}
+                  value={trackingID}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -180,6 +266,8 @@ export default function UpdateDelivery() {
                 <textarea
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   {...register("Address", {})}
+                  onChange={(e) => setAddress(e.target.value)}
+                  value={address}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -191,6 +279,8 @@ export default function UpdateDelivery() {
                   type="text"
                   placeholder="Delivery Fee"
                   {...register("Delivery Fee", {})}
+                  onChange={(e) => setFee(e.target.value)}
+                  value={fee}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -200,6 +290,8 @@ export default function UpdateDelivery() {
                 <select
                   {...register("District")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
+                  onChange={(e) => setDistrict(e.target.value)}
+                  value={district}
                 >
                   <option value="Colombo">Colombo</option>
                   <option value="Gampaha">Gampaha</option>
@@ -230,13 +322,19 @@ export default function UpdateDelivery() {
               </Grid>
               <Grid item xs={6} sx={{ textAlign: "center" }}>
                 <button
-                  class="button-33"
+                  className="button-33"
                   type="submit"
                   style={{ marginRight: "50px" }}
                 >
                   UPDATE INFO
                 </button>
-                <button class="button-33">CANCEL</button>
+                <button
+                  type="button"
+                  className="button-33"
+                  onClick={() => cancelButton()}
+                >
+                  CANCEL
+                </button>
               </Grid>
             </Grid>
           </form>

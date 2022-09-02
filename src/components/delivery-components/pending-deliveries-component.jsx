@@ -2,9 +2,11 @@ import React, { Fragment, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
 import Navbar from "../navbar.component";
-import './delivery-styles.css';
+import { useHistory } from "react-router-dom";
+import "./delivery-styles.css";
 
 const PendingDeliveries = () => {
+  let history = useHistory();
   const [submissionList, setSubmissionList] = useState("");
   const [data, setData] = useState("");
   // const [records, setRecords] = useState("");
@@ -98,7 +100,7 @@ const PendingDeliveries = () => {
       orderID: "GG-1245",
       customerName: "Ayesha Dasanayake",
       amount: "LKR 5500.00",
-    }
+    },
   ];
 
   const extraButtons = [
@@ -167,34 +169,60 @@ const PendingDeliveries = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "rgb(207, 210, 207,0.5)", display: 'block', margin: '0 auto' }}>
+    <div
+      style={{
+        backgroundColor: "rgb(207, 210, 207,0.5)",
+        display: "block",
+        margin: "0 auto",
+      }}
+    >
       <Navbar />
-      <a style={{ marginLeft: '10%', marginTop: '5vh', backgroundColor: 'rgb(34, 139, 34, 0.5)' }} href="#" class="previous">&laquo; Previous</a>
-      <div style={{marginTop: '30px'}}>
-      <div
-        style={{ backgroundColor: "rgb(207, 210, 207,0.8)", height: "auto", width: '80%', display: 'block', margin: '0 auto',paddingLeft: '20px', paddingRight: '20px', paddingBottom: '20px' }}
+      <a
+        onClick={() => history.goBack()}
+        style={{
+          marginLeft: "10%",
+          marginTop: "5vh",
+          backgroundColor: "rgb(34, 139, 34, 0.5)",
+        }}
+        href="#"
+        className="previous"
       >
-        <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
-          PENDING DELIVERIES
-        </h3>
-        <hr />
-        <br />
-        <ReactDatatable
-          config={config}
-          records={records}
-          columns={columns}
-          extraButtons={extraButtons}
-        />
-      </div>
+        &laquo; GO BACK
+      </a>
+      <div style={{ marginTop: "30px" }}>
+        <div
+          style={{
+            backgroundColor: "rgb(207, 210, 207,0.8)",
+            height: "auto",
+            width: "80%",
+            display: "block",
+            margin: "0 auto",
+            paddingLeft: "20px",
+            paddingRight: "20px",
+            paddingBottom: "20px",
+          }}
+        >
+          <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
+            PENDING DELIVERIES
+          </h3>
+          <hr />
+          <br />
+          <ReactDatatable
+            config={config}
+            records={records}
+            columns={columns}
+            extraButtons={extraButtons}
+          />
+        </div>
       </div>
       <div
         style={{
           backgroundColor: "rgb(109, 112, 166,0.5)",
           height: "100px",
-          position: 'inherit',
-          marginBottom: '0',
-          width: '100%',
-          marginTop: '200px'
+          position: "inherit",
+          marginBottom: "0",
+          width: "100%",
+          marginTop: "200px",
         }}
       />
     </div>

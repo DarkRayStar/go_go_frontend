@@ -3,16 +3,55 @@ import axios from "axios";
 import Navbar from "../navbar.component";
 import { useForm } from "react-hook-form";
 import { Grid } from "@mui/material";
+import { useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 
 export default function NewDelivery() {
+  let history = useHistory();
+
+  const [customerName, setCustomerName] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [landlineNo, setLandlineNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [district, setDistrict] = useState("");
+  const [province, setProvince] = useState("");
+  const [zip, setZip] = useState("");
+  const [service, setService] = useState("");
+  const [trackingID, setTrackingID] = useState("");
+  const [fee, setFee] = useState("");
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+
+  const onSubmit = () => {
+    const delivery = {
+      customerName: customerName,
+      mobileNumber: mobileNo,
+      landlineNumber: landlineNo,
+      email: email,
+      address: address,
+      district: district,
+      province: province,
+      zip: zip,
+      service: service,
+      trackingID: trackingID,
+      fee: fee,
+    };
+
+    console.log(delivery);
+
+    axios
+      .post("http://localhost:5050/delivery/add", delivery)
+      .then((res) => console.log(res.data));
+  };
+
+  const cancelButton = () => {
+    window.location = 'delivery-new';
+  };
 
   return (
     <div>
@@ -26,9 +65,10 @@ export default function NewDelivery() {
           marginBottom: "5vh",
         }}
         href="#"
-        class="previous"
+        className="previous"
+        onClick={() => history.goBack()}
       >
-        &laquo; Previous
+        &laquo; GO BACK
       </a>
 
       <div
@@ -38,7 +78,7 @@ export default function NewDelivery() {
           width: "80%",
           backgroundColor: "rgb(207, 210, 207,0.5)",
           height: "520px",
-          marginBottom: '50px'
+          marginBottom: "50px",
         }}
       >
         <h3
@@ -74,6 +114,7 @@ export default function NewDelivery() {
                     maxLength: 80,
                   })}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
+                  onChange={(e) => setCustomerName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -83,6 +124,7 @@ export default function NewDelivery() {
                 <select
                   {...register("State/Province")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
+                  onChange={(e) => setProvince(e.target.value)}
                 >
                   <option value="Central">Central</option>
                   <option value="North Central">North Central</option>
@@ -107,6 +149,7 @@ export default function NewDelivery() {
                     required: true,
                     maxLength: 12,
                   })}
+                  onChange={(e) => setMobileNo(e.target.value)}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -118,6 +161,7 @@ export default function NewDelivery() {
                   type="text"
                   placeholder="Postal/Zip Code"
                   {...register("Postal/Zip Code", {})}
+                  onChange={(e) => setZip(e.target.value)}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -129,6 +173,7 @@ export default function NewDelivery() {
                   type="tel"
                   placeholder="Landline Number"
                   {...register("Landline Number", {})}
+                  onChange={(e) => setLandlineNo(e.target.value)}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -138,6 +183,7 @@ export default function NewDelivery() {
                 <select
                   {...register("Delivery Partner")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
+                  onChange={(e) => setService(e.target.value)}
                 >
                   <option value="DOMEX">DOMEX</option>
                   <option value="PRONTO">PRONTO</option>
@@ -160,6 +206,7 @@ export default function NewDelivery() {
                     required: true,
                     pattern: /^\S+@\S+$/i,
                   })}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -171,6 +218,7 @@ export default function NewDelivery() {
                   type="text"
                   placeholder="Tracking ID"
                   {...register("Tracking ID", {})}
+                  onChange={(e) => setTrackingID(e.target.value)}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -180,6 +228,7 @@ export default function NewDelivery() {
                 <textarea
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   {...register("Address", {})}
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -191,6 +240,7 @@ export default function NewDelivery() {
                   type="text"
                   placeholder="Delivery Fee"
                   {...register("Delivery Fee", {})}
+                  onChange={(e) => setFee(e.target.value)}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -200,6 +250,7 @@ export default function NewDelivery() {
                 <select
                   {...register("District")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
+                  onChange={(e) => setDistrict(e.target.value)}
                 >
                   <option value="Colombo">Colombo</option>
                   <option value="Gampaha">Gampaha</option>
@@ -230,13 +281,15 @@ export default function NewDelivery() {
               </Grid>
               <Grid item xs={6} sx={{ textAlign: "center" }}>
                 <button
-                  class="button-33"
+                  className="button-33"
                   type="submit"
                   style={{ marginRight: "50px" }}
                 >
                   CREATE DELIVERY
                 </button>
-                <button class="button-33">CANCEL</button>
+                <button type="button" className="button-33" onClick={() => cancelButton()}>
+                  CANCEL
+                </button>
               </Grid>
             </Grid>
           </form>

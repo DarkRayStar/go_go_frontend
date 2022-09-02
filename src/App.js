@@ -3,9 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
+//customer
 import ViewOneMovie from "./components/customer-components/view-movie-component";
 import ViewCart from "./components/customer-components/view-cart-component";
 import PaidPage from "./components/payment_components/paidPage";
+import ViewFavItems from "./components/customer-components/view-fav-items-component";
 
 
 
@@ -40,6 +42,7 @@ function App() {
   return (
     <Router>
       <div>
+
         {/* user-Management-Routes */}
         <Route path="/login" component={SignIn} />
         <Route path="/registration" component={Registration} />
@@ -47,34 +50,30 @@ function App() {
         <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
 
 
-        <div>
-          {/* <Navbar /> */}
-          <div className="" >
+        <Route path="/home" component={HomePage} />
+        <Route path="/admin-retrieve" component={adminRetrieve} />
+        <Route path="/admin-insert" component={adminInsert} />
+        <Route path="/admin-update/:id" component={adminUpdate} />
+        <Route path="/qrgen" component={QrGencomponent} />
 
-            <Route path="/home" component={HomePage} />
-            <Route path="/admin-retrieve" component={adminRetrieve} />
-            <Route path="/admin-insert" component={adminInsert} />
-            <Route path="/admin-update/:id" component={adminUpdate} />
-            <Route path="/qrgen" component={QrGencomponent} />
+        {/* Customer */}
+        <Route path="/one-movie/view/:id" component={ViewOneMovie} />
+        <Route path="/cart/view/" component={ViewCart} />
+        <Route path='/fav/view/' component={ViewFavItems} />
 
-            <Route path="/one-movie/view/:id" component={ViewOneMovie} />
-            <Route path="/cart/view/" component={ViewCart} />
+        <Route path="/payment-success" component={successPage} />
+        <Route path="/payment-paid" component={PaidPage} />
 
-            <Route path="/payment-success" component={successPage} />
-            <Route path="/payment-paid" component={PaidPage} />
+        <Route path="/delivery-home" component={DeliveryDashboard} />
+        <Route path="/delivery-pending" component={PendingDeliveries} />
+        <Route path="/delivery-ongoing" component={OngoingDeliveries} />
+        <Route path="/delivery-completed" component={CompletedDeliveries} />
+        <Route path="/delivery-cancelled" component={CancelledDeliveries} />
+        <Route path="/delivery-new" component={NewDelivery} />
+        <Route path="/delivery-update" component={UpdateDelivery} />
 
-            <Route path="/delivery-home" component={DeliveryDashboard} />
-            <Route path="/delivery-pending" component={PendingDeliveries} />
-            <Route path="/delivery-ongoing" component={OngoingDeliveries} />
-            <Route path="/delivery-completed" component={CompletedDeliveries} />
-            <Route path="/delivery-cancelled" component={CancelledDeliveries} />
-            <Route path="/delivery-new" component={NewDelivery} />
-            <Route path="/delivery-update" component={UpdateDelivery} />
-
-          </div>
-        </div>
       </div>
-    </Router>
+    </Router >
   );
 }
 
