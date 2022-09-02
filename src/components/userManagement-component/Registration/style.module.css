@@ -36,8 +36,6 @@
 }
 
 
-
-
 .left {
 	flex: 1;
 	display: flex;
@@ -136,3 +134,4 @@
 	color: white;
 	margin: 10px;
 }
+
