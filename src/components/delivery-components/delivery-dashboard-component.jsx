@@ -1,0 +1,60 @@
+import React, { useState } from "react";
+import Navbar from "../navbar.component";
+import Grid from "@mui/material/Grid";
+import './delivery-styles.css';
+
+const DeliveryDashboard = () => {
+  const [one, setOne] = useState("Hello Function Component!");
+
+  return (
+    <div>
+      <Navbar />
+      <div style={{ marginTop: "10px" }}>
+        <h4>Welcome, Delivery Admin!</h4>
+      </div>
+      <div style={{ marginTop: "5px" }}>
+        <h3>DELIVERY MANAGER</h3>
+      </div>
+      <div
+        style={{ backgroundColor: "rgb(207, 210, 207,0.5)", height: "60vh" }}
+      >
+        <Grid container sx={{marginBottom: '2vh' }}>
+          <Grid item xs={12} sx={{marginBottom: '7vh'}}>
+            <div style={{ paddingTop: "3vh" }}>
+              <h3 style={{ textAlign: "center" }}>
+                Go Go Gadgets - DELIVERY DASHBOARD
+              </h3>
+            </div>
+          </Grid>
+          <Grid item xs={4}>
+            <button className='button' style={{margin: '0 auto', display: 'block', height: '15vh', width: '80%', borderRadius: '70px'}}>PENDING DELIVERIES</button>
+          </Grid>
+          <Grid item xs={4}>
+            <button className='button' style={{margin: '0 auto', display: 'block', height: '15vh', width: '80%', borderRadius: '70px'}}>CREATE A NEW DELIVERY</button>
+          </Grid>
+          <Grid item xs={4}>
+            <button className='button' style={{margin: '0 auto', display: 'block', height: '15vh', width: '80%', borderRadius: '70px'}}>ONGOING DELIVERIES</button>
+          </Grid>
+          <Grid item xs={4} sx={{marginTop: '5vh'}}>
+            <button className='button' style={{margin: '0 auto', display: 'block', height: '15vh', width: '80%', borderRadius: '70px'}}>COMPLETED DELIVERIES</button>
+          </Grid>
+          <Grid item xs={4} sx={{marginTop: '5vh'}}>
+            <button className='button' style={{margin: '0 auto', display: 'block', height: '15vh', width: '80%', borderRadius: '70px'}}>CANCELLED DELIVERIES</button>
+          </Grid>
+          <Grid item xs={4} sx={{marginTop: '5vh'}}>
+            <button className='button' style={{margin: '0 auto', display: 'block', height: '15vh', width: '80%', borderRadius: '70px'}}>VIEW INSIGHTS</button>
+          </Grid>
+        </Grid>
+      </div>
+      <div
+        style={{
+          backgroundColor: "rgb(109, 112, 166,0.5)",
+          height: "100px",
+          marginTop: "20px",
+        }}
+      />
+    </div>
+  );
+};
+
+export default DeliveryDashboard;
