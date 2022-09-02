@@ -7,9 +7,15 @@ import ViewOneMovie from "./components/customer-components/view-movie-component"
 import ViewCart from "./components/customer-components/view-cart-component";
 import PaidPage from "./components/payment_components/paidPage";
 
+
+
+
 //user management
-import SignUp from "./components/userManagement-component/Registration/registration";
 import SignIn from "./components/userManagement-component/Login/login";
+import ForgotPassword from "./components/userManagement-component/forgotPassword/forgotPassword";
+import Registration from "./components/userManagement-component/Registration/registration";
+import PasswordReset from "./components/userManagement-component/passwordReset/passwordReset";
+
 
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
@@ -35,7 +41,9 @@ function App() {
 
         {/* user-Management-Routes */}
         <Route path="/login" component={SignIn} />
-        <Route path="/registration" component={SignUp} />
+        <Route path="/registration" component={Registration} />
+        <Route path="/forgot-password" component={ForgotPassword} />
+        <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
 
 
         <div>
