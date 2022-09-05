@@ -29,6 +29,11 @@ import QrGencomponent from './components/admin-components/qr-gencomponent';
 
 import successPage from "./components/payment_components/successPage";
 
+//Storeadmin
+import ItemRetrieve from "./components/storeAdmin-components/itemRetrieve-component";
+import ItemInsert from "./components/storeAdmin-components/itemInsert-component";
+import ItemUpdate from "./components/storeAdmin-components/updateItem-component";
+
 <link rel="stylesheet" href="./" />;
 
 function App() {
@@ -68,6 +73,11 @@ function App() {
 
             <Route path="/payment-success" component={successPage} />
             <Route path="/payment-paid" component={PaidPage} />
+
+            {/* storeAdminroutes */}
+            <Route path="/storeAdmin" component={ItemRetrieve} />
+            <Route path="/storeAdmin1/insert" component={ItemInsert} />
+            <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
 
           </div>
         </div>
