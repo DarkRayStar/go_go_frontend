@@ -19,7 +19,8 @@ const Registration = () => {
         district: options[0],
         zipCode: "",
         email: "",
-        password: ""
+        password: "",
+        image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMDoZqGk6An-DWrwWp2AQ1a2aug6xZ_IQSQWMO-1Cj1p0mwr2lPHLNWGbQknO-671N5es&usqp=CAU"
     });
 
 

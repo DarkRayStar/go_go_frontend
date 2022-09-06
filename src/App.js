@@ -17,7 +17,7 @@ import SignIn from "./components/userManagement-component/Login/login";
 import ForgotPassword from "./components/userManagement-component/forgotPassword/forgotPassword";
 import Registration from "./components/userManagement-component/Registration/registration";
 import PasswordReset from "./components/userManagement-component/passwordReset/passwordReset";
-
+import UserProfile from "./components/userManagement-component/profile/profile";
 
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
@@ -53,6 +53,7 @@ function App() {
         <Route path="/registration" component={Registration} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
+        <Route path="/user-profile/:id" component={UserProfile} />
 
 
         <Route path="/home" component={HomePage} />
