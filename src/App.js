@@ -47,7 +47,6 @@ function App() {
   return (
     <Router>
       <div>
-
         {/* user-Management-Routes */}
         <Route path="/login" component={SignIn} />
         <Route path="/registration" component={Registration} />
@@ -78,13 +77,10 @@ function App() {
         <Route path="/delivery-new" component={NewDelivery} />
         <Route path="/delivery-update" component={UpdateDelivery} />
 
-            {/* storeAdminroutes */}
-            <Route path="/storeAdmin" component={ItemRetrieve} />
-            <Route path="/storeAdmin1/insert" component={ItemInsert} />
-            <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
-
-          </div>
-        </div>
+        {/* storeAdminroutes */}
+        <Route path="/storeAdmin" component={ItemRetrieve} />
+        <Route path="/storeAdmin1/insert" component={ItemInsert} />
+        <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
 
       </div>
     </Router >
