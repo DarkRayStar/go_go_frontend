@@ -8,16 +8,13 @@ import ViewOneMovie from "./components/customer-components/view-movie-component"
 import ViewCart from "./components/customer-components/view-cart-component";
 import PaidPage from "./components/payment_components/paidPage";
 import ViewFavItems from "./components/customer-components/view-fav-items-component";
-
-
-
+import OrderHistory from "./components/customer-components/order-history-component";
 
 //user management
 import SignIn from "./components/userManagement-component/Login/login";
 import ForgotPassword from "./components/userManagement-component/forgotPassword/forgotPassword";
 import Registration from "./components/userManagement-component/Registration/registration";
 import PasswordReset from "./components/userManagement-component/passwordReset/passwordReset";
-
 
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
@@ -53,25 +50,26 @@ function App() {
 
         <div>
           {/* <Navbar /> */}
-          <div className="container" >
+          {/* <div className="container" > */}
 
-            <Route path="/home" component={HomePage} />
-            <Route path="/admin-retrieve" component={adminRetrieve} />
-            <Route path="/admin-insert" component={adminInsert} />
-            <Route path="/admin-update/:id" component={adminUpdate} />
-            <Route path="/qrgen" component={QrGencomponent} />
+          <Route path="/home" component={HomePage} />
+          <Route path="/admin-retrieve" component={adminRetrieve} />
+          <Route path="/admin-insert" component={adminInsert} />
+          <Route path="/admin-update/:id" component={adminUpdate} />
+          <Route path="/qrgen" component={QrGencomponent} />
 
-            {/* Customer */}
-            <Route path="/one-movie/view/:id" component={ViewOneMovie} />
-            <Route path="/cart/view/" component={ViewCart} />
-            <Route path='/fav/view/' component={ViewFavItems} />
+          {/* Customer */}
+          <Route path="/one-movie/view/:id" component={ViewOneMovie} />
+          <Route path="/cart/view/" component={ViewCart} />
+          <Route path='/fav/view/' component={ViewFavItems} />
+          <Route path='/order-history' component={OrderHistory} />
 
-            <Route path="/payment-success" component={successPage} />
-            <Route path="/payment-paid" component={PaidPage} />
+          <Route path="/payment-success" component={successPage} />
+          <Route path="/payment-paid" component={PaidPage} />
 
-          </div>
         </div>
       </div>
+      {/* </div> */}
     </Router >
   );
 }
