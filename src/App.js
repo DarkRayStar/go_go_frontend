@@ -36,6 +36,11 @@ import CancelledDeliveries from "./components/delivery-components/cancelled-deli
 import NewDelivery from "./components/delivery-components/create-new-delivery-component";
 import UpdateDelivery from "./components/delivery-components/update-delivery-component";
 
+//Storeadmin
+import ItemRetrieve from "./components/storeAdmin-components/itemRetrieve-component";
+import ItemInsert from "./components/storeAdmin-components/itemInsert-component";
+import ItemUpdate from "./components/storeAdmin-components/updateItem-component";
+
 <link rel="stylesheet" href="./" />;
 
 function App() {
@@ -71,6 +76,14 @@ function App() {
         <Route path="/delivery-cancelled" component={CancelledDeliveries} />
         <Route path="/delivery-new" component={NewDelivery} />
         <Route path="/delivery-update" component={UpdateDelivery} />
+
+            {/* storeAdminroutes */}
+            <Route path="/storeAdmin" component={ItemRetrieve} />
+            <Route path="/storeAdmin1/insert" component={ItemInsert} />
+            <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
+
+          </div>
+        </div>
 
       </div>
     </Router >
