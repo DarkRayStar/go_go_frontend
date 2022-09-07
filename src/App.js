@@ -80,7 +80,6 @@ function App() {
         <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
 
       </div>
-      {/* </div> */}
     </Router >
   );
 }

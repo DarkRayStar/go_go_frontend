@@ -12,7 +12,7 @@ import {
     MDBRow,
     MDBTypography,
 } from "mdb-react-ui-kit";
-import { faHeart, faTrashCan } from '@fortawesome/free-regular-svg-icons'
+import { faArrowAltCircleLeft, faHeart, faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function ViewCart() {
@@ -85,10 +85,10 @@ function ViewCart() {
                                     <MDBCol lg="12">
                                         <div className="p-5">
                                             <div >
-                                                <MDBTypography className="mb-0 text-muted">
-                                                    <Link to={"#"} className="backLink"> Go Back</Link>
+                                                <MDBTypography >
+                                                    <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
-                                                <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "38%" }}>
+                                                <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "38%", marginTop: "-60px" }}>
                                                     Shopping Cart
                                                 </MDBTypography>
 

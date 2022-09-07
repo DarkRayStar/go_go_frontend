@@ -11,7 +11,7 @@ import {
     MDBRow,
     MDBTypography,
 } from "mdb-react-ui-kit";
-import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle, faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function OrderHistory() {
@@ -88,7 +88,7 @@ function OrderHistory() {
                                         <div className="p-5">
                                             <div className="d-flex justify-content-between align-items-center mb-5">
                                                 <MDBTypography className="mb-0 text-muted">
-                                                    <Link to={"#"} className="backLink"> Go Back</Link>
+                                                    <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
                                                 <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "75px" }}>
                                                     Order History
@@ -135,7 +135,7 @@ function OrderHistory() {
                                                                 </MDBCol>
 
                                                                 <MDBCol>
-                                                                    <MDBTypography tag="h6" style={{ marginLeft: "30px" }}>
+                                                                    <MDBTypography tag="h6" >
 
                                                                         <div className='totalMod'> Total: Rs {total(cartItem.price, cartItem.quantity)}</div><br /><br />
 
