@@ -8,17 +8,14 @@ import ViewOneMovie from "./components/customer-components/view-movie-component"
 import ViewCart from "./components/customer-components/view-cart-component";
 import PaidPage from "./components/payment_components/paidPage";
 import ViewFavItems from "./components/customer-components/view-fav-items-component";
-
-
-
+import OrderHistory from "./components/customer-components/order-history-component";
 
 //user management
 import SignIn from "./components/userManagement-component/Login/login";
 import ForgotPassword from "./components/userManagement-component/forgotPassword/forgotPassword";
 import Registration from "./components/userManagement-component/Registration/registration";
 import PasswordReset from "./components/userManagement-component/passwordReset/passwordReset";
-
-
+import UserProfile from "./components/userManagement-component/profile/profile";
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
 import adminInsert from './components/admin-components/admin-insert';
@@ -28,6 +25,13 @@ import HomePage from './components/user-components/HomePage';
 import QrGencomponent from './components/admin-components/qr-gencomponent';
 
 import successPage from "./components/payment_components/successPage";
+import DeliveryDashboard from "./components/delivery-components/delivery-dashboard-component";
+import PendingDeliveries from "./components/delivery-components/pending-deliveries-component";
+import OngoingDeliveries from "./components/delivery-components/ongoing-deliveries-component";
+import CompletedDeliveries from "./components/delivery-components/completed-deliveries-component";
+import CancelledDeliveries from "./components/delivery-components/cancelled-deliveries-component";
+import NewDelivery from "./components/delivery-components/create-new-delivery-component";
+import UpdateDelivery from "./components/delivery-components/update-delivery-component";
 
 //Storeadmin
 import ItemRetrieve from "./components/storeAdmin-components/itemRetrieve-component";
@@ -39,49 +43,44 @@ import ItemUpdate from "./components/storeAdmin-components/updateItem-component"
 function App() {
   return (
     <Router>
-
-      <div style={{
-        // backgroundImage: `url("https://media.istockphoto.com/photos/light-pink-and-purple-defocused-blurred-motion-abstract-background-picture-id1138288771?k=20&m=1138288771&s=170667a&w=0&h=L4OSlBIrwzPYhGJx88zofN7zvShPDCjhDAHZ0iRk_u0=")`,
-        backgroundImage: `url("https://cdn.wallpapersafari.com/29/63/FBkusA.jpg")`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-      }}>
-
-
-
+      <div>
         {/* user-Management-Routes */}
         <Route path="/login" component={SignIn} />
         <Route path="/registration" component={Registration} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
+        <Route path="/user-profile/:id" component={UserProfile} />
 
+        <Route path="/home" component={HomePage} />
+        <Route path="/admin-retrieve" component={adminRetrieve} />
+        <Route path="/admin-insert" component={adminInsert} />
+        <Route path="/admin-update/:id" component={adminUpdate} />
+        <Route path="/qrgen" component={QrGencomponent} />
 
-        <div>
-          {/* <Navbar /> */}
-          <div className="container" >
+        {/* Customer */}
+        <Route path="/one-movie/view/:id" component={ViewOneMovie} />
+        <Route path="/cart/view/" component={ViewCart} />
+        <Route path='/fav/view/' component={ViewFavItems} />
+        <Route path='/order-history' component={OrderHistory} />
 
-            <Route path="/home" component={HomePage} />
-            <Route path="/admin-retrieve" component={adminRetrieve} />
-            <Route path="/admin-insert" component={adminInsert} />
-            <Route path="/admin-update/:id" component={adminUpdate} />
-            <Route path="/qrgen" component={QrGencomponent} />
+        <Route path="/payment-success" component={successPage} />
+        <Route path="/payment-paid" component={PaidPage} />
 
-            {/* Customer */}
-            <Route path="/one-movie/view/:id" component={ViewOneMovie} />
-            <Route path="/cart/view/" component={ViewCart} />
-            <Route path='/fav/view/' component={ViewFavItems} />
+        <Route path="/delivery-home" component={DeliveryDashboard} />
+        <Route path="/delivery-pending" component={PendingDeliveries} />
+        <Route path="/delivery-ongoing" component={OngoingDeliveries} />
+        <Route path="/delivery-completed" component={CompletedDeliveries} />
+        <Route path="/delivery-cancelled" component={CancelledDeliveries} />
+        <Route path="/delivery-new" component={NewDelivery} />
+        <Route path="/delivery-update" component={UpdateDelivery} />
 
-            <Route path="/payment-success" component={successPage} />
-            <Route path="/payment-paid" component={PaidPage} />
+        {/* storeAdminroutes */}
+        <Route path="/storeAdmin" component={ItemRetrieve} />
+        <Route path="/storeAdmin1/insert" component={ItemInsert} />
+        <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
 
-            {/* storeAdminroutes */}
-            <Route path="/storeAdmin" component={ItemRetrieve} />
-            <Route path="/storeAdmin1/insert" component={ItemInsert} />
-            <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
-
-          </div>
-        </div>
       </div>
+      {/* </div> */}
     </Router >
   );
 }

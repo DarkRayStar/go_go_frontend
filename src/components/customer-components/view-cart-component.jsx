@@ -75,7 +75,7 @@ function ViewCart() {
     }
 
     return (
-        <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
+        <section className="h-100 h-custom">
             <MDBContainer className="py-5 h-100">
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">
@@ -84,13 +84,14 @@ function ViewCart() {
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
                                         <div className="p-5">
-                                            <div className="d-flex justify-content-between align-items-center mb-5">
-                                                <MDBTypography tag="h1" className="fw-bold mb-0 text-black">
+                                            <div >
+                                                <MDBTypography className="mb-0 text-muted">
+                                                    <Link to={"#"} className="backLink"> Go Back</Link>
+                                                </MDBTypography>
+                                                <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "38%" }}>
                                                     Shopping Cart
                                                 </MDBTypography>
-                                                <MDBTypography className="mb-0 text-muted">
-                                                    Go Back
-                                                </MDBTypography>
+
 
                                             </div>
 
@@ -130,6 +131,9 @@ function ViewCart() {
                                                                             itemName: cartItem.itemName,
                                                                             description: cartItem.description,
                                                                             price: cartItem.price,
+                                                                            offers: cartItem.offers,
+                                                                            showOnCart: true,
+                                                                            paidStatus: false,
                                                                         }
 
                                                                         const response = await axios.post(`http://localhost:5050/cart/update/${cartItem._id}`, data)

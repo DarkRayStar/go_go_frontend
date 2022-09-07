@@ -12,11 +12,11 @@ export default class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <div style={{ paddingLeft: "650px" }}>
-          <Link to="/home" className="navbar-brand"> CINEPLEX CINEMA INC</Link>
+      <nav className="navbar navbar-expand-lg" style={{ height: "100px", backgroundColor: 'rgb(109, 112, 166,0.5'}}>
+        <div style={{ paddingLeft: "10px" }}>
+          <Link to="/home" className="navbar-brand"> Go Go Gadget Store</Link>
         </div>
-        <div className='container' style={{ marginLeft: "350px" }} >
+        {/* <div className='container' style={{ marginLeft: "350px" }} >
           <div>
             <Link to="/cart/view/" > <button style={{ marginLeft: "10px" }} className='btn btn-outline-light' >
               Cart </button></Link>
@@ -28,7 +28,7 @@ export default class Navbar extends Component {
               Logout
             </button>
           </div>
-        </div>
+        </div> */}
       </nav >
     );
   }
