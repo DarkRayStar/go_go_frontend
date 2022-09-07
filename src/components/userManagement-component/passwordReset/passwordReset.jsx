@@ -71,7 +71,7 @@ export default function PasswordReset() {
 			const { data } = await axios.post(url, { password });
 			setMsg(data.message);
 			setError("");
-			window.location = "/login";
+			window.location = "/";
 
 		}
 		catch (error) {
@@ -155,7 +155,7 @@ export default function PasswordReset() {
 					<form className={styles.form_container} onSubmit={onsubmit}>
 						<h1>Add New Password</h1>
 
-						<label style={{ marginLeft: '-290px' }}>Password    :</label>
+						<label style={{ marginLeft: '-290px' , fontWeight:"bold" }}>Password    :</label>
 						<input
 							id="password"
 							type="password"

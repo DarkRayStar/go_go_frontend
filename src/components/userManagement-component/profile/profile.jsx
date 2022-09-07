@@ -18,28 +18,12 @@ function UserProfile(props) {
     var [email, setEmail] = useState("");
     var [image, setImage] = useState("");
 
-
-    // Dealing with field changes to update state
-    // const nameUpdate = (event) => {
-    //     setName(event.target.value)
-    // }
-    // const descriptionUpdate = (event) => {
-    //     setDescription(event.target.value)
-    // }
-    // const priceUpdate = (event) => {
-    //     setPrice(event.target.value)
-    // }
-    // const quantityUpdate = (event) => {
-    //     setQuantity(event.target.value)
-    // }
-    // const imagesUpdate = (event) => {
-    //     setImages(event.target.value)
-    // }
-    // const offerUpdate = (event) => {
-    //     setOffer(event.target.value)
-    // }
+    var [sessionUser, setSessionUser] = useState("");
 
     const getUserDetailsByID = async () => {
+       //get the user details from the session
+        setSessionUser = sessionStorage.getItem("loggeduser");
+        console.log("get user details", sessionUser);
         try {
             const response = await axios.get('http://localhost:5050/user/' + props.match.params.id);
             setFirstName(response.data.firstName);
@@ -62,15 +46,16 @@ function UserProfile(props) {
 
 
     const UpdateDetails = () => {
-        // window.location = '/login';
+        // window.location = '/';
     }
 
     const DeleteAccount = () => {
-        // window.location = '/login';
+        // window.location = '/';
     }
 
     const Logout = () => {
-        window.location = '/login';
+        // window.location = '/';
+        // sessionStorage.clear();
     }
 
     // const handleSubmit = (e) => {
@@ -92,12 +77,12 @@ function UserProfile(props) {
     // }
 
     return (
-        <div>
+        <div className={styles.background}>
             <div className={styles.cartDetails_container}>
 
                 {/* cart and History Details */}
 
-                <table className={styles.cartDetailsTable} style={{ height: "20px", width: "250px", textAlign: "center", marginLeft: "880px", color: "white" }}>
+                <table className={styles.cartDetailsTable} style={{ height: "20px", width: "250px", textAlign: "center", marginLeft: "1100px", color: "white", marginTop: "0px", marginBottom: "-100px" }}>
                     <tr>
                         <td style={{}}><Link to="/fav/view/"><FontAwesomeIcon icon={faHeart} /></Link></td>
                         <td style={{ marginLeft: "0px" }}><Link to="#"><FontAwesomeIcon icon={faListAlt} /></Link></td>
@@ -111,36 +96,38 @@ function UserProfile(props) {
             <div className={styles.profile_container}>
                 <div className={styles.profile_form_container}>
 
-
                     <div className={styles.left}>
+                    <h2 style={{color:"white", textAlign:"center"}}> Welcome<br></br> {firstName} {lastName}</h2><br></br>
                         <img style={{ width: "220px", height: "220px" }} src={image} alt=""></img>
                     </div>
 
                     <div className={styles.right}>
                         <form className={styles.form_container}>
 
-                            <h1 style={{ marginTop: "50px" }}>Account Details</h1>
+
+
+                            <h1 style={{ marginTop: "50px", marginBottom: "20px" }}>Account Details</h1>
 
                             <table>
                                 <tr>
-                                    <td><label className={styles.input} style={{ fontWeight: 'bold' }}>First Name    : <label style={{ fontWeight: 'normal' }}>{firstName}</label></label></td>
-                                    <td><label className={styles.input} style={{ fontWeight: 'bold' }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
+                                    <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>First Name    : <label style={{ fontWeight: 'normal' }}>{firstName}</label></label></td>
+                                    <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px", marginLeft: "30px" }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
                                 </tr>
                                 <tr>
-                                    <td><label className={styles.input} style={{ fontWeight: 'bold' }}>Mobile Number    : <label style={{ fontWeight: 'normal' }}>{mobileNumber}</label></label></td>
-                                    <td><label className={styles.input} style={{ fontWeight: 'bold' }}>Phone Number    : <label style={{ fontWeight: 'normal' }}>{phoneNumber}</label></label></td>
+                                    <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Mobile Number    : <label style={{ fontWeight: 'normal' }}>{mobileNumber}</label></label></td>
+                                    <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Phone Number    : <label style={{ fontWeight: 'normal' }}>{phoneNumber}</label></label></td>
                                 </tr>
                                 <tr>
-                                    <td><label className={styles.input} style={{ fontWeight: 'bold' }}>Email    : <label style={{ fontWeight: 'normal' }}>{email}</label></label></td>
-                                    <td> <label className={styles.input} style={{ fontWeight: 'bold' }}>Address    : <label style={{ fontWeight: 'normal' }}>{address}</label></label></td>
+                                    <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Email    : <label style={{ fontWeight: 'normal' }}>{email}</label></label></td>
+                                    <td> <label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Address    : <label style={{ fontWeight: 'normal' }}>{address}</label></label></td>
                                 </tr>
                                 <tr>
-                                    <td><label className={styles.input} style={{ fontWeight: 'bold' }}>District    : <label style={{ fontWeight: 'normal' }}>{district}</label></label></td>
-                                    <td><label className={styles.input} style={{ fontWeight: 'bold' }}>Postal/Zip Code    : <label style={{ fontWeight: 'normal' }}>{zipCode}</label></label></td>
+                                    <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>District    : <label style={{ fontWeight: 'normal' }}>{district}</label></label></td>
+                                    <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Postal/Zip Code    : <label style={{ fontWeight: 'normal' }}>{zipCode}</label></label></td>
                                 </tr>
                             </table>
 
-                            <table>
+                            <table style={{ marginBottom: "50px", marginTop: "20px" }}>
                                 <tr>
                                     <td><button onClick={UpdateDetails} type='button' className={styles.green_btn}>Update</button></td>
                                     <td><button onClick={DeleteAccount} type='button' className={styles.green_btn}>Delete Account</button></td>
