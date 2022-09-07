@@ -78,7 +78,7 @@ function ViewFavItems() {
     }
 
     return (
-        <div>
+        <div className="container">
             <br /><br />
             <DataTable
                 title="Favorite Items"
@@ -101,6 +101,7 @@ function ViewFavItems() {
             // selectableRows
             // selectableRowsHighlight
             />
+            <br /><br />
         </div>
     )
 }

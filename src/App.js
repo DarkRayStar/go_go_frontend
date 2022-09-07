@@ -8,9 +8,7 @@ import ViewOneMovie from "./components/customer-components/view-movie-component"
 import ViewCart from "./components/customer-components/view-cart-component";
 import PaidPage from "./components/payment_components/paidPage";
 import ViewFavItems from "./components/customer-components/view-fav-items-component";
-
-
-
+import OrderHistory from "./components/customer-components/order-history-component";
 
 //user management
 import SignIn from "./components/userManagement-component/Login/login";
@@ -18,7 +16,6 @@ import ForgotPassword from "./components/userManagement-component/forgotPassword
 import Registration from "./components/userManagement-component/Registration/registration";
 import PasswordReset from "./components/userManagement-component/passwordReset/passwordReset";
 import UserProfile from "./components/userManagement-component/profile/profile";
-
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
 import adminInsert from './components/admin-components/admin-insert';
@@ -54,7 +51,6 @@ function App() {
         <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
         <Route path="/user-profile/:id" component={UserProfile} />
 
-
         <Route path="/home" component={HomePage} />
         <Route path="/admin-retrieve" component={adminRetrieve} />
         <Route path="/admin-insert" component={adminInsert} />
@@ -65,6 +61,7 @@ function App() {
         <Route path="/one-movie/view/:id" component={ViewOneMovie} />
         <Route path="/cart/view/" component={ViewCart} />
         <Route path='/fav/view/' component={ViewFavItems} />
+        <Route path='/order-history' component={OrderHistory} />
 
         <Route path="/payment-success" component={successPage} />
         <Route path="/payment-paid" component={PaidPage} />
@@ -83,6 +80,7 @@ function App() {
         <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
 
       </div>
+      {/* </div> */}
     </Router >
   );
 }

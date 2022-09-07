@@ -32,3 +32,55 @@
         border-bottom-right-radius: 16px;
     }
 }
+
+.card-item {
+    background-color: rgb(231, 231, 231);
+    padding-top: 15px;
+    padding-bottom: 8px;
+}
+
+.completedMod {
+    color: rgb(1, 186, 69);
+    font-weight: bold;
+}
+
+.titleMod {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.priceMod {
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+.RemoveBtnMod {
+    text-decoration: none;
+    padding-right: 15px;
+    color: #BF498A;
+
+}
+
+.ReviewBtn {
+    text-decoration: none;
+    color: #2B86C5;
+}
+
+.totalMod {
+    float: right;
+    padding-right: 15px;
+    padding-top: 10px;
+
+}
+
+.backLink {
+    text-decoration: none;
+}
+
+.hrMod {
+    width: 95.8%;
+    margin-top: 2px;
+    margin-left: 12px;
+    margin-bottom: 20px;
+}
