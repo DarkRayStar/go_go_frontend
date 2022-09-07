@@ -36,19 +36,28 @@ import CancelledDeliveries from "./components/delivery-components/cancelled-deli
 import NewDelivery from "./components/delivery-components/create-new-delivery-component";
 import UpdateDelivery from "./components/delivery-components/update-delivery-component";
 
-//Storeadmin
+//StoreAdmin
 import ItemRetrieve from "./components/storeAdmin-components/itemRetrieve-component";
 import ItemInsert from "./components/storeAdmin-components/itemInsert-component";
 import ItemUpdate from "./components/storeAdmin-components/updateItem-component";
+
+import bgImage from "./images/bg.jpg";
 
 <link rel="stylesheet" href="./" />;
 
 function App() {
   return (
     <Router>
-      <div>
+      <div
+      // background Image
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}>
+
         {/* user-Management-Routes */}
-        <Route path="/login" component={SignIn} />
+        <Route path="/" exact component={SignIn} />
         <Route path="/registration" component={Registration} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/user-password-reset/:id/:token" component={PasswordReset} />

@@ -24,8 +24,17 @@ const SignIn = () => {
             const { data: res } = await axios.post(url, data);
             localStorage.setItem("token", res.data);
             console.log("login", res.message);
+            console.log("user 2 Details", res.user);
+            console.log("user ID", res.user._id);
             alert(res.message);
-            // window.location = "/homepage"
+
+            // create session 
+            window.sessionStorage.setItem(
+                "loggeduser", res.user
+            );
+            // window.location = "/home";
+
+            // window.location = `/user-profile/${res.user._id}`
         }
         catch (error) {
             if (
@@ -39,55 +48,57 @@ const SignIn = () => {
     }
 
     return (
-        <div className={styles.login_container}>
-            <div className={styles.login_form_container}>
+        <div>
+            <div className={styles.login_container}>
+                <div className={styles.login_form_container}>
 
-                <div className={styles.left}>
+                    <div className={styles.left}>
 
-                    <form className={styles.form_container} onSubmit={handleSubmit}>
-                        <h1>Login Here</h1>
+                        <form className={styles.form_container} onSubmit={handleSubmit}>
+                            <h1>Login Here</h1>
 
-                        <label style={{marginLeft: '-330px'}}>Email </label>
-                        <input
-                            type="email"
-                            placeholder='Ex: someone@gmail.com'
-                            name='email'
-                            onChange={handleChange}
-                            value={data.email}
-                            required
-                            className={styles.input}
-                        />
+                            <label style={{ marginLeft: '-330px' , fontWeight:"bold"}}>Email </label>
+                            <input
+                                type="email"
+                                placeholder='Ex: someone@gmail.com'
+                                name='email'
+                                onChange={handleChange}
+                                value={data.email}
+                                required
+                                className={styles.input}
+                            />
 
-                        <label style={{marginLeft: '-300px'}}>Password  </label>
-                        <input
-                            type="password"
-                            placeholder='Ex: Password'
-                            name='password'
-                            onChange={handleChange}
-                            value={data.password}
-                            required
-                            className={styles.input}
-                        />
+                            <label style={{ marginLeft: '-300px' , fontWeight:"bold"}}>Password  </label>
+                            <input
+                                type="password"
+                                placeholder='Ex: Password'
+                                name='password'
+                                onChange={handleChange}
+                                value={data.password}
+                                required
+                                className={styles.input}
+                            />
 
-                        <Link to="/forgot-password" style={{ marginLeft: '85px', alignSelf: "flex-start" }}>
-                            <p style={{ padding: "0 15px" }}>Forgot Password ?</p>
+                            <Link to="/forgot-password" style={{ marginLeft: '85px', alignSelf: "flex-start" }}>
+                                <p style={{ padding: "0 15px" }}>Forgot Password ?</p>
+                            </Link>
+
+                            {/* {error && <div className={styles.error_msg}>{error}</div>} */}
+                            {error && <div className={styles.error_msg}>{error}</div>}
+
+                            <button type='submit' className={styles.green_btn}>Sign in</button>
+                        </form>
+                    </div>
+
+                    <div className={styles.right}>
+                        <h1 style={{ textAlign: 'center' }}>Don't have an Account?</h1>
+                        <Link to="/registration">
+                            <button type='button' className={styles.white_btn}>Sign up</button>
                         </Link>
 
-                        {/* {error && <div className={styles.error_msg}>{error}</div>} */}
-                        {error && <div className={styles.error_msg}>{error}</div>}
-
-                        <button type='submit' className={styles.green_btn}>Sign in</button>
-                    </form>
-                </div>
-
-                <div className={styles.right}>
-                    <h1 style={{textAlign: 'center'}}>Don't have an Account?</h1>
-                    <Link to="/registration">
-                        <button type='button' className={styles.white_btn}>Sign up</button>
-                    </Link>
+                    </div>
 
                 </div>
-
             </div>
         </div>
     )
