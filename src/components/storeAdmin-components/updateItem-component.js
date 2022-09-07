@@ -91,7 +91,7 @@ function ItemUpdate(props) {
 
                 <Form.Group className="mb-3" >
                     <Form.Label> Description </Form.Label>
-                    <Form.Control defaultValue={description || ''} value={description} onChange={descriptionUpdate} type="text" placeholder="Enter description" required/>
+                    <Form.Control defaultValue={description || ''} onChange={descriptionUpdate} type="text" placeholder="Enter description" required/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
