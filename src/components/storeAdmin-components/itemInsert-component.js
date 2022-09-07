@@ -63,36 +63,6 @@ function ItemInsert() {
 
     return (
         <div>
-            {/* <form onSubmit={handleSubmit}>
-                <label>Item Name:</label>
-                <input required onChange={nameUpdate}></input>
-
-                <label> Description:</label>
-                <input required onChange={descriptionUpdate}></input>
-
-                <label> Price:</label>
-                <input required onChange={priceUpdate}></input>
-
-                <label> Quantity:</label>
-                <input required onChange={quantityUpdate}></input>
-
-                <label> Images:</label>
-                <input required onChange={imagesUpdate}></input>
-
-                <label> Offer:</label>
-                <input required onChange={offerUpdate}></input>
-
-                <button type="submit"> Submit</button>
-            </form> */}
-
-            <hr></hr>
-            <hr></hr>
-
-
-
-
-
-
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >
                     <Form.Label> Item Name </Form.Label>
