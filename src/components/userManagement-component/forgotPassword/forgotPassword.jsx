@@ -44,7 +44,7 @@ const ForgotPassword = () => {
 				/>
 
                 {/* display invalid email message */}
-				{error && <div className={styles.error_msg}>{error}</div>}
+				{error && <div className={styles.err_msg}>{error}</div>}
                 {/* display reset password link send successfully */}
 				{msg && <div className={styles.success_msg}>{msg}</div>}
 

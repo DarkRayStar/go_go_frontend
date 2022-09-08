@@ -134,11 +134,11 @@ export default function PasswordReset() {
 				// 		/> : null}
 
 				// 		{/* display invalid password message */}
-				// 		{error && <div className={styles.error_msg}>{error}</div>}
+				// 		{error && <div className={styles.err_msg}>{error}</div>}
 				// 		{/* display password reset success message */}
 				// 		{msg && <div className={styles.success_msg}>{msg}</div>}
 
-				// 		<button type="submit" className={styles.green_btn}>
+				// 		<button type="submit" className={styles.g_button}>
 				// 			Submit
 				// 		</button>
 
@@ -179,7 +179,7 @@ export default function PasswordReset() {
 						/> : null}
 
 							{/* display invalid password message */}
-							{error && <div className={styles.error_msg}>{error}</div>}
+							{error && <div className={styles.err_msg}>{error}</div>}
 							{/* display password reset success message */}
 							{msg && <div className={styles.success_msg}>{msg}</div>}
 

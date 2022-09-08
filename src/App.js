@@ -40,25 +40,33 @@ import ItemUpdate from "./components/storeAdmin-components/updateItem-component"
 
 import bgImage from "./images/bg.jpg";
 
+
+
+
 <link rel="stylesheet" href="./" />;
 
 function App() {
   return (
     <Router>
+      {/* navigation bar */}
+      {/* <NavBarGoGo/> */}
       <div
       // background Image
         style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
+          // backgroundImage: `url(${bgImage})`,
+          // backgroundRepeat: 'no-repeat',
+          // backgroundSize: 'cover',
         }}>
+
+       
+        {/* <Route path="/navbarK" exact component={NavBarGoGo} /> */}
 
         {/* user-Management-Routes */}
         <Route path="/" exact component={SignIn} />
         <Route path="/registration" component={Registration} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
-        <Route path="/user-profile/:id" component={UserProfile} />
+        <Route path="/user-profile" component={UserProfile} />
 
         <Route path="/home" component={HomePage} />
         <Route path="/admin-retrieve" component={adminRetrieve} />
