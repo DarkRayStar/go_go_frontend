@@ -1,6 +1,14 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
+import './item-cart.css';
+import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import './viewMods.css';
+// import './gg.css';
+
+
+import { Link } from 'react-router-dom';
 
 function ViewFavItems() {
 
@@ -79,9 +87,11 @@ function ViewFavItems() {
 
     return (
         <div className="container">
-            <br /><br />
+            <Link to={"#"} className="backLinkFav"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
+            <h1 className="headerMod"> Favorite Items</h1>
+
             <DataTable
-                title="Favorite Items"
+                // title="Favorite Items"
                 columns={columns}
                 data={filteredItems}
                 pagination

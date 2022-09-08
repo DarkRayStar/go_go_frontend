@@ -32,7 +32,7 @@ const ForgotPassword = () => {
 			<form className={styles.form_container} onSubmit={handleSubmit}>
 				<h1>Forgot Password</h1>
 
-				<label style={{marginLeft: '-320px'}}>Email    :</label>
+				<label style={{marginLeft: '-320px' , fontWeight:"bold"}}>Email    :</label>
 				<input
 					type="email"
 					placeholder="someone@gmail.com"
@@ -44,7 +44,7 @@ const ForgotPassword = () => {
 				/>
 
                 {/* display invalid email message */}
-				{error && <div className={styles.error_msg}>{error}</div>}
+				{error && <div className={styles.err_msg}>{error}</div>}
                 {/* display reset password link send successfully */}
 				{msg && <div className={styles.success_msg}>{msg}</div>}
 

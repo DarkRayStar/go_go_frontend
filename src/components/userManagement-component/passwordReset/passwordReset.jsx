@@ -71,7 +71,7 @@ export default function PasswordReset() {
 			const { data } = await axios.post(url, { password });
 			setMsg(data.message);
 			setError("");
-			window.location = "/login";
+			window.location = "/";
 
 		}
 		catch (error) {
@@ -134,11 +134,11 @@ export default function PasswordReset() {
 				// 		/> : null}
 
 				// 		{/* display invalid password message */}
-				// 		{error && <div className={styles.error_msg}>{error}</div>}
+				// 		{error && <div className={styles.err_msg}>{error}</div>}
 				// 		{/* display password reset success message */}
 				// 		{msg && <div className={styles.success_msg}>{msg}</div>}
 
-				// 		<button type="submit" className={styles.green_btn}>
+				// 		<button type="submit" className={styles.g_button}>
 				// 			Submit
 				// 		</button>
 
@@ -155,7 +155,7 @@ export default function PasswordReset() {
 					<form className={styles.form_container} onSubmit={onsubmit}>
 						<h1>Add New Password</h1>
 
-						<label style={{ marginLeft: '-290px' }}>Password    :</label>
+						<label style={{ marginLeft: '-290px' , fontWeight:"bold" }}>Password    :</label>
 						<input
 							id="password"
 							type="password"
@@ -179,7 +179,7 @@ export default function PasswordReset() {
 						/> : null}
 
 							{/* display invalid password message */}
-							{error && <div className={styles.error_msg}>{error}</div>}
+							{error && <div className={styles.err_msg}>{error}</div>}
 							{/* display password reset success message */}
 							{msg && <div className={styles.success_msg}>{msg}</div>}
 

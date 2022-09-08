@@ -34,9 +34,10 @@
 }
 
 .card-item {
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(241, 241, 241);
     padding-top: 15px;
     padding-bottom: 8px;
+    /* box-shadow: 3px 3px 3px #888888; */
 }
 
 .completedMod {
@@ -78,9 +79,35 @@
     text-decoration: none;
 }
 
+.backLink:hover {
+    background: none;
+    color: #BF498A;
+}
+
 .hrMod {
     width: 95.8%;
     margin-top: 2px;
     margin-left: 12px;
     margin-bottom: 20px;
+}
+
+.headerMod {
+    font-weight: bold;
+    padding-left: 500px;
+    background-color: #ffffff;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-top: 40px;
+    margin-bottom: -10px;
+}
+
+.backLinkFav {
+    text-decoration: none;
+    padding-top: 35px;
+    float: left;
+}
+
+.backLinkFav:hover {
+    background: none;
+    color: #BF498A;
 }
