@@ -54,6 +54,7 @@ const handleSubmit = (e) => {
         .then(() => {
             // Once posted, the user will be notified 
             alert('Item Has Been Added!');
+            window.location = '/storeAdmin';
         })
 }
 

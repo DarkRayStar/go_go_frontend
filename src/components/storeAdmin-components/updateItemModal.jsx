@@ -63,9 +63,8 @@ const handleSubmit = (e) => {
         images: images,
         offer: offer,
     }
-    console.log('a', item)
     axios.post('http://localhost:5050/storeAdmin/update/' + window.sessionStorage.getItem('item'), item)
-        .then(res => console.log(res.data), alert("Successfully updated"));
+        .then(res => alert("Successfully updated"));
 
     window.location = '/storeAdmin';
 }

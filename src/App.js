@@ -35,8 +35,7 @@ import UpdateDelivery from "./components/delivery-components/update-delivery-com
 
 //StoreAdmin
 import ItemRetrieve from "./components/storeAdmin-components/itemRetrieve-component";
-import ItemInsert from "./components/storeAdmin-components/itemInsert-component";
-import ItemUpdate from "./components/storeAdmin-components/updateItem-component";
+import storeAdminDashboard from "./components/storeAdmin-components/storeAdminDashboard";
 
 import bgImage from "./images/bg.jpg";
 
@@ -93,8 +92,7 @@ function App() {
 
         {/* storeAdminroutes */}
         <Route path="/storeAdmin" component={ItemRetrieve} />
-        <Route path="/storeAdmin1/insert" component={ItemInsert} />
-        <Route path="/storeAdmin1/update/:id" component={ItemUpdate} />
+        <Route path="/storeAdmindash" component={storeAdminDashboard} />
 
       </div>
     </Router >
