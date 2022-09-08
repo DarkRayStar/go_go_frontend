@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './style.module.css';
 import axios from 'axios';
 import { PWDRequiesite } from "./PWDRequiesite";
-import "./style.css";
+import "./style1.css";
 import { Col, Container, Row } from "react-bootstrap";
 
 
@@ -81,7 +81,7 @@ const Registration = () => {
         }
         catch (error) {
 
-            if ( error.response && error.response.status >= 400 && error.response.status <= 500 ) {
+            if (error.response && error.response.status >= 400 && error.response.status <= 500) {
                 setError(error.response.data.message);
             }
         }
@@ -121,7 +121,7 @@ const Registration = () => {
                     <div className={styles.left}>
                         <h1 style={{ textAlign: 'center' }}>Already have an Account?</h1>
                         <Link to="/">
-                            <button type='button' className={styles.white_btn}>Sign in</button>
+                            <button type='button' className={styles.w_button}>Sign in</button>
                         </Link>
                     </div>
 
@@ -345,7 +345,7 @@ const Registration = () => {
                             <Container>
                                 <Row>
                                     <Col xs={9} md={6}>
-                                        <label style={{fontWeight:"bold"}}>First Name    :</label><br></br>
+                                        <label style={{ fontWeight: "bold" }}>First Name    :</label><br></br>
                                         <input
                                             type="text"
                                             placeholder='Ex: John'
@@ -357,7 +357,7 @@ const Registration = () => {
                                         />
                                     </Col>
                                     <Col xs={9} md={6}>
-                                        <label style={{fontWeight:"bold"}}>Last Name    :</label><br></br>
+                                        <label style={{ fontWeight: "bold" }}>Last Name    :</label><br></br>
                                         <input
                                             type="text"
                                             placeholder='Ex: Smith'
@@ -372,7 +372,7 @@ const Registration = () => {
 
                                 <Row>
                                     <Col xs={9} md={6}>
-                                        <label style={{fontWeight:"bold"}}>Mobile Number    :</label><br></br>
+                                        <label style={{ fontWeight: "bold" }}>Mobile Number    :</label><br></br>
                                         <input
                                             type="text"
                                             placeholder='Ex: 0712345678'
@@ -384,7 +384,7 @@ const Registration = () => {
                                         />
                                     </Col>
                                     <Col xs={9} md={6}>
-                                        <label style={{fontWeight:"bold"}}>Phone Number    :</label><br></br>
+                                        <label style={{ fontWeight: "bold" }}>Phone Number    :</label><br></br>
                                         <input
                                             type="text"
                                             placeholder='Ex: 0812345678'
@@ -399,7 +399,7 @@ const Registration = () => {
 
                                 <Row>
                                     <Col xs={9} md={6}>
-                                        <label style={{fontWeight:"bold"}} >Email Address    :</label><br></br>
+                                        <label style={{ fontWeight: "bold" }} >Email Address    :</label><br></br>
                                         <input
                                             type="email"
                                             placeholder='Ex: someone@gmail.com'
@@ -411,7 +411,7 @@ const Registration = () => {
                                         />
                                     </Col>
                                     <Col xs={9} md={6}>
-                                        <label style={{fontWeight:"bold"}} >Address    :</label><br></br>
+                                        <label style={{ fontWeight: "bold" }} >Address    :</label><br></br>
                                         <input
                                             type="text"
                                             placeholder='Ex: No:170/A, Kandy'
@@ -426,7 +426,7 @@ const Registration = () => {
 
                                 <Row>
                                     <Col xs={9} md={6}>
-                                        <label style={{fontWeight:"bold"}} >District    :</label><br></br>
+                                        <label style={{ fontWeight: "bold" }} >District    :</label><br></br>
                                         <select
                                             className={styles.input}
                                             // value={selected}
@@ -442,7 +442,7 @@ const Registration = () => {
                                         </select>
                                     </Col>
                                     <Col xs={9} md={6}>
-                                        <label style={{fontWeight:"bold"}} >Postal/Zip Code    :</label><br></br>
+                                        <label style={{ fontWeight: "bold" }} >Postal/Zip Code    :</label><br></br>
                                         <input
                                             type="text"
                                             placeholder='Ex: 00000'
@@ -455,23 +455,23 @@ const Registration = () => {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col style={{textAlign:"center"}}>
-                                            {/* <label htmlFor="password">Password</label> */}
-                                            <label style={{fontWeight:"bold"}}>Password    :</label><br></br>
-                                            <input
-                                                id="password"
-                                                type="password"
-                                                placeholder='Ex: Password'
-                                                name='password'
-                                                value={data.Password}
-                                                onChange={handleChange}
-                                                onFocus={handleOnFocus}
-                                                onBlur={handleOnBlur}
-                                                onKeyUp={handleOnKeyUp}
-                                                className={styles.input}
-                                                required
+                                    <Col style={{ textAlign: "center" }}>
+                                        {/* <label htmlFor="password">Password</label> */}
+                                        <label style={{ fontWeight: "bold" }}>Password    :</label><br></br>
+                                        <input
+                                            id="password"
+                                            type="password"
+                                            placeholder='Ex: Password'
+                                            name='password'
+                                            value={data.Password}
+                                            onChange={handleChange}
+                                            onFocus={handleOnFocus}
+                                            onBlur={handleOnBlur}
+                                            onKeyUp={handleOnKeyUp}
+                                            className={styles.input}
+                                            required
 
-                                            />
+                                        />
                                         {pwdRequisite ? <PWDRequiesite
                                             capsLetterCheckFlag={checks.capsLetterCheck ? "valid" : "invalid"}
                                             numberCheckFlag={checks.numberCheck ? "valid" : "invalid"}
@@ -483,9 +483,9 @@ const Registration = () => {
 
                             </Container>
 
-                            {error && <div className={styles.error_msg}>{error}</div>}
+                            {error && <div className={styles.err_msg}>{error}</div>}
 
-                            <button type='submit' style={{ marginBottom: "50px" }} className={styles.green_btn}>Sign Up</button>
+                            <button type='submit' style={{ marginBottom: "50px" }} className={styles.g_button}>Sign Up</button>
                         </form>
                     </div>
 

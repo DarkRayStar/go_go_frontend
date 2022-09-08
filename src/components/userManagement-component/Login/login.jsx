@@ -28,11 +28,12 @@ const SignIn = () => {
             console.log("user ID", res.user._id);
             alert(res.message);
 
-            // create session 
+            // create session
             window.sessionStorage.setItem(
-                "loggeduser", res.user
-            );
-            // window.location = "/home";
+                "loggeduser",
+                JSON.stringify(res.user)
+              );
+            window.location = "/user-profile";
 
             // window.location = `/user-profile/${res.user._id}`
         }
@@ -83,17 +84,17 @@ const SignIn = () => {
                                 <p style={{ padding: "0 15px" }}>Forgot Password ?</p>
                             </Link>
 
-                            {/* {error && <div className={styles.error_msg}>{error}</div>} */}
-                            {error && <div className={styles.error_msg}>{error}</div>}
+                            {/* {error && <div className={styles.err_msg}>{error}</div>} */}
+                            {error && <div className={styles.err_msg}>{error}</div>}
 
-                            <button type='submit' className={styles.green_btn}>Sign in</button>
+                            <button type='submit' className={styles.g_button}>Sign in</button>
                         </form>
                     </div>
 
                     <div className={styles.right}>
                         <h1 style={{ textAlign: 'center' }}>Don't have an Account?</h1>
                         <Link to="/registration">
-                            <button type='button' className={styles.white_btn}>Sign up</button>
+                            <button type='button' className={styles.w_button}>Sign up</button>
                         </Link>
 
                     </div>
