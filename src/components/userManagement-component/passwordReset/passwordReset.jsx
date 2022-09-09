@@ -93,7 +93,7 @@ export default function PasswordReset() {
 	return (
 
 		<div>
-			<LoginNavBarGoGo/>
+			<LoginNavBarGoGo />
 			<Fragment>
 
 				{validUrl ? (

@@ -41,7 +41,7 @@
 	outline: none;
 	padding: 12px 0;
 	/* background-color: #784BA0; */
-	background-color: #919191;
+	background-color: #6c757d;
 	color: white;
 	border-radius: 20px;
 	width: 180px;
@@ -67,12 +67,12 @@
 	background-color: #5cdd5c;
 }
 
-.can_btn{
+.can_btn {
 	border: none;
 	outline: none;
 	padding: 12px 0;
 	background-color: #404040;
-    /* background-image: linear-gradient(to left, #693639,#212429); */
+	/* background-image: linear-gradient(to left, #693639,#212429); */
 	color: white;
 	border-radius: 20px;
 	width: 180px;

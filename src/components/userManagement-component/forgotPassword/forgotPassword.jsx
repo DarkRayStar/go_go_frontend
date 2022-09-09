@@ -34,7 +34,7 @@ const ForgotPassword = () => {
 
 	return (
 		<div>
-			<LoginNavBarGoGo/>
+			<LoginNavBarGoGo />
 			<div className={styles.container}>
 				<form className={styles.form_container} onSubmit={handleSubmit}>
 					<h1>Forgot Password</h1>
