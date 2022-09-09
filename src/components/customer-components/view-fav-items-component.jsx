@@ -30,17 +30,17 @@ function ViewFavItems() {
     const columns = [
         {
             name: "Image",
-            selector: (row) => <img width={150} height={100} src={row.image} alt="item " />
+            selector: (row) => <img width={150} height={150} src={row.image} alt="item " />
         },
         {
             name: "Item Name",
             selector: (row) => row.itemName,
             sortable: true,
         },
-        {
-            name: "Description",
-            selector: (row) => row.description,
-        },
+        // {
+        //     name: "Description",
+        //     selector: (row) => row.description,
+        // },
         {
             name: "Price",
             selector: (row) => row.price,

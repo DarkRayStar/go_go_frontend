@@ -105,13 +105,12 @@ function OrderHistory() {
                                                     <MDBRow style={{ marginTop: "25px" }}>
                                                         <MDBCol md="2" lg="2" xl="2" className="card-item" style={{ borderRadius: "10px 0px 0px 10px" }}>
                                                             <MDBCardImage
-                                                                src={cartItem.images}
-                                                                fluid className="rounded-3" alt="item image" style={{ width: "200px", height: "100px" }} />
+                                                                src={cartItem.images} alt="item image" style={{ width: "130px", height: "130px" }} />
                                                         </MDBCol>
 
                                                         <MDBCol md="3" lg="3" xl="10" className="card-item" style={{ borderRadius: "0px 10px 10px 0px" }}>
 
-                                                            <MDBRow>
+                                                            <MDBRow style={{ marginTop: "20px" }}>
                                                                 <MDBCol>
                                                                     <MDBTypography tag="h6" className="completedMod">
                                                                         Completed <FontAwesomeIcon icon={faCheckCircle} />
@@ -123,6 +122,7 @@ function OrderHistory() {
                                                             <MDBRow>
                                                                 <hr className='hrMod'></hr>
                                                             </MDBRow>
+
                                                             <MDBRow style={{ marginTop: "-20px" }}>
                                                                 <MDBCol md="3" lg="3" xl="9">
                                                                     <MDBTypography tag="h6" className="titleMod">
@@ -130,14 +130,14 @@ function OrderHistory() {
                                                                     </MDBTypography>
 
                                                                     <MDBTypography tag="h6" className="priceMod" style={{ paddingTop: "10px" }}>
-                                                                        Rs. {cartItem.price} x {cartItem.quantity}
+                                                                        Rs. {cartItem.price}.00 x {cartItem.quantity}
                                                                     </MDBTypography>
                                                                 </MDBCol>
 
-                                                                <MDBCol>
+                                                                <MDBCol >
                                                                     <MDBTypography tag="h6" >
 
-                                                                        <div className='totalMod'> Total: Rs {total(cartItem.price, cartItem.quantity)}</div><br /><br />
+                                                                        <div className='totalMod'> Total: Rs {total(cartItem.price, cartItem.quantity)}.00</div>
 
                                                                         <Link to="#" onClick={() => onDeleteItem(cartItem._id)} className="RemoveBtnMod"> Remove </Link>
                                                                         <Link to="#" onClick={() => onAddItem(cartItem.images, cartItem.itemName, cartItem.description, cartItem.price)} className="ReviewBtn"> Add Review</Link>
