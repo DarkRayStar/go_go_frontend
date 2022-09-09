@@ -61,14 +61,14 @@ function UserProfile(props) {
         )
         if (confirmBox === true) {
             axios.delete("http://localhost:5050/user/" + id)
-            .then((res) => {
-                alert("Successfully deleted");
-                // window.location = '/';
-                const modified = FilteredUser.filter(user => user._id !== id);
-                setFilteredUser(modified);
-            });
-        console.log('a', id)
-        window.location = '/';
+                .then((res) => {
+                    alert("Successfully deleted");
+                    // window.location = '/';
+                    const modified = FilteredUser.filter(user => user._id !== id);
+                    setFilteredUser(modified);
+                });
+            console.log('a', id)
+            window.location = '/';
         }
     }
 
@@ -112,30 +112,36 @@ function UserProfile(props) {
                                 <h1 style={{ marginTop: "50px", marginBottom: "20px" }}>Account Details</h1>
 
                                 <table>
-                                    <tr>
-                                        <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>First Name    : <label style={{ fontWeight: 'normal' }}>{firstName}</label></label></td>
-                                        <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px", marginLeft: "30px" }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Mobile Number    : <label style={{ fontWeight: 'normal' }}>{mobileNumber}</label></label></td>
-                                        <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Phone Number    : <label style={{ fontWeight: 'normal' }}>{phoneNumber}</label></label></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Email    : <label style={{ fontWeight: 'normal' }}>{email}</label></label></td>
-                                        <td> <label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Address    : <label style={{ fontWeight: 'normal' }}>{address}</label></label></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>District    : <label style={{ fontWeight: 'normal' }}>{district}</label></label></td>
-                                        <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Postal/Zip Code    : <label style={{ fontWeight: 'normal' }}>{zipCode}</label></label></td>
-                                    </tr>
+                                    <thead></thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>First Name    : <label style={{ fontWeight: 'normal' }}>{firstName}</label></label></td>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px", marginLeft: "30px" }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Mobile Number    : <label style={{ fontWeight: 'normal' }}>{mobileNumber}</label></label></td>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Phone Number    : <label style={{ fontWeight: 'normal' }}>{phoneNumber}</label></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Email    : <label style={{ fontWeight: 'normal' }}>{email}</label></label></td>
+                                            <td> <label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Address    : <label style={{ fontWeight: 'normal' }}>{address}</label></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>District    : <label style={{ fontWeight: 'normal' }}>{district}</label></label></td>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Postal/Zip Code    : <label style={{ fontWeight: 'normal' }}>{zipCode}</label></label></td>
+                                        </tr>
+                                    </tbody>
                                 </table>
 
                                 <table style={{ marginBottom: "50px", marginTop: "20px" }}>
-                                    <tr>
-                                        <td><button onClick={UpdateDetails} type='button' className={styles.g_button}>Update</button></td>
-                                        <td><button onClick={() => DeleteAccount(props.match.params.id)} type='button' className={styles.g_button}>Delete Account</button></td>
-                                        <td><button onClick={Logout} type='button' className={styles.g_button}>Log Out</button></td>
-                                    </tr>
+                                    <thead></thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><button onClick={UpdateDetails} type='button' className={styles.g_button}>Update</button></td>
+                                            <td><button onClick={() => DeleteAccount(props.match.params.id)} type='button' className={styles.g_button}>Delete Account</button></td>
+                                            <td><button onClick={Logout} type='button' className={styles.g_button}>Log Out</button></td>
+                                        </tr>
+                                    </tbody>
                                 </table>
 
                             </form>

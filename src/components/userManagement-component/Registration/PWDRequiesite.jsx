@@ -8,7 +8,7 @@ export const PWDRequiesite = ({
   pwdLengthCheckFlag,
 }) => {
   return (
-    <div className="conditionValidate">
+    <div className="conditionValidate1">
       <br/>
       <h6>Password must contain the following:</h6>
       <p className={capsLetterCheckFlag}> A Capital/Uppercase Letter</p>

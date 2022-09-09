@@ -58,8 +58,9 @@
 
 .RemoveBtnMod {
     text-decoration: none;
-    padding-right: 15px;
     color: #BF498A;
+    padding-right: 5px;
+    margin-left: 10px;
 
 }
 
@@ -70,8 +71,8 @@
 
 .totalMod {
     float: right;
-    padding-right: 15px;
-    padding-top: 10px;
+    margin-right: 15px;
+    margin-top: 10px;
 
 }
 

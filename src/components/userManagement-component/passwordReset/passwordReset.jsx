@@ -84,6 +84,10 @@ export default function PasswordReset() {
 		}
 	};
 
+	const CancelButton = () => {
+		window.location = '/';
+	}
+
 
 	return (
 
@@ -155,11 +159,11 @@ export default function PasswordReset() {
 					<form className={styles.form_container} onSubmit={onsubmit}>
 						<h1>Add New Password</h1>
 
-						<label style={{ marginLeft: '-290px' , fontWeight:"bold" }}>Password    :</label>
+						<label style={{ marginLeft: '-290px', fontWeight: "bold" }}>Password    :</label>
 						<input
 							id="password"
 							type="password"
-							placeholder='Ex: Password'
+							placeholder='Password'
 							name='password'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
@@ -178,15 +182,21 @@ export default function PasswordReset() {
 							specialCharacterCheckFlag={checks.specialCharacterCheck ? "valid" : "invalid"}
 						/> : null}
 
-							{/* display invalid password message */}
-							{error && <div className={styles.err_msg}>{error}</div>}
-							{/* display password reset success message */}
-							{msg && <div className={styles.success_msg}>{msg}</div>}
+						{/* display invalid password message */}
+						{error && <div className={styles.err_msg}>{error}</div>}
+						{/* display password reset success message */}
+						{msg && <div className={styles.success_msg}>{msg}</div>}
 
-							<button type="submit" className={styles.g_btn}>
+						{/* <button type="submit" className={styles.g_btn}>
 								Reset Password
-							</button>
-						</form>
+							</button> */}
+						<table style={{ marginBottom: "50px", marginTop: "20px" }}>
+							<tr>
+								<td><button type="submit" className={styles.g_btn}>Reset Password</button></td>
+								<td><button onClick={CancelButton} type='button' className={styles.g_btn}>Cancel</button></td>
+							</tr>
+						</table>
+					</form>
 				</div>
 
 
