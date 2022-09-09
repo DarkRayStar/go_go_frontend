@@ -27,12 +27,16 @@ const ForgotPassword = () => {
 		}
 	};
 
+	const CancelButton = () => {
+		window.location = '/';
+	}
+
 	return (
 		<div className={styles.container}>
 			<form className={styles.form_container} onSubmit={handleSubmit}>
 				<h1>Forgot Password</h1>
 
-				<label style={{marginLeft: '-320px' , fontWeight:"bold"}}>Email    :</label>
+				<label style={{ marginLeft: '-320px', fontWeight: "bold" }}>Email    :</label>
 				<input
 					type="email"
 					placeholder="someone@gmail.com"
@@ -43,14 +47,18 @@ const ForgotPassword = () => {
 					className={styles.input}
 				/>
 
-                {/* display invalid email message */}
+				{/* display invalid email message */}
 				{error && <div className={styles.err_msg}>{error}</div>}
-                {/* display reset password link send successfully */}
+				{/* display reset password link send successfully */}
 				{msg && <div className={styles.success_msg}>{msg}</div>}
 
-				<button type="submit" className={styles.g_btn}>
-					Send Verification
-				</button>
+
+			<table style={{ marginBottom: "50px", marginTop: "20px" }}>
+				<tr>
+					<td><button type="submit" className={styles.g_btn}>Send Verification</button></td>
+					<td><button onClick={CancelButton} type='button' className={styles.g_btn}>Cancel</button></td>
+				</tr>
+			</table>
 			</form>
 		</div>
 	);

@@ -61,7 +61,7 @@ const SignIn = () => {
                             <label style={{ marginLeft: '-330px' , fontWeight:"bold"}}>Email </label>
                             <input
                                 type="email"
-                                placeholder='Ex: someone@gmail.com'
+                                placeholder='someone@gmail.com'
                                 name='email'
                                 onChange={handleChange}
                                 value={data.email}
@@ -72,7 +72,7 @@ const SignIn = () => {
                             <label style={{ marginLeft: '-300px' , fontWeight:"bold"}}>Password  </label>
                             <input
                                 type="password"
-                                placeholder='Ex: Password'
+                                placeholder='Password'
                                 name='password'
                                 onChange={handleChange}
                                 value={data.password}
