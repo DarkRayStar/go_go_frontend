@@ -13,7 +13,7 @@ function FooterComponent() {
                 <footer className="bg-dark text-white">
                     <div className="p-4 pb-0">
                         <div style={{ float: "left", marginTop: "7px", marginLeft: "100px" }}>
-                            <h5>GoGo Gadget Store </h5>
+                            <h5>GoGo Gadgets Store </h5>
                         </div>
                         <section className="mb-4" style={{ marginLeft: "1100px" }}>
                             <a className="footerBtn" href="#!" role="button"  >
@@ -36,7 +36,7 @@ function FooterComponent() {
                     </div>
                     <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
                         © 2022 Copyright:
-                        <a className="CopyRightMod" href="#">GoGoGadgetStore</a>
+                        <a className="CopyRightMod" href="#">GoGoGadgetsStore</a>
                     </div>
 
                 </footer>
