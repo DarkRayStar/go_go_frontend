@@ -4,7 +4,7 @@ import DataTable from 'react-data-table-component';
 import './item-cart.css';
 import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import './viewMods.css';
+import './viewMods.css';
 // import './gg.css';
 
 
@@ -37,10 +37,6 @@ function ViewFavItems() {
             selector: (row) => row.itemName,
             sortable: true,
         },
-        // {
-        //     name: "Description",
-        //     selector: (row) => row.description,
-        // },
         {
             name: "Price",
             selector: (row) => row.price,
@@ -53,7 +49,7 @@ function ViewFavItems() {
         },
         {
             name: "Action",
-            cell: row => <button className='btn btn-sm btn-danger' onClick={() => onDeleteItem(row._id)}> Remove</button>
+            cell: row => <button className='btn btn-sm btn-dark' onClick={() => onDeleteItem(row._id)}> Remove</button>
         },
     ]
 
@@ -91,7 +87,6 @@ function ViewFavItems() {
             <h1 className="headerMod"> Favorite Items</h1>
 
             <DataTable
-                // title="Favorite Items"
                 columns={columns}
                 data={filteredItems}
                 pagination

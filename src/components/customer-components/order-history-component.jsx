@@ -81,7 +81,7 @@ function OrderHistory() {
             <MDBContainer className="py-5 h-100">
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">
-                        <MDBCard className="card-registration card-registration-2" style={{ borderRadius: "15px" }}>
+                        <MDBCard className="card-registration card-registration-2" >
                             <MDBCardBody className="p-0">
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
@@ -96,8 +96,8 @@ function OrderHistory() {
                                                     Order History
                                                 </MDBTypography>
 
-                                                <MDBTypography className="mb-0 text-muted">
-                                                    <button className='btn btn-info'>Ordered Report</button>
+                                                <MDBTypography className="mb-0 text-muted" >
+                                                    <button className='btn btn-secondary'>Ordered Report</button>
                                                 </MDBTypography>
 
                                             </div>
