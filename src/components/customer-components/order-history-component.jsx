@@ -77,24 +77,27 @@ function OrderHistory() {
         return Price * Qty
     }
     return (
-        <section className="h-100 h-custom">
+        <section >
             <MDBContainer className="py-5 h-100">
                 <MDBRow className="justify-content-center align-items-center h-100">
-                    <MDBCol size="11">
-                        <MDBCard className="card-registration card-registration-2" style={{ borderRadius: "15px" }}>
+                    <MDBCol size="12">
+                        <MDBCard className="card-registration card-registration-2" >
                             <MDBCardBody className="p-0">
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
                                         <div className="p-5">
                                             <div className="d-flex justify-content-between align-items-center mb-5">
+
                                                 <MDBTypography className="mb-0 text-muted">
                                                     <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
+
                                                 <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "75px" }}>
                                                     Order History
                                                 </MDBTypography>
-                                                <MDBTypography className="mb-0 text-muted">
-                                                    <button className='btn btn-info'>Ordered Report</button>
+
+                                                <MDBTypography className="mb-0 text-muted" >
+                                                    <button className='btn btn-secondary'>Ordered Report</button>
                                                 </MDBTypography>
 
                                             </div>
@@ -117,7 +120,7 @@ function OrderHistory() {
                                                                     </MDBTypography>
                                                                 </MDBCol>
 
-                                                                <MDBCol style={{ marginLeft: "505px" }}> Order date : 2022-09-02 </MDBCol>
+                                                                <MDBCol style={{ marginLeft: "595px" }}> Order date : 2022-09-02 </MDBCol>
                                                             </MDBRow>
                                                             <MDBRow>
                                                                 <hr className='hrMod'></hr>

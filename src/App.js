@@ -23,7 +23,6 @@ import adminUpdate from './components/admin-components/admin-update';
 import HomePage from './components/user-components/HomePage';
 import Navbar from './components/navbar.component';
 import QrGencomponent from './components/admin-components/qr-gencomponent';
-import NavBarGoGo from './components/navigatonBar/navbarGoGo';
 
 import successPage from "./components/payment_components/successPage";
 import DeliveryDashboard from "./components/delivery-components/delivery-dashboard-component";
@@ -41,6 +40,9 @@ import storeAdminDashboard from "./components/storeAdmin-components/storeAdminDa
 import bgImage from "./images/bg.jpg";
 
 import FooterComponent from "./components/footer-component/footer.component";
+import NavBarGoGo from "./components/navigatonBar/navbarGoGo";
+import LoginNavBarGoGo from "./components/navigatonBar/loginNav";
+import AdminNavBarGoGo from "./components/navigatonBar/adminNav";
 
 <link rel="stylesheet" href="./" />;
 
@@ -48,8 +50,6 @@ function App() {
   return (
     <div>
       <Router>
-        {/* navigation bar */}
-        {/* <NavBarGoGo/> */}
         <div
           // background Image
           style={{
@@ -58,8 +58,12 @@ function App() {
             // backgroundSize: 'cover',
           }}>
 
+          {/* testing navBar */}
+          <NavBarGoGo />
+          {/* <Route path="/navbarGoGo" component={NavBarGoGo} /> */}
+          {/* <Route path="/loginNav" component={LoginNavBarGoGo} /> */}
+          {/* <Route path="/adminNav" component={AdminNavBarGoGo} /> */}
 
-          <Route path="/navbarK" exact component={NavBarGoGo} />
 
           {/* user-Management-Routes */}
           <Route path="/" exact component={SignIn} />
@@ -94,7 +98,7 @@ function App() {
           {/* storeAdminroutes */}
           <Route path="/storeAdmin" component={ItemRetrieve} />
           <Route path="/storeAdmindash" component={storeAdminDashboard} />
-          <Route path="/footer"  component={FooterComponent} />
+          <Route path="/footer" component={FooterComponent} />
 
         </div>
       </Router >

@@ -2,9 +2,11 @@ import React, { Fragment, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
 import Navbar from "../navbar.component";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { useCallback } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
 const OngoingDeliveries = () => {
   let history = useHistory();
@@ -20,7 +22,6 @@ const OngoingDeliveries = () => {
   useEffect(() => {
     axios.get("http://localhost:5050/delivery/").then((res) => {
       setData(res.data);
-      console.log(data);
     });
   }, [logResult]);
 
@@ -31,7 +32,7 @@ const OngoingDeliveries = () => {
       className: "name",
       align: "left",
       sortable: true,
-      width: 150,
+      width: 100,
     },
     {
       key: "customerName",
@@ -39,7 +40,7 @@ const OngoingDeliveries = () => {
       className: "address",
       align: "left",
       sortable: true,
-      width: 250,
+      width: 180,
     },
     {
       key: "fee",
@@ -47,7 +48,7 @@ const OngoingDeliveries = () => {
       className: "address",
       align: "left",
       sortable: true,
-      width: 150,
+      width: 100,
     },
     {
       key: "service",
@@ -69,7 +70,7 @@ const OngoingDeliveries = () => {
       key: "action",
       text: "UPDATE DELIVERY STATUS",
       className: "address",
-      width: 300,
+      width: 400,
       align: "center",
       sortable: false,
       cell: (record) => {
@@ -240,18 +241,21 @@ const OngoingDeliveries = () => {
       }}
     >
       <Navbar />
-      <a
+
+      <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          backgroundColor: "rgb(34, 139, 34, 0.5)",
+          marginBottom: "5vh",
         }}
-        href="#"
-        className="previous"
         onClick={() => history.goBack()}
+        to="#"
+        className="backLink"
       >
-        &laquo; GO BACK
-      </a>
+        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+        &nbsp;Go Back
+      </Link>
+
       <div style={{ marginTop: "30px" }}>
         <div
           style={{

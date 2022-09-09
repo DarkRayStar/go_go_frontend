@@ -2,8 +2,10 @@ import React, { Fragment, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
 import Navbar from "../navbar.component";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
 const CancelledDeliveries = () => {
   let history = useHistory();
@@ -87,7 +89,7 @@ const CancelledDeliveries = () => {
     {
       deliveryID: "GG-1245",
       customerName: "Ayesha Dasanayake",
-    }
+    },
   ];
 
   const extraButtons = [
@@ -164,18 +166,19 @@ const CancelledDeliveries = () => {
       }}
     >
       <Navbar />
-      <a
+      <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          backgroundColor: "rgb(34, 139, 34, 0.5)",
+          marginBottom: "5vh",
         }}
-        href="#"
-        class="previous"
         onClick={() => history.goBack()}
+        to="#"
+        className="backLink"
       >
-        &laquo; GO BACK
-      </a>
+        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+        &nbsp;Go Back
+      </Link>
       <div style={{ marginTop: "30px" }}>
         <div
           style={{

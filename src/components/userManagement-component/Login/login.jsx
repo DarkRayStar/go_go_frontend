@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './style.module.css';
 import axios from 'axios';
+import LoginNavBarGoGo from '../../navigatonBar/loginNav';
 
 const SignIn = () => {
 
@@ -32,7 +33,7 @@ const SignIn = () => {
             window.sessionStorage.setItem(
                 "loggeduser",
                 JSON.stringify(res.user)
-              );
+            );
             window.location = "/user-profile";
 
             // window.location = `/user-profile/${res.user._id}`
@@ -48,8 +49,17 @@ const SignIn = () => {
         }
     }
 
+    const registerButton = () => {
+        window.location = '/registration';
+    }
+
+    const forgotpass = () => {
+        window.location = '/forgot-password';
+    }
+
     return (
         <div>
+            <LoginNavBarGoGo />
             <div className={styles.login_container}>
                 <div className={styles.login_form_container}>
 
@@ -58,7 +68,7 @@ const SignIn = () => {
                         <form className={styles.form_container} onSubmit={handleSubmit}>
                             <h1>Login Here</h1>
 
-                            <label style={{ marginLeft: '-330px' , fontWeight:"bold"}}>Email </label>
+                            <label style={{ marginLeft: '-330px', fontWeight: "bold" }}>Email </label>
                             <input
                                 type="email"
                                 placeholder='someone@gmail.com'
@@ -69,7 +79,7 @@ const SignIn = () => {
                                 className={styles.input}
                             />
 
-                            <label style={{ marginLeft: '-300px' , fontWeight:"bold"}}>Password  </label>
+                            <label style={{ marginLeft: '-300px', fontWeight: "bold" }}>Password  </label>
                             <input
                                 type="password"
                                 placeholder='Password'
@@ -80,9 +90,9 @@ const SignIn = () => {
                                 className={styles.input}
                             />
 
-                            <Link to="/forgot-password" style={{ marginLeft: '85px', alignSelf: "flex-start" }}>
-                                <p style={{ padding: "0 15px" }}>Forgot Password ?</p>
-                            </Link>
+                            {/* <Link to="/forgot-password" style={{ marginLeft: '85px', alignSelf: "flex-start" }}> */}
+                            <p onClick={forgotpass} style={{ textDecoration: "underline", color: 'Blue', cursor: 'pointer', marginLeft: '110px', alignSelf: "flex-start", padding: "0 15px" }}>Forgot Password ?</p>
+                            {/* </Link> */}
 
                             {/* {error && <div className={styles.err_msg}>{error}</div>} */}
                             {error && <div className={styles.err_msg}>{error}</div>}
@@ -93,9 +103,9 @@ const SignIn = () => {
 
                     <div className={styles.right}>
                         <h1 style={{ textAlign: 'center' }}>Don't have an Account?</h1>
-                        <Link to="/registration">
-                            <button type='button' className={styles.w_button}>Sign up</button>
-                        </Link>
+                        {/* <Link to="/registration"> */}
+                        <button type='button' onClick={registerButton} className={styles.w_button}>Sign up</button>
+                        {/* </Link> */}
 
                     </div>
 

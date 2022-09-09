@@ -1,10 +1,28 @@
-.footergogo{
+.footergogo {
     display: flex;
     flex-direction: column;
-    min-height: 10vh;
-    
+    min-height: 40vh;
+
 }
 
-.footergogo1{
+.footergogo1 {
     margin-top: auto;
+}
+
+.footerBtn {
+    color: white;
+}
+
+.footerBtn:hover {
+    background: none;
+    color: #885BA6;
+}
+
+.CopyRightMod {
+    color: white;
+}
+
+.CopyRightMod:hover {
+    background: none;
+    color: #885BA6;
 }
