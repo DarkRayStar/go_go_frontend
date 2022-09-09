@@ -59,9 +59,10 @@ function App() {
           }}>
 
           {/* testing navBar */}
-          <Route path="/navbarGoGo"  component={NavBarGoGo} />
-          <Route path="/loginNav"  component={LoginNavBarGoGo} />
-          <Route path="/adminNav"  component={AdminNavBarGoGo} />
+          <NavBarGoGo />
+          {/* <Route path="/navbarGoGo" component={NavBarGoGo} /> */}
+          {/* <Route path="/loginNav" component={LoginNavBarGoGo} /> */}
+          {/* <Route path="/adminNav" component={AdminNavBarGoGo} /> */}
 
 
           {/* user-Management-Routes */}
@@ -97,11 +98,11 @@ function App() {
           {/* storeAdminroutes */}
           <Route path="/storeAdmin" component={ItemRetrieve} />
           <Route path="/storeAdmindash" component={storeAdminDashboard} />
-          <Route path="/footer"  component={FooterComponent} />
+          <Route path="/footer" component={FooterComponent} />
 
         </div>
       </Router >
-      {/* <FooterComponent /> */}
+      <FooterComponent />
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import "./footer.css"
-import { GrFacebook } from "react-icons/gr";
 import FacebookIcon from '@mui/icons-material/Facebook';
-import { AccessAlarm, ContactEmergency, ContactMail, Instagram, LocationCity, LocationCityOutlined, LocationOff, LocationOn, Mail, MapOutlined, Phone, Pin, ThreeDRotation } from '@mui/icons-material';
+import { Instagram, LocationOn, Mail, Phone } from '@mui/icons-material';
 
 
 function FooterComponent() {
