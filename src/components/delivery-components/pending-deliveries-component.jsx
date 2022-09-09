@@ -1,19 +1,30 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
 import Navbar from "../navbar.component";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
+import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PendingDeliveries = () => {
   let history = useHistory();
-  const [submissionList, setSubmissionList] = useState("");
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   // const [records, setRecords] = useState("");
+
+  const logResult = useCallback(() => {
+    return 2 + 2;
+  }, []); //logResult is memoized now.
+
+  useEffect(() => {
+    axios.get("http://localhost:5050/cart/history").then((res) => {
+      setData(res.data);
+    });
+  }, [logResult]);
 
   const columns = [
     {
-      key: "orderID",
+      key: "_id",
       text: "Order ID",
       className: "name",
       align: "left",
@@ -21,7 +32,7 @@ const PendingDeliveries = () => {
       width: 150,
     },
     {
-      key: "customerName",
+      key: "userId",
       text: "Customer Name",
       className: "address",
       align: "left",
@@ -29,7 +40,7 @@ const PendingDeliveries = () => {
       width: 250,
     },
     {
-      key: "amount",
+      key: "price",
       text: "Amount",
       className: "address",
       align: "left",
@@ -50,8 +61,7 @@ const PendingDeliveries = () => {
               style={{ margin: "0 auto", display: "block" }}
               name="Delete"
               className="btn btn-danger btn-sm"
-              onClick={() => deleteRecord(record)}
-            >
+              onClick={() =>  arrangeDelivery(record) }>
               ARRANGE DELIVERY
             </button>
           </Fragment>
@@ -139,33 +149,10 @@ const PendingDeliveries = () => {
     },
   ];
 
-  // componentDidMount(props) {
-  //   axios.get(`${API_URL}/admin/submissionType/`)
-  //     .then(res => {
-  //       this.setState({ records: res.data });
-  //     }
-  //     )
-  // }
-
-  const editRecord = (record) => {
-    this.props.history.push("/admin-submission-type-edit/" + record._id);
-  };
-
-  const deleteRecord = (record) => {
-    try {
-      axios
-        .delete(`admin/submissionType/file-delete/${record._id}`)
-        .then((response) => {
-          console.log(response.data);
-        });
-      window.location.reload(true);
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        this.setState = {
-          errorMsg: "Error while deleting file. Try again later",
-        };
-      }
-    }
+  const arrangeDelivery = (record) => {
+    console.log(record.userId);
+    sessionStorage.setItem("currentNewDeliveryEmail", record.userId);
+    window.location = "/delivery-new";
   };
 
   return (
@@ -177,18 +164,21 @@ const PendingDeliveries = () => {
       }}
     >
       <Navbar />
-      <a
-        onClick={() => history.goBack()}
+
+      <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          backgroundColor: "rgb(34, 139, 34, 0.5)",
+          marginBottom: "5vh",
         }}
-        href="#"
-        className="previous"
+        onClick={() => history.goBack()}
+        to="#"
+        className="backLink"
       >
-        &laquo; GO BACK
-      </a>
+        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+        &nbsp;Go Back
+      </Link>
+
       <div style={{ marginTop: "30px" }}>
         <div
           style={{
@@ -209,8 +199,8 @@ const PendingDeliveries = () => {
           <br />
           <ReactDatatable
             config={config}
-            records={records}
-            columns={columns}
+            records={data}
+            columns= {columns}
             extraButtons={extraButtons}
           />
         </div>
