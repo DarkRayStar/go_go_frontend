@@ -106,7 +106,7 @@ function ViewCart() {
                                                                 src={cartItem.images}
                                                                 fluid className="rounded-3" alt="item image" />
                                                         </MDBCol>
-                                                        <MDBCol md="3" lg="3" xl="3">
+                                                        <MDBCol md="3" lg="3" xl="5">
                                                             <MDBTypography tag="h6" className="text-muted">
                                                                 {cartItem.itemName}
 
@@ -116,13 +116,13 @@ function ViewCart() {
 
                                                             </MDBTypography>
                                                             <MDBTypography tag="h6" className="text-black mb-0" style={{ paddingTop: "10px" }}>
-                                                                <b>Rs. {cartItem.price}</b>
+                                                                <b>Rs. {cartItem.price}.00</b>
 
                                                             </MDBTypography>
                                                         </MDBCol>
-                                                        <MDBCol md="3" lg="3" xl="3" className="d-flex align-items-center">
+                                                        <MDBCol md="3" lg="3" xl="2" className="d-flex align-items-center">
 
-                                                            <MDBInput type="number" min="0" defaultValue={cartItem.quantity} size="sm"
+                                                            <MDBInput type="number" min="0" defaultValue={cartItem.quantity} size="sm" style={{ marginLeft: "50px" }}
                                                                 onChange={async (e) => {
                                                                     try {
                                                                         const data = {
@@ -150,13 +150,11 @@ function ViewCart() {
                                                             />
 
                                                         </MDBCol>
-                                                        <MDBCol md="3" lg="2" xl="2" style={{ paddingLeft: "185px" }}>
+                                                        <MDBCol style={{ marginLeft: "150px" }}>
                                                             <Link to="#" onClick={() => onDeleteItem(cartItem._id)}><FontAwesomeIcon icon={faTrashCan} /></Link>
                                                         </MDBCol>
-                                                        <MDBCol md="3" lg="2" xl="2" >
-                                                            <MDBTypography tag="h6" className="mb-0" style={{ paddingLeft: "50px" }}>
-                                                                <Link to="#" onClick={() => onAddItem(cartItem.images, cartItem.itemName, cartItem.description, cartItem.price)}><FontAwesomeIcon icon={faHeart} /></Link>
-                                                            </MDBTypography>
+                                                        <MDBCol style={{ marginLeft: "-20px" }}>
+                                                            <Link to="#" onClick={() => onAddItem(cartItem.images, cartItem.itemName, cartItem.description, cartItem.price)}><FontAwesomeIcon icon={faHeart} /></Link>
                                                         </MDBCol>
 
                                                     </MDBRow>
