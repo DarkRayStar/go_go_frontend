@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "./styles.module.css";
 import { PWDRequiesite } from "./PWDRequiesite";
 import "./style.css";
+import LoginNavBarGoGo from "../../navigatonBar/loginNav";
 
 export default function PasswordReset() {
 
@@ -91,121 +92,61 @@ export default function PasswordReset() {
 
 	return (
 
-		<Fragment>
+		<div>
+			<LoginNavBarGoGo />
+			<Fragment>
 
-			{validUrl ? (
+				{validUrl ? (
 
-				// <div style={{ marginTop: "-100px", marginLeft: "-200px" }} className={styles.container}>
+					<div className={styles.container}>
+						<form className={styles.form_container} onSubmit={onsubmit}>
+							<h1>Add New Password</h1>
 
-				// 	<form className={styles.form_container} onSubmit={onsubmit}>
+							<label style={{ marginLeft: '-290px', fontWeight: "bold" }}>Password    :</label>
+							<input
+								id="password"
+								type="password"
+								placeholder='Password'
+								name='password'
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								onFocus={handleOnFocus}
+								onBlur={handleOnBlur}
+								onKeyUp={handleOnKeyUp}
+								className={styles.input}
+								required
 
-				// 		<h1>Add New Password</h1>
+							/>
 
-				// 		{/* <input
-				// 			type="password"
-				// 			placeholder="Password"
-				// 			name="password"
-				// 			pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
-				// 			title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-				// 			onChange={(e) => setPassword(e.target.value)}
-				// 			value={password}
-				// 			required
-				// 			className={styles.input}
-				// 		/> */}
+							{pwdRequisite ? <PWDRequiesite
+								capsLetterCheckFlag={checks.capsLetterCheck ? "valid" : "invalid"}
+								numberCheckFlag={checks.numberCheck ? "valid" : "invalid"}
+								pwdLengthCheckFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
+								specialCharacterCheckFlag={checks.specialCharacterCheck ? "valid" : "invalid"}
+							/> : null}
 
-				// 		<div>
-				// 			<label htmlFor="password">Password</label>
-				// 			<input
-				// 				id="password"
-				// 				type="password"
-				// 				placeholder='Ex: Password'
-				// 				name='password'
-				// 				value={password}
-				// 				onChange={(e) => setPassword(e.target.value)}
-				// 				onFocus={handleOnFocus}
-				// 				onBlur={handleOnBlur}
-				// 				onKeyUp={handleOnKeyUp}
-				// 				className={styles.input}
-				// 				required
+							{/* display invalid password message */}
+							{error && <div className={styles.err_msg}>{error}</div>}
+							{/* display password reset success message */}
+							{msg && <div className={styles.success_msg}>{msg}</div>}
 
-				// 			/>
-				// 		</div>
-				// 		{pwdRequisite ? <PWDRequiesite
-				// 			capsLetterCheckFlag={checks.capsLetterCheck ? "valid" : "invalid"}
-				// 			numberCheckFlag={checks.numberCheck ? "valid" : "invalid"}
-				// 			pwdLengthCheckFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
-				// 			specialCharacterCheckFlag={checks.specialCharacterCheck ? "valid" : "invalid"}
-				// 		/> : null}
-
-				// 		{/* display invalid password message */}
-				// 		{error && <div className={styles.err_msg}>{error}</div>}
-				// 		{/* display password reset success message */}
-				// 		{msg && <div className={styles.success_msg}>{msg}</div>}
-
-				// 		<button type="submit" className={styles.g_button}>
-				// 			Submit
-				// 		</button>
-
-				// 	</form>
+							<table style={{ marginBottom: "50px", marginTop: "20px" }}>
+								<tr>
+									<td><button type="submit" className={styles.g_btn}>Reset Password</button></td>
+									<td><button onClick={CancelButton} type='button' className={styles.can_btn}>Cancel</button></td>
+								</tr>
+							</table>
+						</form>
+					</div>
 
 
+				) : (
 
-				// 	{/* aaaaaaaaaaaaaaaaaaa */}
+					<h1>404 Not Found</h1>
 
+				)}
 
-				// </div>
-
-				<div className={styles.container}>
-					<form className={styles.form_container} onSubmit={onsubmit}>
-						<h1>Add New Password</h1>
-
-						<label style={{ marginLeft: '-290px', fontWeight: "bold" }}>Password    :</label>
-						<input
-							id="password"
-							type="password"
-							placeholder='Password'
-							name='password'
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							onFocus={handleOnFocus}
-							onBlur={handleOnBlur}
-							onKeyUp={handleOnKeyUp}
-							className={styles.input}
-							required
-
-						/>
-
-						{pwdRequisite ? <PWDRequiesite
-							capsLetterCheckFlag={checks.capsLetterCheck ? "valid" : "invalid"}
-							numberCheckFlag={checks.numberCheck ? "valid" : "invalid"}
-							pwdLengthCheckFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
-							specialCharacterCheckFlag={checks.specialCharacterCheck ? "valid" : "invalid"}
-						/> : null}
-
-						{/* display invalid password message */}
-						{error && <div className={styles.err_msg}>{error}</div>}
-						{/* display password reset success message */}
-						{msg && <div className={styles.success_msg}>{msg}</div>}
-
-						{/* <button type="submit" className={styles.g_btn}>
-								Reset Password
-							</button> */}
-						<table style={{ marginBottom: "50px", marginTop: "20px" }}>
-							<tr>
-								<td><button type="submit" className={styles.g_btn}>Reset Password</button></td>
-								<td><button onClick={CancelButton} type='button' className={styles.g_btn}>Cancel</button></td>
-							</tr>
-						</table>
-					</form>
-				</div>
-
-
-			) : (
-
-				<h1>404 Not Found</h1>
-
-			)}
-
-		</Fragment>
+			</Fragment>
+		</div>
 	)
 }
