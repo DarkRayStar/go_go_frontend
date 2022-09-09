@@ -34,7 +34,7 @@
 }
 
 .card-item {
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(247, 247, 247);
     padding-top: 15px;
     padding-bottom: 8px;
     /* box-shadow: 3px 3px 3px #888888; */
@@ -60,7 +60,7 @@
     text-decoration: none;
     color: #BF498A;
     padding-right: 5px;
-    margin-left: 10px;
+    margin-left: 30px;
 
 }
 
