@@ -111,7 +111,6 @@ function ViewFavItems() {
             // selectableRows
             // selectableRowsHighlight
             />
-            <br /><br />
         </div>
     )
 }

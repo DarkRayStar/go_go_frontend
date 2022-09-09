@@ -75,7 +75,7 @@ function ViewCart() {
     }
 
     return (
-        <section className="h-100 h-custom">
+        <section >
             <MDBContainer className="py-5 h-100">
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">
@@ -85,13 +85,14 @@ function ViewCart() {
                                     <MDBCol lg="12">
                                         <div className="p-5">
                                             <div >
+
                                                 <MDBTypography >
                                                     <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
+
                                                 <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "38%", marginTop: "-60px" }}>
                                                     Shopping Cart
                                                 </MDBTypography>
-
 
                                             </div>
 
@@ -173,6 +174,7 @@ function ViewCart() {
                 </MDBRow>
             </MDBContainer>
         </section>
+
     )
 }
 
