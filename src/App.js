@@ -21,8 +21,9 @@ import adminRetrieve from './components/admin-components/admin-retrieve';
 import adminInsert from './components/admin-components/admin-insert';
 import adminUpdate from './components/admin-components/admin-update';
 import HomePage from './components/user-components/HomePage';
-// import Navbar from './components/navbar.component';
+import Navbar from './components/navbar.component';
 import QrGencomponent from './components/admin-components/qr-gencomponent';
+import NavBarGoGo from './components/navigatonBar/navbarGoGo';
 
 import successPage from "./components/payment_components/successPage";
 import DeliveryDashboard from "./components/delivery-components/delivery-dashboard-component";
@@ -39,63 +40,66 @@ import storeAdminDashboard from "./components/storeAdmin-components/storeAdminDa
 
 import bgImage from "./images/bg.jpg";
 
-
-
+import FooterComponent from "./components/footer-component/footer.component";
 
 <link rel="stylesheet" href="./" />;
 
 function App() {
   return (
-    <Router>
-      {/* navigation bar */}
-      {/* <NavBarGoGo/> */}
-      <div
-      // background Image
-        style={{
-          // backgroundImage: `url(${bgImage})`,
-          // backgroundRepeat: 'no-repeat',
-          // backgroundSize: 'cover',
-        }}>
+    <div>
+      <Router>
+        {/* navigation bar */}
+        {/* <NavBarGoGo/> */}
+        <div
+          // background Image
+          style={{
+            // backgroundImage: `url(${bgImage})`,
+            // backgroundRepeat: 'no-repeat',
+            // backgroundSize: 'cover',
+          }}>
 
-       
-        {/* <Route path="/navbarK" exact component={NavBarGoGo} /> */}
 
-        {/* user-Management-Routes */}
-        <Route path="/" exact component={SignIn} />
-        <Route path="/registration" component={Registration} />
-        <Route path="/forgot-password" component={ForgotPassword} />
-        <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
-        <Route path="/user-profile" component={UserProfile} />
+          <Route path="/navbarK" exact component={NavBarGoGo} />
 
-        <Route path="/home" component={HomePage} />
-        <Route path="/admin-retrieve" component={adminRetrieve} />
-        <Route path="/admin-insert" component={adminInsert} />
-        <Route path="/admin-update/:id" component={adminUpdate} />
-        <Route path="/qrgen" component={QrGencomponent} />
+          {/* user-Management-Routes */}
+          <Route path="/" exact component={SignIn} />
+          <Route path="/registration" component={Registration} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
+          <Route path="/user-profile" component={UserProfile} />
 
-        {/* Customer */}
-        <Route path="/one-movie/view/:id" component={ViewOneMovie} />
-        <Route path="/cart/view/" component={ViewCart} />
-        <Route path='/fav/view/' component={ViewFavItems} />
-        <Route path='/order-history' component={OrderHistory} />
+          <Route path="/home" component={HomePage} />
+          <Route path="/admin-retrieve" component={adminRetrieve} />
+          <Route path="/admin-insert" component={adminInsert} />
+          <Route path="/admin-update/:id" component={adminUpdate} />
+          <Route path="/qrgen" component={QrGencomponent} />
 
-        <Route path="/payment-success" component={successPage} />
-        <Route path="/payment-paid" component={PaidPage} />
+          {/* Customer */}
+          <Route path="/one-movie/view/:id" component={ViewOneMovie} />
+          <Route path="/cart/view/" component={ViewCart} />
+          <Route path='/fav/view/' component={ViewFavItems} />
+          <Route path='/order-history' component={OrderHistory} />
 
-        <Route path="/delivery-home" component={DeliveryDashboard} />
-        <Route path="/delivery-pending" component={PendingDeliveries} />
-        <Route path="/delivery-ongoing" component={OngoingDeliveries} />
-        <Route path="/delivery-completed" component={CompletedDeliveries} />
-        <Route path="/delivery-cancelled" component={CancelledDeliveries} />
-        <Route path="/delivery-new" component={NewDelivery} />
-        <Route path="/delivery-update" component={UpdateDelivery} />
+          <Route path="/payment-success" component={successPage} />
+          <Route path="/payment-paid" component={PaidPage} />
 
-        {/* storeAdminroutes */}
-        <Route path="/storeAdmin" component={ItemRetrieve} />
-        <Route path="/storeAdmindash" component={storeAdminDashboard} />
+          <Route path="/delivery-home" component={DeliveryDashboard} />
+          <Route path="/delivery-pending" component={PendingDeliveries} />
+          <Route path="/delivery-ongoing" component={OngoingDeliveries} />
+          <Route path="/delivery-completed" component={CompletedDeliveries} />
+          <Route path="/delivery-cancelled" component={CancelledDeliveries} />
+          <Route path="/delivery-new" component={NewDelivery} />
+          <Route path="/delivery-update" component={UpdateDelivery} />
 
-      </div>
-    </Router >
+          {/* storeAdminroutes */}
+          <Route path="/storeAdmin" component={ItemRetrieve} />
+          <Route path="/storeAdmindash" component={storeAdminDashboard} />
+          <Route path="/footer"  component={FooterComponent} />
+
+        </div>
+      </Router >
+      <FooterComponent />
+    </div>
   );
 }
 

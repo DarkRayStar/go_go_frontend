@@ -1,0 +1,10 @@
+.footergogo{
+    display: flex;
+    flex-direction: column;
+    min-height: 40vh;
+    
+}
+
+.footergogo1{
+    margin-top: auto;
+}
