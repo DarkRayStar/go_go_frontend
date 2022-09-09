@@ -135,7 +135,7 @@ const Registration = () => {
                                     <td><label style={{ marginLeft: '-290px' }}>First Name    :</label>
                                         <input
                                             type="text"
-                                            placeholder='Ex: John'
+                                            placeholder='John'
                                             name='firstName'
                                             onChange={handleChange}
                                             value={data.firstName}
@@ -348,7 +348,7 @@ const Registration = () => {
                                         <label style={{ fontWeight: "bold" }}>First Name    :</label><br></br>
                                         <input
                                             type="text"
-                                            placeholder='Ex: John'
+                                            placeholder='Your First Name'
                                             name='firstName'
                                             onChange={handleChange}
                                             value={data.firstName}
@@ -360,7 +360,7 @@ const Registration = () => {
                                         <label style={{ fontWeight: "bold" }}>Last Name    :</label><br></br>
                                         <input
                                             type="text"
-                                            placeholder='Ex: Smith'
+                                            placeholder='Your Last name'
                                             name='lastName'
                                             onChange={handleChange}
                                             value={data.lastName}
@@ -375,7 +375,7 @@ const Registration = () => {
                                         <label style={{ fontWeight: "bold" }}>Mobile Number    :</label><br></br>
                                         <input
                                             type="text"
-                                            placeholder='Ex: 0712345678'
+                                            placeholder='Mobile Number'
                                             name='mobileNumber'
                                             onChange={handleChange}
                                             value={data.mobileNumber}
@@ -387,7 +387,7 @@ const Registration = () => {
                                         <label style={{ fontWeight: "bold" }}>Phone Number    :</label><br></br>
                                         <input
                                             type="text"
-                                            placeholder='Ex: 0812345678'
+                                            placeholder='Phone Number'
                                             name='phoneNumber'
                                             onChange={handleChange}
                                             value={data.phoneNumber}
@@ -402,7 +402,7 @@ const Registration = () => {
                                         <label style={{ fontWeight: "bold" }} >Email Address    :</label><br></br>
                                         <input
                                             type="email"
-                                            placeholder='Ex: someone@gmail.com'
+                                            placeholder='someone@gmail.com'
                                             name='email'
                                             onChange={handleChange}
                                             value={data.email}
@@ -414,7 +414,7 @@ const Registration = () => {
                                         <label style={{ fontWeight: "bold" }} >Address    :</label><br></br>
                                         <input
                                             type="text"
-                                            placeholder='Ex: No:170/A, Kandy'
+                                            placeholder='No:170/A, Kandy'
                                             name='address'
                                             onChange={handleChange}
                                             value={data.address}
@@ -445,7 +445,7 @@ const Registration = () => {
                                         <label style={{ fontWeight: "bold" }} >Postal/Zip Code    :</label><br></br>
                                         <input
                                             type="text"
-                                            placeholder='Ex: 00000'
+                                            placeholder='00000'
                                             name='zipCode'
                                             onChange={handleChange}
                                             value={data.zipCode}
@@ -461,7 +461,7 @@ const Registration = () => {
                                         <input
                                             id="password"
                                             type="password"
-                                            placeholder='Ex: Password'
+                                            placeholder='Password'
                                             name='password'
                                             value={data.Password}
                                             onChange={handleChange}
