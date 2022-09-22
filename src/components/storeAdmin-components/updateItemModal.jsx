@@ -83,7 +83,7 @@ const handleSubmit = (e) => {
                 <Col xs={9} md={6}>
                     <Form.Group className="mb-3" >
                         <Form.Label> Quantity </Form.Label>
-                        <Form.Control defaultValue={quantity} onChange={quantityUpdate} type="text" placeholder="Enter quantity" />
+                        <Form.Control defaultValue={quantity} onChange={quantityUpdate} type="number" min="0" placeholder="Enter quantity" />
                     </Form.Group>
                 </Col>
             </Row>
@@ -113,7 +113,7 @@ const handleSubmit = (e) => {
                 <Col xs={9} md={6}>
                 <Form.Group className="mb-3" >
                     <Form.Label> Offer </Form.Label>
-                    <Form.Control defaultValue={offer} onChange={offerUpdate} type="text" placeholder="Enter offer percentage" />
+                    <Form.Control defaultValue={offer} onChange={offerUpdate} type="text" title="Must contain two numbers" pattern="[0-9]{2}" placeholder="Enter offer percentage" />
                 </Form.Group>
                 </Col>
             </Row>

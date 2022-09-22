@@ -1,37 +1,17 @@
-/* .cartDetails_container {
-	width: 900px;
-	height: 80px;
-	background-color: #f5f5f5;
-	display: flex;
-
-	margin-left: 320px;
-	margin-bottom: -120px;
-} */
-
-.background {
-	/* background-image: url("https://s2.best-wallpaper.net/wallpaper/1600x900/2002/Blue-and-purple-abstract-background_1600x900.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: 40% 40%; */
-	/* background-color: #8e23f2; */
-}
-
-.profile_container {
-	width: 100%;
+.profileUpdate_container {
+	/* margin-top: 50px; */
 	margin-bottom: -125px;
-	/* min-height: 89.5vh; */
-	min-height: 98.5vh;
-	/* background-color: #8e23f2; */
+	width: 100%;
+	min-height: 100vh;
+	/* background-color: #f5f5f5; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	margin-top: 60px;
+	margin-top: 80px;
 }
 
-.profile_form_container {
-	width: 1300px;
+.profileUpdate_form_container {
+	width: 1100px;
 	height: 100%;
 	display: flex;
 	border-radius: 10px;
@@ -45,9 +25,9 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: #404040;
+	/* background-color: #3bb19b; */
 	/* background-color: rgba(173, 83, 137, 0.5); */
-	/* background-color: rgba(0, 0, 0, 0.5); */
+	background-color: rgba(0, 0, 0, 0.8);
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
 }
@@ -85,7 +65,7 @@
 .input {
 	outline: none;
 	border: none;
-	width: 100%;
+	width: 300px;
 	padding: 15px;
 	border-radius: 10px;
 	background-color: #edf5f3;
@@ -117,24 +97,40 @@
 	cursor: pointer;
 }
 
-.g_button {
-	background-color: #6c757d;
-	/* background-image: linear-gradient(to left, #FDA7DF, #9980FA); */
-	color: white;
-	margin: 10px;
-}
-
-.logout_button{
+.can_btn {
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: white;
+	background-color: #404040;
+	/* background-image: linear-gradient(to left, #693639,#212429); */
+	color: white;
 	border-radius: 20px;
 	width: 180px;
 	font-weight: bold;
 	font-size: 14px;
 	cursor: pointer;
-	background-color: #404040;
+	margin: 10px auto;
+}
+
+.g_button {
+	background-color: #6c757d;
+	/* background-color: #6c757d; */
 	color: white;
 	margin: 10px;
+}
+
+.w_button:hover {
+	/* box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px; */
+	transform: scale(1.05) rotate(-1deg);
+}
+
+
+.g_button:hover {
+	/* box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px; */
+	transform: scale(1.05) rotate(-1deg);
+}
+
+.can_btn:hover {
+	/* box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px; */
+	transform: scale(1.05) rotate(-1deg);
 }
