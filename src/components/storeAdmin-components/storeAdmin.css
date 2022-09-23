@@ -21,10 +21,11 @@
 }
 
 .bkgrnd{
-  height: 800px;
+  height:120vh;
   /* position: absolute;
   justify-content: center;
   margin: auto; */
   /* display: contents; */
-  margin-bottom: 0px;
+  /* margin-bottom: 0px; */
+  /* margin-top: 300px; */
 }
