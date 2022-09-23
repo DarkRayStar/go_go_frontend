@@ -1,7 +1,8 @@
 import styles from "./style.module.css";
 import { AddShoppingCart } from '@mui/icons-material';
 // import React, { useEffect, useState } from 'react';
-import './navBar.css'
+import './navBar.css';
+import logo from "./images/logo.png";
 
 //get the user details from the session
 // const user = JSON.parse(sessionStorage.getItem("loggeduser"));
@@ -12,9 +13,10 @@ function NavBarGoGo() {
 		<header className="fixed-top" >
 			<div className={styles.main_container}>
 				<nav className={styles.navbar}>
-					<h4 style={{ color: "white", marginLeft: "50px" }}>Go Go Gadgets Store</h4>
+					<img src={logo} style={{ width: "50px", height: "50px", marginLeft: "115px" }}></img>
+					<h4 style={{ color: "white", marginLeft: "-480px" }}>Go Go Gadgets Store</h4>
 					<nav >
-						<a href="#" className="space"><AddShoppingCart /></a>
+						<a href="/cart/view/" className="space"><AddShoppingCart /></a>
 						<a href='/#' className="space">SHOP</a>
 						<a href='/#' className="space">ABOUT US</a>
 						<a href='/#' className="space">SUPPORT</a>
