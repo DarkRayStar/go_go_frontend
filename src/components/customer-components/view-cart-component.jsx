@@ -76,7 +76,7 @@ function ViewCart() {
 
     return (
         <section >
-            <MDBContainer className="py-5 h-100">
+            <MDBContainer className="h-100" style={{ marginTop: "50px" }}>
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">
                         <MDBCard className="card-registration card-registration-2" >
@@ -89,11 +89,11 @@ function ViewCart() {
                                                 <MDBTypography >
                                                     <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
-
-                                                <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "38%", marginTop: "-60px" }}>
-                                                    Shopping Cart
-                                                </MDBTypography>
-
+                                                <center>
+                                                    <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "-50px" }}>
+                                                        Shopping Cart
+                                                    </MDBTypography>
+                                                </center>
                                             </div>
 
                                             {cartItems.map(cartItem => (
@@ -152,10 +152,10 @@ function ViewCart() {
 
                                                         </MDBCol>
                                                         <MDBCol style={{ marginLeft: "150px" }}>
-                                                            <Link to="#" onClick={() => onDeleteItem(cartItem._id)}><FontAwesomeIcon icon={faTrashCan} /></Link>
+                                                            <Link to="#" onClick={() => onDeleteItem(cartItem._id)} className="iconMod"><FontAwesomeIcon icon={faTrashCan} /></Link>
                                                         </MDBCol>
                                                         <MDBCol style={{ marginLeft: "-20px" }}>
-                                                            <Link to="#" onClick={() => onAddItem(cartItem.images, cartItem.itemName, cartItem.description, cartItem.price)}><FontAwesomeIcon icon={faHeart} /></Link>
+                                                            <Link to="#" onClick={() => onAddItem(cartItem.images, cartItem.itemName, cartItem.description, cartItem.price)} className="iconFavMod"><FontAwesomeIcon icon={faHeart} /></Link>
                                                         </MDBCol>
 
                                                     </MDBRow>
@@ -163,7 +163,7 @@ function ViewCart() {
                                                 </div>
                                             ))}
 
-                                            <center><button className='btn btn-secondary'>Proceed to Checkout</button></center>
+                                            <center><button className='btn btn-secondary' style={{ marginBottom: "50px" }}>Proceed to Checkout</button></center>
                                         </div>
                                     </MDBCol>
 
