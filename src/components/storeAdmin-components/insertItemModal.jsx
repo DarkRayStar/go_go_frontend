@@ -76,7 +76,6 @@ function InsertItemModal() {
                         </Form.Group>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col xs={9} md={6}>
                         <Form.Group className="mb-3" >
@@ -91,7 +90,6 @@ function InsertItemModal() {
                         </Form.Group>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col xs={9} md={6}>
                         <Form.Group className="mb-3" >
@@ -113,6 +111,7 @@ function InsertItemModal() {
                         </button>
                     </center>
                 </Row>
+
 
             </Container>
         </Form>

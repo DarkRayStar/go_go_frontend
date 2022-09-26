@@ -78,6 +78,7 @@
 
 .backLink {
     text-decoration: none;
+    margin-top: 50px;
 }
 
 .backLink:hover {
@@ -97,18 +98,38 @@
     padding-left: 500px;
     background-color: #ffffff;
     padding-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 80px;
     margin-top: 70px;
     margin-bottom: -10px;
 }
 
 .backLinkFav {
     text-decoration: none;
-    padding-top: 35px;
+    padding-top: 85px;
     float: left;
 }
 
 .backLinkFav:hover {
     background: none;
     color: #BF498A;
+}
+
+.iconMod {
+    text-decoration: none;
+    color: #1A1E21;
+}
+
+.iconMod:hover {
+    background: none;
+    color: #BF498A;
+}
+
+.iconFavMod {
+    text-decoration: none;
+    color: #BF498A;
+}
+
+.iconFavMod:hover {
+    background: none;
+    color: #885BA6;
 }

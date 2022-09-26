@@ -78,32 +78,32 @@ function OrderHistory() {
     }
     return (
         <section >
-            <MDBContainer className="py-5 h-100">
+            <MDBContainer className=" h-100" style={{ marginTop: "50px" }}>
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">
                         <MDBCard className="card-registration card-registration-2" >
                             <MDBCardBody className="p-0">
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
-                                        <div className="p-5">
+                                        <div className="p-5" style={{ marginBottom: "50px" }}>
                                             <div className="d-flex justify-content-between align-items-center mb-5">
 
                                                 <MDBTypography className="mb-0 text-muted">
                                                     <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
-
-                                                <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "75px" }}>
-                                                    Order History
-                                                </MDBTypography>
-
+                                                <center>
+                                                    <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "50px" }}>
+                                                        Order History
+                                                    </MDBTypography>
+                                                </center>
                                                 <MDBTypography className="mb-0 text-muted" >
-                                                    <button className='btn btn-secondary'>Ordered Report</button>
+                                                    <button className='btn btn-secondary' style={{ marginTop: "55px" }}>Ordered Report</button>
                                                 </MDBTypography>
 
                                             </div>
 
                                             {cartItems.map(cartItem => (
-                                                <div key={cartItem._id}>
+                                                <div key={cartItem._id} >
 
                                                     <MDBRow style={{ marginTop: "25px" }}>
                                                         <MDBCol md="2" lg="2" xl="2" className="card-item" style={{ borderRadius: "10px 0px 0px 10px" }}>
