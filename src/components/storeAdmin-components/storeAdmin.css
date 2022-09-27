@@ -21,11 +21,24 @@
 }
 
 .bkgrnd{
-  height:120vh;
+  height:135vh;
   /* position: absolute;
   justify-content: center;
   margin: auto; */
   /* display: contents; */
   /* margin-bottom: 0px; */
   /* margin-top: 300px; */
+}
+
+.header{
+  padding-top: 20px;
+  margin-top: 70px;
+  font-weight: 700;
+  margin-left: 500px;
+}
+
+.dshbtn{
+  height: 70px;
+  width: 250px;
+  border-radius: 30px;
 }

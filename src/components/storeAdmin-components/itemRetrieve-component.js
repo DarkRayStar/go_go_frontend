@@ -23,32 +23,38 @@ function ItemRetrieve() {
         {
             name: 'Item Name',
             selector: row => row.itemName,
-            sortable: true
+            sortable: true,
+            width: "180px"
         },
         {
             name: 'Description',
             selector: row => row.description,
+            width: '250px'
         },
         {
             name: 'Price',
             selector: row => row.price,
-            sortable: true
+            sortable: true,
+            width: '150px'
 
         },
         {
             name: 'Quantity',
             selector: row => row.quantity,
-            sortable: true
+            sortable: true,
+            width: '100px'
 
         },
         {
             name: 'Images',
-            selector: row => row.images,
+            selector: row => <img alt="itemimage" width={100} height={100} src={row.images} />,
+            width: '250px'
         },
         {
             name: 'Offer',
             selector: row => row.offer + ' %',
-            sortable: true
+            sortable: true,
+            width: '150px'
 
         },
         {
@@ -88,7 +94,7 @@ function ItemRetrieve() {
 
     useEffect(() => {
         const result = items.filter((item) => {
-            return item.itemName.toLowerCase().match(search.toLowerCase()) ;
+            return item.itemName.toLowerCase().match(search.toLowerCase());
         });
         setFilteredItems(result);
     }, [search])
@@ -124,59 +130,50 @@ function ItemRetrieve() {
         )
     }
 
+    const goBack = () => {
+        window.location="/storeAdmindash"
+    }
+
     return (
         <>
-             <div className="container bkgrnd" style={{ maxWidth: "80%" }}>
-                {/* <h1 className="hello" > Welcome, NAME !</h1> */}
-                {/* <a
-                    className="previous"
-                    onClick={() => history.goBack()}
-                >
-                &laquo; GO BACK
-                </a> */}
-                {/* <a 
-                onClick={() => history.goBack()}> */}
-                    <Link onClick={() => history.goBack()} to="#" className="backLink">
-                        <FontAwesomeIcon icon={faArrowAltCircleLeft} /> 
-                        &nbsp;Go Back
-                    </Link>
-                {/* </a> */}
+            <div className="container bkgrnd">
+
+                <Link onClick={goBack} to="#" className="backLink">
+                    <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+                    &nbsp;Go Back
+                </Link>
+                <h1 className="header">Store Warehouse</h1>
                 <div className="tbl">
                     <DataTable
-                        title="ITEM DASHBOARD"
                         columns={columns}
                         data={filteredItems}
                         pagination
                         fixedHeader
-                        fixedHeaderScrollHeight="450px"
+                        fixedHeaderScrollHeight="500px"
                         highlightOnHover
-                        // selectableRows
                         subHeader
                         subHeaderComponent={
-                        <>
-                            <input
-                                type="text"
-                                placeholder="Search here.."
-                                className="w-25 form-control"
-                                value={search}
-                                onChange={(e) => setSearch(e.target.value)}
-                            />
-                            <button className="addBtn btn btn-outline-dark" style={{width:'100%'}} onClick={openInsertModal}> Add New Item </button>
-                        </>                        
-                        }
-                        
-                        actions={
                             <>
-                                {/* <button className="btn btn-sm btn-info"> Export</button> */}
-                                {/* <Button style={{width:'100%'}} onClick={openInsertModal}> Add New Item </Button> */}
+                                <input
+                                    type="text"
+                                    placeholder="Search here.."
+                                    className="w-25 form-control"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                />
+                                <button className="addBtn btn btn-outline-dark" style={{ width: '100%' }} onClick={openInsertModal}> Add New Item </button>
                             </>
                         }
+
+                        // actions={
+                        //     <>
+                        //         {/* <button className="btn btn-sm btn-info"> Export</button> */}
+                        //         {/* <Button style={{width:'100%'}} onClick={openInsertModal}> Add New Item </Button> */}
+                        //     </>
+                        // }
                     />
                     {updateModal ? <ModalContent /> : null}
-                    {/* {<ModalContent />} */}
                 </div>
-
-                {/* Insert Modal */}
                 <Modal show={modal} onHide={closeInsertModal} backdrop="static" size="lg">
                     <Modal.Header closeButton>
                         <Modal.Title>
@@ -192,10 +189,10 @@ function ItemRetrieve() {
                 </Modal>
 
 
-             <button className="reportbtn btn btn-dark"> Generate Reports</button>
-             </div>
+                <button className="reportbtn btn btn-dark"> Generate Reports</button>
+            </div>
 
-         </>
+        </>
     );
 
 }
