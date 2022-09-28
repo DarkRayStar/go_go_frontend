@@ -89,7 +89,7 @@ const UpdateItemModal = ({ test }) => {
                     <Col xs={9} md={6}>
                         <Form.Group className="mb-3" >
                             <Form.Label> Quantity </Form.Label>
-                            <Form.Control type="number" min="0" defaultValue={quantity} onChange={quantityUpdate} type="text" placeholder="Enter quantity" required />
+                            <Form.Control type="number" min="0" defaultValue={quantity} onChange={quantityUpdate} placeholder="Enter quantity" required />
                         </Form.Group>
                     </Col>
                 </Row>
