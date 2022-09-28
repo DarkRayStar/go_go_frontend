@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './item-cart.css';
+import AddReviewsModel from './addReviewModel';
 import {
     MDBCard,
     MDBCardBody,
@@ -13,10 +14,12 @@ import {
 } from "mdb-react-ui-kit";
 import { faCheckCircle, faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Modal, Button } from 'react-bootstrap';
 
 function OrderHistory() {
 
     const [cartItems, setCartItems] = useState([]);
+    const [modal, setModal] = useState(false);
 
     const getCartItems = async () => {
         try {
@@ -31,7 +34,7 @@ function OrderHistory() {
         getCartItems();
     }, [])
 
-    //Remove Item from Cart
+    //Remove Item from Order History
     const onDeleteItem = async (id) => {
         if (window.confirm('Are you sure, you want to delete the selected Item?')) {
             try {
@@ -47,35 +50,17 @@ function OrderHistory() {
         }
     }
 
-    //add to favorites
-    const onAddItem = async (Image, ItemName, Description, Price) => {
-        try {
-            const item = {
-                image: Image,
-                itemName: ItemName,
-                description: Description,
-                price: Price,
-            }
-
-            const response = await axios.post("http://localhost:5050/favorites/add", item)
-
-            if (response.status === 200) {
-                alert("Item Added to the Favorites!!!");
-            }
-
-        } catch (error) {
-            if (error.response.status === 409) {
-                alert(error.response.data.message);
-            }
-            else
-                alert(error);
-        }
-        return false
-    }
-
     const total = (Price, Qty) => {
         return Price * Qty
     }
+
+    const openInsertModal = (ID) => {
+        window.sessionStorage.setItem("itemID", ID);
+        setModal(true);
+    }
+
+    const closeInsertModal = () => setModal(false);
+
     return (
         <section >
             <MDBContainer className=" h-100" style={{ marginTop: "50px" }}>
@@ -143,7 +128,7 @@ function OrderHistory() {
                                                                         <div className='totalMod'> Total: Rs {total(cartItem.price, cartItem.quantity)}.00</div>
 
                                                                         <Link to="#" onClick={() => onDeleteItem(cartItem._id)} className="RemoveBtnMod"> Remove </Link>
-                                                                        <Link to="#" onClick={() => onAddItem(cartItem.images, cartItem.itemName, cartItem.description, cartItem.price)} className="ReviewBtn"> Add Review</Link>
+                                                                        <Link to="#" onClick={() => openInsertModal(cartItem._id)} className="ReviewBtn"> Add Review</Link>
 
                                                                     </MDBTypography>
                                                                 </MDBCol>
@@ -151,6 +136,9 @@ function OrderHistory() {
                                                             </MDBRow>
                                                         </MDBCol>
                                                     </MDBRow>
+
+
+
 
                                                 </div>
                                             ))}
@@ -163,6 +151,17 @@ function OrderHistory() {
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
+            {/* Insert Modal */}
+            <Modal show={modal} onHide={closeInsertModal} backdrop="static" size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        Add Your Review
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="show-grid">
+                    <AddReviewsModel />
+                </Modal.Body>
+            </Modal>
         </section>
     )
 }

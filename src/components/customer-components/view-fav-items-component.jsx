@@ -85,7 +85,7 @@ function ViewFavItems() {
     return (
         <div className="container" >
             <Link to={"#"} className="backLinkFav"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
-            <h3 className="headerMod"> Favorite Items</h3>
+            <h3 className="headerMod"> Favourite Items</h3>
 
             <DataTable
                 columns={columns}
