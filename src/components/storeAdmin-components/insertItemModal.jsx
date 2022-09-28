@@ -81,7 +81,10 @@ function InsertItemModal() {
                         </Form.Group>
                     </Col>
                 </Row>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e08fa5099079d31666caf44b449aff436bd56dbe
                 <Row>
                     <Col xs={9} md={6}>
                         <Form.Group className="mb-3" >
@@ -96,7 +99,10 @@ function InsertItemModal() {
                         </Form.Group>
                     </Col>
                 </Row>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e08fa5099079d31666caf44b449aff436bd56dbe
                 <Row>
                     <Col xs={9} md={6}>
                         <Form.Group className="mb-3" >
@@ -125,6 +131,10 @@ function InsertItemModal() {
                         </button>
                     </center>
                 </Row>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e08fa5099079d31666caf44b449aff436bd56dbe
 
             </Container>
         </Form>
