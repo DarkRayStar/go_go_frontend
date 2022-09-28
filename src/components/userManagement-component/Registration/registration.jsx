@@ -100,7 +100,7 @@ const Registration = () => {
                 <div className={styles.signup_form_container}>
 
                     <div className={styles.left}>
-                        <h1 style={{ textAlign: 'center' }}>Already have an Account?</h1>
+                        <h1 style={{ textAlign: 'center' , marginBottom:"20px"}}>Already have an Account?</h1>
                         {/* <Link to="/"> */}
                             <button type='button' onClick={LoginButton} className={styles.w_button}>Sign in</button>
                         {/* </Link> */}
@@ -109,7 +109,7 @@ const Registration = () => {
                     <div className={styles.right}>
 
                         <form className={styles.form_container} onSubmit={handleSubmit}>
-                            <h1 style={{ marginTop: "50px" }}>Create Account</h1>
+                            <h1 style={{ marginTop: "50px" , marginBottom:"30px" }}>Create Account</h1>
 
 
                             <Container>
@@ -255,7 +255,7 @@ const Registration = () => {
 
                             {error && <div className={styles.err_msg}>{error}</div>}
 
-                            <button type='submit' style={{ marginBottom: "50px" }} className={styles.g_button}>Sign Up</button>
+                            <button type='submit' style={{ marginBottom: "50px" , marginTop:"35px" }} className={styles.g_button}>Sign Up</button>
                         </form>
                     </div>
 

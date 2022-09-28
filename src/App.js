@@ -16,6 +16,7 @@ import ForgotPassword from "./components/userManagement-component/forgotPassword
 import Registration from "./components/userManagement-component/Registration/registration";
 import PasswordReset from "./components/userManagement-component/passwordReset/passwordReset";
 import UserProfile from "./components/userManagement-component/profile/profile";
+import UpdateUserProfile from "./components/userManagement-component/updateProfile/updateProfile";
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
 import adminInsert from './components/admin-components/admin-insert';
@@ -43,6 +44,10 @@ import FooterComponent from "./components/footer-component/footer.component";
 import NavBarGoGo from "./components/navigatonBar/navbarGoGo";
 import LoginNavBarGoGo from "./components/navigatonBar/loginNav";
 import AdminNavBarGoGo from "./components/navigatonBar/adminNav";
+import HomePageComponent from "./components/storeAdmin-components/homePageComponent";
+import HomeSlider from "./components/storeAdmin-components/homeSlider";
+import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
+import ItemDetails from "./components/storeAdmin-components/itemDetails";
 
 <link rel="stylesheet" href="./" />;
 
@@ -59,7 +64,7 @@ function App() {
           }}>
 
           {/* testing navBar */}
-          <NavBarGoGo />
+          {/* <NavBarGoGo /> */}
           {/* <Route path="/navbarGoGo" component={NavBarGoGo} /> */}
           {/* <Route path="/loginNav" component={LoginNavBarGoGo} /> */}
           {/* <Route path="/adminNav" component={AdminNavBarGoGo} /> */}
@@ -71,6 +76,7 @@ function App() {
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
           <Route path="/user-profile" component={UserProfile} />
+          <Route path="/update-user-profile" component={UpdateUserProfile} />
 
           <Route path="/home" component={HomePage} />
           <Route path="/admin-retrieve" component={adminRetrieve} />
@@ -99,6 +105,8 @@ function App() {
           <Route path="/storeAdmin" component={ItemRetrieve} />
           <Route path="/storeAdmindash" component={storeAdminDashboard} />
           <Route path="/footer" component={FooterComponent} />
+          <Route path="/userHome" component={HomePageComponent} />
+          <Route path="/item" component={ItemDetails} />
 
         </div>
       </Router >
