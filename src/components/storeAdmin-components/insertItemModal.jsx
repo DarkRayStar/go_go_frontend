@@ -6,6 +6,7 @@ function InsertItemModal() {
     //state variables
     var [itemName, setName] = useState();
     var [description, setDescription] = useState();
+    var [specifications, setSpecifications] = useState();
     var [price, setPrice] = useState();
     var [quantity, setQuantity] = useState();
     var [images, setImages] = useState();
@@ -17,6 +18,9 @@ function InsertItemModal() {
     }
     const descriptionUpdate = (event) => {
         setDescription(event.target.value)
+    }
+    const specificationsUpdate = (event) => {
+        setSpecifications(event.target.value)
     }
     const priceUpdate = (event) => {
         setPrice(event.target.value)
@@ -43,6 +47,7 @@ function InsertItemModal() {
             body: JSON.stringify({ // We should keep the fields consistent for managing this data later
                 itemName: itemName,
                 description: description,
+                specifications: specifications,
                 price: price,
                 quantity: quantity,
                 images: images,
@@ -100,9 +105,16 @@ function InsertItemModal() {
                     <Col xs={9} md={6}>
                         <Form.Group className="mb-3" >
                             <Form.Label> Offer (%) </Form.Label>
-                            <Form.Control onChange={offerUpdate} type="text" title="Must contain two numbers" pattern="[0-9]{2}" placeholder="Enter offer percentage" required />
+                            <Form.Control onChange={offerUpdate} type="text" title="Contain only numbers" pattern="[0-9]{1,2}" placeholder="Enter offer percentage" required />
                         </Form.Group>
                     </Col>
+                </Row>
+                <Row>
+                    
+                        <Form.Group className="mb-3" >
+                            <Form.Label> Specifications </Form.Label>
+                            <Form.Control onChange={specificationsUpdate} type="text" placeholder="Enter specifications" required />
+                        </Form.Group>
                 </Row>
                 <Row>
                     <center>
@@ -111,7 +123,6 @@ function InsertItemModal() {
                         </button>
                     </center>
                 </Row>
-
 
             </Container>
         </Form>
