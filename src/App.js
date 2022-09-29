@@ -17,6 +17,9 @@ import Registration from "./components/userManagement-component/Registration/reg
 import PasswordReset from "./components/userManagement-component/passwordReset/passwordReset";
 import UserProfile from "./components/userManagement-component/profile/profile";
 import UpdateUserProfile from "./components/userManagement-component/updateProfile/updateProfile";
+import userAdminDashboard from "./components/userManagement-component/admin/userAdminDashboard";
+import ViewAllRegisteredMembers from "./components/userManagement-component/admin/registeredMembers/allRegisteredMembers";
+
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
 import adminInsert from './components/admin-components/admin-insert';
@@ -49,6 +52,8 @@ import HomeSlider from "./components/storeAdmin-components/homeSlider";
 import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
 
+
+
 <link rel="stylesheet" href="./" />;
 
 function App() {
@@ -77,6 +82,10 @@ function App() {
           <Route path="/user-password-reset/:id/:token" component={PasswordReset} />
           <Route path="/user-profile" component={UserProfile} />
           <Route path="/update-user-profile" component={UpdateUserProfile} />
+          <Route path="/user-admin-dashboard" component={userAdminDashboard} />
+          <Route path="/registered-members" component={ViewAllRegisteredMembers} />
+
+
 
           <Route path="/home" component={HomePage} />
           <Route path="/admin-retrieve" component={adminRetrieve} />
