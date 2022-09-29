@@ -43,16 +43,17 @@ button, input, optgroup, select, textarea {
     background-color: rgb(255, 255, 255);
 }
 
-.tbl{
+/* .tbl{
     border-top-width: 2px;
     border-top-style: solid;
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    /* border-left-width: 2px; */
-    /* border-left-style: solid; */
-    /* border-right-width: 2px; */
-    /* border-right-style: solid; */
-    /* border-width: 2px; */
-    /* border-style: solid; */
     border-radius: 20px;
+} */
+
+.backLink{
+  
+  text-decoration: none;
+  padding-top: 35px;
+  float: left;
 }

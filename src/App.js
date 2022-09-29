@@ -44,6 +44,10 @@ import FooterComponent from "./components/footer-component/footer.component";
 import NavBarGoGo from "./components/navigatonBar/navbarGoGo";
 import LoginNavBarGoGo from "./components/navigatonBar/loginNav";
 import AdminNavBarGoGo from "./components/navigatonBar/adminNav";
+import HomePageComponent from "./components/storeAdmin-components/homePageComponent";
+import HomeSlider from "./components/storeAdmin-components/homeSlider";
+import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
+import ItemDetails from "./components/storeAdmin-components/itemDetails";
 
 <link rel="stylesheet" href="./" />;
 
@@ -101,6 +105,8 @@ function App() {
           <Route path="/storeAdmin" component={ItemRetrieve} />
           <Route path="/storeAdmindash" component={storeAdminDashboard} />
           <Route path="/footer" component={FooterComponent} />
+          <Route path="/userHome" component={HomePageComponent} />
+          <Route path="/item" component={ItemDetails} />
 
         </div>
       </Router >
