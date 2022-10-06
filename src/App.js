@@ -18,7 +18,7 @@ import PasswordReset from "./components/userManagement-component/passwordReset/p
 import UserProfile from "./components/userManagement-component/profile/profile";
 import UpdateUserProfile from "./components/userManagement-component/updateProfile/updateProfile";
 import userAdminDashboard from "./components/userManagement-component/admin/userAdminDashboard";
-import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/thridutable/allMembersRetrieve";
+import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/viewAllMembers/allMembersRetrieve";
 import UserAdminReport from "./components/userManagement-component/admin/report/userAdminReport";
 
 
