@@ -18,7 +18,8 @@ import PasswordReset from "./components/userManagement-component/passwordReset/p
 import UserProfile from "./components/userManagement-component/profile/profile";
 import UpdateUserProfile from "./components/userManagement-component/updateProfile/updateProfile";
 import userAdminDashboard from "./components/userManagement-component/admin/userAdminDashboard";
-import ViewAllRegisteredMembers from "./components/userManagement-component/admin/registeredMembers/allRegisteredMembers";
+import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/thridutable/allMembersRetrieve";
+import UserAdminReport from "./components/userManagement-component/admin/report/userAdminReport";
 
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
@@ -83,8 +84,8 @@ function App() {
           <Route path="/user-profile" component={UserProfile} />
           <Route path="/update-user-profile" component={UpdateUserProfile} />
           <Route path="/user-admin-dashboard" component={userAdminDashboard} />
-          <Route path="/registered-members" component={ViewAllRegisteredMembers} />
-
+          <Route path="/registered-members" component={AllRegisteredMemebersDisplay} />
+          <Route path="/user-admin-report" component={UserAdminReport} />
 
 
           <Route path="/home" component={HomePage} />
@@ -119,7 +120,7 @@ function App() {
 
         </div>
       </Router >
-      <FooterComponent />
+      {/* <FooterComponent /> */}
     </div>
   );
 }
