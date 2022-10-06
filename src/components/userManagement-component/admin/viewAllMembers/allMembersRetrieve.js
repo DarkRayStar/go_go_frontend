@@ -2,13 +2,13 @@ import axios from "axios";
 import { Button, Form, Modal } from "react-bootstrap";
 import { Fragment, useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-// import InsertItemModal from "./insertItemModal";
-// import UpdateItemModal from "./updateItemModal";
+import styles from './style.module.css';
 import "./allUsers.css";
 import "./tableTharidu.css"
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import { Label } from "@mui/icons-material";
 
 
 function AllRegisteredMemebersDisplay() {
@@ -135,38 +135,6 @@ function AllRegisteredMemebersDisplay() {
 
     }
 
-
-    const openInsertModal = () => {
-        setModal(true);
-    }
-
-    const closeInsertModal = () => setModal(false);
-
-    const openUpdateModal = (data) => {
-        setUpdateModal(true);
-        window.sessionStorage.setItem("item", data);
-    }
-
-    const closeUpdateModal = () => setUpdateModal(false);
-
-    const ModalContent = () => {
-        return (
-            <Modal show={updateModal} onHide={closeUpdateModal} backdrop="static" size="lg">
-                <Modal.Header closeButton>
-                    <Modal.Title>
-                        Update Item Details
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="show-grid">
-                    <UpdateItemModal />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={closeUpdateModal}> Close Button </Button>
-                </Modal.Footer>
-            </Modal>
-        )
-    }
-
     const goBack = () => {
         window.location = "/user-admin-dashboard"
     }
@@ -179,42 +147,62 @@ function AllRegisteredMemebersDisplay() {
     return (
         <>
             <div className="container bkgrnd">
-
                 <Link onClick={goBack} to="#" className="backLink">
                     <FontAwesomeIcon icon={faArrowAltCircleLeft} />
                     &nbsp;Go Back
                 </Link>
-                <h1 className="header">Store Warehouse</h1>
+                <h1 className="header" style={{ marginLeft: "370px" }}>Details of Registered Members</h1>
+                <br></br>
 
                 <form onSubmit={handleSubmit}>
-                    <div >
-                        <input
-                            type="Date"
-                            placeholder="Date"
-                            name="fromDate"
-                            onChange={handleChange}
-                            value={data.fromDate}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <input
-                            type="Date"
-                            placeholder="Date"
-                            name="toDate"
-                            onChange={handleChange}
-                            value={data.toDate}
-                            required
-                        />
-                    </div>
-
-
-                    <button type="submit">
-                        Search
-                    </button>
-                    <button onClick={clearData}>
-                        Clear
-                    </button>
+                    <table style={{ marginLeft: "750px" }}>
+                        <thead>
+                            <tr>
+                                <td>
+                                    <div >
+                                        <label>From Date     :</label><br></br>
+                                        <input
+                                            type="Date"
+                                            placeholder="Date"
+                                            name="fromDate"
+                                            onChange={handleChange}
+                                            value={data.fromDate}
+                                            required
+                                            className={styles.input}
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style={{ marginLeft: "10px" }}>
+                                        <label>To Date      :</label><br></br>
+                                        <input
+                                            type="Date"
+                                            placeholder="Date"
+                                            name="toDate"
+                                            onChange={handleChange}
+                                            value={data.toDate}
+                                            required
+                                            className={styles.input}
+                                        />
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table style={{ marginLeft: "890px" }}>
+                        <tr>
+                            <td>
+                                <div style={{ marginLeft: "0px" }}>
+                                    <button className={styles.g_button} type="submit">
+                                        Search
+                                    </button>
+                                    <button className={styles.can_btn} style={{ marginLeft: "15px" }} onClick={clearData}>
+                                        Clear
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
 
                 </form>
 
@@ -228,7 +216,7 @@ function AllRegisteredMemebersDisplay() {
                         highlightOnHover
                         subHeader
                     />
-                   
+
                 </div>
 
 

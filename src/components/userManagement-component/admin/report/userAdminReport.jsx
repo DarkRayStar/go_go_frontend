@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import "./userAdminreport.css"
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +15,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import AdminNavBarGoGo from "../../../navigatonBar/adminNav";
 
 export default function UserAdminReport(p) {
 
@@ -370,22 +374,31 @@ export default function UserAdminReport(p) {
     getALLUsersDistrict();
     getTotalUsers();
 
-    getCentralProvinceCount(); 
-    getEasternProvinceCount(); 
-    getNorthCentralProvinceCount(); 
-    getNorthProvinceCount(); 
-    getNorthWestProvinceCount(); 
-    getSabaragamuwaProvinceCount(); 
-    getUvaProvinceCount(); 
-    getWesternProvinceCount(); 
-    getSouthernProvinceCount(); 
+    getCentralProvinceCount();
+    getEasternProvinceCount();
+    getNorthCentralProvinceCount();
+    getNorthProvinceCount();
+    getNorthWestProvinceCount();
+    getSabaragamuwaProvinceCount();
+    getUvaProvinceCount();
+    getWesternProvinceCount();
+    getSouthernProvinceCount();
   }, [])
 
+
+  const goBack = () => {
+    window.location = "/user-admin-dashboard"
+  }
 
   return (
 
     <div>
+      <AdminNavBarGoGo />
       <br></br> <br></br> <br></br> <br></br> <br></br>
+      <Link onClick={goBack} to="#" className="backLink">
+        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+        &nbsp;Go Back
+      </Link>
       <center>
         <table>
           <div className="container">

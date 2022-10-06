@@ -21,7 +21,7 @@
   }
   
   .bkgrnd{
-    height:135vh;
+    /* height:155vh; */
     /* position: absolute;
     justify-content: center;
     margin: auto; */
@@ -34,7 +34,7 @@
     padding-top: 20px;
     margin-top: 70px;
     font-weight: 700;
-    margin-left: 500px;
+    /* margin-left: 50px; */
   }
   
   .dshbtn{
