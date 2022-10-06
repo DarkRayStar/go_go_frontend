@@ -10,7 +10,7 @@ function userAdminDashboard() {
     }
 
     const generateReport = () => {
-        window.location = "//user-admin-report"
+        window.location = "/user-admin-report"
     }
 
     return (
@@ -20,19 +20,10 @@ function userAdminDashboard() {
                 <h5 style={{ marginTop: '100px' }}>Welcome, John !</h5>
                 <h4 > User Managements Admin</h4>
                 <div className='container dshbrd'>
-                    {/* <Container >
-                        <div >
-                            <Row>
-                                <Col style={{ marginTop: '150px' }}> <button onClick={viewUserDetails} type="button" class="dshbtn btn btn-dark btn-lg"> View Items </button> </Col>
-                                <Col style={{ marginTop: '150px' }}> <button type="button" class="dshbtn btn btn-dark btn-lg"> Add Item </button> </Col>
-                                <Col style={{ marginTop: '150px' }}> <button type="button" class="dshbtn btn btn-dark btn-lg"> Generate Reports </button> </Col>
-                            </Row>
-                        </div>
-                    </Container> */}
                     <Grid container sx={{ marginBottom: "2vh" }}>
                         <Grid item xs={12} sx={{ marginBottom: "7vh" }}>
                             <div style={{ paddingTop: "3vh" }}>
-                                <h3 style={{ textAlign: "center",marginBottom: "80px" }}>
+                                <h3 style={{ textAlign: "center", marginBottom: "80px" }}>
                                     Go Go Gadgets - Admin DASHBOARD
                                 </h3>
                             </div>
@@ -67,7 +58,7 @@ function userAdminDashboard() {
                                 Generate Report
                             </button>
                         </Grid>
-                       
+
                     </Grid>
                 </div>
             </div>
