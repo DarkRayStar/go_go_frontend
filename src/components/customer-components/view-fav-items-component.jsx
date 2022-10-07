@@ -40,7 +40,7 @@ function ViewFavItems() {
         },
         {
             name: "Price",
-            selector: (row) => row.price,
+            selector: (row) => row.price + '.00',
             sortable: true,
         },
 

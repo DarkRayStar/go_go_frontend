@@ -21,6 +21,7 @@ function ItemDetails() {
 
     const id = window.sessionStorage.getItem('itemid');
     const [item, setItem] = useState([]);
+    const [OrderedQuanity, setOrderedQuantity] = useState("")
 
     const getItem = async () => {
         try {
@@ -37,18 +38,54 @@ function ItemDetails() {
     }, [])
 
     const goBack = () => {
-        window.location="/userHome"
+        window.location = "/userHome"
     }
+
+
+    //add to cart
+    const onAddItem = async (Image, ItemName, Description, Price, Quantity, Specifications, Offer) => {
+        try {
+            const item = {
+                images: Image,
+                itemName: ItemName,
+                description: Description,
+                price: Price,
+                quantity: Quantity,
+                showOnCart: true,
+                paidStatus: false,
+                orderedQuanity: OrderedQuanity,
+                offer: Offer,
+                specifications: Specifications,
+            }
+
+            if (item.orderedQuanity <= 0) {
+                alert("Please Select quantity");
+            }
+            else {
+                const response = await axios.post("http://localhost:5050/cart/add", item)
+                const response1 = await axios.post(`http://localhost:5050/storeAdmin/update/${id}`, item)
+                if (response.status === 200 || response1.status === 200) {
+                    alert("Item added to the cart!!!");
+                }
+            }
+
+        } catch (error) {
+            console.log(response.error);
+        }
+        return false
+    }
+
+
 
     return (
         <div className='container'>
             <MDBCard className='item_card'>
                 <Row>
                     <Col>
-                    <Link onClick={goBack} to="#" className="backLink">
-                    <FontAwesomeIcon style={{height:"30px"}} icon={faArrowAltCircleLeft} />
-                    &nbsp;
-                </Link>
+                        <Link onClick={goBack} to="#" className="backLink">
+                            <FontAwesomeIcon style={{ height: "30px" }} icon={faArrowAltCircleLeft} />
+                            &nbsp;
+                        </Link>
                         <div className='item'>
                             <MDBCardImage className='item_image' src={item.images} alt='...' position='top' />
                         </div>
@@ -67,15 +104,17 @@ function ItemDetails() {
                             <div>
                                 <Row>
                                     <Col>
-                                        <input className='item_quantity' type="number" /> 
+                                        <input className='item_quantity' type="number" min="0" defaultValue="0" onChange={(e) => {
+                                            setOrderedQuantity(e.target.value);
+                                        }} />
                                     </Col>
                                     <Col >
                                         <div className='item_cart' >
-                                        <MDBBtn className='item_btn'> Buy now </MDBBtn>
+                                            <MDBBtn className='item_btn'> Buy now </MDBBtn>
                                         </div>
                                     </Col>
                                     <Col>
-                                        <MDBBtn className='item_btn'> Add to Cart</MDBBtn>
+                                        <MDBBtn className='item_btn' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.orderedQuanity, item.offer)} > Add to Cart</MDBBtn>
                                     </Col>
                                 </Row>
                             </div>
@@ -83,7 +122,7 @@ function ItemDetails() {
                     </Col>
                 </Row>
             </MDBCard>
-            <Row style={{ marginBottom:"35px"}}>
+            <Row style={{ marginBottom: "35px" }}>
                 <Col>
                     <MDBCard>
                         <MDBCardBody>

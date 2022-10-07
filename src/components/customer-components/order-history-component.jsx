@@ -118,14 +118,14 @@ function OrderHistory() {
                                                                     </MDBTypography>
 
                                                                     <MDBTypography tag="h6" className="priceMod" style={{ paddingTop: "10px" }}>
-                                                                        Rs. {cartItem.price}.00 x {cartItem.quantity}
+                                                                        Rs. {cartItem.price}.00 x {cartItem.orderedQuanity}
                                                                     </MDBTypography>
                                                                 </MDBCol>
 
                                                                 <MDBCol >
                                                                     <MDBTypography tag="h6" >
 
-                                                                        <div className='totalMod'> Total: Rs {total(cartItem.price, cartItem.quantity)}.00</div>
+                                                                        <div className='totalMod'> Total: Rs {total(cartItem.price, cartItem.orderedQuanity)}.00</div>
 
                                                                         <Link to="#" onClick={() => onDeleteItem(cartItem._id)} className="RemoveBtnMod"> Remove </Link>
                                                                         <Link to="#" onClick={() => openInsertModal(cartItem._id)} className="ReviewBtn"> Add Review</Link>
