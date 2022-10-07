@@ -46,8 +46,8 @@ const HomePageComponent = () => {
 
     const imageClick = (id) => {
         window.sessionStorage.setItem('itemid', id);
-        window.location="/item"
-      }  
+        window.location = "/item"
+    }
 
     return (
         <div className='container'>
@@ -65,9 +65,9 @@ const HomePageComponent = () => {
                     {dataSearch.map((item, index) => {
                         return (
                             <MDBCol>
-                                <MDBCard 
-                                className='h-100 ' 
-                                style={{ width: '300px'}}>
+                                <MDBCard
+                                    className='h-100 '
+                                    style={{ width: '300px' }}>
                                     {/* <MDBCardImage
                                         className='card_image'
                                         src={item.images}
@@ -79,21 +79,21 @@ const HomePageComponent = () => {
                                     {/* </Link> */}
                                     <MDBCardBody>
                                         <center>
-                                        <MDBCardTitle > {item.itemName} </MDBCardTitle>
-                                        <MDBCardText >
-                                            {item.price}
-                                        </MDBCardText>
+                                            <MDBCardTitle > {item.itemName} </MDBCardTitle>
+                                            <MDBCardText >
+                                                Rs. {item.price}.00
+                                            </MDBCardText>
                                         </center>
                                     </MDBCardBody>
-                                    <MDBCardFooter style={{backgroundColor: 'white'}}>
+                                    <MDBCardFooter style={{ backgroundColor: 'white' }}>
                                         <center>
-                                        <Link to={"/"}><MDBBtn className="btn btn-outline-secondary btn-sm" href='#' style={{ float: "right", color: 'white', backgroundColor: '#B21B25' }}> Add to cart </MDBBtn></Link>
+                                            <Link to={"/"}><MDBBtn className="btn btn-outline-secondary btn-sm" href='#' style={{ float: "right", color: 'white', backgroundColor: '#B21B25' }}> Add to cart </MDBBtn></Link>
                                         </center>
                                     </MDBCardFooter>
                                 </MDBCard>
 
                             </MDBCol>
-                            
+
                         )
                     })}
                 </MDBRow>

@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 //customer
-import ViewOneMovie from "./components/customer-components/view-movie-component";
 import ViewCart from "./components/customer-components/view-cart-component";
 import PaidPage from "./components/payment_components/paidPage";
 import ViewFavItems from "./components/customer-components/view-fav-items-component";
 import OrderHistory from "./components/customer-components/order-history-component";
+import Payment from "./components/customer-components/payment";
 
 //user management
 import SignIn from "./components/userManagement-component/Login/login";
@@ -95,10 +95,10 @@ function App() {
           <Route path="/qrgen" component={QrGencomponent} />
 
           {/* Customer */}
-          <Route path="/one-movie/view/:id" component={ViewOneMovie} />
           <Route path="/cart/view/" component={ViewCart} />
           <Route path='/fav/view/' component={ViewFavItems} />
           <Route path='/order-history' component={OrderHistory} />
+          <Route path='/paymentOrder' component={Payment} />
 
           <Route path="/payment-success" component={successPage} />
           <Route path="/payment-paid" component={PaidPage} />
