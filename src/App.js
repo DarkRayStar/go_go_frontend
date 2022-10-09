@@ -120,7 +120,7 @@ function App() {
 
         </div>
       </Router >
-      {/* <FooterComponent /> */}
+      <FooterComponent />
     </div>
   );
 }
