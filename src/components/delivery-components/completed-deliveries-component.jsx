@@ -42,8 +42,9 @@ const CompletedDeliveries = () => {
           <div style={{ textAlign: "center" }}>
             <Fragment>
               <button
+                style={{ color: "white" }}
                 name="view"
-                className="btn btn-danger btn-sm"
+                className="btn info btn-sm"
                 onClick={() => deleteRecord(record)}
               >
                 VIEW DETAILS
@@ -89,7 +90,7 @@ const CompletedDeliveries = () => {
     {
       deliveryID: "GG-1245",
       customerName: "Ayesha Dasanayake",
-    }
+    },
   ];
 
   const extraButtons = [
@@ -163,14 +164,15 @@ const CompletedDeliveries = () => {
         backgroundColor: "rgb(207, 210, 207,0.5)",
         display: "block",
         margin: "0 auto",
+        marginTop: '70px',
+        paddingBottom: '150px'
       }}
     >
-      <Navbar />
       <Link
         style={{
           marginLeft: "10%",
-          marginTop: "5vh",
-          marginBottom: "5vh",
+          marginTop: "6vh",
+          marginBottom: "1vh",
         }}
         onClick={() => history.goBack()}
         to="#"
@@ -205,16 +207,6 @@ const CompletedDeliveries = () => {
           />
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "rgb(109, 112, 166,0.5)",
-          height: "100px",
-          position: "inherit",
-          marginBottom: "0",
-          width: "100%",
-          marginTop: "200px",
-        }}
-      />
     </div>
   );
 };

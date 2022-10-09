@@ -59,7 +59,7 @@ function App() {
           }}>
 
           {/* testing navBar */}
-          <NavBarGoGo />
+          <AdminNavBarGoGo />
           {/* <Route path="/navbarGoGo" component={NavBarGoGo} /> */}
           {/* <Route path="/loginNav" component={LoginNavBarGoGo} /> */}
           {/* <Route path="/adminNav" component={AdminNavBarGoGo} /> */}

@@ -78,32 +78,33 @@ const OngoingDeliveries = () => {
           <div style={{ textAlign: "center" }}>
             <Fragment>
               <button
-                style={{ marginRight: "5px" }}
+                style={{ marginRight: "5px", color: "white" }}
                 name="update"
-                className="btn btn-danger btn-sm"
+                className="btn warning btn-sm"
                 onClick={() => updateRecord(record)}
               >
                 UPDATE
               </button>
               <button
-                style={{ marginRight: "5px" }}
+                style={{ marginRight: "5px", color: "white" }}
                 name="view"
-                className="btn btn-danger btn-sm"
+                className="btn info btn-sm"
                 onClick={() => deleteRecord(record)}
               >
                 VIEW
               </button>
               <button
-                style={{ marginRight: "5px" }}
+                style={{ marginRight: "5px", color: "white" }}
                 name="delivered"
-                className="btn btn-danger btn-sm"
+                className="success btn  btn-sm"
                 onClick={() => deleteRecord(record)}
               >
                 DELIVERED
               </button>
               <button
+                style={{ color: "white" }}
                 name="cancel"
-                className="btn btn-danger btn-sm"
+                className="btn danger btn-sm"
                 onClick={() => deleteRecord(record)}
               >
                 CANCEL
@@ -238,15 +239,16 @@ const OngoingDeliveries = () => {
         backgroundColor: "rgb(207, 210, 207,0.5)",
         display: "block",
         margin: "0 auto",
+        marginTop: '70px',
+        paddingBottom: '150px'
       }}
     >
-      <Navbar />
 
       <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          marginBottom: "5vh",
+          marginBottom: "1vh",
         }}
         onClick={() => history.goBack()}
         to="#"
@@ -282,16 +284,6 @@ const OngoingDeliveries = () => {
           />
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "rgb(109, 112, 166,0.5)",
-          height: "100px",
-          position: "inherit",
-          marginBottom: "0",
-          width: "100%",
-          marginTop: "200px",
-        }}
-      />
     </div>
   );
 };
