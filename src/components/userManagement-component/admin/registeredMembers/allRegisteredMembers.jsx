@@ -5,12 +5,12 @@ import styles from "./styles.module.css";
 
 function ViewAllRegisteredMembers() {
 
-    useEffect(() => {
-        const d = new Date();
-        let month = d.getMonth() + 1
-        let date = d.getFullYear() + "-" + month + "-" + d.getDate();
-        setToday(date)
-    })
+    // useEffect(() => {
+    //     const d = new Date();
+    //     let month = d.getMonth() + 1
+    //     let date = d.getFullYear() + "-" + month + "-" + d.getDate();
+    //     setToday(date)
+    // })
 
     const [data, setData] = useState({
         fromDate: "",
@@ -22,14 +22,14 @@ function ViewAllRegisteredMembers() {
     });
 
     const [searchData, setSearchData] = useState([]);
-    const [today, setToday] = useState("");
+    // const [today, setToday] = useState("");
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
     };
 
+    //get all users
     const getAllUserDetails = async () => {
-
         try {
             const response = await axios.get('http://localhost:5050/user/get-all');
             setSearchData(response.data);
@@ -37,12 +37,11 @@ function ViewAllRegisteredMembers() {
             console.log(err);
         }
     }
-
     useEffect(() => {
         getAllUserDetails();
     }, [])
 
-
+// get search details
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
@@ -88,7 +87,7 @@ function ViewAllRegisteredMembers() {
                             <button type="submit" className={styles.btnb}>
                                 Search
                             </button>
-                            
+
                             <table className="data-table">
                                 <tbody>
                                     <tr>
@@ -115,7 +114,7 @@ function ViewAllRegisteredMembers() {
                     </div>
                 </div>
             </div>
-            
+
         </>
     )
 }
