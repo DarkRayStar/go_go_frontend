@@ -105,7 +105,7 @@ function OrderHistory() {
                                                                     </MDBTypography>
                                                                 </MDBCol>
 
-                                                                <MDBCol style={{ marginLeft: "595px" }}> Order date : 2022-09-02 </MDBCol>
+                                                                <MDBCol style={{ marginLeft: "600px" }}> Order date : {cartItem.orderedDate.substring(0, 9)} </MDBCol>
                                                             </MDBRow>
                                                             <MDBRow>
                                                                 <hr className='hrMod'></hr>
