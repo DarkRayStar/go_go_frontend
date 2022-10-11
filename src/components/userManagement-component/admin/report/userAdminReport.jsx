@@ -386,7 +386,7 @@ export default function UserAdminReport(p) {
   }, [])
 
 
-  const generateReport =() => {
+  const generateReport = () => {
 
   }
 
@@ -404,7 +404,7 @@ export default function UserAdminReport(p) {
         <FontAwesomeIcon icon={faArrowAltCircleLeft} />
         &nbsp;Go Back
       </Link>
-<br></br>  <br></br> <br></br> 
+      <br></br>  <br></br> <br></br>
       <div className="userReportContainer">
         <center>
           <table>
@@ -436,9 +436,9 @@ export default function UserAdminReport(p) {
         </center>
       </div>
 
-<div style={{marginBottom:"30px"}}>
-                <button className="reportbtn btn btn-dark" onClick={generateReport}>Print</button>
-</div>
+      <div style={{ marginBottom: "30px" }}>
+        <button className="reportbtn btn btn-dark" onClick={generateReport}>Print</button>
+      </div>
     </div>
 
   )

@@ -66,7 +66,7 @@ const SignIn = () => {
                     <div className={styles.left}>
 
                         <form className={styles.form_container} onSubmit={handleSubmit}>
-                            <h1 style={{marginTop:"-50px" , marginBottom:"20px"}}>Login Here</h1>
+                            <h1 style={{ marginTop: "-50px", marginBottom: "20px" }}>Login Here</h1>
 
                             <label style={{ marginLeft: '-330px', fontWeight: "bold" }}>Email </label>
                             <input
@@ -91,7 +91,7 @@ const SignIn = () => {
                             />
 
                             {/* <Link to="/forgot-password" style={{ marginLeft: '85px', alignSelf: "flex-start" }}> */}
-                            <p className={styles.form_p} onClick={forgotpass} style={{ textDecoration: "underline", color: 'Blue', cursor: 'pointer', marginLeft: '110px', alignSelf: "flex-start", padding: "0 15px" , marginTop:"10px" }}>Forgot Password ?</p>
+                            <p className={styles.form_p} onClick={forgotpass} style={{ textDecoration: "underline", color: 'Blue', cursor: 'pointer', marginLeft: '110px', alignSelf: "flex-start", padding: "0 15px", marginTop: "10px" }}>Forgot Password ?</p>
                             {/* </Link> */}
 
                             {/* {error && <div className={styles.err_msg}>{error}</div>} */}
@@ -102,7 +102,7 @@ const SignIn = () => {
                     </div>
 
                     <div className={styles.right}>
-                        <h1 style={{ textAlign: 'center', marginTop:"20px" , marginBottom:"20px" , fontSize:"36px"}}>Don't have an Account?</h1>
+                        <h1 style={{ textAlign: 'center', marginTop: "20px", marginBottom: "20px", fontSize: "36px" }}>Don't have an Account?</h1>
                         {/* <Link to="/registration"> */}
                         <button type='button' onClick={registerButton} className={styles.w_button}>Sign up</button>
                         {/* </Link> */}
