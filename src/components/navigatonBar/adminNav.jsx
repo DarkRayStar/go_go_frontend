@@ -14,7 +14,7 @@ function AdminNavBarGoGo() {
 					<nav>
 						<a href='/#'>DASHBOARD</a>
 						<a href='/#'>ABOUT US</a>
-						<a href='/#'>MY ACCOUNT</a>
+						<a href='/'>LOGOUT</a>
 						{/* <a href="/user-profile"><img style={{ width: "35px", height: "35px", borderRadius: '50px', marginRight: "20px" }} src={user.image} alt=""></img></a> */}
 					</nav>
 					{/* <button className={styles.w_button} onClick={handleLogout}>

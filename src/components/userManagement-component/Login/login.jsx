@@ -34,8 +34,13 @@ const SignIn = () => {
                 "loggeduser",
                 JSON.stringify(res.user)
             );
+
+            if (res.user.email === 'kushanisakalasooriya273@gmail.com') {
+                window.location = "/user-admin-dashboard";
+            } else {
+                window.location = "/userHome";
+            }
             // window.location = "/user-profile";
-            window.location = "/userHome";
             // window.location = `/user-profile/${res.user._id}`
         }
         catch (error) {
