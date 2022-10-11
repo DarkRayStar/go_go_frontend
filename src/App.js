@@ -20,6 +20,7 @@ import UpdateUserProfile from "./components/userManagement-component/updateProfi
 import userAdminDashboard from "./components/userManagement-component/admin/userAdminDashboard";
 import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/viewAllMembers/allMembersRetrieve";
 import UserAdminReport from "./components/userManagement-component/admin/report/userAdminReport";
+import PrintingClass from "./components/userManagement-component/admin/report/testingreport/usertreporttesting";
 
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
@@ -55,6 +56,7 @@ import ItemDetails from "./components/storeAdmin-components/itemDetails";
 
 
 
+
 <link rel="stylesheet" href="./" />;
 
 function App() {
@@ -79,7 +81,8 @@ function App() {
           <Route path="/update-user-profile" component={UpdateUserProfile} />
           <Route path="/user-admin-dashboard" component={userAdminDashboard} />
           <Route path="/registered-members" component={AllRegisteredMemebersDisplay} />
-          <Route path="/user-admin-report" component={UserAdminReport} />
+          {/* <Route path="/user-admin-report" component={UserAdminReport} /> */}
+          <Route path="/user-admin-report" component={PrintingClass} />
 
 
           <Route path="/home" component={HomePage} />
