@@ -41,7 +41,7 @@ function ViewAllRegisteredMembers() {
         getAllUserDetails();
     }, [])
 
-// get search details
+    // get search details
     const handleSubmit = (e) => {
         e.preventDefault();
         axios

@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import "./userAdmin.css";
 import Grid from "@mui/material/Grid";
+import AdminNavBarGoGo from '../../navigatonBar/adminNav';
 
 function userAdminDashboard() {
 
@@ -15,6 +16,7 @@ function userAdminDashboard() {
 
     return (
         <>
+        <AdminNavBarGoGo/>
             <div className="container bkgrnduser" style={{ maxWidth: "80%" }}>
                 <hr></hr>
                 <h5 style={{ marginTop: '100px' }}>Welcome, John !</h5>

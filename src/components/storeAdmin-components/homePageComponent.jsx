@@ -15,6 +15,7 @@ import {
 } from 'mdb-react-ui-kit';
 import HomeSlider from './homeSlider';
 import HomeCarousel from './homeCarousel';
+import NavBarGoGo from '../navigatonBar/navbarGoGo';
 
 const HomePageComponent = () => {
 
@@ -50,55 +51,59 @@ const HomePageComponent = () => {
     }
 
     return (
-        <div className='container'>
+        <div>
+            <NavBarGoGo/>
 
-            <div className="col-12 mb-5">
-                <div className="mb-3 col-4 mx-auto text-center">
-                    <label className="form-label h4 mt-3" style={{ color: 'white' }}> Search </label>
-                    <input className="form-control" type="text" value={filter} onChange={searchText.bind(this)} />
+            <div className='container'>
+
+                <div className="col-12 mb-5">
+                    <div className="mb-3 col-4 mx-auto text-center">
+                        <label className="form-label h4 mt-3" style={{ color: 'white' }}> Search </label>
+                        <input className="form-control" type="text" value={filter} onChange={searchText.bind(this)} />
+                    </div>
                 </div>
-            </div>
-            {/* <HomeSlider/> */}
-            <center><HomeCarousel /></center>
-            <div className="mx-auto">
-                <MDBRow className='row-cols-1 row-cols-md-3 g-4' style={{ paddingLeft: '80px' }}>
-                    {dataSearch.map((item, index) => {
-                        return (
-                            <MDBCol>
-                                <MDBCard
-                                    className='h-100 '
-                                    style={{ width: '300px' }}>
-                                    {/* <MDBCardImage
+                {/* <HomeSlider/> */}
+                <center><HomeCarousel /></center>
+                <div className="mx-auto">
+                    <MDBRow className='row-cols-1 row-cols-md-3 g-4' style={{ paddingLeft: '80px' }}>
+                        {dataSearch.map((item, index) => {
+                            return (
+                                <MDBCol>
+                                    <MDBCard
+                                        className='h-100 '
+                                        style={{ width: '300px' }}>
+                                        {/* <MDBCardImage
                                         className='card_image'
                                         src={item.images}
                                         alt='...'
                                         position='top'
                                     /> */}
-                                    {/* <Link>  */}
-                                    <div className='imgbk'><img onClick={() => imageClick(item._id)} className='card_image' src={item.images} /></div>
-                                    {/* </Link> */}
-                                    <MDBCardBody>
-                                        <center>
-                                            <MDBCardTitle > {item.itemName} </MDBCardTitle>
-                                            <MDBCardText >
-                                                Rs. {item.price}.00
-                                            </MDBCardText>
-                                        </center>
-                                    </MDBCardBody>
-                                    <MDBCardFooter style={{ backgroundColor: 'white' }}>
-                                        <center>
-                                            <Link to={"/"}><MDBBtn className="btn btn-outline-secondary btn-sm" href='#' style={{ float: "right", color: 'white', backgroundColor: '#B21B25' }}> Add to cart </MDBBtn></Link>
-                                        </center>
-                                    </MDBCardFooter>
-                                </MDBCard>
+                                        {/* <Link>  */}
+                                        <div className='imgbk'><img onClick={() => imageClick(item._id)} className='card_image' src={item.images} /></div>
+                                        {/* </Link> */}
+                                        <MDBCardBody>
+                                            <center>
+                                                <MDBCardTitle > {item.itemName} </MDBCardTitle>
+                                                <MDBCardText >
+                                                    Rs. {item.price}.00
+                                                </MDBCardText>
+                                            </center>
+                                        </MDBCardBody>
+                                        <MDBCardFooter style={{ backgroundColor: 'white' }}>
+                                            <center>
+                                                <Link to={"/"}><MDBBtn className="btn btn-outline-secondary btn-sm" href='#' style={{ float: "right", color: 'white', backgroundColor: '#B21B25' }}> Add to cart </MDBBtn></Link>
+                                            </center>
+                                        </MDBCardFooter>
+                                    </MDBCard>
 
-                            </MDBCol>
+                                </MDBCol>
 
-                        )
-                    })}
-                </MDBRow>
+                            )
+                        })}
+                    </MDBRow>
+                </div>
+                <br /><br />
             </div>
-            <br /><br />
         </div>
     )
 }
