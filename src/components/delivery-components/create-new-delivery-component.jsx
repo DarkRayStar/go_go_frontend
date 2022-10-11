@@ -45,7 +45,7 @@ export default function NewDelivery() {
         service: service,
         trackingID: trackingID,
         fee: fee,
-        status: status
+        status: status,
       };
 
       axios
@@ -91,42 +91,63 @@ export default function NewDelivery() {
   };
 
   const selectProvince = (district) => {
-    if ( district === 'Matale' || district === 'Kandy' || district === 'Nuwara Eliya' ){
-      return 'Central';
-    } else if ( district === 'Colombo' || district === 'Gampaha' || district === 'Kalutara' ){
-      return 'Western';
-    } else if ( district === 'Galle' || district === 'Matara' || district === 'Hambantota' ){
-      return 'Southern';
-    } else if ( district === 'Jaffna' || district === 'Kilinochchi' || district === 'Mannar' || district === 'Vavuniya' || district === 'Mullaitivu' ){
-      return 'Northern';
-    } else if ( district === 'Batticaloa' || district === 'Ampara' || district === 'Trincomalee' ){
-      return 'Eastern';
-    } else if (district === 'Puttalam' || district === 'Kurunegala' ){
-      return 'North Western';
-    } else if (district === 'Anuradhapura' || district === 'Polonnaruwa' ){
-      return 'North Central';
-    } else if (district === 'Badulla' || district === 'Moneragala' ) {
-      return 'Uva'
-    } else if (district === 'Ratnapura' || district === 'Kegalle' ){
-      return 'Sabaragamuwa'
+    if (
+      district === "Matale" ||
+      district === "Kandy" ||
+      district === "Nuwara Eliya"
+    ) {
+      return "Central";
+    } else if (
+      district === "Colombo" ||
+      district === "Gampaha" ||
+      district === "Kalutara"
+    ) {
+      return "Western";
+    } else if (
+      district === "Galle" ||
+      district === "Matara" ||
+      district === "Hambantota"
+    ) {
+      return "Southern";
+    } else if (
+      district === "Jaffna" ||
+      district === "Kilinochchi" ||
+      district === "Mannar" ||
+      district === "Vavuniya" ||
+      district === "Mullaitivu"
+    ) {
+      return "Northern";
+    } else if (
+      district === "Batticaloa" ||
+      district === "Ampara" ||
+      district === "Trincomalee"
+    ) {
+      return "Eastern";
+    } else if (district === "Puttalam" || district === "Kurunegala") {
+      return "North Western";
+    } else if (district === "Anuradhapura" || district === "Polonnaruwa") {
+      return "North Central";
+    } else if (district === "Badulla" || district === "Moneragala") {
+      return "Uva";
+    } else if (district === "Ratnapura" || district === "Kegalle") {
+      return "Sabaragamuwa";
     }
-  }
+  };
 
-  const changeDistrict = (e) =>{
+  const changeDistrict = (e) => {
     setDistrict(e.target.value);
     setProvince(selectProvince(e.target.value));
-  }
+  };
 
   return (
-    <div style={{ marginTop: "70px", paddingBottom: "60px" }}>
+    <div style={{ paddingTop: "70px", paddingBottom: "60px" }}>
+      
       <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          marginBottom: "4vh",
         }}
         onClick={() => history.goBack()}
-        to="#"
         className="backLink"
       >
         <FontAwesomeIcon icon={faArrowAltCircleLeft} />
@@ -141,6 +162,7 @@ export default function NewDelivery() {
           backgroundColor: "rgb(207, 210, 207,0.5)",
           height: "520px",
           marginBottom: "50px",
+          marginTop: "100px",
         }}
       >
         <h3
@@ -278,8 +300,7 @@ export default function NewDelivery() {
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   type="text"
                   placeholder="Email"
-                  {...register("Email", {
-                  })}
+                  {...register("Email", {})}
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   required
@@ -333,7 +354,7 @@ export default function NewDelivery() {
                 <select
                   {...register("District")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
-                  onChange={ (e) => changeDistrict(e) }
+                  onChange={(e) => changeDistrict(e)}
                   value={district}
                   required
                 >

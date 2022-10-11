@@ -7,6 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import Barcode from "react-barcode";
 
 export default function DeliveryInformation() {
   let history = useHistory();
@@ -37,8 +38,6 @@ export default function DeliveryInformation() {
     formState: { errors },
   } = useForm();
 
-
-
   useEffect(() => {
     axios.get(`http://localhost:5050/delivery/${deliveryID}`).then((res) => {
       setData(res.data);
@@ -58,42 +57,72 @@ export default function DeliveryInformation() {
   }, [logResult]);
 
   const selectProvince = (district) => {
-    if ( district === 'Matale' || district === 'Kandy' || district === 'Nuwara Eliya' ){
-      return 'Central';
-    } else if ( district === 'Colombo' || district === 'Gampaha' || district === 'Kalutara' ){
-      return 'Western';
-    } else if ( district === 'Galle' || district === 'Matara' || district === 'Hambantota' ){
-      return 'Southern';
-    } else if ( district === 'Jaffna' || district === 'Kilinochchi' || district === 'Mannar' || district === 'Vavuniya' || district === 'Mullaitivu' ){
-      return 'Northern';
-    } else if ( district === 'Batticaloa' || district === 'Ampara' || district === 'Trincomalee' ){
-      return 'Eastern';
-    } else if (district === 'Puttalam' || district === 'Kurunegala' ){
-      return 'North Western';
-    } else if (district === 'Anuradhapura' || district === 'Polonnaruwa' ){
-      return 'North Central';
-    } else if (district === 'Badulla' || district === 'Moneragala' ) {
-      return 'Uva'
-    } else if (district === 'Ratnapura' || district === 'Kegalle' ){
-      return 'Sabaragamuwa'
+    if (
+      district === "Matale" ||
+      district === "Kandy" ||
+      district === "Nuwara Eliya"
+    ) {
+      return "Central";
+    } else if (
+      district === "Colombo" ||
+      district === "Gampaha" ||
+      district === "Kalutara"
+    ) {
+      return "Western";
+    } else if (
+      district === "Galle" ||
+      district === "Matara" ||
+      district === "Hambantota"
+    ) {
+      return "Southern";
+    } else if (
+      district === "Jaffna" ||
+      district === "Kilinochchi" ||
+      district === "Mannar" ||
+      district === "Vavuniya" ||
+      district === "Mullaitivu"
+    ) {
+      return "Northern";
+    } else if (
+      district === "Batticaloa" ||
+      district === "Ampara" ||
+      district === "Trincomalee"
+    ) {
+      return "Eastern";
+    } else if (district === "Puttalam" || district === "Kurunegala") {
+      return "North Western";
+    } else if (district === "Anuradhapura" || district === "Polonnaruwa") {
+      return "North Central";
+    } else if (district === "Badulla" || district === "Moneragala") {
+      return "Uva";
+    } else if (district === "Ratnapura" || district === "Kegalle") {
+      return "Sabaragamuwa";
     }
-  }
+  };
 
-  const changeDistrict = (e) =>{
+  const Print = () => {
+    //console.log('print');
+    let printContents = document.getElementById("printArea").innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  };
+
+  const changeDistrict = (e) => {
     setDistrict(e.target.value);
     setProvince(selectProvince(e.target.value));
-  }
+  };
 
   return (
-    <div style={{ marginTop: "70px", paddingBottom: "60px" }}>
+    <div style={{ paddingTop: "100px", paddingBottom: "60px" }}>
       <Link
         style={{
           marginLeft: "10%",
-          marginTop: "5vh",
+          marginTop: "2vh",
           marginBottom: "3vh",
         }}
         onClick={() => history.goBack()}
-        to="#"
         className="backLink"
       >
         <FontAwesomeIcon icon={faArrowAltCircleLeft} />
@@ -108,6 +137,7 @@ export default function DeliveryInformation() {
           backgroundColor: "rgb(207, 210, 207,0.5)",
           height: "520px",
           marginBottom: "50px",
+          marginTop: "80px",
         }}
       >
         <h3
@@ -129,81 +159,172 @@ export default function DeliveryInformation() {
             borderRadius: "10px",
           }}
         >
-          
-            <Grid container spacing={2} sx={{ width: "80%", margin: "auto" }}>
-              <Grid item xs={3}>
-                <label>Customer Name : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>{customerName}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>State/Province : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{province}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Mobile Number : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{mobileNo}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Postal/ZIP Code : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{zip}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Landline Number : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{landlineNo}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Delivery Partner : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{service}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Email : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{email}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Tracking ID : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{trackingID}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Address : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{address}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Delivery Fee : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{fee}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>District : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{district}</label>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Status : </label>
-              </Grid>
-              <Grid item xs={3}>
-              <label>{status}</label>
-              </Grid>
+          <Grid container spacing={2} sx={{ width: "80%", margin: "auto" }}>
+            <Grid item xs={3}>
+              <label>Customer Name : </label>
             </Grid>
+            <Grid item xs={3}>
+              <label>{customerName}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>State/Province : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{province}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Mobile Number : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{mobileNo}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Postal/ZIP Code : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{zip}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Landline Number : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{landlineNo}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Delivery Partner : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{service}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Email : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{email}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Tracking ID : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{trackingID}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Address : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{address}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Delivery Fee : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{fee}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>District : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{district}</label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>Status : </label>
+            </Grid>
+            <Grid item xs={3}>
+              <label>{status}</label>
+            </Grid>
+          </Grid>
+        </div>
+        <button
+          className="button-33"
+          onClick={() => Print()}
+          style={{ display: "block", margin: "auto", marginTop: "40px" }}
+        >
+          PRINT SHIPPING LABEL
+        </button>
+      </div>
+      <div id="printArea" style={{ display: "none" }}>
+        <div
+          style={{
+            borderWidth: "2px",
+            border: "solid",
+            marginLeft: "15%",
+            marginRight: "15%",
+          }}
+        >
+          <center>
+            <br />
+            <h2>GO GO GADGETS STORE DELIVERY</h2>
+            <h4>SHIPPING LABEL</h4>
+            <Barcode width="1" height="70" value={deliveryID} />;
+          </center>
+          <table style={{ width: "80%", margin: "auto" }}>
+            <tr>
+              <td>
+                <br />
+                <p style={{ paddingLeft: "25%" }}>
+                  <span style={{ fontWeight: "700" }}>TRACKING NO:<br/></span>{" "}
+                  {trackingID}
+                </p>
+                <p style={{ paddingLeft: "25%" }}>
+                  <span style={{ fontWeight: "700" }}>COURIER:</span> {service}
+                </p>
+              </td>
+              <td>
+                <p style={{ paddingLeft: "15%" }}>
+                  <span style={{ fontWeight: "700" }}>DELIVERY CHARGE:</span>{" "}
+                  LKR {fee}.00
+                </p>
+                <p style={{ color: "transparent" }}>sample</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span style={{ paddingLeft: "25%" }}>
+                  <label style={{ fontWeight: "700" }}>FROM : </label>
+                  <p style={{ paddingLeft: "25%" }}>
+                    GO GO GADGETS HOUSE
+                    <br />
+                    NO 445/11 CITY PLAZA
+                    <br />
+                    KANDY CITY CENTER
+                    <br />
+                    KANDY
+                    <br />
+                    077-4584215
+                    <br />
+                    081-4545847
+                  </p>
+                </span>
+              </td>
+              <td>
+                <label style={{ fontWeight: "700", paddingLeft: "15%" }}>
+                  TO :{" "}
+                </label>
+                <p style={{ paddingLeft: "15%" }}>
+                  {customerName}
+                  <br />
+                  {address}
+                  <br />
+                  {district}
+                  <br />
+                  {province} Province
+                  <br />
+                  ZIP:{zip}
+                  <br />
+                  {mobileNo}
+                  <br />
+                  {landlineNo}
+                </p>
+              </td>
+            </tr>
+          </table>
+          <center>
+            <br />
+            <i>
+              <h4>THANK YOU FOR YOU PURCHASE!</h4>
+            </i>
+          </center>
+          <br />
         </div>
       </div>
     </div>

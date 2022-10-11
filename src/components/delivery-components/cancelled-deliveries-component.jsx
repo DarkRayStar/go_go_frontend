@@ -193,17 +193,17 @@ const CancelledDeliveries = () => {
       <Link
         style={{
           marginLeft: "10%",
-          marginTop: "6vh",
+          marginTop: "5vh",
           marginBottom: "1vh",
         }}
         onClick={() => history.goBack()}
-        to="#"
         className="backLink"
       >
         <FontAwesomeIcon icon={faArrowAltCircleLeft} />
         &nbsp;Go Back
       </Link>
-      <div style={{ marginTop: "30px" }}>
+
+      <div style={{ paddingTop: "120px" }}>
         <div
           style={{
             backgroundColor: "rgb(207, 210, 207,0.8)",

@@ -290,7 +290,7 @@ const OngoingDeliveries = () => {
         &nbsp;Go Back
       </Link>
 
-      <div style={{ marginTop: "30px" }}>
+      <div style={{ paddingTop: "100px" }}>
         <div
           style={{
             backgroundColor: "rgb(207, 210, 207,0.8)",

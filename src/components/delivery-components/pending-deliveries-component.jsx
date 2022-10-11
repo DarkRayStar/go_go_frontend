@@ -161,7 +161,7 @@ const PendingDeliveries = () => {
         backgroundColor: "rgb(207, 210, 207,0.5)",
         display: "block",
         margin: "0 auto",
-        marginTop: '70px',
+        paddingTop: '100px',
         paddingBottom: '150px'
       }}
     >
@@ -180,7 +180,7 @@ const PendingDeliveries = () => {
         &nbsp;Go Back
       </Link>
 
-      <div style={{ marginTop: "30px" }}>
+      <div style={{ paddingTop: "100px" }}>
         <div
           style={{
             backgroundColor: "rgb(207, 210, 207,0.8)",
