@@ -53,6 +53,7 @@ import HomePageComponent from "./components/storeAdmin-components/homePageCompon
 import HomeSlider from "./components/storeAdmin-components/homeSlider";
 import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
+import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
 
 
@@ -107,6 +108,7 @@ function App() {
           <Route path="/delivery-cancelled" component={CancelledDeliveries} />
           <Route path="/delivery-new" component={NewDelivery} />
           <Route path="/delivery-update" component={UpdateDelivery} />
+          <Route path="/delivery-information" component={DeliveryInformation} />
 
           {/* storeAdminroutes */}
           <Route path="/storeAdmin" component={ItemRetrieve} />

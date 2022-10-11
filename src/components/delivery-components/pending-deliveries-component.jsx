@@ -58,9 +58,9 @@ const PendingDeliveries = () => {
         return (
           <Fragment>
             <button
-              style={{ margin: "0 auto", display: "block" }}
+              style={{ margin: "0 auto", display: "block", color: 'white' }}
               name="Delete"
-              className="btn btn-danger btn-sm"
+              className="btn info btn-sm"
               onClick={() =>  arrangeDelivery(record) }>
               ARRANGE DELIVERY
             </button>
@@ -161,15 +161,16 @@ const PendingDeliveries = () => {
         backgroundColor: "rgb(207, 210, 207,0.5)",
         display: "block",
         margin: "0 auto",
+        paddingTop: '100px',
+        paddingBottom: '150px'
       }}
     >
-      <Navbar />
 
       <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          marginBottom: "5vh",
+          marginBottom: "1vh",
         }}
         onClick={() => history.goBack()}
         to="#"
@@ -179,7 +180,7 @@ const PendingDeliveries = () => {
         &nbsp;Go Back
       </Link>
 
-      <div style={{ marginTop: "30px" }}>
+      <div style={{ paddingTop: "100px" }}>
         <div
           style={{
             backgroundColor: "rgb(207, 210, 207,0.8)",
@@ -205,16 +206,6 @@ const PendingDeliveries = () => {
           />
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "rgb(109, 112, 166,0.5)",
-          height: "100px",
-          position: "inherit",
-          marginBottom: "0",
-          width: "100%",
-          marginTop: "200px",
-        }}
-      />
     </div>
   );
 };

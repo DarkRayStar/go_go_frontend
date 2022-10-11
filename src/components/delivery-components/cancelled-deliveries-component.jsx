@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
 import Navbar from "../navbar.component";
@@ -9,13 +9,30 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
 const CancelledDeliveries = () => {
   let history = useHistory();
-  const [submissionList, setSubmissionList] = useState("");
   const [data, setData] = useState("");
   // const [records, setRecords] = useState("");
 
+  const logResult = useCallback(() => {
+    return 2 + 2;
+  }, []); //logResult is memoized now.
+
+  useEffect(() => {
+    axios.get("http://localhost:5050/delivery/").then((res) => {
+      setData(res.data);
+      const ongoingList = [];
+
+      for (let x = 0; x < res.data.length; x++) {
+        if (res.data[x].status === "Cancelled") {
+          ongoingList.push(res.data[x]);
+        }
+      }
+      setData(ongoingList);
+    });
+  }, [logResult]);
+
   const columns = [
     {
-      key: "deliveryID",
+      key: "_id",
       text: "DELIVERY ID",
       className: "name",
       align: "left",
@@ -42,9 +59,10 @@ const CancelledDeliveries = () => {
           <div style={{ textAlign: "center" }}>
             <Fragment>
               <button
+                style={{ color: "white" }}
                 name="view"
-                className="btn btn-danger btn-sm"
-                onClick={() => deleteRecord(record)}
+                className="btn info btn-sm"
+                onClick={() => viewDelivery(record)}
               >
                 VIEW DETAILS
               </button>
@@ -91,6 +109,11 @@ const CancelledDeliveries = () => {
       customerName: "Ayesha Dasanayake",
     },
   ];
+
+  const viewDelivery = (record) => {
+    sessionStorage.setItem("currentViewDeliveryID", record._id);
+    window.location = "/delivery-information";
+  };
 
   const extraButtons = [
     {
@@ -163,23 +186,24 @@ const CancelledDeliveries = () => {
         backgroundColor: "rgb(207, 210, 207,0.5)",
         display: "block",
         margin: "0 auto",
+        marginTop: "70px",
+        paddingBottom: "150px",
       }}
     >
-      <Navbar />
       <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          marginBottom: "5vh",
+          marginBottom: "1vh",
         }}
         onClick={() => history.goBack()}
-        to="#"
         className="backLink"
       >
         <FontAwesomeIcon icon={faArrowAltCircleLeft} />
         &nbsp;Go Back
       </Link>
-      <div style={{ marginTop: "30px" }}>
+
+      <div style={{ paddingTop: "120px" }}>
         <div
           style={{
             backgroundColor: "rgb(207, 210, 207,0.8)",
@@ -199,22 +223,12 @@ const CancelledDeliveries = () => {
           <br />
           <ReactDatatable
             config={config}
-            records={records}
+            records={data}
             columns={columns}
             extraButtons={extraButtons}
           />
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "rgb(109, 112, 166,0.5)",
-          height: "100px",
-          position: "inherit",
-          marginBottom: "0",
-          width: "100%",
-          marginTop: "200px",
-        }}
-      />
     </div>
   );
 };

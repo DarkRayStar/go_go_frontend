@@ -22,7 +22,7 @@ export default function NewDelivery() {
   const [service, setService] = useState("");
   const [trackingID, setTrackingID] = useState("");
   const [fee, setFee] = useState("");
-  const [data, setData] = useState([]);
+  const [status, setStatus] = useState("Ongoing");
 
   const {
     register,
@@ -31,26 +31,30 @@ export default function NewDelivery() {
   } = useForm();
 
   const onSubmit = () => {
-    const delivery = {
-      customerName: customerName,
-      mobileNumber: mobileNo,
-      landlineNumber: landlineNo,
-      email: email,
-      address: address,
-      district: district,
-      province: province,
-      zip: zip,
-      service: service,
-      trackingID: trackingID,
-      fee: fee,
-    };
+    var answer = window.confirm("Are you sure to create new the delivery?");
+    if (answer) {
+      const delivery = {
+        customerName: customerName,
+        mobileNumber: mobileNo,
+        landlineNumber: landlineNo,
+        email: email,
+        address: address,
+        district: district,
+        province: province,
+        zip: zip,
+        service: service,
+        trackingID: trackingID,
+        fee: fee,
+        status: status,
+      };
 
-    axios
-      .post("http://localhost:5050/delivery/add", delivery)
-      .then((res) => console.log(res.data));
+      axios
+        .post("http://localhost:5050/delivery/add", delivery)
+        .then((res) => console.log(res.data));
 
-    sessionStorage.setItem("currentNewDeliveryEmail", undefined);
-    window.location = "delivery-ongoing";
+      sessionStorage.setItem("currentNewDeliveryEmail", undefined);
+      window.location = "delivery-ongoing";
+    }
   };
 
   const logResult = useCallback(() => {
@@ -79,22 +83,71 @@ export default function NewDelivery() {
   }, [logResult]);
 
   const cancelButton = () => {
-    sessionStorage.setItem("currentNewDeliveryEmail", undefined);
-    history.goBack()
+    var answer = window.confirm("Are you sure to abort delivery creation?");
+    if (answer) {
+      sessionStorage.setItem("currentNewDeliveryEmail", undefined);
+      history.goBack();
+    }
+  };
+
+  const selectProvince = (district) => {
+    if (
+      district === "Matale" ||
+      district === "Kandy" ||
+      district === "Nuwara Eliya"
+    ) {
+      return "Central";
+    } else if (
+      district === "Colombo" ||
+      district === "Gampaha" ||
+      district === "Kalutara"
+    ) {
+      return "Western";
+    } else if (
+      district === "Galle" ||
+      district === "Matara" ||
+      district === "Hambantota"
+    ) {
+      return "Southern";
+    } else if (
+      district === "Jaffna" ||
+      district === "Kilinochchi" ||
+      district === "Mannar" ||
+      district === "Vavuniya" ||
+      district === "Mullaitivu"
+    ) {
+      return "Northern";
+    } else if (
+      district === "Batticaloa" ||
+      district === "Ampara" ||
+      district === "Trincomalee"
+    ) {
+      return "Eastern";
+    } else if (district === "Puttalam" || district === "Kurunegala") {
+      return "North Western";
+    } else if (district === "Anuradhapura" || district === "Polonnaruwa") {
+      return "North Central";
+    } else if (district === "Badulla" || district === "Moneragala") {
+      return "Uva";
+    } else if (district === "Ratnapura" || district === "Kegalle") {
+      return "Sabaragamuwa";
+    }
+  };
+
+  const changeDistrict = (e) => {
+    setDistrict(e.target.value);
+    setProvince(selectProvince(e.target.value));
   };
 
   return (
-    <div>
-      <Navbar />
-
+    <div style={{ paddingTop: "70px", paddingBottom: "60px" }}>
+      
       <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          marginBottom: "5vh",
         }}
         onClick={() => history.goBack()}
-        to="#"
         className="backLink"
       >
         <FontAwesomeIcon icon={faArrowAltCircleLeft} />
@@ -109,6 +162,7 @@ export default function NewDelivery() {
           backgroundColor: "rgb(207, 210, 207,0.5)",
           height: "520px",
           marginBottom: "50px",
+          marginTop: "100px",
         }}
       >
         <h3
@@ -145,6 +199,7 @@ export default function NewDelivery() {
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   onChange={(e) => setCustomerName(e.target.value)}
                   value={customerName}
+                  required
                 />
               </Grid>
               <Grid item xs={3}>
@@ -156,6 +211,7 @@ export default function NewDelivery() {
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   onChange={(e) => setProvince(e.target.value)}
                   value={province}
+                  disabled
                 >
                   <option value="Select Province">Select Province</option>
                   <option value="Central">Central</option>
@@ -182,6 +238,9 @@ export default function NewDelivery() {
                   })}
                   onChange={(e) => setMobileNo(e.target.value)}
                   value={mobileNo}
+                  required
+                  pattern="[0-9]{10}"
+                  title="Please enter a valid mobile number. (DO NOT INCLUDE COUNTRY CODE)"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -207,6 +266,9 @@ export default function NewDelivery() {
                   {...register("Landline Number", {})}
                   onChange={(e) => setLandlineNo(e.target.value)}
                   value={landlineNo}
+                  required
+                  pattern="[0-9]{10}"
+                  title="Please enter a valid mobile number. (DO NOT INCLUDE COUNTRY CODE)"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -217,6 +279,8 @@ export default function NewDelivery() {
                   {...register("Delivery Partner")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   onChange={(e) => setService(e.target.value)}
+                  required
+                  title="Select a delivery partner."
                 >
                   <option value="Select Service">Select Service</option>
                   <option value="DOMEX">DOMEX</option>
@@ -236,12 +300,12 @@ export default function NewDelivery() {
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   type="text"
                   placeholder="Email"
-                  {...register("Email", {
-                    required: true,
-                    pattern: /^\S+@\S+$/i,
-                  })}
+                  {...register("Email", {})}
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
+                  required
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  title="Ex : abc@example.com"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -265,6 +329,8 @@ export default function NewDelivery() {
                   {...register("Address", {})}
                   onChange={(e) => setAddress(e.target.value)}
                   value={address}
+                  required
+                  title="Enter a valid Address"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -277,6 +343,8 @@ export default function NewDelivery() {
                   placeholder="Delivery Fee"
                   {...register("Delivery Fee", {})}
                   onChange={(e) => setFee(e.target.value)}
+                  required
+                  pattern="[0-9]{0,5}"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -286,8 +354,9 @@ export default function NewDelivery() {
                 <select
                   {...register("District")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
-                  onChange={(e) => setDistrict(e.target.value)}
+                  onChange={(e) => changeDistrict(e)}
                   value={district}
+                  required
                 >
                   <option value="Select District">Select District</option>
                   <option value="Colombo">Colombo</option>
@@ -327,7 +396,7 @@ export default function NewDelivery() {
                 </button>
                 <button
                   type="button"
-                  className="button-33"
+                  className="button-new-cancel"
                   onClick={() => cancelButton()}
                 >
                   CANCEL
@@ -337,13 +406,6 @@ export default function NewDelivery() {
           </form>
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "rgb(109, 112, 166,0.5)",
-          height: "100px",
-          marginTop: "20px",
-        }}
-      />
     </div>
   );
 }
