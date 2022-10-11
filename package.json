@@ -26,6 +26,7 @@
     "bootstrap": "^5.2.0",
     "chart.js": "^3.9.1",
     "core-js-compat": "^3.25.0",
+    "final-form": "^4.20.7",
     "gensync": "^1.0.0-beta.2",
     "jsesc": "^3.0.2",
     "jsonpointer": "^5.0.1",

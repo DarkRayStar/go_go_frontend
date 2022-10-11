@@ -386,6 +386,11 @@ export default function UserAdminReport(p) {
   }, [])
 
 
+  const generateReport =() => {
+
+  }
+
+
   const goBack = () => {
     window.location = "/user-admin-dashboard"
   }
@@ -399,37 +404,42 @@ export default function UserAdminReport(p) {
         <FontAwesomeIcon icon={faArrowAltCircleLeft} />
         &nbsp;Go Back
       </Link>
-      <center>
-        <table>
-          <div className="container">
-            <div className='col mx-auto'>
-              <div className="card shadow">
-                <div className='card-header bg-success'></div>
-                <div className="card-body">
-                  <div className=''>TOTAL REGISTERED MEMBERS</div>
-                  <center><h5 className=''> {total}</h5></center>
+<br></br>  <br></br> <br></br> 
+      <div className="userReportContainer">
+        <center>
+          <table>
+            <div className="container">
+              <div className='col mx-auto'>
+                <div className="card shadow">
+                  <div className='card-header bg-success'></div>
+                  <div className="card-body">
+                    <div className=''>TOTAL REGISTERED MEMBERS</div>
+                    <center><h5 className=''> {total}</h5></center>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </table>
-      </center>
+          </table>
+        </center>
 
-      <br></br> <br></br>
-      <center>
-        <div className="container">
-          <div className='col-xl-8'>
-            <div className='card shadow'>
-              <div className='card-header bg-light font-weight-bold text-gray-800 text-center'>REPORT REGARDING REGISTERED MEMBERS</div>
+        <br></br> <br></br>
+        <center>
+          <div className="container">
+            <div className='col-xl-8'>
+              <div className='card shadow'>
+                <div className='card-header bg-light font-weight-bold text-gray-800 text-center'>REPORT REGARDING REGISTERED MEMBERS</div>
 
-              <Bar options={options} data={data} />
+                <Bar options={options} data={data} />
+              </div>
             </div>
           </div>
-        </div>
-      </center>
+        </center>
+      </div>
 
+<div style={{marginBottom:"30px"}}>
+                <button className="reportbtn btn btn-dark" onClick={generateReport}>Print</button>
+</div>
     </div>
-
 
   )
 
