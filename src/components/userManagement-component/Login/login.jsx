@@ -34,8 +34,8 @@ const SignIn = () => {
                 "loggeduser",
                 JSON.stringify(res.user)
             );
-            window.location = "/user-profile";
-
+            // window.location = "/user-profile";
+            window.location = "/userHome";
             // window.location = `/user-profile/${res.user._id}`
         }
         catch (error) {
