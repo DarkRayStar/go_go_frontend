@@ -14,11 +14,7 @@ function ViewAllRegisteredMembers() {
 
     const [data, setData] = useState({
         fromDate: "",
-        toDate: "",
-        invoice: [],
-        firstName: "",
-        lastName: "",
-        email: ""
+        toDate: ""
     });
 
     const [searchData, setSearchData] = useState([]);

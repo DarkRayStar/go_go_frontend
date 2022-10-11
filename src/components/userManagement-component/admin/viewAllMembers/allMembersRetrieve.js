@@ -212,7 +212,6 @@ function AllRegisteredMemebersDisplay() {
                             </td>
                         </tr>
                     </table>
-
                 </form>
 
                 <div className="tbl">

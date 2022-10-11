@@ -15,9 +15,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import AdminNavBarGoGo from "../../../navigatonBar/adminNav";
+// import AdminNavBarGoGo from "../../../navigatonBar/adminNav";
 
-export default function UserAdminReport(p) {
+export default function OnlyGraphUserAdmin(p) {
 
   // const [ada, setAda] = useState();
   // const [grase, setGrase] = useState();
@@ -385,25 +385,9 @@ export default function UserAdminReport(p) {
     getSouthernProvinceCount();
   }, [])
 
-
-  const generateReport = () => {
-    // window.print();
-  }
-
-
-  const goBack = () => {
-    window.location = "/user-admin-dashboard"
-  }
-
   return (
 
     <div>
-      <AdminNavBarGoGo />
-      <br></br> <br></br> <br></br> <br></br> <br></br>
-      <Link onClick={goBack} to="#" className="backLink">
-        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-        &nbsp;Go Back
-      </Link>
       <br></br>  <br></br> <br></br>
       <div className="userReportContainer">
         <center>
@@ -436,8 +420,9 @@ export default function UserAdminReport(p) {
         </center>
       </div>
 
-      <div style={{ marginBottom: "30px" }}>
-        <button className="reportbtn btn btn-dark" onClick={generateReport}>Print</button>
+
+      <div style={{ marginBottom:"" }}>
+        {/* <button className="reportbtn btn btn-dark" onClick={generateReport}>Print</button> */}
       </div>
     </div>
 
