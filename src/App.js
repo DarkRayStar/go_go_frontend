@@ -52,6 +52,7 @@ import HomePageComponent from "./components/storeAdmin-components/homePageCompon
 import HomeSlider from "./components/storeAdmin-components/homeSlider";
 import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
+import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
 
 
 
@@ -117,6 +118,7 @@ function App() {
           <Route path="/footer" component={FooterComponent} />
           <Route path="/userHome" component={HomePageComponent} />
           <Route path="/item" component={ItemDetails} />
+          <Route path="/storeAdminReport" component={StoreAdminReport} />
 
         </div>
       </Router >
