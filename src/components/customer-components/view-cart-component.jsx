@@ -14,6 +14,7 @@ import {
 } from "mdb-react-ui-kit";
 import { faArrowAltCircleLeft, faHeart, faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Swal from "sweetalert2";
 
 function ViewCart() {
 
@@ -23,6 +24,7 @@ function ViewCart() {
         try {
             const response = await axios.get('http://localhost:5050/cart');
             setCartItems(response.data);
+            // console.log("fffff", response.data);
         } catch (error) {
             console.log(error);
         }
@@ -75,27 +77,47 @@ function ViewCart() {
     }
 
     //total price calculation
-    const total = (Price, Qty) => {
-        var tot = Price * Qty;
-        return tot
-    }
+    // const total = (Price, Qty) => {
+    //     var tot = Price * Qty;
+    //     return tot
+    // }
+
+    // const getTot = (ttl) => {
+    //     return ttl;
+    // }
 
     //final total
     const finalTotal = async () => {
 
         let object = [];
         let sum = 0;
+        let iId = [];
 
         try {
             const response = await axios.get('http://localhost:5050/cart');
-            // setCartItems(response.data);
             object = response.data
             for (var i = 0; i < object.length; i++) {
                 object[i]
                 sum = sum + (object[i].price * object[i].orderedQuanity)
             }
-            console.log("suuuuuuuuuum", sum);
             sessionStorage.setItem("totalPayemt", sum);
+
+            for (var j = 0; j < object.length; j++) {
+                object[j]
+                if (object[j].orderedQuanity < object[j].quantity) {
+                    iId.push(object[j]._id)
+                    window.location = '/paymentOrder';
+                } else {
+                    alert(object[j].itemName + " is not available")
+                    // Swal.fire({
+                    //     icon: 'error',
+                    //     title: 'Oops...',
+                    //     text: object[j].itemName + " is not available"
+                    // })
+                    // window.location = '/cart/view/';
+                }
+            }
+            sessionStorage.setItem('itemID', JSON.stringify(iId))
 
         } catch (error) {
             console.log(error);
@@ -168,9 +190,12 @@ function ViewCart() {
 
                                                                         const response = await axios.post(`http://localhost:5050/cart/update/${cartItem._id}`, data)
                                                                         // console.log(, data);
-                                                                        if (response.status === 200) {
-                                                                            // alert("Item  Quantity Updated!!!");
-                                                                        }
+                                                                        // if (response.status === 200) {
+                                                                        //     var ttl = cartItem.price * data.orderedQuanity;
+                                                                        //     console.log("TOT", ttl);
+                                                                        //     return ttl;
+                                                                        //     // alert("Item  Quantity Updated!!!");
+                                                                        // }
 
                                                                     } catch (error) {
                                                                         alert(error);
@@ -188,11 +213,12 @@ function ViewCart() {
                                                         </MDBCol>
 
                                                     </MDBRow>
-                                                    Total: Rs {total(cartItem.price, cartItem.orderedQuanity)}
+                                                    {/* Total: Rs {total(cartItem.price, cartItem.orderedQuanity)} */}
+                                                    {/* tot:{getTot()} */}
                                                 </div>
                                             ))}
 
-                                            <center><Link to="/paymentOrder" onClick={() => finalTotal()}><button className='btn btn-secondary' style={{ marginBottom: "50px" }}>Proceed to Checkout</button ></Link></center>
+                                            <center><button onClick={() => finalTotal()} className='btn btn-secondary' style={{ marginBottom: "50px" }}>Proceed to Checkout</button ></center>
                                         </div>
                                     </MDBCol>
 

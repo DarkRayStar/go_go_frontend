@@ -9,35 +9,48 @@ import {
     formatExpirationDate
 } from './cardUtils'
 import axios from 'axios'
+import Swal from "sweetalert2";
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+let updateID = JSON.parse(sessionStorage.getItem("itemID"))
+let price = sessionStorage.getItem("totalPayemt")
+let payId = "";
 
 const onSubmit = async () => {
-    await sleep(300)
-    window.alert("paid?????")
+
     try {
         const data = {
             paidStatus: true,
             showOnCart: false,
+            orderedDate: new Date().toLocaleString(),
         }
 
-        const response = await axios.post(`http://localhost:5050/cart/update/${id}`, data)
-
+        // console.log("orderd Date", data.orderedDate);
+        for (var j = 0; j < updateID.length; j++) {
+            payId = updateID[j];
+            var response = await axios.post(`http://localhost:5050/cart/updatePayment/${payId}`, data)
+        }
         if (response.status === 200) {
-            alert("Note Updated!!!");
-            navigate("/student-home");
+            Swal.fire(
+                'Payment Successful!',
+                'RS: ' + price + '.00',
+                'success'
+            )
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!'
+            })
         }
 
     } catch (error) {
         alert(error);
     }
 }
-console.log("awaaaaaaaaaaaaaaaaaaaa", sessionStorage.getItem("totalPayemt"));
-let price = sessionStorage.getItem("totalPayemt")
 
 const Payment = () => (
     <Styles>
-        <h3 className="headerMod"> Pay Now</h3>
+        <h3 className="PaymentHeaderMod"> Pay Now</h3>
         <Form
             onSubmit={onSubmit}
             render={({
@@ -70,6 +83,7 @@ const Payment = () => (
                                 pattern="[\d| ]{16,22}"
                                 placeholder="Card Number"
                                 format={formatCreditCardNumber}
+                                required
                             />
                         </div>
                         <div>
@@ -78,6 +92,7 @@ const Payment = () => (
                                 component="input"
                                 type="text"
                                 placeholder="Name"
+                                required
                             />
                         </div>
                         <div>
@@ -86,8 +101,9 @@ const Payment = () => (
                                 component="input"
                                 type="text"
                                 pattern="\d\d/\d\d"
-                                placeholder="Exp date"
+                                placeholder="Valid Thru"
                                 format={formatExpirationDate}
+                                required
                             />
                             <Field
                                 name="cvc"
@@ -96,6 +112,7 @@ const Payment = () => (
                                 pattern="\d{3}"
                                 placeholder="CVC"
                                 format={formatCVC}
+                                required
                             />
                         </div>
                         <div className="buttons">
@@ -110,8 +127,7 @@ const Payment = () => (
                                 Reset
                             </button>
                         </div>
-                        <h2>Values</h2>
-                        <pre>{JSON.stringify(values, 0, 2)}</pre>
+
                     </form>
                 )
             }}
