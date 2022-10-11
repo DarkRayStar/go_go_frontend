@@ -1,12 +1,13 @@
-/* .cartDetails_container {
+.cartDetails_container {
 	width: 900px;
 	height: 80px;
 	background-color: #f5f5f5;
 	display: flex;
-
-	margin-left: 320px;
+	margin-top: 60px;
+	margin-left: 90px;
 	margin-bottom: -120px;
-} */
+	
+}
 
 .background {
 	/* background-image: url("https://s2.best-wallpaper.net/wallpaper/1600x900/2002/Blue-and-purple-abstract-background_1600x900.jpg");
@@ -19,7 +20,7 @@
 
 .profile_container {
 	width: 100%;
-	margin-bottom: -125px;
+	margin-bottom: -50px;
 	/* min-height: 89.5vh; */
 	min-height: 98.5vh;
 	/* background-color: #8e23f2; */
@@ -27,7 +28,7 @@
 	align-items: center;
 	justify-content: center;
 
-	margin-top: 60px;
+	margin-top: 80px;
 }
 
 .profile_form_container {

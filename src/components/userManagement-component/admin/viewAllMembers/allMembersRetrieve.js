@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Button, Form, Modal } from "react-bootstrap";
+// import { Button, Form, Modal } from "react-bootstrap";
 import { Fragment, useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import styles from './style.module.css';
@@ -8,16 +8,16 @@ import "./tableTharidu.css"
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
-import { Label } from "@mui/icons-material";
+// import { Label } from "@mui/icons-material";
 
 
 function AllRegisteredMemebersDisplay() {
 
     const [items, setItems] = useState([]);
-    const [search, setSearch] = useState("");
+    // const [search, setSearch] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
-    const [modal, setModal] = useState(false);
-    const [updateModal, setUpdateModal] = useState(false);
+    // const [modal, setModal] = useState(false);
+    // const [updateModal, setUpdateModal] = useState(false);
 
     const columns = [
         {
@@ -55,20 +55,29 @@ function AllRegisteredMemebersDisplay() {
             cell: (row) =>
                 <>
                     <Fragment>
-                        {/* <button onClick={() => openUpdateModal(row._id)} type="button" className=" editbtn btn btn-outline-secondary btn-sm" >  Edit</button> */}
                         <button onClick={() => onSubmit(row._id)} type="button" className="btn btn-outline-danger btn-sm" > Delete</button>
                     </Fragment>
                 </>
         },
     ];
 
+
+  
+
     const onSubmit = (id) => {
-        axios.delete("http://localhost:5050/user/" + id)
+
+        const confirmBox = window.confirm(
+            "Are you sure want to delete your account?"
+        )
+        if (confirmBox === true) {
+            axios.delete("http://localhost:5050/user/" + id)
             .then((res) => {
                 alert("Successfully deleted");
                 const modified = filteredItems.filter(item => item._id !== id);
                 setFilteredItems(modified);
             });
+        }
+        
     }
 
     const getItems = async () => {
@@ -108,7 +117,7 @@ function AllRegisteredMemebersDisplay() {
         email: ""
     });
 
-    const [searchData, setSearchData] = useState([]);
+    // const [searchData, setSearchData] = useState([]);
     const [today, setToday] = useState("");
 
     const handleChange = ({ currentTarget: input }) => {
