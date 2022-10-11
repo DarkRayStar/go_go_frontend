@@ -70,12 +70,6 @@ function App() {
             // backgroundSize: 'cover',
           }}>
 
-          {/* testing navBar */}
-          {/* <NavBarGoGo /> */}
-          {/* <Route path="/navbarGoGo" component={NavBarGoGo} /> */}
-          {/* <Route path="/loginNav" component={LoginNavBarGoGo} /> */}
-          {/* <Route path="/adminNav" component={AdminNavBarGoGo} /> */}
-
 
           {/* user-Management-Routes */}
           <Route path="/" exact component={SignIn} />

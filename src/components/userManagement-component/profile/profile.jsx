@@ -80,8 +80,8 @@ function UserProfile(props) {
     }
 
     const Logout = () => {
-        // window.location = '/';
-        // sessionStorage.clear();
+        window.location = '/';
+        sessionStorage.clear();
     }
 
     return (
