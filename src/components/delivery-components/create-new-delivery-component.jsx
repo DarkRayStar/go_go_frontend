@@ -22,7 +22,7 @@ export default function NewDelivery() {
   const [service, setService] = useState("");
   const [trackingID, setTrackingID] = useState("");
   const [fee, setFee] = useState("");
-  const [data, setData] = useState([]);
+  const [status, setStatus] = useState("Ongoing");
 
   const {
     register,
@@ -45,6 +45,7 @@ export default function NewDelivery() {
         service: service,
         trackingID: trackingID,
         fee: fee,
+        status: status
       };
 
       axios

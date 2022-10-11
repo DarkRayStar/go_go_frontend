@@ -1,0 +1,44 @@
+/* .TpgDh {
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+    font-weight: 500;
+  } */
+
+  .hello{
+    text-align: center;
+  }
+  
+  .previous {
+    background-color: #f1f1f1;
+    color: black;
+  }
+  
+  .dshbrd{
+    /* display: block; */
+    text-align: center;
+    /* justify-content: center; */
+    /* margin: auto; */
+  }
+  
+  .bkgrnd{
+    /* height:155vh; */
+    /* position: absolute;
+    justify-content: center;
+    margin: auto; */
+    /* display: contents; */
+    /* margin-bottom: 0px; */
+    /* margin-top: 300px; */
+  }
+  
+  .header{
+    padding-top: 20px;
+    margin-top: 70px;
+    font-weight: 700;
+    /* margin-left: 50px; */
+  }
+  
+  .dshbtn{
+    height: 70px;
+    width: 250px;
+    border-radius: 30px;
+  }

@@ -37,7 +37,7 @@ const ForgotPassword = () => {
 			<LoginNavBarGoGo />
 			<div className={styles.container}>
 				<form className={styles.form_container} onSubmit={handleSubmit}>
-					<h1>Forgot Password</h1>
+					<h2 style={{ marginTop: "20px", marginBottom: "20px" }}>Forgot Password</h2>
 
 					<label style={{ marginLeft: '-320px', fontWeight: "bold" }}>Email    :</label>
 					<input

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from "./styles.module.css";
 import { faHeart, faListAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import NavBarGoGo from "../../navigatonBar/navbarGoGo";
+import NavBarGoGo from "../../navigatonBar/navbarGoGo";
 
 function UserProfile(props) {
 
@@ -31,6 +31,7 @@ function UserProfile(props) {
 
         try {
             const response = await axios.get('http://localhost:5050/user/' + user._id);
+            // const response = await axios.get('http://localhost:5050/user/' + props.match.params.id);
             setFirstName(response.data.firstName);
             setLastName(response.data.lastName);
             setMobileNumber(response.data.mobileNumber);
@@ -51,7 +52,13 @@ function UserProfile(props) {
 
 
     const UpdateDetails = () => {
-        // window.location = '/';
+        const user = JSON.parse(sessionStorage.getItem("loggeduser"));
+         // create session
+         window.sessionStorage.setItem(
+            "loggeduser",
+            JSON.stringify(user)
+        );
+        window.location = '/update-user-profile';
     }
 
     const DeleteAccount = (id) => {
@@ -73,26 +80,26 @@ function UserProfile(props) {
     }
 
     const Logout = () => {
-        // window.location = '/';
-        // sessionStorage.clear();
+        window.location = '/';
+        sessionStorage.clear();
     }
 
     return (
         <div>
-            {/* <NavBarGoGo/> */}
+            <NavBarGoGo/>
             <div className={styles.background}>
                 <div className={styles.cartDetails_container}>
 
                     {/* cart and History Details */}
 
-                    <table className={styles.cartDetailsTable} style={{ height: "20px", width: "250px", textAlign: "center", marginLeft: "1100px", color: "white", marginTop: "0px", marginBottom: "-100px" }}>
+                    <table className={styles.cartDetailsTable} style={{ height: "20px", width: "800px", textAlign: "center", marginLeft: "1000px", color: "white", marginTop: "20px", marginBottom: "-100px" }}>
                         <tr>
-                            <td style={{}}><Link to="/fav/view/"><FontAwesomeIcon icon={faHeart} /></Link></td>
-                            <td style={{ marginLeft: "0px" }}><Link to="#"><FontAwesomeIcon icon={faListAlt} /></Link></td>
+                            <td ><Link to="/fav/view/"><FontAwesomeIcon icon={faHeart} /></Link></td>
+                            <td><label  style={{ marginLeft: "100px" }}><Link to="#"><FontAwesomeIcon icon={faListAlt} /></Link></label></td>
                         </tr>
-                        <tr>
-                            <th>favorite <br></br>Items</th>
-                            <th>Order <br></br> History</th>
+                        <tr style={{ marginLeft: "100px"}}>
+                            <th><label style={{ color:"black" }}>favorite <br></br>Items</label></th>
+                            <th><label style={{ marginLeft: "100px", color:"black" }}>Order <br></br> History</label></th>
                         </tr>
                     </table>
                 </div>
@@ -109,7 +116,7 @@ function UserProfile(props) {
 
 
 
-                                <h1 style={{ marginTop: "50px", marginBottom: "20px" }}>Account Details</h1>
+                                <h1 style={{ marginTop: "50px", marginBottom: "30px" }}>Account Details</h1>
 
                                 <table>
                                     <thead></thead>
@@ -139,7 +146,7 @@ function UserProfile(props) {
                                         <tr>
                                             <td><button onClick={UpdateDetails} type='button' className={styles.g_button}>Update</button></td>
                                             <td><button onClick={() => DeleteAccount(props.match.params.id)} type='button' className={styles.g_button}>Delete Account</button></td>
-                                            <td><button onClick={Logout} type='button' className={styles.g_button}>Log Out</button></td>
+                                            <td><button onClick={Logout} type='button' className={styles.logout_button}>Log Out</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './item-cart.css';
+import AddReviewsModel from './addReviewModel';
 import {
     MDBCard,
     MDBCardBody,
@@ -13,10 +14,12 @@ import {
 } from "mdb-react-ui-kit";
 import { faCheckCircle, faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Modal, Button } from 'react-bootstrap';
 
 function OrderHistory() {
 
     const [cartItems, setCartItems] = useState([]);
+    const [modal, setModal] = useState(false);
 
     const getCartItems = async () => {
         try {
@@ -31,7 +34,7 @@ function OrderHistory() {
         getCartItems();
     }, [])
 
-    //Remove Item from Cart
+    //Remove Item from Order History
     const onDeleteItem = async (id) => {
         if (window.confirm('Are you sure, you want to delete the selected Item?')) {
             try {
@@ -47,63 +50,45 @@ function OrderHistory() {
         }
     }
 
-    //add to favorites
-    const onAddItem = async (Image, ItemName, Description, Price) => {
-        try {
-            const item = {
-                image: Image,
-                itemName: ItemName,
-                description: Description,
-                price: Price,
-            }
-
-            const response = await axios.post("http://localhost:5050/favorites/add", item)
-
-            if (response.status === 200) {
-                alert("Item Added to the Favorites!!!");
-            }
-
-        } catch (error) {
-            if (error.response.status === 409) {
-                alert(error.response.data.message);
-            }
-            else
-                alert(error);
-        }
-        return false
-    }
-
     const total = (Price, Qty) => {
         return Price * Qty
     }
+
+    const openInsertModal = (ID) => {
+        window.sessionStorage.setItem("itemID", ID);
+        setModal(true);
+    }
+
+    const closeInsertModal = () => setModal(false);
+
     return (
         <section >
-            <MDBContainer className="py-5 h-100">
+            <MDBContainer className=" h-100" style={{ marginTop: "50px" }}>
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">
                         <MDBCard className="card-registration card-registration-2" >
                             <MDBCardBody className="p-0">
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
-                                        <div className="p-5">
+                                        <div className="p-5" style={{ marginBottom: "50px" }}>
                                             <div className="d-flex justify-content-between align-items-center mb-5">
 
                                                 <MDBTypography className="mb-0 text-muted">
                                                     <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
-
-                                                <MDBTypography tag="h1" className="fw-bold mb-0 text-black" style={{ marginLeft: "75px" }}>
-                                                    Order History
-                                                </MDBTypography>
-
+                                                <center>
+                                                    <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "50px" }}>
+                                                        Order History
+                                                    </MDBTypography>
+                                                </center>
                                                 <MDBTypography className="mb-0 text-muted" >
-                                                    <button className='btn btn-secondary'>Ordered Report</button>
+                                                    <button className='btn btn-secondary' style={{ marginTop: "55px" }}>Ordered Report</button>
                                                 </MDBTypography>
 
                                             </div>
 
                                             {cartItems.map(cartItem => (
-                                                <div key={cartItem._id}>
+                                                <div key={cartItem._id} >
 
                                                     <MDBRow style={{ marginTop: "25px" }}>
                                                         <MDBCol md="2" lg="2" xl="2" className="card-item" style={{ borderRadius: "10px 0px 0px 10px" }}>
@@ -120,7 +105,7 @@ function OrderHistory() {
                                                                     </MDBTypography>
                                                                 </MDBCol>
 
-                                                                <MDBCol style={{ marginLeft: "595px" }}> Order date : 2022-09-02 </MDBCol>
+                                                                <MDBCol style={{ marginLeft: "600px" }}> Order date : {cartItem.orderedDate.substring(0, 9)} </MDBCol>
                                                             </MDBRow>
                                                             <MDBRow>
                                                                 <hr className='hrMod'></hr>
@@ -133,17 +118,17 @@ function OrderHistory() {
                                                                     </MDBTypography>
 
                                                                     <MDBTypography tag="h6" className="priceMod" style={{ paddingTop: "10px" }}>
-                                                                        Rs. {cartItem.price}.00 x {cartItem.quantity}
+                                                                        Rs. {cartItem.price}.00 x {cartItem.orderedQuanity}
                                                                     </MDBTypography>
                                                                 </MDBCol>
 
                                                                 <MDBCol >
                                                                     <MDBTypography tag="h6" >
 
-                                                                        <div className='totalMod'> Total: Rs {total(cartItem.price, cartItem.quantity)}.00</div>
+                                                                        <div className='totalMod'> Total: Rs {total(cartItem.price, cartItem.orderedQuanity)}.00</div>
 
                                                                         <Link to="#" onClick={() => onDeleteItem(cartItem._id)} className="RemoveBtnMod"> Remove </Link>
-                                                                        <Link to="#" onClick={() => onAddItem(cartItem.images, cartItem.itemName, cartItem.description, cartItem.price)} className="ReviewBtn"> Add Review</Link>
+                                                                        <Link to="#" onClick={() => openInsertModal(cartItem._id)} className="ReviewBtn"> Add Review</Link>
 
                                                                     </MDBTypography>
                                                                 </MDBCol>
@@ -151,6 +136,9 @@ function OrderHistory() {
                                                             </MDBRow>
                                                         </MDBCol>
                                                     </MDBRow>
+
+
+
 
                                                 </div>
                                             ))}
@@ -163,6 +151,17 @@ function OrderHistory() {
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
+            {/* Insert Modal */}
+            <Modal show={modal} onHide={closeInsertModal} backdrop="static" size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        Add Your Review
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="show-grid">
+                    <AddReviewsModel />
+                </Modal.Body>
+            </Modal>
         </section>
     )
 }

@@ -10,7 +10,8 @@ import LoginNavBarGoGo from "../../navigatonBar/loginNav";
 
 const Registration = () => {
 
-
+    const currentDate = new Date();
+    const regiDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
     const options = ["Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya", "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar", "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee", "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla", "Moneragala", "Ratnapura", "Kegalle"];
     const [data, setData] = useState({
         firstName: "",
@@ -22,8 +23,12 @@ const Registration = () => {
         zipCode: "",
         email: "",
         password: "",
+        registeredDate: regiDate,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMDoZqGk6An-DWrwWp2AQ1a2aug6xZ_IQSQWMO-1Cj1p0mwr2lPHLNWGbQknO-671N5es&usqp=CAU"
     });
+
+
+
 
 
     const [error, setError] = useState("");
@@ -79,6 +84,7 @@ const Registration = () => {
             window.location = "/"
             alert(res.message);
             console.log("registration", res.message);
+            console.log("registrationDate", data.registeredDate);
         }
         catch (error) {
 
@@ -92,26 +98,27 @@ const Registration = () => {
         window.location = '/';
     }
 
+    
+
 
     return (
         <div >
-            <LoginNavBarGoGo/>
+            <LoginNavBarGoGo />
             <div className={styles.signup_container}>
                 <div className={styles.signup_form_container}>
 
                     <div className={styles.left}>
-                        <h1 style={{ textAlign: 'center' }}>Already have an Account?</h1>
+                        <h1 style={{ textAlign: 'center', marginBottom: "20px" }}>Already have an Account?</h1>
                         {/* <Link to="/"> */}
-                            <button type='button' onClick={LoginButton} className={styles.w_button}>Sign in</button>
+                        <button type='button' onClick={LoginButton} className={styles.w_button}>Sign in</button>
                         {/* </Link> */}
                     </div>
 
                     <div className={styles.right}>
 
                         <form className={styles.form_container} onSubmit={handleSubmit}>
-                            <h1 style={{ marginTop: "50px" }}>Create Account</h1>
-
-
+                            <h1 style={{ marginTop: "50px", marginBottom: "30px" }}>Create Account</h1>
+                           
                             <Container>
                                 <Row>
                                     <Col xs={9} md={6}>
@@ -255,7 +262,7 @@ const Registration = () => {
 
                             {error && <div className={styles.err_msg}>{error}</div>}
 
-                            <button type='submit' style={{ marginBottom: "50px" }} className={styles.g_button}>Sign Up</button>
+                            <button type='submit' style={{ marginBottom: "50px", marginTop: "35px" }} className={styles.g_button}>Sign Up</button>
                         </form>
                     </div>
 

@@ -36,10 +36,11 @@ function ViewFavItems() {
             name: "Item Name",
             selector: (row) => row.itemName,
             sortable: true,
+
         },
         {
             name: "Price",
-            selector: (row) => row.price,
+            selector: (row) => row.price + '.00',
             sortable: true,
         },
 
@@ -82,9 +83,9 @@ function ViewFavItems() {
     }
 
     return (
-        <div className="container">
+        <div className="container" >
             <Link to={"#"} className="backLinkFav"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
-            <h1 className="headerMod"> Favorite Items</h1>
+            <h3 className="headerMod"> Favourite Items</h3>
 
             <DataTable
                 columns={columns}

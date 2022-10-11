@@ -6,7 +6,6 @@ import { Instagram, LocationOn, Mail, Phone } from '@mui/icons-material';
 
 function FooterComponent() {
     return (
-
         <div className='footergogo'>
             <div className='footergogo1'>
                 <footer className="bg-dark text-white">

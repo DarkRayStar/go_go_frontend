@@ -22,6 +22,15 @@ const OngoingDeliveries = () => {
   useEffect(() => {
     axios.get("http://localhost:5050/delivery/").then((res) => {
       setData(res.data);
+      const ongoingList = [];
+
+      for (let x = 0; x < res.data.length; x++) {
+        console.log(res.data[x].status);
+        if (res.data[x].status === "Ongoing") {
+          ongoingList.push(res.data[x]);
+        }
+      }
+      setData(ongoingList);
     });
   }, [logResult]);
 
@@ -89,7 +98,7 @@ const OngoingDeliveries = () => {
                 style={{ marginRight: "5px", color: "white" }}
                 name="view"
                 className="btn info btn-sm"
-                onClick={() => deleteRecord(record)}
+                onClick={() => viewDelivery(record)}
               >
                 VIEW
               </button>
@@ -97,7 +106,7 @@ const OngoingDeliveries = () => {
                 style={{ marginRight: "5px", color: "white" }}
                 name="delivered"
                 className="success btn  btn-sm"
-                onClick={() => deleteRecord(record)}
+                onClick={() => markAsDelivered(record)}
               >
                 DELIVERED
               </button>
@@ -105,7 +114,7 @@ const OngoingDeliveries = () => {
                 style={{ color: "white" }}
                 name="cancel"
                 className="btn danger btn-sm"
-                onClick={() => deleteRecord(record)}
+                onClick={() => cancelDelivery(record)}
               >
                 CANCEL
               </button>
@@ -126,50 +135,50 @@ const OngoingDeliveries = () => {
     },
   };
 
-  const records = [
-    {
-      deliveryID: "DEL-12040",
-      customerName: "Dulshan Alahakoon",
-      fee: "LKR 300.00",
-      service: "DOMEX",
-      trackingID: "DMX-115425",
-    },
-    {
-      deliveryID: "DEL-12040",
-      customerName: "Dulshan Alahakoon",
-      fee: "LKR 300.00",
-      service: "DOMEX",
-      trackingID: "DMX-115425",
-    },
-    {
-      deliveryID: "DEL-12040",
-      customerName: "Dulshan Alahakoon",
-      fee: "LKR 300.00",
-      service: "DOMEX",
-      trackingID: "DMX-115425",
-    },
-    {
-      deliveryID: "DEL-12040",
-      customerName: "Dulshan Alahakoon",
-      fee: "LKR 300.00",
-      service: "DOMEX",
-      trackingID: "DMX-115425",
-    },
-    {
-      deliveryID: "DEL-12040",
-      customerName: "Dulshan Alahakoon",
-      fee: "LKR 300.00",
-      service: "DOMEX",
-      trackingID: "DMX-115425",
-    },
-    {
-      deliveryID: "DEL-12040",
-      customerName: "Dulshan Alahakoon",
-      fee: "LKR 300.00",
-      service: "DOMEX",
-      trackingID: "DMX-115425",
-    },
-  ];
+  // const records = [
+  //   {
+  //     deliveryID: "DEL-12040",
+  //     customerName: "Dulshan Alahakoon",
+  //     fee: "LKR 300.00",
+  //     service: "DOMEX",
+  //     trackingID: "DMX-115425",
+  //   },
+  //   {
+  //     deliveryID: "DEL-12040",
+  //     customerName: "Dulshan Alahakoon",
+  //     fee: "LKR 300.00",
+  //     service: "DOMEX",
+  //     trackingID: "DMX-115425",
+  //   },
+  //   {
+  //     deliveryID: "DEL-12040",
+  //     customerName: "Dulshan Alahakoon",
+  //     fee: "LKR 300.00",
+  //     service: "DOMEX",
+  //     trackingID: "DMX-115425",
+  //   },
+  //   {
+  //     deliveryID: "DEL-12040",
+  //     customerName: "Dulshan Alahakoon",
+  //     fee: "LKR 300.00",
+  //     service: "DOMEX",
+  //     trackingID: "DMX-115425",
+  //   },
+  //   {
+  //     deliveryID: "DEL-12040",
+  //     customerName: "Dulshan Alahakoon",
+  //     fee: "LKR 300.00",
+  //     service: "DOMEX",
+  //     trackingID: "DMX-115425",
+  //   },
+  //   {
+  //     deliveryID: "DEL-12040",
+  //     customerName: "Dulshan Alahakoon",
+  //     fee: "LKR 300.00",
+  //     service: "DOMEX",
+  //     trackingID: "DMX-115425",
+  //   },
+  // ];
 
   const extraButtons = [
     {
@@ -207,30 +216,54 @@ const OngoingDeliveries = () => {
     },
   ];
 
-  const editRecord = (record) => {
-    this.props.history.push("/admin-submission-type-edit/" + record._id);
-  };
-
-  const deleteRecord = (record) => {
-    try {
-      axios
-        .delete(`admin/submissionType/file-delete/${record._id}`)
-        .then((response) => {
-          console.log(response.data);
-        });
-      window.location.reload(true);
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        this.setState = {
-          errorMsg: "Error while deleting file. Try again later",
-        };
-      }
-    }
-  };
-
   const updateRecord = (record) => {
     sessionStorage.setItem("currentDeliveryUpdateID", record._id);
     window.location = "/delivery-update";
+  };
+
+  const markAsDelivered = (record) => {
+    var answer = window.confirm(
+      `Are you sure to mark the delivery bearing Tracking ID: ${record.trackingID} as completed?`
+    );
+    if (answer) {
+      const delivery = {
+        status: "Delivered",
+      };
+
+      axios
+        .post(
+          `http://localhost:5050/delivery/updateDeliveryStatus/${record._id}`,
+          delivery
+        )
+        .then((res) => console.log(res.data));
+
+        location.reload()
+    }
+  };
+
+  const viewDelivery = (record) => {
+    sessionStorage.setItem("currentViewDeliveryID", record._id);
+    window.location = "/delivery-information";
+  };
+
+  const cancelDelivery = (record) => {
+    var answer = window.confirm(
+      `Are you sure to cancel delivery bearing Tracking ID: ${record.trackingID}?`
+    );
+    if (answer) {
+      const delivery = {
+        status: "Cancelled",
+      };
+
+      axios
+        .post(
+          `http://localhost:5050/delivery/updateDeliveryStatus/${record._id}`,
+          delivery
+        )
+        .then((res) => console.log(res.data));
+
+        location.reload()
+    }
   };
 
   return (
@@ -239,11 +272,10 @@ const OngoingDeliveries = () => {
         backgroundColor: "rgb(207, 210, 207,0.5)",
         display: "block",
         margin: "0 auto",
-        marginTop: '70px',
-        paddingBottom: '150px'
+        marginTop: "70px",
+        paddingBottom: "150px",
       }}
     >
-
       <Link
         style={{
           marginLeft: "10%",

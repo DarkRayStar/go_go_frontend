@@ -100,7 +100,7 @@ export default function PasswordReset() {
 
 					<div className={styles.container}>
 						<form className={styles.form_container} onSubmit={onsubmit}>
-							<h1>Add New Password</h1>
+							<h2 style={{ marginTop: "20px", marginBottom: "20px" }}>Add New Password</h2>
 
 							<label style={{ marginLeft: '-290px', fontWeight: "bold" }}>Password    :</label>
 							<input

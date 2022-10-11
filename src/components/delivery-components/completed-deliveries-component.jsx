@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
 import Navbar from "../navbar.component";
@@ -13,9 +13,27 @@ const CompletedDeliveries = () => {
   const [data, setData] = useState("");
   // const [records, setRecords] = useState("");
 
+  const logResult = useCallback(() => {
+    return 2 + 2;
+  }, []); //logResult is memoized now.
+
+  useEffect(() => {
+    axios.get("http://localhost:5050/delivery/").then((res) => {
+      setData(res.data);
+      const ongoingList = [];
+
+      for (let x = 0; x < res.data.length; x++) {
+        if (res.data[x].status === "Delivered") {
+          ongoingList.push(res.data[x]);
+        }
+      }
+      setData(ongoingList);
+    });
+  }, [logResult]);
+
   const columns = [
     {
-      key: "deliveryID",
+      key: "_id",
       text: "DELIVERY ID",
       className: "name",
       align: "left",
@@ -45,7 +63,7 @@ const CompletedDeliveries = () => {
                 style={{ color: "white" }}
                 name="view"
                 className="btn info btn-sm"
-                onClick={() => deleteRecord(record)}
+                onClick={() => viewDelivery(record)}
               >
                 VIEW DETAILS
               </button>
@@ -92,6 +110,11 @@ const CompletedDeliveries = () => {
       customerName: "Ayesha Dasanayake",
     },
   ];
+
+  const viewDelivery = (record) => {
+    sessionStorage.setItem("currentViewDeliveryID", record._id);
+    window.location = "/delivery-information";
+  };
 
   const extraButtons = [
     {
@@ -201,7 +224,7 @@ const CompletedDeliveries = () => {
           <br />
           <ReactDatatable
             config={config}
-            records={records}
+            records={data}
             columns={columns}
             extraButtons={extraButtons}
           />
