@@ -92,14 +92,14 @@ function UserProfile(props) {
 
                     {/* cart and History Details */}
 
-                    <table className={styles.cartDetailsTable} style={{ height: "20px", width: "250px", textAlign: "center", marginLeft: "1100px", color: "white", marginTop: "0px", marginBottom: "-100px" }}>
+                    <table className={styles.cartDetailsTable} style={{ height: "20px", width: "800px", textAlign: "center", marginLeft: "1000px", color: "white", marginTop: "20px", marginBottom: "-100px" }}>
                         <tr>
-                            <td style={{}}><Link to="/fav/view/"><FontAwesomeIcon icon={faHeart} /></Link></td>
-                            <td style={{ marginLeft: "0px" }}><Link to="#"><FontAwesomeIcon icon={faListAlt} /></Link></td>
+                            <td ><Link to="/fav/view/"><FontAwesomeIcon icon={faHeart} /></Link></td>
+                            <td><label  style={{ marginLeft: "100px" }}><Link to="#"><FontAwesomeIcon icon={faListAlt} /></Link></label></td>
                         </tr>
-                        <tr>
-                            <th>favorite <br></br>Items</th>
-                            <th>Order <br></br> History</th>
+                        <tr style={{ marginLeft: "100px"}}>
+                            <th><label style={{ color:"black" }}>favorite <br></br>Items</label></th>
+                            <th><label style={{ marginLeft: "100px", color:"black" }}>Order <br></br> History</label></th>
                         </tr>
                     </table>
                 </div>
