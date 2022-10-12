@@ -6,6 +6,7 @@ import { PWDRequiesite } from "./PWDRequiesite";
 import "./style1.css";
 import { Col, Container, Row } from "react-bootstrap";
 import LoginNavBarGoGo from "../../navigatonBar/loginNav";
+import Swal from "sweetalert2";
 
 
 const Registration = () => {
@@ -81,8 +82,21 @@ const Registration = () => {
             const url = "http://localhost:5050/user/registration";
             const { data: res } = await axios.post(url, data);
             // navigate("/")
-            window.location = "/"
-            alert(res.message);
+            // window.location = "/"
+
+            // alert(res.message);
+            Swal.fire({
+                title: "Success!",
+                text: res.message,
+                icon: "success",
+                showConfirmButton: false,
+            })
+
+            setTimeout(() => {
+                window.location = "/"
+            }, 2000)
+
+
             console.log("registration", res.message);
             console.log("registrationDate", data.registeredDate);
         }
@@ -98,7 +112,7 @@ const Registration = () => {
         window.location = '/';
     }
 
-    
+
 
 
     return (
@@ -118,7 +132,7 @@ const Registration = () => {
 
                         <form className={styles.form_container} onSubmit={handleSubmit}>
                             <h1 style={{ marginTop: "50px", marginBottom: "30px" }}>Create Account</h1>
-                           
+
                             <Container>
                                 <Row>
                                     <Col xs={9} md={6}>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './style.module.css';
 import axios from 'axios';
 import LoginNavBarGoGo from '../../navigatonBar/loginNav';
+import Swal from "sweetalert2";
 
 const SignIn = () => {
 
@@ -27,7 +28,16 @@ const SignIn = () => {
             console.log("login", res.message);
             console.log("user 2 Details", res.user);
             console.log("user ID", res.user._id);
-            alert(res.message);
+
+
+            // alert(res.message);
+            Swal.fire({
+                title: "Success!",
+                text: res.message,
+                icon: "success",
+                showConfirmButton: false,
+            })
+
 
             // create session
             window.sessionStorage.setItem(
@@ -35,11 +45,20 @@ const SignIn = () => {
                 JSON.stringify(res.user)
             );
 
-            if (res.user.email === 'kushanisakalasooriya273@gmail.com') {
-                window.location = "/user-admin-dashboard";
-            } else {
-                window.location = "/userHome";
-            }
+            setTimeout(() => {
+                // window.location.replace("http://localhost:3000/ViewDeliveries");
+                if (res.user.email === 'kamal@gmail.com') {
+                    window.location = "/user-admin-dashboard";
+                } else {
+                    window.location = "/userHome";
+                }
+            }, 2000)
+
+            // if (res.user.email === 'kushanisakalasooriya273@gmail.com') {
+            //     window.location = "/user-admin-dashboard";
+            // } else {
+            //     window.location = "/userHome";
+            // }
             // window.location = "/user-profile";
             // window.location = `/user-profile/${res.user._id}`
         }
