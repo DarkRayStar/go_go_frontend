@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 // import { Label } from "@mui/icons-material";
+import Swal from "sweetalert2";
 
 
 function AllRegisteredMemebersDisplay() {
@@ -61,24 +62,33 @@ function AllRegisteredMemebersDisplay() {
         },
     ];
 
-
-  
-
     const onSubmit = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#4BB543',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete("http://localhost:5050/user/" + id)
+                    .then((res) => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                        const modified = filteredItems.filter(item => item._id !== id);
+                        setFilteredItems(modified);
+                    });
 
-        const confirmBox = window.confirm(
-            "Are you sure want to delete your account?"
-        )
-        if (confirmBox === true) {
-            axios.delete("http://localhost:5050/user/" + id)
-            .then((res) => {
-                alert("Successfully deleted");
-                const modified = filteredItems.filter(item => item._id !== id);
-                setFilteredItems(modified);
-            });
-        }
-        
+            }
+        })
     }
+
+
 
     const getItems = async () => {
         try {

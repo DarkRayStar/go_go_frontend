@@ -19,7 +19,7 @@ function userAdminDashboard() {
         <AdminNavBarGoGo/>
             <div className="container bkgrnduser" style={{ maxWidth: "80%" }}>
                 <hr></hr>
-                <h5 style={{ marginTop: '100px' }}>Welcome, John !</h5>
+                <h5 style={{ marginTop: '100px' }}>Welcome, Kamal !</h5>
                 <h4 > User Managements Admin</h4>
                 <div className='container dshbrd'>
                     <Grid container sx={{ marginBottom: "2vh" }}>

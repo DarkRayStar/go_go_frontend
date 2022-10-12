@@ -31,7 +31,7 @@ function PrintingClass() {
             </Link>
             <br></br>  
             <Container>
-                <Paper ref={el => (componentRef = el)}  style={{height:"750px" , backgroundColor:"#f5f5f5", boxShadow:"-200px"}}>
+                <Paper elevation={0}  ref={el => (componentRef = el)} style={{height:"750px" , backgroundColor:"#f5f5f5"}}>
                     <OnlyGraphUserAdmin />
                 </Paper>
                 <ReactToPrint
