@@ -83,7 +83,7 @@ function ViewFavItems() {
     return (<>
         <NavBarGoGo />
         <div className="container" style={{ marginBottom: "50px" }}>
-            <Link to={"#"} className="backLinkFav"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
+            <Link to={"/user-profile"} className="backLinkFav"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
             <h3 className="headerMod"> Favourite Items</h3>
 
             <DataTable

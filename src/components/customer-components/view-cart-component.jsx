@@ -66,19 +66,6 @@ function ViewCart() {
                 )
             }
         })
-
-        // if (window.confirm('Are you sure, you want to delete the selected Item?')) {
-        //     try {
-        //         await axios({
-        //             method: 'DELETE',
-        //             url: `http://localhost:5050/cart/${id}`
-        //         })
-        //         alert("Selected Item is Removed !!")
-        //         getCartItems()
-        //     } catch (error) {
-        //         alert(error)
-        //     }
-        // }
     }
 
     //add to favorites
@@ -188,7 +175,7 @@ function ViewCart() {
                                             <div >
 
                                                 <MDBTypography >
-                                                    <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
+                                                    <Link to={"/userHome"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
                                                 <center>
                                                     <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "-50px" }}>

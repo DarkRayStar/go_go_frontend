@@ -8,6 +8,7 @@ import ViewCart from "./components/customer-components/view-cart-component";
 import ViewFavItems from "./components/customer-components/view-fav-items-component";
 import OrderHistory from "./components/customer-components/order-history-component";
 import Payment from "./components/customer-components/payment";
+import OrderedReport from "./components/customer-components/ordered-report-component";
 
 //user management
 import SignIn from "./components/userManagement-component/Login/login";
@@ -90,6 +91,7 @@ function App() {
           <Route path='/fav/view/' component={ViewFavItems} />
           <Route path='/order-history' component={OrderHistory} />
           <Route path='/paymentOrder' component={Payment} />
+          <Route path='/orderedReport' component={OrderedReport} />
 
           <Route path="/delivery-home" component={DeliveryDashboard} />
           <Route path="/delivery-pending" component={PendingDeliveries} />
