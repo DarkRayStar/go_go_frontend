@@ -5,7 +5,6 @@ import "./App.css";
 
 //customer
 import ViewCart from "./components/customer-components/view-cart-component";
-import PaidPage from "./components/payment_components/paidPage";
 import ViewFavItems from "./components/customer-components/view-fav-items-component";
 import OrderHistory from "./components/customer-components/order-history-component";
 import Payment from "./components/customer-components/payment";
@@ -29,7 +28,6 @@ import HomePage from './components/user-components/HomePage';
 import Navbar from './components/navbar.component';
 import QrGencomponent from './components/admin-components/qr-gencomponent';
 
-import successPage from "./components/payment_components/successPage";
 import DeliveryDashboard from "./components/delivery-components/delivery-dashboard-component";
 import PendingDeliveries from "./components/delivery-components/pending-deliveries-component";
 import OngoingDeliveries from "./components/delivery-components/ongoing-deliveries-component";
@@ -69,7 +67,6 @@ function App() {
             // backgroundSize: 'cover',
           }}>
 
-
           {/* user-Management-Routes */}
           <Route path="/" exact component={SignIn} />
           <Route path="/registration" component={Registration} />
@@ -93,9 +90,6 @@ function App() {
           <Route path='/fav/view/' component={ViewFavItems} />
           <Route path='/order-history' component={OrderHistory} />
           <Route path='/paymentOrder' component={Payment} />
-
-          <Route path="/payment-success" component={successPage} />
-          <Route path="/payment-paid" component={PaidPage} />
 
           <Route path="/delivery-home" component={DeliveryDashboard} />
           <Route path="/delivery-pending" component={PendingDeliveries} />

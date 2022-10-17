@@ -31,7 +31,7 @@ const btnDefault = css`
   ${btn('#ffffff', '#d5d5d5')} color: #555;
 `
 
-const btnPrimary = btn('#4f93ce', '#285f8f')
+const btnPrimary = btn('rgb(108,117,125)', 'rgb(108,117,125)')
 const btnDanger = btn('#e27c79', '#c9302c')
 
 export default styled.div`
@@ -77,7 +77,7 @@ export default styled.div`
   div.form {
     text-align: left;
     max-width: 500px;
-    margin: 10px auto;
+    margin: 30px auto;
     border: 1px solid #ccc;
     padding: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
