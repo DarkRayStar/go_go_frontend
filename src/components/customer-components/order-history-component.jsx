@@ -14,16 +14,18 @@ import {
 } from "mdb-react-ui-kit";
 import { faCheckCircle, faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import NavBarGoGo from '../navigatonBar/navbarGoGo';
 
 function OrderHistory() {
 
     const [cartItems, setCartItems] = useState([]);
     const [modal, setModal] = useState(false);
+    const id = JSON.parse(sessionStorage.getItem("loggeduser"))._id;
 
     const getCartItems = async () => {
         try {
-            const response = await axios.get('http://localhost:5050/cart/history');
+            const response = await axios.get(`http://localhost:5050/cart/history/${id}`);
             setCartItems(response.data);
         } catch (error) {
             console.log(error);
@@ -62,7 +64,8 @@ function OrderHistory() {
     const closeInsertModal = () => setModal(false);
 
     return (
-        <section >
+        <section style={{ marginTop: "120px", marginBottom: "50px" }}>
+            <NavBarGoGo />
             <MDBContainer className=" h-100" style={{ marginTop: "50px" }}>
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">

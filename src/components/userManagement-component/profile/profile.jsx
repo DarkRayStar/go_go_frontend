@@ -53,8 +53,8 @@ function UserProfile(props) {
 
     const UpdateDetails = () => {
         const user = JSON.parse(sessionStorage.getItem("loggeduser"));
-         // create session
-         window.sessionStorage.setItem(
+        // create session
+        window.sessionStorage.setItem(
             "loggeduser",
             JSON.stringify(user)
         );
@@ -86,7 +86,7 @@ function UserProfile(props) {
 
     return (
         <div>
-            <NavBarGoGo/>
+            <NavBarGoGo />
             <div className={styles.background}>
                 <div className={styles.cartDetails_container}>
 
@@ -95,11 +95,11 @@ function UserProfile(props) {
                     <table className={styles.cartDetailsTable} style={{ height: "20px", width: "800px", textAlign: "center", marginLeft: "1000px", color: "white", marginTop: "20px", marginBottom: "-100px" }}>
                         <tr>
                             <td ><Link to="/fav/view/"><FontAwesomeIcon icon={faHeart} /></Link></td>
-                            <td><label  style={{ marginLeft: "100px" }}><Link to="#"><FontAwesomeIcon icon={faListAlt} /></Link></label></td>
+                            <td><label style={{ marginLeft: "100px" }}><Link to="/order-history"><FontAwesomeIcon icon={faListAlt} /></Link></label></td>
                         </tr>
-                        <tr style={{ marginLeft: "100px"}}>
-                            <th><label style={{ color:"black" }}>favorite <br></br>Items</label></th>
-                            <th><label style={{ marginLeft: "100px", color:"black" }}>Order <br></br> History</label></th>
+                        <tr style={{ marginLeft: "100px" }}>
+                            <th><label style={{ color: "black" }}>favorite <br></br>Items</label></th>
+                            <th><label style={{ marginLeft: "100px", color: "black" }}>Order <br></br> History</label></th>
                         </tr>
                     </table>
                 </div>

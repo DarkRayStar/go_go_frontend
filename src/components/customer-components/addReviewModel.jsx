@@ -53,12 +53,13 @@ function AddReviewsModel() {
                 itemId: itemId,
                 itemName: itemName,
                 review: review,
+                userId: JSON.parse(sessionStorage.getItem("loggeduser"))._id,
             })
         })
             .then(() => {
                 // Once posted, the user will be notified 
                 alert('Your review has been added!');
-                window.location = '/order-history';
+                // window.location = '/order-history';
             })
     }
 
