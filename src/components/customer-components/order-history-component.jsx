@@ -77,7 +77,7 @@ function OrderHistory() {
                                             <div className="d-flex justify-content-between align-items-center mb-5">
 
                                                 <MDBTypography className="mb-0 text-muted">
-                                                    <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
+                                                    <Link to={"/user-profile"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
                                                 <center>
                                                     <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "50px" }}>
@@ -85,7 +85,7 @@ function OrderHistory() {
                                                     </MDBTypography>
                                                 </center>
                                                 <MDBTypography className="mb-0 text-muted" >
-                                                    <button className='btn btn-secondary' style={{ marginTop: "55px" }}>Ordered Report</button>
+                                                    <Link to="/orderedReport" className='orderRepoertMod'> <button className='btn btn-secondary' style={{ marginTop: "55px" }}>Ordered Report</button> </Link>
                                                 </MDBTypography>
 
                                             </div>

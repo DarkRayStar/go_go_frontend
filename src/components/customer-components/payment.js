@@ -9,7 +9,7 @@ import {
 } from './cardUtils'
 import axios from 'axios'
 import Swal from "sweetalert2";
-import { Link } from 'react-router-dom';
+import NavBarGoGo from '../navigatonBar/navbarGoGo';
 
 let updateID = JSON.parse(sessionStorage.getItem("itemID"))
 let cartObj = JSON.parse(sessionStorage.getItem("ordQty"))
@@ -79,7 +79,8 @@ const Payment = () => (
                 values,
                 active
             }) => {
-                return (
+                return (<>
+                    {/* <NavBarGoGo /> */}
                     <form onSubmit={handleSubmit}>
                         <Card
                             number={values.number || ''}
@@ -153,6 +154,7 @@ const Payment = () => (
                         </div>
 
                     </form>
+                </>
                 )
             }}
         />

@@ -106,7 +106,7 @@
 .PaymentHeaderMod {
     font-weight: bold;
     margin-left: 650px;
-    background-color: #F2F2F2;
+    background-color: #ffffff;
     padding-bottom: 20px;
     margin-top: 30px;
     margin-bottom: -20px;
@@ -170,4 +170,8 @@
 
 .wid {
     width: 50px;
+}
+
+.orderRepoertMod:hover {
+    background: none;
 }
