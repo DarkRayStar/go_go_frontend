@@ -3,8 +3,10 @@ import axios from "axios";
 import Navbar from "../navbar.component";
 import { useForm } from "react-hook-form";
 import { Grid } from "@mui/material";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
 export default function UpdateDelivery() {
   let history = useHistory();
@@ -65,9 +67,14 @@ export default function UpdateDelivery() {
     }
   };
 
-  const cancelButton = () =>{
-    window.location = '/delivery-update';
-  }
+  const cancelButton = () => {
+    var answer = window.confirm(
+      "Are you sure to abort current delivery update?"
+    );
+    if (answer) {
+      history.goBack();
+    }
+  };
 
   useEffect(() => {
     axios.get(`http://localhost:5050/delivery/${deliveryID}`).then((res) => {
@@ -86,23 +93,48 @@ export default function UpdateDelivery() {
     });
   }, [logResult]);
 
-  return (
-    <div>
-      <Navbar />
+  const selectProvince = (district) => {
+    if ( district === 'Matale' || district === 'Kandy' || district === 'Nuwara Eliya' ){
+      return 'Central';
+    } else if ( district === 'Colombo' || district === 'Gampaha' || district === 'Kalutara' ){
+      return 'Western';
+    } else if ( district === 'Galle' || district === 'Matara' || district === 'Hambantota' ){
+      return 'Southern';
+    } else if ( district === 'Jaffna' || district === 'Kilinochchi' || district === 'Mannar' || district === 'Vavuniya' || district === 'Mullaitivu' ){
+      return 'Northern';
+    } else if ( district === 'Batticaloa' || district === 'Ampara' || district === 'Trincomalee' ){
+      return 'Eastern';
+    } else if (district === 'Puttalam' || district === 'Kurunegala' ){
+      return 'North Western';
+    } else if (district === 'Anuradhapura' || district === 'Polonnaruwa' ){
+      return 'North Central';
+    } else if (district === 'Badulla' || district === 'Moneragala' ) {
+      return 'Uva'
+    } else if (district === 'Ratnapura' || district === 'Kegalle' ){
+      return 'Sabaragamuwa'
+    }
+  }
 
-      <a
+  const changeDistrict = (e) =>{
+    setDistrict(e.target.value);
+    setProvince(selectProvince(e.target.value));
+  }
+
+  return (
+    <div style={{ marginTop: "70px", paddingBottom: "60px" }}>
+      <Link
         style={{
           marginLeft: "10%",
           marginTop: "5vh",
-          backgroundColor: "rgb(34, 139, 34, 0.5)",
-          marginBottom: "5vh",
+          marginBottom: "3vh",
         }}
-        href="#"
-        className="previous"
         onClick={() => history.goBack()}
+        to="#"
+        className="backLink"
       >
-        &laquo; GO BACK
-      </a>
+        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+        &nbsp;Go Back
+      </Link>
 
       <div
         style={{
@@ -148,6 +180,7 @@ export default function UpdateDelivery() {
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   onChange={(e) => setCustomerName(e.target.value)}
                   value={customerName}
+                  required
                 />
               </Grid>
               <Grid item xs={3}>
@@ -158,7 +191,8 @@ export default function UpdateDelivery() {
                   {...register("State/Province")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   value={province}
-                  onChange={(e) => setProvince(e.target.value)}
+                  required
+                  disabled
                 >
                   <option value="Central">Central</option>
                   <option value="North Central">North Central</option>
@@ -184,6 +218,9 @@ export default function UpdateDelivery() {
                   })}
                   onChange={(e) => setMobileNo(e.target.value)}
                   value={mobileNo}
+                  required
+                  pattern="[0-9]{10}"
+                  title="Please enter a valid mobile number. (DO NOT INCLUDE COUNTRY CODE)"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -197,6 +234,7 @@ export default function UpdateDelivery() {
                   {...register("Postal/Zip Code", {})}
                   onChange={(e) => setZip(e.target.value)}
                   value={zip}
+                  required
                 />
               </Grid>
               <Grid item xs={3}>
@@ -210,6 +248,9 @@ export default function UpdateDelivery() {
                   {...register("Landline Number", {})}
                   onChange={(e) => setLandlineNo(e.target.value)}
                   value={landlineNo}
+                  required
+                  pattern="[0-9]{10}"
+                  title="Please enter a valid mobile number. (DO NOT INCLUDE COUNTRY CODE)"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -221,6 +262,8 @@ export default function UpdateDelivery() {
                   style={{ borderRadius: "5px", border: " solid 1px" }}
                   onChange={(e) => setService(e.target.value)}
                   value={service}
+                  required
+                  title="Select a delivery partner."
                 >
                   <option value="DOMEX">DOMEX</option>
                   <option value="PRONTO">PRONTO</option>
@@ -240,10 +283,12 @@ export default function UpdateDelivery() {
                   type="text"
                   placeholder="Email"
                   {...register("Email", {
-                    pattern: /^\S+@\S+$/i,
                   })}
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
+                  required
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  title="Ex : abc@example.com"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -268,6 +313,8 @@ export default function UpdateDelivery() {
                   {...register("Address", {})}
                   onChange={(e) => setAddress(e.target.value)}
                   value={address}
+                  required
+                  title="Enter a valid Address"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -281,6 +328,10 @@ export default function UpdateDelivery() {
                   {...register("Delivery Fee", {})}
                   onChange={(e) => setFee(e.target.value)}
                   value={fee}
+                  required
+                  min="0"
+                  pattern="[0-9]{0,5}"
+                  title="Delivery fee may not exceed 99999"
                 />
               </Grid>
               <Grid item xs={3}>
@@ -290,8 +341,9 @@ export default function UpdateDelivery() {
                 <select
                   {...register("District")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
-                  onChange={(e) => setDistrict(e.target.value)}
+                  onChange={(e) => changeDistrict(e) }
                   value={district}
+                  required
                 >
                   <option value="Colombo">Colombo</option>
                   <option value="Gampaha">Gampaha</option>
@@ -330,7 +382,7 @@ export default function UpdateDelivery() {
                 </button>
                 <button
                   type="button"
-                  className="button-33"
+                  className="button-new-cancel"
                   onClick={() => cancelButton()}
                 >
                   CANCEL
@@ -340,13 +392,6 @@ export default function UpdateDelivery() {
           </form>
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "rgb(109, 112, 166,0.5)",
-          height: "100px",
-          marginTop: "20px",
-        }}
-      />
     </div>
   );
 }

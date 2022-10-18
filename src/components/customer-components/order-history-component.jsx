@@ -14,16 +14,18 @@ import {
 } from "mdb-react-ui-kit";
 import { faCheckCircle, faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import NavBarGoGo from '../navigatonBar/navbarGoGo';
 
 function OrderHistory() {
 
     const [cartItems, setCartItems] = useState([]);
     const [modal, setModal] = useState(false);
+    const id = JSON.parse(sessionStorage.getItem("loggeduser"))._id;
 
     const getCartItems = async () => {
         try {
-            const response = await axios.get('http://localhost:5050/cart/history');
+            const response = await axios.get(`http://localhost:5050/cart/history/${id}`);
             setCartItems(response.data);
         } catch (error) {
             console.log(error);
@@ -62,7 +64,8 @@ function OrderHistory() {
     const closeInsertModal = () => setModal(false);
 
     return (
-        <section >
+        <section style={{ marginTop: "120px", marginBottom: "50px" }}>
+            <NavBarGoGo />
             <MDBContainer className=" h-100" style={{ marginTop: "50px" }}>
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">
@@ -70,19 +73,17 @@ function OrderHistory() {
                             <MDBCardBody className="p-0">
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
-                                        <div className="p-5" style={{ marginBottom: "50px" }}>
+                                        <div className="p-5" style={{ marginBottom: "50px", marginTop: "-20px" }}>
                                             <div className="d-flex justify-content-between align-items-center mb-5">
 
                                                 <MDBTypography className="mb-0 text-muted">
-                                                    <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
+                                                    <Link to={"/user-profile"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
-                                                <center>
-                                                    <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "50px" }}>
-                                                        Order History
-                                                    </MDBTypography>
-                                                </center>
+                                                <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "50px", marginLeft: "150px" }}>
+                                                    Order History
+                                                </MDBTypography>
                                                 <MDBTypography className="mb-0 text-muted" >
-                                                    <button className='btn btn-secondary' style={{ marginTop: "55px" }}>Ordered Report</button>
+                                                    <Link to="/orderedReport" className='orderRepoertMod'> <button className='btn btn-secondary' style={{ marginTop: "55px" }}>Ordered Report</button> </Link>
                                                 </MDBTypography>
 
                                             </div>
@@ -136,10 +137,6 @@ function OrderHistory() {
                                                             </MDBRow>
                                                         </MDBCol>
                                                     </MDBRow>
-
-
-
-
                                                 </div>
                                             ))}
                                         </div>

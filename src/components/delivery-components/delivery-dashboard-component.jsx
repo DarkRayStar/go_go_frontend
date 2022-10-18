@@ -32,18 +32,17 @@ const DeliveryDashboard = () => {
 
   return (
     <div>
-      <Navbar />
-      <div style={{ width: "90%", margin: 'auto', marginBottom: '50px' }}>
-        <div style={{ marginTop: "20px" }}>
+      <div style={{ width: "90%", margin: 'auto' }}>
+        <div style={{ marginTop: "120px" }}>
           <h4>Welcome, Delivery Admin!</h4>
         </div>
         <div style={{ marginTop: "5px" }}>
           <h3>DELIVERY MANAGER</h3>
         </div>
         <div
-          style={{ backgroundColor: "rgb(207, 210, 207,0.5)", height: "60vh" }}
+          style={{ backgroundColor: "rgb(207, 210, 207,0.5)", height: "60vh", marginTop: '50px', marginBottom: '20vh' }}
         >
-          <Grid container sx={{ marginBottom: "2vh" }}>
+          <Grid container>
             <Grid item xs={12} sx={{ marginBottom: "7vh" }}>
               <div style={{ paddingTop: "3vh" }}>
                 <h3 style={{ textAlign: "center" }}>
@@ -144,13 +143,6 @@ const DeliveryDashboard = () => {
           </Grid>
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "rgb(109, 112, 166,0.5)",
-          height: "100px",
-          marginTop: "20px",
-        }}
-      />
     </div>
   );
 };

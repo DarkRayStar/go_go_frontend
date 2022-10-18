@@ -21,6 +21,7 @@ function ItemDetails() {
     const id = window.sessionStorage.getItem('itemid');
     const [item, setItem] = useState([]);
     const [OrderedQuanity, setOrderedQuantity] = useState("")
+    const UserId = JSON.parse(sessionStorage.getItem("loggeduser"))._id;
 
     const getItem = async () => {
         try {
@@ -45,6 +46,7 @@ function ItemDetails() {
     const onAddItem = async (Image, ItemName, Description, Price, Quantity, Specifications, Offer) => {
         try {
             const item = {
+                itemId: id,
                 images: Image,
                 itemName: ItemName,
                 description: Description,
@@ -53,8 +55,9 @@ function ItemDetails() {
                 showOnCart: true,
                 paidStatus: false,
                 orderedQuanity: OrderedQuanity,
-                offer: Offer,
+                offer: '10',
                 specifications: Specifications,
+                userId: UserId,
             }
 
             if (item.orderedQuanity <= 0) {
@@ -113,7 +116,7 @@ function ItemDetails() {
                                         </div>
                                     </Col>
                                     <Col>
-                                        <MDBBtn className='item_btn' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.orderedQuanity, item.offer)} > Add to Cart</MDBBtn>
+                                        <MDBBtn className='item_btn' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.offer)} > Add to Cart</MDBBtn>
                                     </Col>
                                 </Row>
                             </div>

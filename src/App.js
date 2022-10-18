@@ -5,10 +5,10 @@ import "./App.css";
 
 //customer
 import ViewCart from "./components/customer-components/view-cart-component";
-import PaidPage from "./components/payment_components/paidPage";
 import ViewFavItems from "./components/customer-components/view-fav-items-component";
 import OrderHistory from "./components/customer-components/order-history-component";
 import Payment from "./components/customer-components/payment";
+import OrderedReport from "./components/customer-components/ordered-report-component";
 
 //user management
 import SignIn from "./components/userManagement-component/Login/login";
@@ -20,6 +20,7 @@ import UpdateUserProfile from "./components/userManagement-component/updateProfi
 import userAdminDashboard from "./components/userManagement-component/admin/userAdminDashboard";
 import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/viewAllMembers/allMembersRetrieve";
 import UserAdminReport from "./components/userManagement-component/admin/report/userAdminReport";
+import PrintingClass from "./components/userManagement-component/admin/report/testingreport/usertreporttesting";
 
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
@@ -29,7 +30,6 @@ import HomePage from './components/user-components/HomePage';
 import Navbar from './components/navbar.component';
 import QrGencomponent from './components/admin-components/qr-gencomponent';
 
-import successPage from "./components/payment_components/successPage";
 import DeliveryDashboard from "./components/delivery-components/delivery-dashboard-component";
 import PendingDeliveries from "./components/delivery-components/pending-deliveries-component";
 import OngoingDeliveries from "./components/delivery-components/ongoing-deliveries-component";
@@ -53,10 +53,8 @@ import HomeSlider from "./components/storeAdmin-components/homeSlider";
 import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
 import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
-
-
-
 <link rel="stylesheet" href="./" />;
+import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
 function App() {
   return (
@@ -70,7 +68,6 @@ function App() {
             // backgroundSize: 'cover',
           }}>
 
-
           {/* user-Management-Routes */}
           <Route path="/" exact component={SignIn} />
           <Route path="/registration" component={Registration} />
@@ -80,7 +77,8 @@ function App() {
           <Route path="/update-user-profile" component={UpdateUserProfile} />
           <Route path="/user-admin-dashboard" component={userAdminDashboard} />
           <Route path="/registered-members" component={AllRegisteredMemebersDisplay} />
-          <Route path="/user-admin-report" component={UserAdminReport} />
+          {/* <Route path="/user-admin-report" component={UserAdminReport} /> */}
+          <Route path="/user-admin-report" component={PrintingClass} />
 
 
           <Route path="/home" component={HomePage} />
@@ -94,9 +92,7 @@ function App() {
           <Route path='/fav/view/' component={ViewFavItems} />
           <Route path='/order-history' component={OrderHistory} />
           <Route path='/paymentOrder' component={Payment} />
-
-          <Route path="/payment-success" component={successPage} />
-          <Route path="/payment-paid" component={PaidPage} />
+          <Route path='/orderedReport' component={OrderedReport} />
 
           <Route path="/delivery-home" component={DeliveryDashboard} />
           <Route path="/delivery-pending" component={PendingDeliveries} />
@@ -105,6 +101,7 @@ function App() {
           <Route path="/delivery-cancelled" component={CancelledDeliveries} />
           <Route path="/delivery-new" component={NewDelivery} />
           <Route path="/delivery-update" component={UpdateDelivery} />
+          <Route path="/delivery-information" component={DeliveryInformation} />
 
           {/* storeAdminroutes */}
           <Route path="/storeAdmin" component={ItemRetrieve} />

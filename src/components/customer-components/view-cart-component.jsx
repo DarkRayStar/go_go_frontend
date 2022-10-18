@@ -15,16 +15,16 @@ import {
 import { faArrowAltCircleLeft, faHeart, faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Swal from "sweetalert2";
+import NavBarGoGo from '../navigatonBar/navbarGoGo';
 
 function ViewCart() {
-
     const [cartItems, setCartItems] = useState([]);
+    const id = JSON.parse(sessionStorage.getItem("loggeduser"))._id;
 
     const getCartItems = async () => {
         try {
-            const response = await axios.get('http://localhost:5050/cart');
+            const response = await axios.get(`http://localhost:5050/cart/get/${id}`);
             setCartItems(response.data);
-            // console.log("fffff", response.data);
         } catch (error) {
             console.log(error);
         }
@@ -36,18 +36,35 @@ function ViewCart() {
 
     //Remove Item from Cart
     const onDeleteItem = async (id) => {
-        if (window.confirm('Are you sure, you want to delete the selected Item?')) {
-            try {
-                await axios({
-                    method: 'DELETE',
-                    url: `http://localhost:5050/cart/${id}`
-                })
-                alert("Selected Item is Removed !!")
-                getCartItems()
-            } catch (error) {
-                alert(error)
+
+        await Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to delete the selected item?",
+            icon: 'warning',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            denyButtonText: `Don't delete`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+
+                    'Deleted!',
+                    '',
+                    'success',
+                    axios({
+                        method: 'DELETE',
+                        url: `http://localhost:5050/cart/${id}`
+                    }),
+                )
+            } else if (result.isDenied) {
+                Swal.fire(
+                    'Item is not deleted',
+                    '',
+                    'error'
+                )
             }
-        }
+        })
     }
 
     //add to favorites
@@ -58,12 +75,22 @@ function ViewCart() {
                 itemName: ItemName,
                 description: Description,
                 price: Price,
+                userId: id,
             }
 
             const response = await axios.post("http://localhost:5050/favorites/add", item)
 
             if (response.status === 200) {
-                alert("Item Added to the Favorites!!!");
+                Swal.fire({
+                    title: 'Item was added to the Favourite!',
+                    showCancelButton: true,
+                    confirmButtonText: 'Go to Favourite',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire('', '', 'success')
+                        window.location = '/fav/view/'
+                    }
+                })
             }
 
         } catch (error) {
@@ -76,48 +103,47 @@ function ViewCart() {
         return false
     }
 
-    //total price calculation
-    // const total = (Price, Qty) => {
-    //     var tot = Price * Qty;
-    //     return tot
-    // }
-
-    // const getTot = (ttl) => {
-    //     return ttl;
-    // }
-
     //final total
     const finalTotal = async () => {
 
-        let object = [];
+        let objectCart = [];
         let sum = 0;
         let iId = [];
+        let objectItem = [];
+        let OQty = [];
 
         try {
-            const response = await axios.get('http://localhost:5050/cart');
-            object = response.data
-            for (var i = 0; i < object.length; i++) {
-                object[i]
-                sum = sum + (object[i].price * object[i].orderedQuanity)
+
+            const response = await axios.get(`http://localhost:5050/cart/get/${id}`);
+            const responseItem = await axios.get('http://localhost:5050/storeAdmin/');
+
+            objectItem = responseItem.data
+            objectCart = response.data
+
+            for (var i = 0; i < objectCart.length; i++) {
+                sum = sum + (objectCart[i].price * objectCart[i].orderedQuanity)
             }
             sessionStorage.setItem("totalPayemt", sum);
 
-            for (var j = 0; j < object.length; j++) {
-                object[j]
-                if (object[j].orderedQuanity < object[j].quantity) {
-                    iId.push(object[j]._id)
-                    window.location = '/paymentOrder';
-                } else {
-                    alert(object[j].itemName + " is not available")
-                    // Swal.fire({
-                    //     icon: 'error',
-                    //     title: 'Oops...',
-                    //     text: object[j].itemName + " is not available"
-                    // })
-                    // window.location = '/cart/view/';
+            for (var j = 0; j < objectCart.length; j++) {
+                for (var k = 0; k < objectItem.length; k++) {
+                    if (objectCart[j].itemId === objectItem[k]._id) {
+
+                        if (objectCart[j].orderedQuanity < objectItem[k].quantity) {
+
+                            iId.push(objectCart[j]._id)
+                            OQty.push(objectCart[j])
+
+                            window.location = '/paymentOrder';
+                        } else {
+                            console.log("false");
+                        }
+                    }
                 }
             }
+
             sessionStorage.setItem('itemID', JSON.stringify(iId))
+            sessionStorage.setItem('ordQty', JSON.stringify(OQty))
 
         } catch (error) {
             console.log(error);
@@ -126,7 +152,8 @@ function ViewCart() {
 
     return (
         <section >
-            <MDBContainer className="h-100" style={{ marginTop: "50px" }}>
+            <NavBarGoGo />
+            <MDBContainer className="h-100" style={{ marginTop: "120px", marginBottom: "50px" }}>
                 <MDBRow className="justify-content-center align-items-center h-100">
                     <MDBCol size="12">
                         <MDBCard className="card-registration card-registration-2" >
@@ -137,7 +164,7 @@ function ViewCart() {
                                             <div >
 
                                                 <MDBTypography >
-                                                    <Link to={"#"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
+                                                    <Link to={"/userHome"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
                                                 <center>
                                                     <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "-50px" }}>
@@ -173,29 +200,14 @@ function ViewCart() {
                                                         </MDBCol>
                                                         <MDBCol md="3" lg="3" xl="2" className="d-flex align-items-center">
 
-                                                            <MDBInput type="number" min="0" defaultValue={cartItem.orderedQuanity} size="sm" style={{ marginLeft: "50px" }}
+                                                            <MDBInput type="number" min="1" defaultValue={cartItem.orderedQuanity} size="sm" style={{ marginLeft: "50px" }}
                                                                 onChange={async (e) => {
                                                                     try {
                                                                         const data = {
                                                                             orderedQuanity: e.target.value,
-                                                                            quantity: cartItem.quantity,
-                                                                            images: cartItem.images,
-                                                                            itemName: cartItem.itemName,
-                                                                            description: cartItem.description,
-                                                                            price: cartItem.price,
-                                                                            offers: cartItem.offers,
-                                                                            showOnCart: true,
-                                                                            paidStatus: false,
                                                                         }
 
                                                                         const response = await axios.post(`http://localhost:5050/cart/update/${cartItem._id}`, data)
-                                                                        // console.log(, data);
-                                                                        // if (response.status === 200) {
-                                                                        //     var ttl = cartItem.price * data.orderedQuanity;
-                                                                        //     console.log("TOT", ttl);
-                                                                        //     return ttl;
-                                                                        //     // alert("Item  Quantity Updated!!!");
-                                                                        // }
 
                                                                     } catch (error) {
                                                                         alert(error);
@@ -213,8 +225,6 @@ function ViewCart() {
                                                         </MDBCol>
 
                                                     </MDBRow>
-                                                    {/* Total: Rs {total(cartItem.price, cartItem.orderedQuanity)} */}
-                                                    {/* tot:{getTot()} */}
                                                 </div>
                                             ))}
 

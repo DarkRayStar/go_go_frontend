@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { render } from 'react-dom'
+import React from 'react'
 import Styles from './Styles'
 import { Form, Field } from 'react-final-form'
 import Card from './Card'
@@ -12,8 +11,11 @@ import axios from 'axios'
 import Swal from "sweetalert2";
 
 let updateID = JSON.parse(sessionStorage.getItem("itemID"))
+let cartObj = JSON.parse(sessionStorage.getItem("ordQty"))
 let price = sessionStorage.getItem("totalPayemt")
 let payId = "";
+let DUId = "";
+let qty = "";
 
 const onSubmit = async () => {
 
@@ -24,17 +26,28 @@ const onSubmit = async () => {
             orderedDate: new Date().toLocaleString(),
         }
 
-        // console.log("orderd Date", data.orderedDate);
         for (var j = 0; j < updateID.length; j++) {
             payId = updateID[j];
             var response = await axios.post(`http://localhost:5050/cart/updatePayment/${payId}`, data)
         }
-        if (response.status === 200) {
+
+        for (var i = 0; i < cartObj.length; i++) {
+            DUId = cartObj[i].itemId;
+            qty = cartObj[i].orderedQuanity;
+
+            const qtyData = {
+                orderedQuanity: qty,
+            }
+
+            var response1 = await axios.post(`http://localhost:5050/storeAdmin/updateItemPayment/${DUId}`, qtyData)
+        }
+        if (response.status === 200 && response1.status === 200) {
             Swal.fire(
                 'Payment Successful!',
                 'RS: ' + price + '.00',
-                'success'
+                'success',
             )
+            window.location = '/order-history'
         } else {
             Swal.fire({
                 icon: 'error',
@@ -48,9 +61,13 @@ const onSubmit = async () => {
     }
 }
 
+const goBack = () => {
+    window.location = '/cart/view'
+}
+
 const Payment = () => (
     <Styles>
-        <h3 className="PaymentHeaderMod"> Pay Now</h3>
+        <h3 className="PaymentHeaderMod"> Payment Section</h3>
         <Form
             onSubmit={onSubmit}
             render={({
@@ -61,7 +78,7 @@ const Payment = () => (
                 values,
                 active
             }) => {
-                return (
+                return (<>
                     <form onSubmit={handleSubmit}>
                         <Card
                             number={values.number || ''}
@@ -113,22 +130,29 @@ const Payment = () => (
                                 placeholder="CVC"
                                 format={formatCVC}
                                 required
+                                className="wid"
                             />
                         </div>
                         <div className="buttons">
-                            <button type="submit" disabled={submitting}>
-                                Submit
+                            <button className='payBackBtn' onClick={() => goBack()} type="button">
+                                Cancel
                             </button>
                             <button
+                                className='restBtn'
                                 type="button"
                                 onClick={form.reset}
                                 disabled={submitting || pristine}
                             >
                                 Reset
                             </button>
+
+                            <button type="submit" className='payBtn' disabled={submitting}>
+                                Pay Now
+                            </button>
                         </div>
 
                     </form>
+                </>
                 )
             }}
         />

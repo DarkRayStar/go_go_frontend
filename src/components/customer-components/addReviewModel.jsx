@@ -21,11 +21,9 @@ function AddReviewsModel() {
         setReview(event.target.value)
     }
 
-
     const getItem = async () => {
         try {
             const response = await axios.get('http://localhost:5050/cart/' + id);
-            // setItem(response.data);
             setItemId(response.data._id);
             setName(response.data.itemName);
 
@@ -53,12 +51,12 @@ function AddReviewsModel() {
                 itemId: itemId,
                 itemName: itemName,
                 review: review,
+                userId: JSON.parse(sessionStorage.getItem("loggeduser"))._id,
             })
         })
             .then(() => {
                 // Once posted, the user will be notified 
                 alert('Your review has been added!');
-                window.location = '/order-history';
             })
     }
 

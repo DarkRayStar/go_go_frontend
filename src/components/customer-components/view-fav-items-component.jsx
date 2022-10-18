@@ -4,22 +4,20 @@ import DataTable from 'react-data-table-component';
 import './item-cart.css';
 import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './viewMods.css';
-// import './gg.css';
-
-
 import { Link } from 'react-router-dom';
+import NavBarGoGo from '../navigatonBar/navbarGoGo';
 
 function ViewFavItems() {
 
     const [favItems, setFavItems] = useState([]);
     const [search, setSearch] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
+    const id = JSON.parse(sessionStorage.getItem("loggeduser"))._id;
 
 
     const getFavItems = async () => {
         try {
-            const response = await axios.get('http://localhost:5050/favorites');
+            const response = await axios.get(`http://localhost:5050/favorites/${id}`);
             setFavItems(response.data);
             setFilteredItems(response.data);
         } catch (error) {
@@ -82,9 +80,10 @@ function ViewFavItems() {
         }
     }
 
-    return (
-        <div className="container" >
-            <Link to={"#"} className="backLinkFav"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
+    return (<>
+        <NavBarGoGo />
+        <div className="container" style={{ marginBottom: "50px" }}>
+            <Link to={"/user-profile"} className="backLinkFav"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
             <h3 className="headerMod"> Favourite Items</h3>
 
             <DataTable
@@ -103,12 +102,9 @@ function ViewFavItems() {
                         onChange={(e) => setSearch(e.target.value)}
                     />
                 }
-            // subHeaderAlign="center"
-            // selectableRows
-            // selectableRowsHighlight
             />
         </div>
-    )
+    </>)
 }
 
 export default ViewFavItems

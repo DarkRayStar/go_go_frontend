@@ -53,8 +53,8 @@ function UserProfile(props) {
 
     const UpdateDetails = () => {
         const user = JSON.parse(sessionStorage.getItem("loggeduser"));
-         // create session
-         window.sessionStorage.setItem(
+        // create session
+        window.sessionStorage.setItem(
             "loggeduser",
             JSON.stringify(user)
         );
@@ -86,20 +86,16 @@ function UserProfile(props) {
 
     return (
         <div>
-            <NavBarGoGo/>
-            <div className={styles.background}>
-                <div className={styles.cartDetails_container}>
+            <NavBarGoGo />
+            <div className={styles.background} >
+                <div className={styles.cartDetails_container} style={{ backgroundColor: "white", width: "100%" }}>
 
                     {/* cart and History Details */}
 
-                    <table className={styles.cartDetailsTable} style={{ height: "20px", width: "800px", textAlign: "center", marginLeft: "1000px", color: "white", marginTop: "20px", marginBottom: "-100px" }}>
-                        <tr>
-                            <td ><Link to="/fav/view/"><FontAwesomeIcon icon={faHeart} /></Link></td>
-                            <td><label  style={{ marginLeft: "100px" }}><Link to="#"><FontAwesomeIcon icon={faListAlt} /></Link></label></td>
-                        </tr>
-                        <tr style={{ marginLeft: "100px"}}>
-                            <th><label style={{ color:"black" }}>favorite <br></br>Items</label></th>
-                            <th><label style={{ marginLeft: "100px", color:"black" }}>Order <br></br> History</label></th>
+                    <table style={{ marginLeft: "1000px", marginTop: "30px" }}>
+                        <tr >
+                            <td><Link to="/fav/view/" className={styles.ReviewBtn}><FontAwesomeIcon icon={faHeart} /> Favorite Items</Link></td>
+                            <td><Link to="/order-history" className={styles.ReviewBtn} style={{ marginLeft: "20px" }}><FontAwesomeIcon icon={faListAlt} /> Order History</Link></td>
                         </tr>
                     </table>
                 </div>
@@ -123,7 +119,7 @@ function UserProfile(props) {
                                     <tbody>
                                         <tr>
                                             <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>First Name    : <label style={{ fontWeight: 'normal' }}>{firstName}</label></label></td>
-                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px", marginLeft: "30px" }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
                                         </tr>
                                         <tr>
                                             <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Mobile Number    : <label style={{ fontWeight: 'normal' }}>{mobileNumber}</label></label></td>
