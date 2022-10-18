@@ -39,7 +39,6 @@ import ItemDetails from "./components/storeAdmin-components/itemDetails";
 import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
 import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
-import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
 function App() {
   return (
