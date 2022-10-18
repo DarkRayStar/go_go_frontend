@@ -9,18 +9,18 @@ import NavBarGoGo from "../../navigatonBar/navbarGoGo";
 function UserProfile(props) {
 
     //state variables
-    var [firstName, setFirstName] = useState("");
-    var [lastName, setLastName] = useState("");
-    var [mobileNumber, setMobileNumber] = useState("");
-    var [phoneNumber, setPhoneNumber] = useState("");
-    var [address, setAddress] = useState("");
-    var [district, setDistrict] = useState("");
-    var [zipCode, setZipCode] = useState("");
-    var [email, setEmail] = useState("");
-    var [image, setImage] = useState("");
+    let [firstName, setFirstName] = useState("");
+    let [lastName, setLastName] = useState("");
+    let [mobileNumber, setMobileNumber] = useState("");
+    let [phoneNumber, setPhoneNumber] = useState("");
+    let [address, setAddress] = useState("");
+    let [district, setDistrict] = useState("");
+    let [zipCode, setZipCode] = useState("");
+    let [email, setEmail] = useState("");
+    let [image, setImage] = useState("");
     const [FilteredUser, setFilteredUser] = useState([]);
 
-    var [sessionUser, setSessionUser] = useState([]);
+    let [sessionUser, setSessionUser] = useState([]);
 
     const getUserDetailsByID = async () => {
 

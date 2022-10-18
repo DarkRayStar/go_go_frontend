@@ -9,14 +9,14 @@ const UpdateUserProfile = () => {
     const options = ["Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya", "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar", "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee", "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla", "Moneragala", "Ratnapura", "Kegalle"];
 
     //state variables
-    var [firstName, setFirstName] = useState("");
-    var [lastName, setLastName] = useState("");
-    var [mobileNumber, setMobileNumber] = useState("");
-    var [phoneNumber, setPhoneNumber] = useState("");
-    var [address, setAddress] = useState("");
-    var [district, setDistrict] = useState("");
-    var [zipCode, setZipCode] = useState("");
-    var [image, setImage] = useState("");
+    let [firstName, setFirstName] = useState("");
+    let [lastName, setLastName] = useState("");
+    let [mobileNumber, setMobileNumber] = useState("");
+    let [phoneNumber, setPhoneNumber] = useState("");
+    let [address, setAddress] = useState("");
+    let [district, setDistrict] = useState("");
+    let [zipCode, setZipCode] = useState("");
+    let [image, setImage] = useState("");
 
     // Dealing with field changes to update state
     const firstNameUpdate = (event) => {
@@ -103,7 +103,7 @@ const UpdateUserProfile = () => {
 
                     <div className={styles.left}>
                         <img style={{ width: "220px", height: "220px" }} src={image} alt=""></img>
-                        <h2 style={{ color: "white", textAlign: "center"}}> <br></br> {firstName} {lastName}</h2><br></br>
+                        <h2 style={{ color: "white", textAlign: "center" }}> <br></br> {firstName} {lastName}</h2><br></br>
                     </div>
 
                     <div className={styles.right}>
@@ -228,7 +228,7 @@ const UpdateUserProfile = () => {
                                         Update Profile
                                     </Button>
                                 </Row> */}
-                                <table style={{ marginBottom: "50px", marginTop: "20px" , marginLeft:"100px"}}>
+                                <table style={{ marginBottom: "50px", marginTop: "20px", marginLeft: "100px" }}>
                                     <tr>
                                         <td><button type='submit' style={{ marginBottom: "50px", marginTop: "35px" }} className={styles.g_button}>Update</button></td>
                                         <td><button onClick={CancelButton} type='button' style={{ marginBottom: "50px", marginTop: "35px" }} className={styles.can_btn}>Cancel</button></td>

@@ -1,7 +1,6 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
-import Navbar from "../navbar.component";
 import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
@@ -10,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const PendingDeliveries = () => {
   let history = useHistory();
   const [data, setData] = useState([]);
-  // const [records, setRecords] = useState("");
 
   const logResult = useCallback(() => {
     return 2 + 2;
@@ -61,7 +59,7 @@ const PendingDeliveries = () => {
               style={{ margin: "0 auto", display: "block", color: 'white' }}
               name="Delete"
               className="btn info btn-sm"
-              onClick={() =>  arrangeDelivery(record) }>
+              onClick={() => arrangeDelivery(record)}>
               ARRANGE DELIVERY
             </button>
           </Fragment>
@@ -201,7 +199,7 @@ const PendingDeliveries = () => {
           <ReactDatatable
             config={config}
             records={data}
-            columns= {columns}
+            columns={columns}
             extraButtons={extraButtons}
           />
         </div>

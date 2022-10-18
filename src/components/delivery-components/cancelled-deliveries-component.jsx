@@ -1,7 +1,6 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
-import Navbar from "../navbar.component";
 import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +9,6 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 const CancelledDeliveries = () => {
   let history = useHistory();
   const [data, setData] = useState("");
-  // const [records, setRecords] = useState("");
 
   const logResult = useCallback(() => {
     return 2 + 2;
@@ -150,14 +148,6 @@ const CancelledDeliveries = () => {
       },
     },
   ];
-
-  // componentDidMount(props) {
-  //   axios.get(`${API_URL}/admin/submissionType/`)
-  //     .then(res => {
-  //       this.setState({ records: res.data });
-  //     }
-  //     )
-  // }
 
   const editRecord = (record) => {
     this.props.history.push("/admin-submission-type-edit/" + record._id);
