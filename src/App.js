@@ -54,11 +54,6 @@ import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
 import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
-
-
-
-<link rel="stylesheet" href="./" />;
-
 function App() {
   return (
     <div>

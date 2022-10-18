@@ -117,7 +117,7 @@ function ItemDetails() {
                                         </div>
                                     </Col>
                                     <Col>
-                                        <MDBBtn className='item_btn' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.orderedQuanity, item.offer)} > Add to Cart</MDBBtn>
+                                        <MDBBtn className='item_btn' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.offer)} > Add to Cart</MDBBtn>
                                     </Col>
                                 </Row>
                             </div>

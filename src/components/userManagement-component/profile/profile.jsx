@@ -119,7 +119,7 @@ function UserProfile(props) {
                                     <tbody>
                                         <tr>
                                             <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>First Name    : <label style={{ fontWeight: 'normal' }}>{firstName}</label></label></td>
-                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px", marginLeft: "30px" }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
                                         </tr>
                                         <tr>
                                             <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Mobile Number    : <label style={{ fontWeight: 'normal' }}>{mobileNumber}</label></label></td>

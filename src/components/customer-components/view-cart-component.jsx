@@ -57,7 +57,6 @@ function ViewCart() {
                         url: `http://localhost:5050/cart/${id}`
                     }),
                 )
-                // window.location = '/cart/view/'
             } else if (result.isDenied) {
                 Swal.fire(
                     'Item is not deleted',
@@ -103,16 +102,6 @@ function ViewCart() {
         }
         return false
     }
-
-    //total price calculation
-    // const total = (Price, Qty) => {
-    //     var tot = Price * Qty;
-    //     return tot
-    // }
-
-    // const getTot = (ttl) => {
-    //     return ttl;
-    // }
 
     //final total
     const finalTotal = async () => {
@@ -236,7 +225,6 @@ function ViewCart() {
                                                         </MDBCol>
 
                                                     </MDBRow>
-                                                    {/* Total: Rs {total(cartItem.price, cartItem.orderedQuanity)} */}
                                                 </div>
                                             ))}
 

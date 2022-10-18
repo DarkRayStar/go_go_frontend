@@ -102,9 +102,6 @@ function ViewFavItems() {
                         onChange={(e) => setSearch(e.target.value)}
                     />
                 }
-            // subHeaderAlign="center"
-            // selectableRows
-            // selectableRowsHighlight
             />
         </div>
     </>)
