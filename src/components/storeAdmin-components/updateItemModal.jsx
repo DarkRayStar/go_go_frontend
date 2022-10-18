@@ -40,7 +40,6 @@ const UpdateItemModal = ({ test }) => {
     const getItem = async () => {
         try {
             const response = await axios.get('http://localhost:5050/storeAdmin/' + window.sessionStorage.getItem('item'));
-            // setItem(response.data);
             setName(response.data.itemName);
             setDescription(response.data.description);
             setSpecifications(response.data.specifications);

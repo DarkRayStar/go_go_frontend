@@ -62,7 +62,6 @@ const HomePageComponent = () => {
                         <input className="form-control" type="text" value={filter} onChange={searchText.bind(this)} />
                     </div>
                 </div>
-                {/* <HomeSlider/> */}
                 <center><HomeCarousel /></center>
                 <div className="mx-auto">
                     <MDBRow className='row-cols-1 row-cols-md-3 g-4' style={{ paddingLeft: '80px' }}>
@@ -72,15 +71,8 @@ const HomePageComponent = () => {
                                     <MDBCard
                                         className='h-100 '
                                         style={{ width: '300px' }}>
-                                        {/* <MDBCardImage
-                                        className='card_image'
-                                        src={item.images}
-                                        alt='...'
-                                        position='top'
-                                    /> */}
-                                        {/* <Link>  */}
+                                       
                                         <div className='imgbk'><img onClick={() => imageClick(item._id)} className='card_image' src={item.images} /></div>
-                                        {/* </Link> */}
                                         <MDBCardBody>
                                             <center>
                                                 <MDBCardTitle > {item.itemName} </MDBCardTitle>

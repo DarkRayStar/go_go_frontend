@@ -16,15 +16,7 @@ function storeAdminDashboard() {
                 <h5 style={{ marginTop: '100px' }}>Welcome, John !</h5>
                 <h4 > Store Admin</h4>
                 <div className='container dshbrd'>
-                    {/* <Container >
-                        <div >
-                            <Row>
-                                <Col style={{ marginTop: '150px' }}> <button onClick={viewItem} type="button" class="dshbtn btn btn-dark btn-lg"> View Items </button> </Col>
-                                <Col style={{ marginTop: '150px' }}> <button type="button" class="dshbtn btn btn-dark btn-lg"> Add Item </button> </Col>
-                                <Col style={{ marginTop: '150px' }}> <button type="button" class="dshbtn btn btn-dark btn-lg"> Generate Reports </button> </Col>
-                            </Row>
-                        </div>
-                    </Container> */}
+                    
                     <Grid container sx={{ marginBottom: "2vh" }}>
                         <Grid item xs={12} sx={{ marginBottom: "7vh" }}>
                             <div style={{ paddingTop: "3vh" }}>

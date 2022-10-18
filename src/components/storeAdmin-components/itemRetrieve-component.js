@@ -164,13 +164,6 @@ function ItemRetrieve() {
                                 <button className="addBtn btn btn-outline-dark" style={{ width: '100%' }} onClick={openInsertModal}> Add New Item </button>
                             </>
                         }
-
-                        // actions={
-                        //     <>
-                        //         {/* <button className="btn btn-sm btn-info"> Export</button> */}
-                        //         {/* <Button style={{width:'100%'}} onClick={openInsertModal}> Add New Item </Button> */}
-                        //     </>
-                        // }
                     />
                     {updateModal ? <ModalContent /> : null}
                 </div>
