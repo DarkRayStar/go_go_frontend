@@ -54,11 +54,9 @@ import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
 import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
-
-
-
-
+import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
 <link rel="stylesheet" href="./" />;
+import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
 function App() {
   return (
@@ -114,6 +112,7 @@ function App() {
           <Route path="/footer" component={FooterComponent} />
           <Route path="/userHome" component={HomePageComponent} />
           <Route path="/item" component={ItemDetails} />
+          <Route path="/storeAdminReport" component={StoreAdminReport} />
 
         </div>
       </Router >

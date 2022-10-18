@@ -7,7 +7,6 @@ import {
     MDBCardTitle,
     MDBBtn
 } from 'mdb-react-ui-kit';
-// import { Row, Column } from 'react-foundation';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './itemDetails.scss'
@@ -117,7 +116,7 @@ function ItemDetails() {
                                         </div>
                                     </Col>
                                     <Col>
-                                        <MDBBtn className='item_btn' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.orderedQuanity, item.offer)} > Add to Cart</MDBBtn>
+                                        <MDBBtn className='item_btn' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.offer)} > Add to Cart</MDBBtn>
                                     </Col>
                                 </Row>
                             </div>

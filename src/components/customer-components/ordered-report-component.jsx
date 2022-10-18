@@ -115,7 +115,7 @@ export default function OrderedReport(p) {
             <NavBarGoGo />
             <Link to={"/order-history"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
             <div className="section-to-print">
-                <div className="userReportContainer">
+                <div className="userReportContainer" style={{ marginTop: "100px" }}>
                     <center>
                         <div className="container" style={{ width: "300px" }}>
                             <div className='col mx-auto' >
@@ -146,7 +146,7 @@ export default function OrderedReport(p) {
                 </div>
             </div>
 
-            <div style={{ marginBottom: "30px" }}>
+            <div style={{ paddingTop: "30px", paddingBottom: "30px" }}>
                 <button className="reportbtn btn btn-dark" onClick={() => window.print()}>Print</button>
             </div>
         </div>
