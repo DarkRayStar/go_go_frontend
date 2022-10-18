@@ -25,12 +25,8 @@ const SignIn = () => {
             const url = "http://localhost:5050/user/login";
             const { data: res } = await axios.post(url, data);
             localStorage.setItem("token", res.data);
-            console.log("login", res.message);
-            console.log("user 2 Details", res.user);
-            console.log("user ID", res.user._id);
+         
 
-
-            // alert(res.message);
             Swal.fire({
                 title: "Success!",
                 text: res.message,
@@ -46,7 +42,6 @@ const SignIn = () => {
             );
 
             setTimeout(() => {
-                // window.location.replace("http://localhost:3000/ViewDeliveries");
                 if (res.user.email === 'kamal@gmail.com') {
                     window.location = "/user-admin-dashboard";
                 } else {
@@ -54,13 +49,6 @@ const SignIn = () => {
                 }
             }, 2000)
 
-            // if (res.user.email === 'kushanisakalasooriya273@gmail.com') {
-            //     window.location = "/user-admin-dashboard";
-            // } else {
-            //     window.location = "/userHome";
-            // }
-            // window.location = "/user-profile";
-            // window.location = `/user-profile/${res.user._id}`
         }
         catch (error) {
             if (
@@ -114,11 +102,8 @@ const SignIn = () => {
                                 className={styles.input}
                             />
 
-                            {/* <Link to="/forgot-password" style={{ marginLeft: '85px', alignSelf: "flex-start" }}> */}
                             <p className={styles.form_p} onClick={forgotpass} style={{ textDecoration: "underline", color: 'Blue', cursor: 'pointer', marginLeft: '110px', alignSelf: "flex-start", padding: "0 15px", marginTop: "10px" }}>Forgot Password ?</p>
-                            {/* </Link> */}
-
-                            {/* {error && <div className={styles.err_msg}>{error}</div>} */}
+                           
                             {error && <div className={styles.err_msg}>{error}</div>}
 
                             <button type='submit' className={styles.g_button}>Sign in</button>
@@ -127,9 +112,9 @@ const SignIn = () => {
 
                     <div className={styles.right}>
                         <h1 style={{ textAlign: 'center', marginTop: "20px", marginBottom: "20px", fontSize: "36px" }}>Don't have an Account?</h1>
-                        {/* <Link to="/registration"> */}
+                     
                         <button type='button' onClick={registerButton} className={styles.w_button}>Sign up</button>
-                        {/* </Link> */}
+                 
 
                     </div>
 

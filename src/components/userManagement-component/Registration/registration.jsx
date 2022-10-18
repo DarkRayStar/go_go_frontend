@@ -39,7 +39,6 @@ const Registration = () => {
     };
 
 
-    // const [Password, setPassword] = useState("");
     const [pwdRequisite, setPWDRequisite] = useState(false);
     const [checks, setChecks] = useState({
         capsLetterCheck: false,
@@ -48,9 +47,6 @@ const Registration = () => {
         specialCharacterCheck: false,
     });
 
-    // const handleOnChange = (e) => {
-    //     setPassword(e.target.value);
-    // };
 
     const handleOnFocus = () => {
         setPWDRequisite(true);
@@ -81,10 +77,7 @@ const Registration = () => {
         try {
             const url = "http://localhost:5050/user/registration";
             const { data: res } = await axios.post(url, data);
-            // navigate("/")
-            // window.location = "/"
 
-            // alert(res.message);
             Swal.fire({
                 title: "Success!",
                 text: res.message,
@@ -96,9 +89,6 @@ const Registration = () => {
                 window.location = "/"
             }, 2000)
 
-
-            console.log("registration", res.message);
-            console.log("registrationDate", data.registeredDate);
         }
         catch (error) {
 
@@ -123,9 +113,9 @@ const Registration = () => {
 
                     <div className={styles.left}>
                         <h1 style={{ textAlign: 'center', marginBottom: "20px" }}>Already have an Account?</h1>
-                        {/* <Link to="/"> */}
+                
                         <button type='button' onClick={LoginButton} className={styles.w_button}>Sign in</button>
-                        {/* </Link> */}
+          
                     </div>
 
                     <div className={styles.right}>
@@ -170,6 +160,8 @@ const Registration = () => {
                                             name='mobileNumber'
                                             onChange={handleChange}
                                             value={data.mobileNumber}
+                                            maxLength="10"
+                                            title="Cannot exceed 10 characters."
                                             required
                                             className={styles.input}
                                         />
@@ -180,6 +172,8 @@ const Registration = () => {
                                             type="text"
                                             placeholder='Phone Number'
                                             name='phoneNumber'
+                                            maxLength="10"
+                                            title="Cannot exceed 10 characters."
                                             onChange={handleChange}
                                             value={data.phoneNumber}
                                             required
@@ -220,7 +214,7 @@ const Registration = () => {
                                         <label style={{ fontWeight: "bold" }} >District    :</label><br></br>
                                         <select
                                             className={styles.input}
-                                            // value={selected}
+                          
                                             name='district'
                                             value={data.district}
                                             onChange={handleChange}>
@@ -247,7 +241,7 @@ const Registration = () => {
                                 </Row>
                                 <Row>
                                     <Col style={{ textAlign: "center" }}>
-                                        {/* <label htmlFor="password">Password</label> */}
+                             
                                         <label style={{ fontWeight: "bold" }}>Password    :</label><br></br>
                                         <input
                                             id="password"

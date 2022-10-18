@@ -21,12 +21,9 @@ function NavBarGoGo() {
 						<a href='/#' className="space">ABOUT US</a>
 						<a href='/#' className="space">SUPPORT</a>
 						<a href='/user-profile' >MY ACCOUNT</a>
-						{/* <a href="/user-profile"><img style={{ width: "35px", height: "35px", borderRadius: '50px', marginRight: "20px" }} src={user.image} alt=""></img></a> */}
+						
 					</nav>
-					{/* <button className={styles.w_button} onClick={handleLogout}>
-					Logout
-				</button> */}
-					{/* <h1><img style={{ width: "35px", height: "35px", borderRadius: '50px', marginRight: "20px" }} src={user.image} alt=""></img></h1> */}
+				
 				</nav>
 			</div>
 		</header>

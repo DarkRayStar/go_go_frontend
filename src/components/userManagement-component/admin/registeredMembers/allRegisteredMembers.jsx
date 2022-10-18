@@ -5,12 +5,6 @@ import styles from "./styles.module.css";
 
 function ViewAllRegisteredMembers() {
 
-    // useEffect(() => {
-    //     const d = new Date();
-    //     let month = d.getMonth() + 1
-    //     let date = d.getFullYear() + "-" + month + "-" + d.getDate();
-    //     setToday(date)
-    // })
 
     const [data, setData] = useState({
         fromDate: "",
@@ -18,7 +12,7 @@ function ViewAllRegisteredMembers() {
     });
 
     const [searchData, setSearchData] = useState([]);
-    // const [today, setToday] = useState("");
+
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
