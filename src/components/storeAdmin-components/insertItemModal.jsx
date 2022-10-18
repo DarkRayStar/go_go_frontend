@@ -52,8 +52,6 @@ function InsertItemModal() {
                 quantity: quantity,
                 images: images,
                 offer: offer,
-                // clockedIn:false,
-                // dates:[]
             })
         })
             .then(() => {

@@ -7,7 +7,6 @@ import {
     MDBCardTitle,
     MDBBtn
 } from 'mdb-react-ui-kit';
-// import { Row, Column } from 'react-foundation';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './itemDetails.scss'

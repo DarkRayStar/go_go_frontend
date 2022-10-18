@@ -12,7 +12,6 @@ function StoreAdminReport() {
     const [covidData] = useState([
         44, 17, 15
     ]);
-    // const quantities = [];
 
     const options1 = {
         chart: {
@@ -40,15 +39,12 @@ function StoreAdminReport() {
     const getItems = async () => {
         try {
             const response = await axios.get('http://localhost:5050/storeAdmin');
-            // setItems(response.data);
             for (let i = 0; i < response.data.length; i++) {
                 quantities.push(parseInt(response.data[i].orderedQuanity));
             }
         } catch (err) {
             console.log(err);
         }
-        // console.log('a', quantities);
-        // console.log('b', dataa);
     }
 
     function getItems1() {
@@ -63,7 +59,6 @@ function StoreAdminReport() {
     }
 
     useEffect(() => {
-        // getItems();
         getItems1();
     }, [])
 

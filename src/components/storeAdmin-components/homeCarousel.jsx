@@ -24,7 +24,6 @@ function HomeCarousel() {
   const slideLeft = () => {
     setCurrent(current === 0 ? images.length - 1 : current - 1);
   };
-  // console.log(current);
   return (
     <div
       className="carousel"
@@ -39,8 +38,6 @@ function HomeCarousel() {
       <div className="carousel_wrapper">
         {images.map((image, index) => {
           return (
-            /* (condition) ? true : false */
-
             <div
               key={index}
               className={
