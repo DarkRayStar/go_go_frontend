@@ -1,6 +1,4 @@
 .container {
-	/* width: 100vw;
-	height: 100vh; */
 	width: 100%;
 	min-height: 77.5vh;
 	display: flex;
@@ -12,10 +10,8 @@
 
 .form_container {
 	width: 500px;
-	/* height: 300px; */
 	height: 100%;
 	padding: 10px;
-	/* background-color: white; */
 	background-color: rgba(255, 255, 255, 0.9);
 	border-radius: 10px;
 	display: flex;
@@ -40,7 +36,6 @@
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	/* background-color: #784BA0; */
 	background-color: #6c757d;
 	color: white;
 	border-radius: 20px;
@@ -56,7 +51,6 @@
 	outline: none;
 	padding: 12px 0;
 	background-color: #404040;
-	/* background-image: linear-gradient(to left, #693639,#212429); */
 	color: white;
 	border-radius: 20px;
 	width: 180px;
@@ -83,13 +77,11 @@
 }
 
 .g_btn:hover {
-	/* box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px; */
 	transform: scale(1.05) rotate(-1deg);
 }
 
 
 .can_btn:hover {
-	/* box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px; */
 	transform: scale(1.05) rotate(-1deg);
 }
 

@@ -15,17 +15,10 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-// import AdminNavBarGoGo from "../../../navigatonBar/adminNav";
 
 export default function OnlyGraphUserAdmin(p) {
 
-  // const [ada, setAda] = useState();
-  // const [grase, setGrase] = useState();
-  // const [jo, setJo] = useState();
-  // const [ma, setMa] = useState();
-  // const [accept, setAccept] = useState();
-  // const [reject, setReject] = useState();
-  // const [pending, setPending] = useState();
+
   const [total, setTotal] = useState();
 
 
@@ -108,14 +101,14 @@ export default function OnlyGraphUserAdmin(p) {
   function getTotalUsers() {
     axios.get("http://localhost:5050/user/get-all").then((res) => {
 
-      // console.log('all users', res.data[0].district);
+   
       setAllUsers(res.data);
       setDistrict(res.data.district);
 
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
         count++
-        //  console.log('total count', count)
+       
       }
       setTotal(count);
 
@@ -127,14 +120,13 @@ export default function OnlyGraphUserAdmin(p) {
   function getALLUsersDistrict() {
     axios.get("http://localhost:5050/user/get-all").then((res) => {
 
-      // console.log(res.data);
+
       setAllUsers(res.data);
 
       var count = 0;
 
       for (let i = 0; i < res.data.length; i++) {
-        // if(res.data[i].district) 
-        // console.log('all district', res.data[i].district);
+ 
         count++
         setDistrict(res.data[i].district);
       }
@@ -151,7 +143,7 @@ export default function OnlyGraphUserAdmin(p) {
 
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
-        // console.log('all district', res.data[i].district);
+    
         count++
         setDistrict(res.data[i].district);
       }
@@ -159,7 +151,7 @@ export default function OnlyGraphUserAdmin(p) {
       var count2 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Kandy' || res.data[i].district === 'Matale' || res.data[i].district === 'Nuwara Eliya') {
-          // setDistrictName('Central');
+
           count2++
           setCentral(count2);
         }
@@ -223,7 +215,7 @@ export default function OnlyGraphUserAdmin(p) {
 
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
-        // console.log('all district', res.data[i].district);
+     
         count++
         setDistrict(res.data[i].district);
       }
@@ -231,7 +223,7 @@ export default function OnlyGraphUserAdmin(p) {
       var count5s = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Jaffna' || res.data[i].district === 'Kilinochchi' || res.data[i].district === 'Mannar' || res.data[i].district === 'Vavuniya' || res.data[i].district === 'Mullaitivu') {
-          // setDistrictName('Central');
+
           count5s++
           setNorth(count5s);
         }
@@ -250,7 +242,7 @@ export default function OnlyGraphUserAdmin(p) {
 
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
-        // console.log('all district', res.data[i].district);
+
         count++
         setDistrict(res.data[i].district);
       }
@@ -258,7 +250,7 @@ export default function OnlyGraphUserAdmin(p) {
       var count6 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Kurunegala' || res.data[i].district === 'Puttalam') {
-          // setDistrictName('Central');
+        
           count6++
           setNorthWest(count6);
         }
@@ -276,7 +268,6 @@ export default function OnlyGraphUserAdmin(p) {
 
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
-        // console.log('all district', res.data[i].district);
         count++
         setDistrict(res.data[i].district);
       }
@@ -284,7 +275,7 @@ export default function OnlyGraphUserAdmin(p) {
       var count7 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Ratnapura' || res.data[i].district === 'Kegalle') {
-          // setDistrictName('Central');
+    
           count7++
           setSabaragamuwa(count7);
         }
@@ -302,7 +293,7 @@ export default function OnlyGraphUserAdmin(p) {
 
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
-        // console.log('all district', res.data[i].district);
+
         count++
         setDistrict(res.data[i].district);
       }
@@ -310,7 +301,7 @@ export default function OnlyGraphUserAdmin(p) {
       var count8 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Galle' || res.data[i].district === 'Matara' || res.data[i].district === 'Hambantota') {
-          // setDistrictName('Central');
+
           count8++
           setSouth(count8);
         }
@@ -327,7 +318,7 @@ export default function OnlyGraphUserAdmin(p) {
 
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
-        // console.log('all district', res.data[i].district);
+
         count++
         setDistrict(res.data[i].district);
       }
@@ -335,7 +326,7 @@ export default function OnlyGraphUserAdmin(p) {
       var count9 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Badulla' || res.data[i].district === 'Moneragala') {
-          // setDistrictName('Central');
+
           count9++
           setUva(count9);
         }
@@ -352,7 +343,7 @@ export default function OnlyGraphUserAdmin(p) {
 
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
-        // console.log('all district', res.data[i].district);
+    
         count++
         setDistrict(res.data[i].district);
       }
@@ -360,7 +351,7 @@ export default function OnlyGraphUserAdmin(p) {
       var count10 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Colombo' || res.data[i].district === 'Gampaha' || res.data[i].district === 'Kalutara') {
-          // setDistrictName('Central');
+   
           count10++
           setWest(count10);
         }
@@ -421,9 +412,6 @@ export default function OnlyGraphUserAdmin(p) {
       </div>
 
 
-      <div style={{ marginBottom:"" }}>
-        {/* <button className="reportbtn btn btn-dark" onClick={generateReport}>Print</button> */}
-      </div>
     </div>
 
   )

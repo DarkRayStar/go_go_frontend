@@ -147,6 +147,8 @@ const UpdateUserProfile = () => {
                                             type="text"
                                             placeholder='Mobile Number'
                                             name='mobileNumber'
+                                            maxLength="10"
+                                            title="Cannot exceed 10 characters."
                                             onChange={mobileNumberUpdate}
                                             value={mobileNumber}
                                             required
@@ -159,6 +161,8 @@ const UpdateUserProfile = () => {
                                             type="text"
                                             placeholder='Phone Number'
                                             name='phoneNumber'
+                                            maxLength="10"
+                                            title="Cannot exceed 10 characters."
                                             onChange={phoneNumberUpdate}
                                             value={phoneNumber}
                                             required
@@ -184,7 +188,7 @@ const UpdateUserProfile = () => {
                                         <label style={{ fontWeight: "bold" }} >District    :</label><br></br>
                                         <select
                                             className={styles.input}
-                                            // value={selected}
+                                        
                                             name='district'
                                             value={district}
                                             onChange={districtUpdate}>
@@ -223,11 +227,6 @@ const UpdateUserProfile = () => {
                                         />
                                     </Col>
                                 </Row>
-                                {/* <Row>
-                                    <Button variant="primary" type="submit">
-                                        Update Profile
-                                    </Button>
-                                </Row> */}
                                 <table style={{ marginBottom: "50px", marginTop: "20px" , marginLeft:"100px"}}>
                                     <tr>
                                         <td><button type='submit' style={{ marginBottom: "50px", marginTop: "35px" }} className={styles.g_button}>Update</button></td>

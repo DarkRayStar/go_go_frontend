@@ -16,13 +16,6 @@ button, input, optgroup, select, textarea {
   margin: 2px;
 }
 
-/* .kWAsOx {
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 -moz-available;
-  font-weight: 600;
-} */
-
 .sc-bjUoiL{
   flex: 1 0 -moz-available;
 }
@@ -43,13 +36,6 @@ button, input, optgroup, select, textarea {
     background-color: rgb(255, 255, 255);
 }
 
-/* .tbl{
-    border-top-width: 2px;
-    border-top-style: solid;
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-radius: 20px;
-} */
 
 .backLink{
   

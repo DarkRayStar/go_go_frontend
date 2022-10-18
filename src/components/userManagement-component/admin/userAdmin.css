@@ -1,8 +1,4 @@
-/* .TpgDh {
-    color: rgba(0,0,0,0.87);
-    font-size: 20px;
-    font-weight: 500;
-  } */
+
 
   .hello{
     text-align: center;
@@ -14,20 +10,11 @@
   }
   
   .dshbrd{
-    /* display: block; */
     text-align: center;
-    /* justify-content: center; */
-    /* margin: auto; */
   }
   
   .bkgrnduser{
     height:85vh;
-    /* position: absolute;
-    justify-content: center;
-    margin: auto; */
-    /* display: contents; */
-    /* margin-bottom: 0px; */
-    /* margin-top: 300px; */
   }
   
   .header{

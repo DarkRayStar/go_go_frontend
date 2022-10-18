@@ -21,7 +21,7 @@ import userAdminDashboard from "./components/userManagement-component/admin/user
 import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/viewAllMembers/allMembersRetrieve";
 import UserAdminReport from "./components/userManagement-component/admin/report/userAdminReport";
 import PrintingClass from "./components/userManagement-component/admin/report/testingreport/usertreporttesting";
-
+import UserAdminPrintingReport from "./components/userManagement-component/admin/reportPrint/userAdminReport";
 
 import adminRetrieve from './components/admin-components/admin-retrieve';
 import adminInsert from './components/admin-components/admin-insert';
@@ -57,6 +57,7 @@ import DeliveryInformation from "./components/delivery-components/delivery-infor
 
 
 
+
 <link rel="stylesheet" href="./" />;
 
 function App() {
@@ -81,7 +82,8 @@ function App() {
           <Route path="/user-admin-dashboard" component={userAdminDashboard} />
           <Route path="/registered-members" component={AllRegisteredMemebersDisplay} />
           {/* <Route path="/user-admin-report" component={UserAdminReport} /> */}
-          <Route path="/user-admin-report" component={PrintingClass} />
+          {/* <Route path="/user-admin-report" component={PrintingClass} /> */}
+           <Route path="/user-admin-report" component={UserAdminPrintingReport} />
 
 
           <Route path="/home" component={HomePage} />
