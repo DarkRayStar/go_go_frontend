@@ -17,6 +17,8 @@ function PrintingClass() {
 
     let componentRef = useRef(null);
 
+    
+
 
     const goBack = () => {
         window.location = "/user-admin-dashboard"
@@ -29,22 +31,22 @@ function PrintingClass() {
                 <FontAwesomeIcon icon={faArrowAltCircleLeft} />
                 &nbsp;Go Back
             </Link>
-            <br></br>  
+            <br></br>
             <Container>
                 <Paper elevation={0}  ref={el => (componentRef = el)} style={{height:"750px" , backgroundColor:"#f5f5f5"}}>
-                    <OnlyGraphUserAdmin />
+                {/* <Paper elevation={0} ref={el => (componentRef = el)}> */}
+                    <OnlyGraphUserAdmin/>
                 </Paper>
                 <ReactToPrint
-                    trigger={() => 
+                    trigger={() =>
                         <div>
                             <AdminNavBarGoGo></AdminNavBarGoGo>
-                       
-                            {/* <div>Printing Component</div>
-                            <div>Generator</div> */}
                             <a>
 
                                 <button style={{width:"800px", marginLeft:"200px" , marginBottom:"30px"}} className="reportbtn btn btn-dark">Print</button>
                                 
+                                {/* <button className="reportbtn btn btn-dark">Print</button> */}
+
 
                             </a>
                         </div>
@@ -54,6 +56,22 @@ function PrintingClass() {
                 />
             </Container>
         </div>
+
+
+
+
+        // <div>
+        //     <div>
+        //         {/* button to trigger printing of target component */}
+        //         <ReactToPrint
+        //             trigger={() => <button>Print this out!</button>}
+        //             content={() => componentRef}
+        //         />
+
+        //         {/* component to be printed */}
+        //         <OnlyGraphUserAdmin ref={(el) => (componentRef = el)} />
+        //     </div>
+        // </div>
     )
 }
 

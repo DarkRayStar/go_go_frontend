@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { Button, Form, Modal } from "react-bootstrap";
 import { Fragment, useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import styles from './style.module.css';
@@ -8,17 +7,15 @@ import "./tableTharidu.css"
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
-// import { Label } from "@mui/icons-material";
 import Swal from "sweetalert2";
+import AdminNavBarGoGo from "../../../navigatonBar/adminNav";
 
 
 function AllRegisteredMemebersDisplay() {
 
+
     const [items, setItems] = useState([]);
-    // const [search, setSearch] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
-    // const [modal, setModal] = useState(false);
-    // const [updateModal, setUpdateModal] = useState(false);
 
     const columns = [
         {
@@ -96,7 +93,7 @@ function AllRegisteredMemebersDisplay() {
             setItems(response.data);
             setFilteredItems(response.data);
         } catch (err) {
-            console.log(err);
+      
         }
     }
 
@@ -104,12 +101,6 @@ function AllRegisteredMemebersDisplay() {
         getItems();
     }, [])
 
-    // useEffect(() => {
-    //     const result = items.filter((item) => {
-    //         return item.itemName.toLowerCase().match(search.toLowerCase());
-    //     });
-    //     setFilteredItems(result);
-    // }, [search])
 
     useEffect(() => {
         const d = new Date();
@@ -127,7 +118,6 @@ function AllRegisteredMemebersDisplay() {
         email: ""
     });
 
-    // const [searchData, setSearchData] = useState([]);
     const [today, setToday] = useState("");
 
     const handleChange = ({ currentTarget: input }) => {
@@ -142,8 +132,6 @@ function AllRegisteredMemebersDisplay() {
                 toDate: data.toDate,
             })
             .then((response) => {
-                // console.log(response.data);
-                // setSearchData(response.data);
                 setFilteredItems(response.data);
 
             });
@@ -165,6 +153,7 @@ function AllRegisteredMemebersDisplay() {
 
     return (
         <>
+        <AdminNavBarGoGo/>
             <div className="container bkgrnd">
                 <Link onClick={goBack} to="#" className="backLink">
                     <FontAwesomeIcon icon={faArrowAltCircleLeft} />

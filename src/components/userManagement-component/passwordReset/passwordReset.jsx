@@ -23,9 +23,6 @@ export default function PasswordReset() {
 		specialCharacterCheck: false,
 	});
 
-	// const handleOnChange = (e) => {
-	//     setPassword(e.target.value);
-	// };
 
 	const handleOnFocus = () => {
 		setPWDRequisite(true);

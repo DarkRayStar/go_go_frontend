@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { faHeart, faListAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NavBarGoGo from "../../navigatonBar/navbarGoGo";
+import Swal from "sweetalert2";
 
 function UserProfile(props) {
 
@@ -26,12 +27,9 @@ function UserProfile(props) {
 
         //get the user details from the session
         const user = JSON.parse(sessionStorage.getItem("loggeduser"));
-        console.log("User Details", user);
-        console.log("User id", user._id);
 
         try {
             const response = await axios.get('http://localhost:5050/user/' + user._id);
-            // const response = await axios.get('http://localhost:5050/user/' + props.match.params.id);
             setFirstName(response.data.firstName);
             setLastName(response.data.lastName);
             setMobileNumber(response.data.mobileNumber);
@@ -42,7 +40,7 @@ function UserProfile(props) {
             setEmail(response.data.email);
             setImage(response.data.image);
         } catch (err) {
-            console.log(err);
+           
         }
     }
 
@@ -63,20 +61,38 @@ function UserProfile(props) {
 
     const DeleteAccount = (id) => {
 
-        const confirmBox = window.confirm(
-            "Are you sure want to delete your account?"
-        )
-        if (confirmBox === true) {
-            axios.delete("http://localhost:5050/user/" + id)
-                .then((res) => {
-                    alert("Successfully deleted");
-                    // window.location = '/';
-                    const modified = FilteredUser.filter(user => user._id !== id);
-                    setFilteredUser(modified);
-                });
-            console.log('a', id)
-            window.location = '/';
-        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#4BB543',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                const user = JSON.parse(sessionStorage.getItem("loggeduser"));
+              
+
+                axios.delete("http://localhost:5050/user/" + user._id)
+                    .then((res) => {
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: 'Your profile has been deleted.',
+                            icon: 'success',
+                            showConfirmButton: false,
+                        })
+
+                        setTimeout(() => {
+                            window.location = "/"
+                        }, 3000)
+
+                    })
+
+            }
+
+        })
     }
 
     const Logout = () => {
@@ -119,7 +135,7 @@ function UserProfile(props) {
                                     <tbody>
                                         <tr>
                                             <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>First Name    : <label style={{ fontWeight: 'normal' }}>{firstName}</label></label></td>
-                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px" }}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
+                                            <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "30px"}}>Last Name    : <label style={{ fontWeight: 'normal' }}>{lastName}</label></label></td>
                                         </tr>
                                         <tr>
                                             <td><label className={styles.input} style={{ fontWeight: 'bold', marginLeft: "-30px" }}>Mobile Number    : <label style={{ fontWeight: 'normal' }}>{mobileNumber}</label></label></td>

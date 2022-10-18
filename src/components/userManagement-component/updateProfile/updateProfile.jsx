@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import NavBarGoGo from "../../navigatonBar/navbarGoGo";
 import styles from "./styles.module.css";
+import Swal from "sweetalert2";
 
 const UpdateUserProfile = () => {
 
@@ -57,7 +58,7 @@ const UpdateUserProfile = () => {
             setZipCode(response.data.zipCode);
             setImage(response.data.image);
         } catch (err) {
-            console.log(err);
+            //console.log(err);
         }
     }
 
@@ -83,9 +84,22 @@ const UpdateUserProfile = () => {
 
 
         axios.post('http://localhost:5050/user/update-profile/' + user._id, userDetails)
-            .then(res => alert("User Profile Successfully updated"));
 
-        window.location = "/user-profile";
+            .then((res) => {
+
+                Swal.fire({
+                    title: "Success!",
+                    text: res.data,
+                    icon: "success",
+                    showConfirmButton: false,
+                })
+
+                setTimeout(() => {
+                    window.location = "/user-profile";
+                }, 2000)
+            })
+
+
     }
 
     const CancelButton = () => {
@@ -147,6 +161,8 @@ const UpdateUserProfile = () => {
                                             type="text"
                                             placeholder='Mobile Number'
                                             name='mobileNumber'
+                                            maxLength="10"
+                                            title="Cannot exceed 10 characters."
                                             onChange={mobileNumberUpdate}
                                             value={mobileNumber}
                                             required
@@ -159,6 +175,8 @@ const UpdateUserProfile = () => {
                                             type="text"
                                             placeholder='Phone Number'
                                             name='phoneNumber'
+                                            maxLength="10"
+                                            title="Cannot exceed 10 characters."
                                             onChange={phoneNumberUpdate}
                                             value={phoneNumber}
                                             required
@@ -184,7 +202,7 @@ const UpdateUserProfile = () => {
                                         <label style={{ fontWeight: "bold" }} >District    :</label><br></br>
                                         <select
                                             className={styles.input}
-                                            // value={selected}
+
                                             name='district'
                                             value={district}
                                             onChange={districtUpdate}>

@@ -36,6 +36,8 @@ import storeAdminDashboard from "./components/storeAdmin-components/storeAdminDa
 import FooterComponent from "./components/footer-component/footer.component";
 import HomePageComponent from "./components/storeAdmin-components/homePageComponent";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
+import DeliveryInformation from "./components/delivery-components/delivery-information-component";
+
 import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
 import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 

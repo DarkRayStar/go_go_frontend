@@ -104,7 +104,6 @@ export default function OnlyGraphUserAdmin(p) {
       }
       setTotal(count);
 
-      console.log('total count', count)
     })
   }
 
@@ -144,7 +143,7 @@ export default function OnlyGraphUserAdmin(p) {
           setCentral(count2);
         }
       }
-      console.log("central count ", count2)
+
     })
   }
 
@@ -168,7 +167,7 @@ export default function OnlyGraphUserAdmin(p) {
           setEast(count3);
         }
       }
-      console.log("Eastern count ", count3)
+
     })
   }
 
@@ -191,7 +190,7 @@ export default function OnlyGraphUserAdmin(p) {
           setNorthCentral(count4);
         }
       }
-      console.log("North Central count ", count4)
+
     })
   }
 
@@ -215,7 +214,7 @@ export default function OnlyGraphUserAdmin(p) {
           setNorth(count5s);
         }
       }
-      console.log("Northern count ", count5s)
+
     })
   }
 
@@ -237,12 +236,11 @@ export default function OnlyGraphUserAdmin(p) {
       let count6 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Kurunegala' || res.data[i].district === 'Puttalam') {
-
           count6++
           setNorthWest(count6);
         }
       }
-      console.log("North Western count ", count6)
+
     })
   }
 
@@ -266,7 +264,7 @@ export default function OnlyGraphUserAdmin(p) {
           setSabaragamuwa(count7);
         }
       }
-      console.log("Sabaragamuwa count ", count7)
+
     })
   }
 
@@ -290,7 +288,7 @@ export default function OnlyGraphUserAdmin(p) {
           setSouth(count8);
         }
       }
-      console.log("Southern count ", count8)
+
     })
   }
 
@@ -313,7 +311,7 @@ export default function OnlyGraphUserAdmin(p) {
           setUva(count9);
         }
       }
-      console.log("Uva count ", count9)
+
     })
   }
 
@@ -336,7 +334,7 @@ export default function OnlyGraphUserAdmin(p) {
           setWest(count10);
         }
       }
-      console.log("Western count ", count10)
+
     })
   }
 
