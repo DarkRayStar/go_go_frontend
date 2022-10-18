@@ -1,6 +1,5 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../navbar.component";
 import { useForm } from "react-hook-form";
 import { Grid } from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
@@ -31,7 +30,7 @@ export default function NewDelivery() {
   } = useForm();
 
   const onSubmit = () => {
-    var answer = window.confirm("Are you sure to create new the delivery?");
+    const answer = window.confirm("Are you sure to create new the delivery?");
     if (answer) {
       const delivery = {
         customerName: customerName,
@@ -83,7 +82,7 @@ export default function NewDelivery() {
   }, [logResult]);
 
   const cancelButton = () => {
-    var answer = window.confirm("Are you sure to abort delivery creation?");
+    const answer = window.confirm("Are you sure to abort delivery creation?");
     if (answer) {
       sessionStorage.setItem("currentNewDeliveryEmail", undefined);
       history.goBack();
@@ -141,7 +140,7 @@ export default function NewDelivery() {
 
   return (
     <div style={{ paddingTop: "70px", paddingBottom: "60px" }}>
-      
+
       <Link
         style={{
           marginLeft: "10%",

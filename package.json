@@ -37,6 +37,7 @@
     "postcss": "^8.4.16",
     "qrcode": "^1.5.0",
     "react": "^16.8.6",
+    "react-apexcharts": "^1.4.0",
     "react-barcode": "^1.4.5",
     "react-bootstrap": "^2.5.0",
     "react-chartjs-2": "^4.3.1",

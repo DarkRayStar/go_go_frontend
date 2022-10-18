@@ -1,6 +1,5 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../navbar.component";
 import { useForm } from "react-hook-form";
 import { Grid } from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
@@ -101,7 +100,6 @@ export default function DeliveryInformation() {
   };
 
   const Print = () => {
-    //console.log('print');
     let printContents = document.getElementById("printArea").innerHTML;
     let originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
@@ -262,7 +260,7 @@ export default function DeliveryInformation() {
               <td>
                 <br />
                 <p style={{ paddingLeft: "25%" }}>
-                  <span style={{ fontWeight: "700" }}>TRACKING NO:<br/></span>{" "}
+                  <span style={{ fontWeight: "700" }}>TRACKING NO:<br /></span>{" "}
                   {trackingID}
                 </p>
                 <p style={{ paddingLeft: "25%" }}>

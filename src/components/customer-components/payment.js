@@ -10,7 +10,7 @@ import {
 import axios from 'axios'
 import Swal from "sweetalert2";
 
-let updateID = JSON.parse(sessionStorage.getItem("itemID"))
+let updateID = JSON.parse(sessionStorage.getItem("itemId"))
 let cartObj = JSON.parse(sessionStorage.getItem("ordQty"))
 let price = sessionStorage.getItem("totalPayemt")
 let payId = "";
@@ -26,12 +26,14 @@ const onSubmit = async () => {
             orderedDate: new Date().toLocaleString(),
         }
 
-        for (var j = 0; j < updateID.length; j++) {
+        let response, response1;
+
+        for (let j = 0; j < updateID.length; j++) {
             payId = updateID[j];
-            var response = await axios.post(`http://localhost:5050/cart/updatePayment/${payId}`, data)
+            response = await axios.post(`http://localhost:5050/cart/updatePayment/${payId}`, data)
         }
 
-        for (var i = 0; i < cartObj.length; i++) {
+        for (let i = 0; i < cartObj.length; i++) {
             DUId = cartObj[i].itemId;
             qty = cartObj[i].orderedQuanity;
 
@@ -39,7 +41,7 @@ const onSubmit = async () => {
                 orderedQuanity: qty,
             }
 
-            var response1 = await axios.post(`http://localhost:5050/storeAdmin/updateItemPayment/${DUId}`, qtyData)
+            response1 = await axios.post(`http://localhost:5050/storeAdmin/updateItemPayment/${DUId}`, qtyData)
         }
         if (response.status === 200 && response1.status === 200) {
             Swal.fire(
