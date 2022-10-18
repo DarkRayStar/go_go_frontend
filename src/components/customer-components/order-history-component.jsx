@@ -73,17 +73,15 @@ function OrderHistory() {
                             <MDBCardBody className="p-0">
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
-                                        <div className="p-5" style={{ marginBottom: "50px" }}>
+                                        <div className="p-5" style={{ marginBottom: "50px", marginTop: "-20px" }}>
                                             <div className="d-flex justify-content-between align-items-center mb-5">
 
                                                 <MDBTypography className="mb-0 text-muted">
                                                     <Link to={"/user-profile"} className="backLink"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Go Back</Link>
                                                 </MDBTypography>
-                                                <center>
-                                                    <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "50px" }}>
-                                                        Order History
-                                                    </MDBTypography>
-                                                </center>
+                                                <MDBTypography tag="h3" className="fw-bold mb-0 text-black" style={{ marginTop: "50px", marginLeft: "150px" }}>
+                                                    Order History
+                                                </MDBTypography>
                                                 <MDBTypography className="mb-0 text-muted" >
                                                     <Link to="/orderedReport" className='orderRepoertMod'> <button className='btn btn-secondary' style={{ marginTop: "55px" }}>Ordered Report</button> </Link>
                                                 </MDBTypography>
@@ -139,10 +137,6 @@ function OrderHistory() {
                                                             </MDBRow>
                                                         </MDBCol>
                                                     </MDBRow>
-
-
-
-
                                                 </div>
                                             ))}
                                         </div>

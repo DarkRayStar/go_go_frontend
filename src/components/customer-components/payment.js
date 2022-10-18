@@ -9,7 +9,6 @@ import {
 } from './cardUtils'
 import axios from 'axios'
 import Swal from "sweetalert2";
-import NavBarGoGo from '../navigatonBar/navbarGoGo';
 
 let updateID = JSON.parse(sessionStorage.getItem("itemID"))
 let cartObj = JSON.parse(sessionStorage.getItem("ordQty"))
@@ -80,7 +79,6 @@ const Payment = () => (
                 active
             }) => {
                 return (<>
-                    {/* <NavBarGoGo /> */}
                     <form onSubmit={handleSubmit}>
                         <Card
                             number={values.number || ''}
