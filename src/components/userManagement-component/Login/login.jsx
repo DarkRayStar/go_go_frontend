@@ -25,9 +25,7 @@ const SignIn = () => {
             const url = "http://localhost:5050/user/login";
             const { data: res } = await axios.post(url, data);
             localStorage.setItem("token", res.data);
-            console.log("login", res.message);
-            console.log("user 2 Details", res.user);
-            console.log("user ID", res.user._id);
+         
 
             Swal.fire({
                 title: "Success!",

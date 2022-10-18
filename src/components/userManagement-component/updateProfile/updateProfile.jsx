@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import NavBarGoGo from "../../navigatonBar/navbarGoGo";
 import styles from "./styles.module.css";
+import Swal from "sweetalert2";
 
 const UpdateUserProfile = () => {
 
@@ -57,7 +58,7 @@ const UpdateUserProfile = () => {
             setZipCode(response.data.zipCode);
             setImage(response.data.image);
         } catch (err) {
-            console.log(err);
+            //console.log(err);
         }
     }
 
@@ -83,9 +84,22 @@ const UpdateUserProfile = () => {
 
 
         axios.post('http://localhost:5050/user/update-profile/' + user._id, userDetails)
-            .then(res => alert("User Profile Successfully updated"));
+        
+            .then((res) =>{
+             
+                Swal.fire({
+                    title: "Success!",
+                    text: res.data,
+                    icon: "success",
+                    showConfirmButton: false,
+                })
+    
+                setTimeout(() => {
+                    window.location = "/user-profile";
+                }, 2000)
+            })
 
-        window.location = "/user-profile";
+     
     }
 
     const CancelButton = () => {

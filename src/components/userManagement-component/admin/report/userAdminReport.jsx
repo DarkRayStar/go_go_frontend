@@ -111,7 +111,6 @@ export default function UserAdminReport(p) {
       }
       setTotal(count);
 
-      console.log('total count', count)
     })
   }
 
@@ -155,7 +154,7 @@ export default function UserAdminReport(p) {
           setCentral(count2);
         }
       }
-      console.log("central count ", count2)
+   
     })
   }
 
@@ -179,7 +178,7 @@ export default function UserAdminReport(p) {
           setEast(count3);
         }
       }
-      console.log("Eastern count ", count3)
+ 
     })
   }
 
@@ -202,7 +201,7 @@ export default function UserAdminReport(p) {
           setNorthCentral(count4);
         }
       }
-      console.log("North Central count ", count4)
+    
     })
   }
 
@@ -226,7 +225,7 @@ export default function UserAdminReport(p) {
           setNorth(count5s);
         }
       }
-      console.log("Northern count ", count5s)
+
     })
   }
 
@@ -252,7 +251,7 @@ export default function UserAdminReport(p) {
           setNorthWest(count6);
         }
       }
-      console.log("North Western count ", count6)
+ 
     })
   }
 
@@ -277,7 +276,7 @@ export default function UserAdminReport(p) {
           setSabaragamuwa(count7);
         }
       }
-      console.log("Sabaragamuwa count ", count7)
+     
     })
   }
 
@@ -303,7 +302,7 @@ export default function UserAdminReport(p) {
           setSouth(count8);
         }
       }
-      console.log("Southern count ", count8)
+  
     })
   }
 
@@ -328,7 +327,7 @@ export default function UserAdminReport(p) {
           setUva(count9);
         }
       }
-      console.log("Uva count ", count9)
+    
     })
   }
 
@@ -351,7 +350,7 @@ export default function UserAdminReport(p) {
           setWest(count10);
         }
       }
-      console.log("Western count ", count10)
+    
     })
   }
 

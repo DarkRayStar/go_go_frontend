@@ -27,8 +27,6 @@ function UserProfile(props) {
 
         //get the user details from the session
         const user = JSON.parse(sessionStorage.getItem("loggeduser"));
-        console.log("User Details", user);
-        console.log("User id", user._id);
 
         try {
             const response = await axios.get('http://localhost:5050/user/' + user._id);
@@ -42,7 +40,7 @@ function UserProfile(props) {
             setEmail(response.data.email);
             setImage(response.data.image);
         } catch (err) {
-            console.log(err);
+           
         }
     }
 
@@ -75,8 +73,7 @@ function UserProfile(props) {
 
             if (result.isConfirmed) {
                 const user = JSON.parse(sessionStorage.getItem("loggeduser"));
-                console.log("delete User Details", user);
-                console.log("delete User id", user._id);
+              
 
                 axios.delete("http://localhost:5050/user/" + user._id)
                     .then((res) => {

@@ -13,8 +13,6 @@ import AdminNavBarGoGo from "../../../navigatonBar/adminNav";
 
 function AllRegisteredMemebersDisplay() {
 
-    const currentDate = new Date();
-    const todayDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
 
     const [items, setItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
@@ -95,7 +93,7 @@ function AllRegisteredMemebersDisplay() {
             setItems(response.data);
             setFilteredItems(response.data);
         } catch (err) {
-            console.log(err);
+      
         }
     }
 
@@ -177,7 +175,6 @@ function AllRegisteredMemebersDisplay() {
                                             name="fromDate"
                                             onChange={handleChange}
                                             value={data.fromDate}
-                                            max={todayDate}
                                             required
                                             className={styles.input}
                                         />
@@ -192,7 +189,6 @@ function AllRegisteredMemebersDisplay() {
                                             name="toDate"
                                             onChange={handleChange}
                                             value={data.toDate}
-                                            max={todayDate}
                                             required
                                             className={styles.input}
                                         />

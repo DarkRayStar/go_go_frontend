@@ -89,9 +89,6 @@ const Registration = () => {
                 window.location = "/"
             }, 2000)
 
-
-            console.log("registration", res.message);
-            console.log("registrationDate", data.registeredDate);
         }
         catch (error) {
 
