@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import DeliveryAdminNavBarGoGo from "../navigatonBar/deliveryAdminNav";
 
 export default function UpdateDelivery() {
   let history = useHistory();
@@ -22,6 +23,7 @@ export default function UpdateDelivery() {
   const [service, setService] = useState("");
   const [trackingID, setTrackingID] = useState("");
   const [fee, setFee] = useState("");
+  const [status, setStatus] = useState("");
 
   const deliveryID = sessionStorage.getItem("currentDeliveryUpdateID");
 
@@ -48,6 +50,7 @@ export default function UpdateDelivery() {
       service: service,
       trackingID: trackingID,
       fee: fee,
+      status:status
     };
 
     console.log(delivery);
@@ -89,6 +92,7 @@ export default function UpdateDelivery() {
       setFee(res.data.fee);
       setProvince(res.data.province);
       setDistrict(res.data.district);
+      setStatus(res.data.status);
     });
   }, [logResult]);
 
@@ -144,11 +148,11 @@ export default function UpdateDelivery() {
   return (
     <div>
       <DeliveryAdminNavBarGoGo />
-      <div style={{ marginTop: "70px", paddingBottom: "60px" }}>
+      <div style={{ marginTop: "200px", paddingBottom: "60px" }}>
         <Link
           style={{
             marginLeft: "10%",
-            marginTop: "5vh",
+            marginTop: "-12vh",
             marginBottom: "3vh",
           }}
           onClick={() => history.goBack()}
