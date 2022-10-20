@@ -56,7 +56,7 @@ import DeliveryInformation from "./components/delivery-components/delivery-infor
 
 import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
 <link rel="stylesheet" href="./" />;
-import DeliveryInformation from "./components/delivery-components/delivery-information-component";
+// import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
 function App() {
   return (
