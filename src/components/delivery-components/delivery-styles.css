@@ -1,6 +1,7 @@
 .button {
   transition-duration: 0.4s;
-  background-color: #008cba; /* Blue */
+  background-color: #008cba;
+  /* Blue */
   color: white;
 }
 
@@ -64,9 +65,9 @@ a:hover {
   background-color: #ef1515;
   border-radius: 100px;
   box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
-  rgba(221, 12, 12, 0.25) 0 1px 2px, rgba(216, 14, 14, 0.25) 0 2px 4px,
-  rgba(225, 14, 14, 0.25) 0 4px 8px, rgba(211, 23, 6, 0.25) 0 8px 16px,
-  rgba(221, 51, 4, 0.25) 0 16px 32px;
+    rgba(221, 12, 12, 0.25) 0 1px 2px, rgba(216, 14, 14, 0.25) 0 2px 4px,
+    rgba(225, 14, 14, 0.25) 0 4px 8px, rgba(211, 23, 6, 0.25) 0 8px 16px,
+    rgba(221, 51, 4, 0.25) 0 16px 32px;
   color: rgb(255, 255, 255);
   cursor: pointer;
   display: inline-block;
@@ -120,55 +121,49 @@ a:hover {
   transform: scale(1.05) rotate(-1deg);
 }
 
-.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3),
-.input-group:not(.has-validation)
-  > .form-floating:not(:last-child)
-  > .form-control,
-.input-group:not(.has-validation)
-  > .form-floating:not(:last-child)
-  > .form-select,
-.input-group:not(.has-validation)
-  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n + 3),
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control,
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select,
+.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
   background: rgb(207, 210, 207, 0.8);
 }
 
-.input-group
-  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
   background: rgb(207, 210, 207, 0.8);
 }
-
-/* .page-item:first-child .page-link {
-  background-color: rgb(216, 224, 216);
-}
-
-.page-item:not(:first-child) .page-link{
-  background-color: rgb(216, 224, 216);
-} */
 
 .success {
   background-color: #04aa6d;
-} /* Green */
+}
+
+/* Green */
 .success:hover {
   background-color: #46a049;
 }
 
 .warning {
   background-color: #ff9800;
-} /* Orange */
+}
+
+/* Orange */
 .warning:hover {
   background: #e68a00;
 }
 
 .info {
   background-color: #2196f3;
-} /* Blue */
+}
+
+/* Blue */
 .info:hover {
   background: #0b7dda;
 }
 
 .danger {
   background-color: #f44336;
-} /* Red */
+}
+
+/* Red */
 .danger:hover {
   background: #da190b;
 }

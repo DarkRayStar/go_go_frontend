@@ -1,6 +1,5 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../navbar.component";
 import { useForm } from "react-hook-form";
 import { Grid } from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
@@ -53,7 +52,7 @@ export default function UpdateDelivery() {
 
     console.log(delivery);
 
-    var answer = window.confirm(
+    const answer = window.confirm(
       "You are about to update an existing delivery information. Do you want to proceed?"
     );
     if (answer) {
@@ -68,7 +67,7 @@ export default function UpdateDelivery() {
   };
 
   const cancelButton = () => {
-    var answer = window.confirm(
+    const answer = window.confirm(
       "Are you sure to abort current delivery update?"
     );
     if (answer) {
@@ -94,28 +93,28 @@ export default function UpdateDelivery() {
   }, [logResult]);
 
   const selectProvince = (district) => {
-    if ( district === 'Matale' || district === 'Kandy' || district === 'Nuwara Eliya' ){
+    if (district === 'Matale' || district === 'Kandy' || district === 'Nuwara Eliya') {
       return 'Central';
-    } else if ( district === 'Colombo' || district === 'Gampaha' || district === 'Kalutara' ){
+    } else if (district === 'Colombo' || district === 'Gampaha' || district === 'Kalutara') {
       return 'Western';
-    } else if ( district === 'Galle' || district === 'Matara' || district === 'Hambantota' ){
+    } else if (district === 'Galle' || district === 'Matara' || district === 'Hambantota') {
       return 'Southern';
-    } else if ( district === 'Jaffna' || district === 'Kilinochchi' || district === 'Mannar' || district === 'Vavuniya' || district === 'Mullaitivu' ){
+    } else if (district === 'Jaffna' || district === 'Kilinochchi' || district === 'Mannar' || district === 'Vavuniya' || district === 'Mullaitivu') {
       return 'Northern';
-    } else if ( district === 'Batticaloa' || district === 'Ampara' || district === 'Trincomalee' ){
+    } else if (district === 'Batticaloa' || district === 'Ampara' || district === 'Trincomalee') {
       return 'Eastern';
-    } else if (district === 'Puttalam' || district === 'Kurunegala' ){
+    } else if (district === 'Puttalam' || district === 'Kurunegala') {
       return 'North Western';
-    } else if (district === 'Anuradhapura' || district === 'Polonnaruwa' ){
+    } else if (district === 'Anuradhapura' || district === 'Polonnaruwa') {
       return 'North Central';
-    } else if (district === 'Badulla' || district === 'Moneragala' ) {
+    } else if (district === 'Badulla' || district === 'Moneragala') {
       return 'Uva'
-    } else if (district === 'Ratnapura' || district === 'Kegalle' ){
+    } else if (district === 'Ratnapura' || district === 'Kegalle') {
       return 'Sabaragamuwa'
     }
   }
 
-  const changeDistrict = (e) =>{
+  const changeDistrict = (e) => {
     setDistrict(e.target.value);
     setProvince(selectProvince(e.target.value));
   }
@@ -341,7 +340,7 @@ export default function UpdateDelivery() {
                 <select
                   {...register("District")}
                   style={{ borderRadius: "5px", border: " solid 1px" }}
-                  onChange={(e) => changeDistrict(e) }
+                  onChange={(e) => changeDistrict(e)}
                   value={district}
                   required
                 >

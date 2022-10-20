@@ -1,6 +1,6 @@
 import styles from "./style.module.css";
 
-
+//get the user details from the session
 function AdminNavBarGoGo() {
 
 	return (
@@ -12,10 +12,7 @@ function AdminNavBarGoGo() {
 						<a href='/#'>DASHBOARD</a>
 						<a href='/#'>ABOUT US</a>
 						<a href='/'>LOGOUT</a>
-						
 					</nav>
-
-					
 				</nav>
 			</div>
 		</header>

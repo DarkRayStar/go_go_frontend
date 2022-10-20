@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../navbar.component";
 import Grid from "@mui/material/Grid";
 import "./delivery-styles.css";
 
@@ -24,10 +23,6 @@ const DeliveryDashboard = () => {
 
   const goToCancelled = () => {
     window.location = "/delivery-cancelled";
-  };
-
-  const goToReport = () => {
-    // window.location = "/delivery-pending";
   };
 
   return (
@@ -135,7 +130,7 @@ const DeliveryDashboard = () => {
                   width: "80%",
                   borderRadius: "70px",
                 }}
-                onClick={() => goToReport()}
+
               >
                 VIEW INSIGHTS
               </button>

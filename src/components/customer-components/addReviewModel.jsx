@@ -5,21 +5,19 @@ import axios from "axios";
 function AddReviewsModel() {
 
     //state variables
-    var [itemId, setItemId] = useState();
-    var [itemName, setName] = useState();
-    var [review, setReview] = useState();
-    var id = window.sessionStorage.getItem("itemID");
+    const [itemId, setItemId] = useState();
+    const [itemName, setName] = useState();
+    const [review, setReview] = useState();
+    const id = window.sessionStorage.getItem("itemID");
 
     // Dealing with field changes to update state
-    const idUpdate = (event) => {
-        setItemId(event.target.value)
-    }
     const nameUpdate = (event) => {
         setName(event.target.value)
     }
     const reviewUpdate = (event) => {
         setReview(event.target.value)
     }
+
 
     const getItem = async () => {
         try {
@@ -57,6 +55,7 @@ function AddReviewsModel() {
             .then(() => {
                 // Once posted, the user will be notified 
                 alert('Your review has been added!');
+                window.location = '/order-history'
             })
     }
 

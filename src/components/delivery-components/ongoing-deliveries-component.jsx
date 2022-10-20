@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
-import Navbar from "../navbar.component";
 import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { useCallback } from "react";
@@ -135,51 +134,6 @@ const OngoingDeliveries = () => {
     },
   };
 
-  // const records = [
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  // ];
-
   const extraButtons = [
     {
       className: "btn btn-primary buttons-pdf",
@@ -222,7 +176,7 @@ const OngoingDeliveries = () => {
   };
 
   const markAsDelivered = (record) => {
-    var answer = window.confirm(
+    const answer = window.confirm(
       `Are you sure to mark the delivery bearing Tracking ID: ${record.trackingID} as completed?`
     );
     if (answer) {
@@ -237,7 +191,7 @@ const OngoingDeliveries = () => {
         )
         .then((res) => console.log(res.data));
 
-        location.reload()
+      location.reload()
     }
   };
 
@@ -247,7 +201,7 @@ const OngoingDeliveries = () => {
   };
 
   const cancelDelivery = (record) => {
-    var answer = window.confirm(
+    const answer = window.confirm(
       `Are you sure to cancel delivery bearing Tracking ID: ${record.trackingID}?`
     );
     if (answer) {
@@ -262,7 +216,7 @@ const OngoingDeliveries = () => {
         )
         .then((res) => console.log(res.data));
 
-        location.reload()
+      location.reload()
     }
   };
 

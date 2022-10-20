@@ -120,13 +120,13 @@ function ViewCart() {
             objectItem = responseItem.data
             objectCart = response.data
 
-            for (var i = 0; i < objectCart.length; i++) {
+            for (let i = 0; i < objectCart.length; i++) {
                 sum = sum + (objectCart[i].price * objectCart[i].orderedQuanity)
             }
             sessionStorage.setItem("totalPayemt", sum);
 
-            for (var j = 0; j < objectCart.length; j++) {
-                for (var k = 0; k < objectItem.length; k++) {
+            for (let j = 0; j < objectCart.length; j++) {
+                for (let k = 0; k < objectItem.length; k++) {
                     if (objectCart[j].itemId === objectItem[k]._id) {
 
                         if (objectCart[j].orderedQuanity < objectItem[k].quantity) {
@@ -142,7 +142,7 @@ function ViewCart() {
                 }
             }
 
-            sessionStorage.setItem('itemID', JSON.stringify(iId))
+            sessionStorage.setItem('itemId', JSON.stringify(iId))
             sessionStorage.setItem('ordQty', JSON.stringify(OQty))
 
         } catch (error) {
@@ -207,7 +207,7 @@ function ViewCart() {
                                                                             orderedQuanity: e.target.value,
                                                                         }
 
-                                                                        const response = await axios.post(`http://localhost:5050/cart/update/${cartItem._id}`, data)
+                                                                        await axios.post(`http://localhost:5050/cart/update/${cartItem._id}`, data)
 
                                                                     } catch (error) {
                                                                         alert(error);
