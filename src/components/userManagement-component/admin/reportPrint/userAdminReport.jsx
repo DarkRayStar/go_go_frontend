@@ -393,7 +393,7 @@ export default function UserAdminPrintingReport(p) {
                         <div className="container">
                             <div className='col-xl-8'>
                                 <div className='card shadow'>
-                                    <div className='card-header bg-light font-weight-bold text-gray-800 text-center'>REPORT REGARDING ORDERED ITEMS</div>
+                                    <div className='card-header bg-light font-weight-bold text-gray-800 text-center'>REPORT REGARDING THE REGISTERED MEMBERS</div>
 
                                     <Bar options={options} data={data} />
                                 </div>
