@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import DeliveryAdminNavBarGoGo from "../navigatonBar/deliveryAdminNav";
 
 const CompletedDeliveries = () => {
   let history = useHistory();
@@ -22,7 +23,7 @@ const CompletedDeliveries = () => {
 
       for (let x = 0; x < res.data.length; x++) {
         if (res.data[x].status === "Delivered") {
-          ongoingList.push(res.data[x]);
+          ongoingList.push( res.data[x] );
         }
       }
       setData(ongoingList);
@@ -150,73 +151,56 @@ const CompletedDeliveries = () => {
     },
   ];
 
-  const editRecord = (record) => {
-    this.props.history.push("/admin-submission-type-edit/" + record._id);
-  };
-
-  const deleteRecord = (record) => {
-    try {
-      axios
-        .delete(`admin/submissionType/file-delete/${record._id}`)
-        .then((response) => {
-          console.log(response.data);
-        });
-      window.location.reload(true);
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        this.setState = {
-          errorMsg: "Error while deleting file. Try again later",
-        };
-      }
-    }
-  };
-
   return (
-    <div
-      style={{
-        backgroundColor: "rgb(207, 210, 207,0.5)",
-        display: "block",
-        paddingTop: "100px",
-        paddingBottom: "150px",
-      }}
-    >
-      <Link
+    <div>
+      <DeliveryAdminNavBarGoGo />
+      <div
         style={{
-          marginLeft: "10%",
-          marginTop: "2vh",
-          marginBottom: "1vh",
+          backgroundColor: "rgb(207, 210, 207,0.5)",
+          display: "block",
+          paddingTop: "100px",
+          paddingBottom: "150px",
         }}
-        onClick={() => history.goBack()}
-        className="backLink"
       >
-        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-        &nbsp;Go Back
-      </Link>
-
-      <div style={{ paddingTop: "120px" }}>
-        <div
+        <Link
           style={{
-            backgroundColor: "rgb(207, 210, 207,0.8)",
-            height: "auto",
-            width: "80%",
-            display: "block",
-            margin: "0 auto",
-            paddingLeft: "20px",
-            paddingRight: "20px",
-            paddingBottom: "20px",
+            marginLeft: "10%",
+            marginTop: "2vh",
+            marginBottom: "1vh",
           }}
+          onClick={() => history.goBack()}
+          className="backLink"
+          to='#'
         >
-          <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
-            COMPLETED DELIVERIES
-          </h3>
-          <hr />
-          <br />
-          <ReactDatatable
-            config={config}
-            records={data}
-            columns={columns}
-            extraButtons={extraButtons}
-          />
+          <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+          &nbsp;Go Back
+        </Link>
+
+        <div style={{ paddingTop: "120px" }}>
+          <div
+            style={{
+              backgroundColor: "rgb(207, 210, 207,0.8)",
+              height: "auto",
+              width: "80%",
+              display: "block",
+              margin: "0 auto",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              paddingBottom: "20px",
+            }}
+          >
+            <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
+              COMPLETED DELIVERIES
+            </h3>
+            <hr />
+            <br />
+            <ReactDatatable
+              config={config}
+              records={data}
+              columns={columns}
+              extraButtons={extraButtons}
+            />
+          </div>
         </div>
       </div>
     </div>
