@@ -19,7 +19,7 @@ import UserProfile from "./components/userManagement-component/profile/profile";
 import UpdateUserProfile from "./components/userManagement-component/updateProfile/updateProfile";
 import userAdminDashboard from "./components/userManagement-component/admin/userAdminDashboard";
 import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/viewAllMembers/allMembersRetrieve";
-import PrintingClass from "./components/userManagement-component/admin/report/testingreport/usertreporttesting";
+import UserAdminPrintingReport from "./components/userManagement-component/admin/reportPrint/userAdminReport";
 
 import DeliveryDashboard from "./components/delivery-components/delivery-dashboard-component";
 import PendingDeliveries from "./components/delivery-components/pending-deliveries-component";
@@ -40,6 +40,7 @@ import DeliveryInformation from "./components/delivery-components/delivery-infor
 
 import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
 
+
 function App() {
   return (
     <div>
@@ -55,7 +56,7 @@ function App() {
           <Route path="/update-user-profile" component={UpdateUserProfile} />
           <Route path="/user-admin-dashboard" component={userAdminDashboard} />
           <Route path="/registered-members" component={AllRegisteredMemebersDisplay} />
-          <Route path="/user-admin-report" component={PrintingClass} />
+          <Route path="/user-admin-report" component={UserAdminPrintingReport} />
 
           {/* Customer */}
           <Route path="/cart/view/" component={ViewCart} />
