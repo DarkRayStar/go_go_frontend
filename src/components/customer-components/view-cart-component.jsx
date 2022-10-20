@@ -13,7 +13,7 @@ import {
     MDBTypography,
 } from "mdb-react-ui-kit";
 import { faArrowAltCircleLeft, faHeart, faTrashCan } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Swal from "sweetalert2";
 import NavBarGoGo from '../navigatonBar/navbarGoGo';
 

@@ -1,5 +1,6 @@
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import Swal from "sweetalert2";
 
 function InsertItemModal() {
 
@@ -50,14 +51,24 @@ function InsertItemModal() {
                 specifications: specifications,
                 price: price,
                 quantity: quantity,
+                orderedQuanity: 0,
                 images: images,
                 offer: offer,
             })
         })
             .then(() => {
                 // Once posted, the user will be notified 
-                alert('Item Has Been Added!');
-                window.location = '/storeAdmin';
+                // alert('Item Has Been Added!');
+                // window.location = '/storeAdmin';
+                ///////////////////////////
+                Swal.fire({
+                    title: 'Item has been inserted!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = '/storeAdmin';
+
+                    }
+                })
             })
     }
 

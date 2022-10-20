@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from "axios";
-import ApexCharts from 'apexcharts';
-import ReactApexChart from "react-apexcharts";
 import Chart from "react-apexcharts";
+import AdminNav from '../navigatonBar/adminNav';
 
 function StoreAdminReport() {
-
+    
     const [items, setItems] = useState([]);
-    const options = { labels: ["Cases", "Recovered", "Deaths"] };
-    const [covidData] = useState([
-        44, 17, 15
+    const options = { labels: items };
+    const [quantities, setQuantities] = useState([]);
+    const [covidData, setCoviddata] = useState([
+        44, 17, 15 , 20
     ]);
 
     const options1 = {
@@ -18,7 +18,7 @@ function StoreAdminReport() {
             id: 'weather-graph'
         },
         xaxis: {
-            categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            categories: items,
             title: {
                 text: 'Item Name',
             },
@@ -30,52 +30,42 @@ function StoreAdminReport() {
         },
     }
 
-    const [dataa] = useState([
-        5, 4, 6, 5, 6, 4, 7, 1, 2, 20, 21
-    ])
 
-    const [quantities, setQuantities] = useState([]);
-
-    const getItems = async () => {
-        try {
-            const response = await axios.get('http://localhost:5050/storeAdmin');
-            for (let i = 0; i < response.data.length; i++) {
-                quantities.push(parseInt(response.data[i].orderedQuanity));
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    function getItems1() {
+    function getItems() {
         const temp = [];
+        const temp1 = [];
         axios.get('http://localhost:5050/storeAdmin').then((response) => {
             for (let i = 0; i < response.data.length; i++) {
                 temp.push(parseInt(response.data[i].orderedQuanity));
+                temp1.push(response.data[i].itemName);
             }
             setQuantities(temp);
+            setItems(temp1);
+            setCoviddata(temp);
         })
-        console.log('a', quantities);
     }
 
     useEffect(() => {
-        getItems1();
+        getItems();
     }, [])
 
     return (
         <div className='container'>
-            <div className="row">
+            <AdminNav/>
+            <h2 style={{ marginTop:"100px", textAlign:"center"}}> SOLD ITEM QUANTITIES OVERVIEW</h2>
+            <div className="row" style={{ marginTop:"50px", marginLeft:"400px"}}>
                 <div className="mixed-chart">
                     <Chart
                         options={options}
                         series={covidData.map((data) => data)}
                         type="donut"
-                        width="300"
+                        width="600"
                     />
                 </div>
             </div>
 
-            <div className='row'>
+            <center>
+            <div className='row' style={{ marginTop:"50px", marginBottom:"50px"}}>
                 <Chart options={options1}
                     series={[{
                         name: 'temp',
@@ -83,9 +73,10 @@ function StoreAdminReport() {
                     }]}
                     type="bar"
                     height={'350px'}
-                    width={'75%'} />
+                    width={'85%'} />
 
             </div>
+            </center>
         </div>
     )
 }
