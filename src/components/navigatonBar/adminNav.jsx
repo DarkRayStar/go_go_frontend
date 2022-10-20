@@ -7,7 +7,7 @@ function AdminNavBarGoGo() {
 		<header className="fixed-top" >
 			<div className={styles.main_container}>
 				<nav className={styles.navbar}>
-					<h1 style={{ color: "white" }}>Go Go Gadgets Store</h1>
+					<h1 style={{ color: "white", marginLeft: '20px' }}>Go Go Gadgets Store</h1>
 					<nav>
 						<a href='/#'>DASHBOARD</a>
 						<a href='/#'>ABOUT US</a>
