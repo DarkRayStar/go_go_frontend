@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import DeliveryAdminNavBarGoGo from "../navigatonBar/deliveryAdminNav";
 
 export default function NewDelivery() {
   let history = useHistory();
@@ -51,8 +52,20 @@ export default function NewDelivery() {
         .post("http://localhost:5050/delivery/add", delivery)
         .then((res) => console.log(res.data));
 
+      axios
+        .post(
+          `http://localhost:5050/cart/update-delivered-status/${sessionStorage.getItem(
+            "currentPendingDeliveryRecordID"
+          )}`
+        )
+        .then((res) => {
+          setData(res.data);
+        });
+
+      sessionStorage.setItem("currentPendingDeliveryRecordID", undefined);
       sessionStorage.setItem("currentNewDeliveryEmail", undefined);
       window.location = "delivery-ongoing";
+
     }
   };
 
@@ -61,11 +74,12 @@ export default function NewDelivery() {
   }, []); //logResult is memoized now.
 
   useEffect(() => {
-    if (sessionStorage.getItem("currentNewDeliveryEmail") !== undefined) {
+    if (sessionStorage.getItem("currentNewDeliveryId") !== undefined) {
+      console.log(sessionStorage.getItem("currentNewDeliveryId"));
       axios
         .get(
-          `http://localhost:5050/user/get-user-by-email/${sessionStorage.getItem(
-            "currentNewDeliveryEmail"
+          `http://localhost:5050/user/get-user-by-id/${sessionStorage.getItem(
+            "currentNewDeliveryId"
           )}`
         )
         .then((res) => {
@@ -78,13 +92,12 @@ export default function NewDelivery() {
           setZip(res.data[0].zipCode);
         });
     }
-    console.log("cus name : ", customerName);
   }, [logResult]);
 
   const cancelButton = () => {
     const answer = window.confirm("Are you sure to abort delivery creation?");
     if (answer) {
-      sessionStorage.setItem("currentNewDeliveryEmail", undefined);
+      sessionStorage.setItem("currentNewDeliveryId", undefined);
       history.goBack();
     }
   };
@@ -139,270 +152,272 @@ export default function NewDelivery() {
   };
 
   return (
-    <div style={{ paddingTop: "70px", paddingBottom: "60px" }}>
-
-      <Link
-        style={{
-          marginLeft: "10%",
-          marginTop: "5vh",
-        }}
-        onClick={() => history.goBack()}
-        className="backLink"
-      >
-        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-        &nbsp;Go Back
-      </Link>
-
-      <div
-        style={{
-          display: "block",
-          margin: "auto",
-          width: "80%",
-          backgroundColor: "rgb(207, 210, 207,0.5)",
-          height: "520px",
-          marginBottom: "50px",
-          marginTop: "100px",
-        }}
-      >
-        <h3
+    <div>
+      <DeliveryAdminNavBarGoGo />
+      <div style={{ paddingTop: "70px", paddingBottom: "60px" }}>
+        <Link
           style={{
-            textAlign: "center",
-            paddingTop: "20px",
-            paddingBottom: "20px",
+            marginLeft: "10%",
+            marginTop: "1vh",
           }}
+          onClick={() => history.goBack()}
+          className="backLink"
         >
-          CREATE A NEW DELIVERY
-        </h3>
+          <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+          &nbsp;Go Back
+        </Link>
+
         <div
           style={{
-            backgroundColor: "rgb(207, 210, 207,0.8)",
-            marginLeft: "40px",
-            marginRight: "40px",
-            paddingBottom: "40px",
-            paddingTop: "30px",
-            borderRadius: "10px",
+            display: "block",
+            margin: "auto",
+            width: "80%",
+            backgroundColor: "rgb(207, 210, 207,0.5)",
+            height: "520px",
+            marginBottom: "50px",
+            marginTop: "100px",
           }}
         >
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Grid container spacing={2} sx={{ width: "80%", margin: "auto" }}>
-              <Grid item xs={3}>
-                <label>Customer Name : </label>
+          <h3
+            style={{
+              textAlign: "center",
+              paddingTop: "20px",
+              paddingBottom: "20px",
+            }}
+          >
+            CREATE A NEW DELIVERY
+          </h3>
+          <div
+            style={{
+              backgroundColor: "rgb(207, 210, 207,0.8)",
+              marginLeft: "40px",
+              marginRight: "40px",
+              paddingBottom: "40px",
+              paddingTop: "30px",
+              borderRadius: "10px",
+            }}
+          >
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Grid container spacing={2} sx={{ width: "80%", margin: "auto" }}>
+                <Grid item xs={3}>
+                  <label>Customer Name : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <input
+                    type="text"
+                    placeholder="Customer Name"
+                    {...register("Customer Name", {
+                      maxLength: 80,
+                    })}
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    value={customerName}
+                    required
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <label>State/Province : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <select
+                    {...register("State/Province")}
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    onChange={(e) => setProvince(e.target.value)}
+                    value={province}
+                    disabled
+                  >
+                    <option value="Select Province">Select Province</option>
+                    <option value="Central">Central</option>
+                    <option value="North Central">North Central</option>
+                    <option value="Northern">Northern</option>
+                    <option value="Eastern">Eastern</option>
+                    <option value="North Western">North Western</option>
+                    <option value="Southern">Southern</option>
+                    <option value="Uva">Uva</option>
+                    <option value="Sabaragamuwa">Sabaragamuwa</option>
+                    <option value="Western">Western</option>
+                  </select>
+                </Grid>
+                <Grid item xs={3}>
+                  <label>Mobile Number : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <input
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    type="tel"
+                    placeholder="Mobile Number"
+                    {...register("Mobile Number", {
+                      maxLength: 12,
+                    })}
+                    onChange={(e) => setMobileNo(e.target.value)}
+                    value={mobileNo}
+                    required
+                    pattern="[0-9]{10}"
+                    title="Please enter a valid mobile number. (DO NOT INCLUDE COUNTRY CODE)"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <label>Postal/ZIP Code : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <input
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    type="text"
+                    placeholder="Postal/Zip Code"
+                    {...register("Postal/Zip Code", {})}
+                    onChange={(e) => setZip(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <label>Landline Number : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <input
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    type="tel"
+                    placeholder="Landline Number"
+                    {...register("Landline Number", {})}
+                    onChange={(e) => setLandlineNo(e.target.value)}
+                    value={landlineNo}
+                    required
+                    pattern="[0-9]{10}"
+                    title="Please enter a valid mobile number. (DO NOT INCLUDE COUNTRY CODE)"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <label>Delivery Partner : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <select
+                    {...register("Delivery Partner")}
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    onChange={(e) => setService(e.target.value)}
+                    required
+                    title="Select a delivery partner."
+                  >
+                    <option value="Select Service">Select Service</option>
+                    <option value="DOMEX">DOMEX</option>
+                    <option value="PRONTO">PRONTO</option>
+                    <option value="PROMPTXPRESS">PROMPTXPRESS</option>
+                    <option value="FARDAR">FARDAR</option>
+                    <option value="CERTIS">CERTIS</option>
+                    <option value="ARAMEX">ARAMEX</option>
+                    <option value="GRASSHOPPERS">GRASSHOPPERS</option>
+                  </select>
+                </Grid>
+                <Grid item xs={3}>
+                  <label>Email : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <input
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    type="text"
+                    placeholder="Email"
+                    {...register("Email", {})}
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    title="Ex : abc@example.com"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <label>Tracking ID : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <input
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    type="text"
+                    placeholder="Tracking ID"
+                    {...register("Tracking ID", {})}
+                    onChange={(e) => setTrackingID(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <label>Address : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <textarea
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    {...register("Address", {})}
+                    onChange={(e) => setAddress(e.target.value)}
+                    value={address}
+                    required
+                    title="Enter a valid Address"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <label>Delivery Fee : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <input
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    type="text"
+                    placeholder="Delivery Fee"
+                    {...register("Delivery Fee", {})}
+                    onChange={(e) => setFee(e.target.value)}
+                    required
+                    pattern="[0-9]{0,5}"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <label>District : </label>
+                </Grid>
+                <Grid item xs={3}>
+                  <select
+                    {...register("District")}
+                    style={{ borderRadius: "5px", border: " solid 1px" }}
+                    onChange={(e) => changeDistrict(e)}
+                    value={district}
+                    required
+                  >
+                    <option value="Select District">Select District</option>
+                    <option value="Colombo">Colombo</option>
+                    <option value="Gampaha">Gampaha</option>
+                    <option value="Kalutara">Kalutara</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="Matale">Matale</option>
+                    <option value="Nuwara Eliya">Nuwara Eliya</option>
+                    <option value="Galle">Galle</option>
+                    <option value="Matara">Matara</option>
+                    <option value="Hambantota">Hambantota</option>
+                    <option value="Jaffna">Jaffna</option>
+                    <option value="Kilinochchi">Kilinochchi</option>
+                    <option value="Mannar">Mannar</option>
+                    <option value="Vavuniya">Vavuniya</option>
+                    <option value="Mullaitivu">Mullaitivu</option>
+                    <option value="Batticaloa">Batticaloa</option>
+                    <option value="Ampara">Ampara</option>
+                    <option value="Trincomalee">Trincomalee</option>
+                    <option value="Kurunegala">Kurunegala</option>
+                    <option value="Puttalam">Puttalam</option>
+                    <option value="Anuradhapura">Anuradhapura</option>
+                    <option value="Polonnaruwa">Polonnaruwa</option>
+                    <option value="Badulla">Badulla</option>
+                    <option value="Moneragala">Moneragala</option>
+                    <option value="Ratnapura">Ratnapura</option>
+                    <option value="Kegalle">Kegalle</option>
+                  </select>
+                </Grid>
+                <Grid item xs={6} sx={{ textAlign: "center" }}>
+                  <button
+                    className="button-33"
+                    type="submit"
+                    style={{ marginRight: "50px" }}
+                  >
+                    CREATE DELIVERY
+                  </button>
+                  <button
+                    type="button"
+                    className="button-new-cancel"
+                    onClick={() => cancelButton()}
+                  >
+                    CANCEL
+                  </button>
+                </Grid>
               </Grid>
-              <Grid item xs={3}>
-                <input
-                  type="text"
-                  placeholder="Customer Name"
-                  {...register("Customer Name", {
-                    maxLength: 80,
-                  })}
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  onChange={(e) => setCustomerName(e.target.value)}
-                  value={customerName}
-                  required
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <label>State/Province : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <select
-                  {...register("State/Province")}
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  onChange={(e) => setProvince(e.target.value)}
-                  value={province}
-                  disabled
-                >
-                  <option value="Select Province">Select Province</option>
-                  <option value="Central">Central</option>
-                  <option value="North Central">North Central</option>
-                  <option value="Northern">Northern</option>
-                  <option value="Eastern">Eastern</option>
-                  <option value="North Western">North Western</option>
-                  <option value="Southern">Southern</option>
-                  <option value="Uva">Uva</option>
-                  <option value="Sabaragamuwa">Sabaragamuwa</option>
-                  <option value="Western">Western</option>
-                </select>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Mobile Number : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <input
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  type="tel"
-                  placeholder="Mobile Number"
-                  {...register("Mobile Number", {
-                    maxLength: 12,
-                  })}
-                  onChange={(e) => setMobileNo(e.target.value)}
-                  value={mobileNo}
-                  required
-                  pattern="[0-9]{10}"
-                  title="Please enter a valid mobile number. (DO NOT INCLUDE COUNTRY CODE)"
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <label>Postal/ZIP Code : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <input
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  type="text"
-                  placeholder="Postal/Zip Code"
-                  {...register("Postal/Zip Code", {})}
-                  onChange={(e) => setZip(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <label>Landline Number : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <input
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  type="tel"
-                  placeholder="Landline Number"
-                  {...register("Landline Number", {})}
-                  onChange={(e) => setLandlineNo(e.target.value)}
-                  value={landlineNo}
-                  required
-                  pattern="[0-9]{10}"
-                  title="Please enter a valid mobile number. (DO NOT INCLUDE COUNTRY CODE)"
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <label>Delivery Partner : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <select
-                  {...register("Delivery Partner")}
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  onChange={(e) => setService(e.target.value)}
-                  required
-                  title="Select a delivery partner."
-                >
-                  <option value="Select Service">Select Service</option>
-                  <option value="DOMEX">DOMEX</option>
-                  <option value="PRONTO">PRONTO</option>
-                  <option value="PROMPTXPRESS">PROMPTXPRESS</option>
-                  <option value="FARDAR">FARDAR</option>
-                  <option value="CERTIS">CERTIS</option>
-                  <option value="ARAMEX">ARAMEX</option>
-                  <option value="GRASSHOPPERS">GRASSHOPPERS</option>
-                </select>
-              </Grid>
-              <Grid item xs={3}>
-                <label>Email : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <input
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  type="text"
-                  placeholder="Email"
-                  {...register("Email", {})}
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  required
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                  title="Ex : abc@example.com"
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <label>Tracking ID : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <input
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  type="text"
-                  placeholder="Tracking ID"
-                  {...register("Tracking ID", {})}
-                  onChange={(e) => setTrackingID(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <label>Address : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <textarea
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  {...register("Address", {})}
-                  onChange={(e) => setAddress(e.target.value)}
-                  value={address}
-                  required
-                  title="Enter a valid Address"
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <label>Delivery Fee : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <input
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  type="text"
-                  placeholder="Delivery Fee"
-                  {...register("Delivery Fee", {})}
-                  onChange={(e) => setFee(e.target.value)}
-                  required
-                  pattern="[0-9]{0,5}"
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <label>District : </label>
-              </Grid>
-              <Grid item xs={3}>
-                <select
-                  {...register("District")}
-                  style={{ borderRadius: "5px", border: " solid 1px" }}
-                  onChange={(e) => changeDistrict(e)}
-                  value={district}
-                  required
-                >
-                  <option value="Select District">Select District</option>
-                  <option value="Colombo">Colombo</option>
-                  <option value="Gampaha">Gampaha</option>
-                  <option value="Kalutara">Kalutara</option>
-                  <option value="Kandy">Kandy</option>
-                  <option value="Matale">Matale</option>
-                  <option value="Nuwara Eliya">Nuwara Eliya</option>
-                  <option value="Galle">Galle</option>
-                  <option value="Matara">Matara</option>
-                  <option value="Hambantota">Hambantota</option>
-                  <option value="Jaffna">Jaffna</option>
-                  <option value="Kilinochchi">Kilinochchi</option>
-                  <option value="Mannar">Mannar</option>
-                  <option value="Vavuniya">Vavuniya</option>
-                  <option value="Mullaitivu">Mullaitivu</option>
-                  <option value="Batticaloa">Batticaloa</option>
-                  <option value="Ampara">Ampara</option>
-                  <option value="Trincomalee">Trincomalee</option>
-                  <option value="Kurunegala">Kurunegala</option>
-                  <option value="Puttalam">Puttalam</option>
-                  <option value="Anuradhapura">Anuradhapura</option>
-                  <option value="Polonnaruwa">Polonnaruwa</option>
-                  <option value="Badulla">Badulla</option>
-                  <option value="Moneragala">Moneragala</option>
-                  <option value="Ratnapura">Ratnapura</option>
-                  <option value="Kegalle">Kegalle</option>
-                </select>
-              </Grid>
-              <Grid item xs={6} sx={{ textAlign: "center" }}>
-                <button
-                  className="button-33"
-                  type="submit"
-                  style={{ marginRight: "50px" }}
-                >
-                  CREATE DELIVERY
-                </button>
-                <button
-                  type="button"
-                  className="button-new-cancel"
-                  onClick={() => cancelButton()}
-                >
-                  CANCEL
-                </button>
-              </Grid>
-            </Grid>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>

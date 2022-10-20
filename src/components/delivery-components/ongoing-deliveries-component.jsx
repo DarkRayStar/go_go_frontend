@@ -6,6 +6,7 @@ import "./delivery-styles.css";
 import { useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import DeliveryAdminNavBarGoGo from "../navigatonBar/deliveryAdminNav";
 
 const OngoingDeliveries = () => {
   let history = useHistory();
@@ -83,41 +84,44 @@ const OngoingDeliveries = () => {
       sortable: false,
       cell: (record) => {
         return (
-          <div style={{ textAlign: "center" }}>
-            <Fragment>
-              <button
-                style={{ marginRight: "5px", color: "white" }}
-                name="update"
-                className="btn warning btn-sm"
-                onClick={() => updateRecord(record)}
-              >
-                UPDATE
-              </button>
-              <button
-                style={{ marginRight: "5px", color: "white" }}
-                name="view"
-                className="btn info btn-sm"
-                onClick={() => viewDelivery(record)}
-              >
-                VIEW
-              </button>
-              <button
-                style={{ marginRight: "5px", color: "white" }}
-                name="delivered"
-                className="success btn  btn-sm"
-                onClick={() => markAsDelivered(record)}
-              >
-                DELIVERED
-              </button>
-              <button
-                style={{ color: "white" }}
-                name="cancel"
-                className="btn danger btn-sm"
-                onClick={() => cancelDelivery(record)}
-              >
-                CANCEL
-              </button>
-            </Fragment>
+          <div>
+            <DeliveryAdminNavBarGoGo  />
+            <div style={{ textAlign: "center" }}>
+              <Fragment>
+                <button
+                  style={{ marginRight: "5px", color: "white" }}
+                  name="update"
+                  className="btn warning btn-sm"
+                  onClick={() => updateRecord(record)}
+                >
+                  UPDATE
+                </button>
+                <button
+                  style={{ marginRight: "5px", color: "white" }}
+                  name="view"
+                  className="btn info btn-sm"
+                  onClick={() => viewDelivery(record)}
+                >
+                  VIEW
+                </button>
+                <button
+                  style={{ marginRight: "5px", color: "white" }}
+                  name="delivered"
+                  className="success btn  btn-sm"
+                  onClick={() => markAsDelivered(record)}
+                >
+                  DELIVERED
+                </button>
+                <button
+                  style={{ color: "white" }}
+                  name="cancel"
+                  className="btn danger btn-sm"
+                  onClick={() => cancelDelivery(record)}
+                >
+                  CANCEL
+                </button>
+              </Fragment>
+            </div>
           </div>
         );
       },
@@ -191,7 +195,7 @@ const OngoingDeliveries = () => {
         )
         .then((res) => console.log(res.data));
 
-      location.reload()
+      location.reload();
     }
   };
 
@@ -216,7 +220,7 @@ const OngoingDeliveries = () => {
         )
         .then((res) => console.log(res.data));
 
-      location.reload()
+      location.reload();
     }
   };
 
@@ -233,7 +237,7 @@ const OngoingDeliveries = () => {
       <Link
         style={{
           marginLeft: "10%",
-          marginTop: "5vh",
+          marginTop: "2vh",
           marginBottom: "1vh",
         }}
         onClick={() => history.goBack()}

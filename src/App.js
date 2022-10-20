@@ -39,6 +39,7 @@ import ItemDetails from "./components/storeAdmin-components/itemDetails";
 import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
 import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
+import DeliveryReport from "./components/delivery-components/delivery-report-component";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
           <Route path="/delivery-new" component={NewDelivery} />
           <Route path="/delivery-update" component={UpdateDelivery} />
           <Route path="/delivery-information" component={DeliveryInformation} />
+          <Route path="/delivery-report" component={DeliveryReport} />
 
           {/* storeAdminroutes */}
           <Route path="/storeAdmin" component={ItemRetrieve} />
