@@ -36,7 +36,6 @@ function DeliveryReport() {
   const [sabaragamuwa, setSabaragamuwa] = useState("");
   const [western, setWestern] = useState("");
 
-  
   const logResult = useCallback(() => {
     return 2 + 2;
   }, []); //logResult is memoized now.
@@ -62,7 +61,6 @@ function DeliveryReport() {
       setOngoing(ongoingCount);
       setCancelled(cancelledCount);
       setCompleted(completedCount);
-
     });
 
     axios.get("http://localhost:5050/delivery/").then((res) => {
@@ -87,12 +85,11 @@ function DeliveryReport() {
           certisCount = certisCount + 1;
         } else if (res.data[x].service === "ARAMEX") {
           aramexCount = certisCount + 1;
-        }else if (res.data[x].service === "GRASSHOPPERS"){
+        } else if (res.data[x].service === "GRASSHOPPERS") {
           grasshoppersCount = grasshoppersCount + 1;
-        } else if(res.data[x].service === "DOMEX"){
-            domexCount = domexCount + 1;
+        } else if (res.data[x].service === "DOMEX") {
+          domexCount = domexCount + 1;
         }
-
       }
 
       setPronto(prontoCount);
@@ -102,7 +99,6 @@ function DeliveryReport() {
       setAramex(aramexCount);
       setGrassHoppers(grasshoppersCount);
       setDomex(domexCount);
-
     });
 
     axios.get("http://localhost:5050/delivery/").then((res) => {
@@ -120,23 +116,23 @@ function DeliveryReport() {
 
       for (let x = 0; x < res.data.length; x++) {
         if (res.data[x].province === "Western") {
-            WesternCount = WesternCount + 1;
+          WesternCount = WesternCount + 1;
         } else if (res.data[x].province === "Sabaragamuwa") {
-            SabaragamuwaCount = SabaragamuwaCount + 1;
+          SabaragamuwaCount = SabaragamuwaCount + 1;
         } else if (res.data[x].province === "Uva") {
-            UvaCount = UvaCount + 1;
+          UvaCount = UvaCount + 1;
         } else if (res.data[x].province === "Southern") {
-            SouthernCount = SouthernCount + 1;
+          SouthernCount = SouthernCount + 1;
         } else if (res.data[x].province === "North Western") {
-            NorthWesternCount = NorthWesternCount + 1;
-        }else if (res.data[x].province === "Eastern"){
-            EasternCount = EasternCount + 1;
-        } else if(res.data[x].province === "Northern"){
-            NorthernCount = NorthernCount + 1;
-        }else if(res.data[x].province === "North Central"){
-            NorthCentralCount = NorthCentralCount + 1;
-        }else if(res.data[x].province === "Central"){
-            CentralCount = CentralCount + 1;
+          NorthWesternCount = NorthWesternCount + 1;
+        } else if (res.data[x].province === "Eastern") {
+          EasternCount = EasternCount + 1;
+        } else if (res.data[x].province === "Northern") {
+          NorthernCount = NorthernCount + 1;
+        } else if (res.data[x].province === "North Central") {
+          NorthCentralCount = NorthCentralCount + 1;
+        } else if (res.data[x].province === "Central") {
+          CentralCount = CentralCount + 1;
         }
       }
 
@@ -149,7 +145,6 @@ function DeliveryReport() {
       setNorthern(NorthernCount);
       setNorthCentral(NorthCentralCount);
       setCentral(CentralCount);
-
     });
 
     axios.get("http://localhost:5050/cart/historyOfPaid").then((res) => {
@@ -183,7 +178,7 @@ function DeliveryReport() {
     ["Southern", southern],
     ["Uva", uva],
     ["Sabaragamuwa", sabaragamuwa],
-    ["Western", western]
+    ["Western", western],
   ];
 
   const options2 = {
@@ -202,6 +197,7 @@ function DeliveryReport() {
           }}
           onClick={() => history.goBack()}
           className="backLink"
+          to='#'
         >
           <FontAwesomeIcon icon={faArrowAltCircleLeft} />
           &nbsp;Go Back
@@ -221,98 +217,100 @@ function DeliveryReport() {
         </center>
         <br />
         <table style={{ margin: "auto", width: "95%", marginBottom: "20px" }}>
-          <tr>
-            <td>
-              <center>
-                <div className="container">
-                  <div className="col mx-auto">
-                    <div className="card shadow">
-                      <div className="card-header bg-success"></div>
-                      <div className="card-body">
-                        <div className="">PENDING DELIVERY ORDERS</div>
-                        <center>
-                          <h5 className=""> {pending} </h5>
-                        </center>
+          <tbody>
+            <tr>
+              <td>
+                <center>
+                  <div className="container">
+                    <div className="col mx-auto">
+                      <div className="card shadow">
+                        <div className="card-header bg-success"></div>
+                        <div className="card-body">
+                          <div className="">PENDING DELIVERY ORDERS</div>
+                          <center>
+                            <h5 className=""> {pending} </h5>
+                          </center>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </center>
-            </td>
-            <td>
-              <center>
-                <div className="container">
-                  <div className="col mx-auto">
-                    <div className="card shadow">
-                      <div className="card-header bg-success"></div>
-                      <div className="card-body">
-                        <div className="">ONGOING DELIVERIES</div>
-                        <center>
-                          <h5 className=""> {ongoing} </h5>
-                        </center>
+                </center>
+              </td>
+              <td>
+                <center>
+                  <div className="container">
+                    <div className="col mx-auto">
+                      <div className="card shadow">
+                        <div className="card-header bg-success"></div>
+                        <div className="card-body">
+                          <div className="">ONGOING DELIVERIES</div>
+                          <center>
+                            <h5 className=""> {ongoing} </h5>
+                          </center>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </center>
-            </td>
-            <td>
-              <center>
-                <div className="container">
-                  <div className="col mx-auto">
-                    <div className="card shadow">
-                      <div className="card-header bg-success"></div>
-                      <div className="card-body">
-                        <div className="">COMPLETED DELIVERIES</div>
-                        <center>
-                          <h5 className=""> {completed} </h5>
-                        </center>
+                </center>
+              </td>
+              <td>
+                <center>
+                  <div className="container">
+                    <div className="col mx-auto">
+                      <div className="card shadow">
+                        <div className="card-header bg-success"></div>
+                        <div className="card-body">
+                          <div className="">COMPLETED DELIVERIES</div>
+                          <center>
+                            <h5 className=""> {completed} </h5>
+                          </center>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </center>
-            </td>
-            <td>
-              <center>
-                <div className="container">
-                  <div className="col mx-auto">
-                    <div className="card shadow">
-                      <div className="card-header bg-success"></div>
-                      <div className="card-body">
-                        <div className="">CANCELLED DELIVERIES</div>
-                        <center>
-                          <h5 className=""> {cancelled} </h5>
-                        </center>
+                </center>
+              </td>
+              <td>
+                <center>
+                  <div className="container">
+                    <div className="col mx-auto">
+                      <div className="card shadow">
+                        <div className="card-header bg-success"></div>
+                        <div className="card-body">
+                          <div className="">CANCELLED DELIVERIES</div>
+                          <center>
+                            <h5 className=""> {cancelled} </h5>
+                          </center>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </center>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" style={{ width: "50%" }}>
-              <br />
-              <Chart
-                chartType="PieChart"
-                data={data1}
-                options={options1}
-                width={"100%"}
-                height={"400px"}
-              />
-            </td>
-            <td colspan="2" style={{ width: "50%" }}>
-              <br />
-              <Chart
-                chartType="PieChart"
-                data={data2}
-                options={options2}
-                width={"100%"}
-                height={"400px"}
-              />
-            </td>
-          </tr>
+                </center>
+              </td>
+            </tr>
+            <tr>
+              <td colSpan="2" style={{ width: "50%" }}>
+                <br />
+                <Chart
+                  chartType="PieChart"
+                  data={data1}
+                  options={options1}
+                  width={"100%"}
+                  height={"400px"}
+                />
+              </td>
+              <td colSpan="2" style={{ width: "50%" }}>
+                <br />
+                <Chart
+                  chartType="PieChart"
+                  data={data2}
+                  options={options2}
+                  width={"100%"}
+                  height={"400px"}
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

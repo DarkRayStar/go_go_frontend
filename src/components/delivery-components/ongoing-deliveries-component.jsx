@@ -25,7 +25,6 @@ const OngoingDeliveries = () => {
       const ongoingList = [];
 
       for (let x = 0; x < res.data.length; x++) {
-        console.log(res.data[x].status);
         if (res.data[x].status === "Ongoing") {
           ongoingList.push(res.data[x]);
         }
@@ -151,7 +150,6 @@ const OngoingDeliveries = () => {
         </span>,
       ],
       onClick: (event) => {
-        console.log(event);
       },
     },
     {
@@ -166,10 +164,8 @@ const OngoingDeliveries = () => {
         </span>,
       ],
       onClick: (event) => {
-        console.log(event);
       },
       onDoubleClick: (event) => {
-        console.log("doubleClick");
       },
     },
   ];
@@ -193,7 +189,6 @@ const OngoingDeliveries = () => {
           `http://localhost:5050/delivery/updateDeliveryStatus/${record._id}`,
           delivery
         )
-        .then((res) => console.log(res.data));
 
       location.reload();
     }
@@ -218,7 +213,6 @@ const OngoingDeliveries = () => {
           `http://localhost:5050/delivery/updateDeliveryStatus/${record._id}`,
           delivery
         )
-        .then((res) => console.log(res.data));
 
       location.reload();
     }

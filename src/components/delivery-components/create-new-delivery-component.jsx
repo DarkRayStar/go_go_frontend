@@ -24,6 +24,30 @@ export default function NewDelivery() {
   const [fee, setFee] = useState("");
   const [status, setStatus] = useState("Ongoing");
 
+  const logResult = useCallback(() => {
+    return 2 + 2;
+  }, []); //logResult is memoized now.
+
+  useEffect(() => {
+    if (sessionStorage.getItem("currentNewDeliveryId") !== "undefined") {
+      axios
+        .get(
+          `http://localhost:5050/user/get-user-by-id/${sessionStorage.getItem(
+            "currentNewDeliveryId"
+          )}`
+        )
+        .then((res) => {
+          setCustomerName(res.data[0].firstName + " " + res.data[0].lastName);
+          setMobileNo(res.data[0].mobileNumber);
+          setLandlineNo(res.data[0].phoneMobile);
+          setEmail(res.data[0].email);
+          setAddress(res.data[0].address);
+          setDistrict(res.data[0].district);
+          setZip(res.data[0].zipCode);
+        });
+    }
+  }, [logResult]);
+
   const {
     register,
     handleSubmit,
@@ -52,47 +76,23 @@ export default function NewDelivery() {
         .post("http://localhost:5050/delivery/add", delivery)
         .then((res) => console.log(res.data));
 
-      axios
-        .post(
-          `http://localhost:5050/cart/update-delivered-status/${sessionStorage.getItem(
-            "currentPendingDeliveryRecordID"
-          )}`
-        )
-        .then((res) => {
-          setData(res.data);
-        });
+      if (sessionStorage.getItem("currentNewDeliveryId") !== undefined) {
+        axios
+          .post(
+            `http://localhost:5050/cart/update-delivered-status/${sessionStorage.getItem(
+              "currentPendingDeliveryRecordID"
+            )}`
+          )
+          .then((res) => {
+            setData(res.data);
+          });
+      }
 
       sessionStorage.setItem("currentPendingDeliveryRecordID", undefined);
       sessionStorage.setItem("currentNewDeliveryEmail", undefined);
       window.location = "delivery-ongoing";
-
     }
   };
-
-  const logResult = useCallback(() => {
-    return 2 + 2;
-  }, []); //logResult is memoized now.
-
-  useEffect(() => {
-    if (sessionStorage.getItem("currentNewDeliveryId") !== undefined) {
-      console.log(sessionStorage.getItem("currentNewDeliveryId"));
-      axios
-        .get(
-          `http://localhost:5050/user/get-user-by-id/${sessionStorage.getItem(
-            "currentNewDeliveryId"
-          )}`
-        )
-        .then((res) => {
-          setCustomerName(res.data[0].firstName + " " + res.data[0].lastName);
-          setMobileNo(res.data[0].mobileNumber);
-          setLandlineNo(res.data[0].phoneMobile);
-          setEmail(res.data[0].email);
-          setAddress(res.data[0].address);
-          setDistrict(res.data[0].district);
-          setZip(res.data[0].zipCode);
-        });
-    }
-  }, [logResult]);
 
   const cancelButton = () => {
     const answer = window.confirm("Are you sure to abort delivery creation?");
@@ -162,6 +162,7 @@ export default function NewDelivery() {
           }}
           onClick={() => history.goBack()}
           className="backLink"
+          to="#"
         >
           <FontAwesomeIcon icon={faArrowAltCircleLeft} />
           &nbsp;Go Back

@@ -10,7 +10,7 @@ function DeliveryAdminNavBarGoGo() {
 					<h1 style={{ color: "white", marginLeft: '20px' }}>Go Go Gadgets Store</h1>
 					<nav>
 						<a href='/delivery-home'>DASHBOARD</a>
-						<a href='/#'>ABOUT US</a>
+						<a href='#'>ABOUT US</a>
 						<a href='/'>LOGOUT</a>
 					</nav>
 				</nav>

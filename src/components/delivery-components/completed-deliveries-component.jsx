@@ -23,7 +23,7 @@ const CompletedDeliveries = () => {
 
       for (let x = 0; x < res.data.length; x++) {
         if (res.data[x].status === "Delivered") {
-          ongoingList.push(res.data[x]);
+          ongoingList.push( res.data[x] );
         }
       }
       setData(ongoingList);
@@ -170,6 +170,7 @@ const CompletedDeliveries = () => {
           }}
           onClick={() => history.goBack()}
           className="backLink"
+          to='#'
         >
           <FontAwesomeIcon icon={faArrowAltCircleLeft} />
           &nbsp;Go Back

@@ -44,6 +44,8 @@ const SignIn = () => {
             setTimeout(() => {
                 if (res.user.email === 'kamal@gmail.com') {
                     window.location = "/user-admin-dashboard";
+                }else if (res.user.email === 'dulshanalaha@gmail.com') {
+                    window.location = "/delivery-home";
                 } else {
                     window.location = "/userHome";
                 }

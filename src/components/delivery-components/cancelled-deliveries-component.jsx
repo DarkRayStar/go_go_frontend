@@ -143,6 +143,7 @@ const CancelledDeliveries = () => {
           }}
           onClick={() => history.goBack()}
           className="backLink"
+          to='#'
         >
           <FontAwesomeIcon icon={faArrowAltCircleLeft} />
           &nbsp;Go Back
