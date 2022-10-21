@@ -5,7 +5,6 @@ import {
     MDBCardText,
     MDBCardImage,
     MDBCardTitle,
-    MDBBtn
 } from 'mdb-react-ui-kit';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -14,6 +13,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import NavBarGoGo from '../navigatonBar/navbarGoGo';
+
 
 
 function ItemDetails() {
@@ -22,6 +23,8 @@ function ItemDetails() {
     const [item, setItem] = useState([]);
     const [OrderedQuanity, setOrderedQuantity] = useState("")
     const UserId = JSON.parse(sessionStorage.getItem("loggeduser"))._id;
+    const [reviews, setReviews] = useState([]);
+
 
     const getItem = async () => {
         try {
@@ -33,8 +36,22 @@ function ItemDetails() {
 
     }
 
+    const getReviews = async () => {
+        let tempReview = [];
+        try {
+            const response = await axios.get("http://localhost:5050/reviews/itemreviews/" + id);
+            for (let i = 0 ; i < response.data.length ; i++){
+                tempReview.push(response.data[i].review);
+            }
+            setReviews(tempReview);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     useEffect(() => {
         getItem();
+        getReviews();
     }, [])
 
     const goBack = () => {
@@ -81,6 +98,7 @@ function ItemDetails() {
 
     return (
         <div className='container'>
+            <NavBarGoGo />
             <MDBCard className='item_card'>
                 <Row>
                     <Col>
@@ -97,11 +115,9 @@ function ItemDetails() {
                             <MDBCardTitle className='item_title'>
                                 {item.itemName}
                             </MDBCardTitle>
-                            <hr></hr>
-                            <MDBCardText>
-                                <div className='item_des'>
+                            <hr className='hrtopic'></hr>
+                            <MDBCardText className='item_des'>
                                     {item.description}
-                                </div>
                             </MDBCardText>
                             <div>
                                 <Row>
@@ -110,13 +126,8 @@ function ItemDetails() {
                                             setOrderedQuantity(e.target.value);
                                         }} />
                                     </Col>
-                                    <Col >
-                                        <div className='item_cart' >
-                                            <MDBBtn className='item_btn'> Buy now </MDBBtn>
-                                        </div>
-                                    </Col>
                                     <Col>
-                                        <MDBBtn className='item_btn' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.offer)} > Add to Cart</MDBBtn>
+                                        <button className='item_btn btn btn-primary' onClick={() => onAddItem(item.images, item.itemName, item.description, item.price, item.quantity, item.specifications, item.offer)}> Add to Cart</button>
                                     </Col>
                                 </Row>
                             </div>
@@ -131,11 +142,9 @@ function ItemDetails() {
                             <MDBCardTitle>
                                 Specifications
                             </MDBCardTitle>
-                            <hr></hr>
-                            <MDBCardText>
-                                <div className='item_specifications'>
+                            <hr className='hrtopic'></hr>
+                            <MDBCardText className='item_specifications'>
                                     {item.specifications}
-                                </div>
                             </MDBCardText>
                         </MDBCardBody>
 
@@ -147,12 +156,19 @@ function ItemDetails() {
                             <MDBCardTitle>
                                 Reviews
                             </MDBCardTitle>
-                            <hr></hr>
-                            <MDBCardText>
-                                <div className='item_specifications'>
-                                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                                </div>
-                            </MDBCardText>
+                            <hr className='hrtopic'></hr>
+                            <div className='item_specifications'>
+                                    {
+                                    reviews.map((review,index) => 
+                                        <div key={index}>
+                                            <MDBCardText > 
+                                            {review}
+                                        </MDBCardText>
+                                        <hr></hr>
+                                        </div>
+                                    )
+                                    }
+                            </div>
                         </MDBCardBody>
 
                     </MDBCard>

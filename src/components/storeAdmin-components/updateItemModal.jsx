@@ -1,6 +1,7 @@
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const UpdateItemModal = ({ test }) => {
 
@@ -68,8 +69,18 @@ const UpdateItemModal = ({ test }) => {
             images: images,
             offer: offer,
         }
-        axios.post('http://localhost:5050/storeAdmin/update/' + window.sessionStorage.getItem('item'), item)
-            .then(res => { alert("Successfully updated"), window.location = '/storeAdmin'; });
+        axios.post('http://localhost:5050/storeAdmin/updateitem/' + window.sessionStorage.getItem('item'), item)
+            .then(res => { 
+                Swal.fire({
+                    title: 'Item has been updated!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = '/storeAdmin'
+
+                    }
+                })
+            });
+        
 
 
     }

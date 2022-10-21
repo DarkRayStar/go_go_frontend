@@ -56,10 +56,10 @@ const HomePageComponent = () => {
 
             <div className='container'>
 
-                <div className="col-12 mb-5">
+                <div className="col-12 mb-5" style={{marginTop: "50px"}}>
                     <div className="mb-3 col-4 mx-auto text-center">
                         <label className="form-label h4 mt-3" style={{ color: 'white' }}> Search </label>
-                        <input className="form-control" type="text" value={filter} onChange={searchText.bind(this)} />
+                        <input placeholder='Search' className="form-control" type="text" value={filter} onChange={searchText.bind(this)} />
                     </div>
                 </div>
                 <center><HomeCarousel /></center>
@@ -81,11 +81,11 @@ const HomePageComponent = () => {
                                                 </MDBCardText>
                                             </center>
                                         </MDBCardBody>
-                                        <MDBCardFooter style={{ backgroundColor: 'white' }}>
+                                        {/* <MDBCardFooter style={{ backgroundColor: 'white' }}>
                                             <center>
                                                 <Link to={"/"}><MDBBtn className="btn btn-outline-secondary btn-sm" href='#' style={{ float: "right", color: 'white', backgroundColor: '#B21B25' }}> Add to cart </MDBBtn></Link>
                                             </center>
-                                        </MDBCardFooter>
+                                        </MDBCardFooter> */}
                                     </MDBCard>
 
                                 </MDBCol>

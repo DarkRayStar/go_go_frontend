@@ -21,6 +21,7 @@ import userAdminDashboard from "./components/userManagement-component/admin/user
 import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/viewAllMembers/allMembersRetrieve";
 import UserAdminPrintingReport from "./components/userManagement-component/admin/reportPrint/userAdminReport";
 
+//Delivery Service
 import DeliveryDashboard from "./components/delivery-components/delivery-dashboard-component";
 import PendingDeliveries from "./components/delivery-components/pending-deliveries-component";
 import OngoingDeliveries from "./components/delivery-components/ongoing-deliveries-component";
@@ -28,19 +29,17 @@ import CompletedDeliveries from "./components/delivery-components/completed-deli
 import CancelledDeliveries from "./components/delivery-components/cancelled-deliveries-component";
 import NewDelivery from "./components/delivery-components/create-new-delivery-component";
 import UpdateDelivery from "./components/delivery-components/update-delivery-component";
+import DeliveryReport from "./components/delivery-components/delivery-report-component";
 
 //StoreAdmin
 import ItemRetrieve from "./components/storeAdmin-components/itemRetrieve-component";
 import storeAdminDashboard from "./components/storeAdmin-components/storeAdminDashboard";
-
 import FooterComponent from "./components/footer-component/footer.component";
 import HomePageComponent from "./components/storeAdmin-components/homePageComponent";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
 import DeliveryInformation from "./components/delivery-components/delivery-information-component";
-
 import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
-import DeliveryReport from "./components/delivery-components/delivery-report-component";
-
+<link rel="stylesheet" href="./" />;
 
 function App() {
   return (
