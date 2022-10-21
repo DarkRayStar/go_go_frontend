@@ -16,6 +16,7 @@ import { faCheckCircle, faArrowAltCircleLeft } from '@fortawesome/free-regular-s
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal } from 'react-bootstrap';
 import NavBarGoGo from '../navigatonBar/navbarGoGo';
+import Swal from "sweetalert2";
 
 function OrderHistory() {
 
@@ -38,18 +39,49 @@ function OrderHistory() {
 
     //Remove Item from Order History
     const onDeleteItem = async (id) => {
-        if (window.confirm('Are you sure, you want to delete the selected Item?')) {
-            try {
-                await axios({
-                    method: 'DELETE',
-                    url: `http://localhost:5050/cart/${id}`
-                })
-                alert("Selected Item is Removed !!")
-                getCartItems()
-            } catch (error) {
-                alert(error)
+
+        await Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to delete the selected item?",
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonText: 'Delete',
+            denyButtonText: `Cancel`,
+            timer: 5000,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+
+                    'Deleted!',
+                    '',
+                    'success',
+                    axios({
+                        method: 'DELETE',
+                        url: `http://localhost:5050/cart/${id}`
+                    }),
+                    window.location = '/order-history'
+                )
+            } else if (result.isDenied) {
+                Swal.fire(
+                    'Item is not deleted',
+                    '',
+                    'error'
+                )
             }
-        }
+        })
+
+        // if (window.confirm('Are you sure, you want to delete the selected Item?')) {
+        //     try {
+        //         await axios({
+        //             method: 'DELETE',
+        //             url: `http://localhost:5050/cart/${id}`
+        //         })
+        //         alert("Selected Item is Removed !!")
+        //         getCartItems()
+        //     } catch (error) {
+        //         alert(error)
+        //     }
+        // }
     }
 
     const total = (Price, Qty) => {
