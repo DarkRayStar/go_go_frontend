@@ -1,6 +1,7 @@
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function AddReviewsModel() {
 
@@ -18,7 +19,6 @@ function AddReviewsModel() {
         setReview(event.target.value)
     }
 
-
     const getItem = async () => {
         try {
             const response = await axios.get('http://localhost:5050/cart/' + id);
@@ -33,8 +33,6 @@ function AddReviewsModel() {
     useEffect(() => {
         getItem();
     }, [])
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -54,8 +52,14 @@ function AddReviewsModel() {
         })
             .then(() => {
                 // Once posted, the user will be notified 
-                alert('Your review has been added!');
-                window.location = '/order-history'
+                Swal.fire({
+                    title: 'Your review has been added!',
+                    timer: 5000,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = '/order-history'
+                    }
+                })
             })
     }
 
