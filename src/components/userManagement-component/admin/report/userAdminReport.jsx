@@ -105,7 +105,7 @@ export default function UserAdminReport(p) {
       setAllUsers(res.data);
       setDistrict(res.data.district);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
         count++
       }
@@ -121,7 +121,7 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
 
       for (let i = 0; i < res.data.length; i++) {
 
@@ -139,14 +139,14 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
 
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count2 = 0;
+      let count2 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Kandy' || res.data[i].district === 'Matale' || res.data[i].district === 'Nuwara Eliya') {
 
@@ -165,13 +165,13 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count1 = 0;
+      let count1 = 0;
       for (let i = 0; i < res.data.length; i++) {
         count1++
         setDistrict(res.data[i].district);
       }
 
-      var count3 = 0;
+      let count3 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Batticaloa' || res.data[i].district === 'Ampara' || res.data[i].district === 'Trincomalee') {
           count3++
@@ -188,13 +188,13 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count1 = 0;
+      let count1 = 0;
       for (let i = 0; i < res.data.length; i++) {
         count1++
         setDistrict(res.data[i].district);
       }
 
-      var count4 = 0;
+      let count4 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Anuradhapura' || res.data[i].district === 'Polonnaruwa') {
           count4++
@@ -211,13 +211,13 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count5s = 0;
+      let count5s = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Jaffna' || res.data[i].district === 'Kilinochchi' || res.data[i].district === 'Mannar' || res.data[i].district === 'Vavuniya' || res.data[i].district === 'Mullaitivu') {
 
@@ -237,13 +237,13 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count6 = 0;
+      let count6 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Kurunegala' || res.data[i].district === 'Puttalam') {
 
@@ -262,13 +262,13 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count7 = 0;
+      let count7 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Ratnapura' || res.data[i].district === 'Kegalle') {
 
@@ -287,14 +287,14 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
 
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count8 = 0;
+      let count8 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Galle' || res.data[i].district === 'Matara' || res.data[i].district === 'Hambantota') {
 
@@ -312,14 +312,14 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
 
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count9 = 0;
+      let count9 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Badulla' || res.data[i].district === 'Moneragala') {
 
@@ -337,13 +337,13 @@ export default function UserAdminReport(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count10 = 0;
+      let count10 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Colombo' || res.data[i].district === 'Gampaha' || res.data[i].district === 'Kalutara') {
           count10++

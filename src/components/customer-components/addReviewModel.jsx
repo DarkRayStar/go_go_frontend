@@ -1,19 +1,17 @@
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function AddReviewsModel() {
 
     //state variables
-    var [itemId, setItemId] = useState();
-    var [itemName, setName] = useState();
-    var [review, setReview] = useState();
-    var id = window.sessionStorage.getItem("itemID");
+    const [itemId, setItemId] = useState();
+    const [itemName, setName] = useState();
+    const [review, setReview] = useState();
+    const id = window.sessionStorage.getItem("itemID");
 
     // Dealing with field changes to update state
-    const idUpdate = (event) => {
-        setItemId(event.target.value)
-    }
     const nameUpdate = (event) => {
         setName(event.target.value)
     }
@@ -36,8 +34,6 @@ function AddReviewsModel() {
         getItem();
     }, [])
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const postURL = "http://localhost:5050/reviews/add"
@@ -56,7 +52,14 @@ function AddReviewsModel() {
         })
             .then(() => {
                 // Once posted, the user will be notified 
-                alert('Your review has been added!');
+                Swal.fire({
+                    title: 'Your review has been added!',
+                    timer: 5000,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = '/order-history'
+                    }
+                })
             })
     }
 

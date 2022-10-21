@@ -1,23 +1,22 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
-import Navbar from "../navbar.component";
 import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DeliveryAdminNavBarGoGo from "../navigatonBar/deliveryAdminNav";
 
 const PendingDeliveries = () => {
   let history = useHistory();
   const [data, setData] = useState([]);
-  // const [records, setRecords] = useState("");
 
   const logResult = useCallback(() => {
     return 2 + 2;
   }, []); //logResult is memoized now.
 
   useEffect(() => {
-    axios.get("http://localhost:5050/cart/history").then((res) => {
+    axios.get("http://localhost:5050/cart/historyOfPaid").then((res) => {
       setData(res.data);
     });
   }, [logResult]);
@@ -58,10 +57,11 @@ const PendingDeliveries = () => {
         return (
           <Fragment>
             <button
-              style={{ margin: "0 auto", display: "block", color: 'white' }}
+              style={{ margin: "0 auto", display: "block", color: "white" }}
               name="Delete"
               className="btn info btn-sm"
-              onClick={() =>  arrangeDelivery(record) }>
+              onClick={() => arrangeDelivery(record)}
+            >
               ARRANGE DELIVERY
             </button>
           </Fragment>
@@ -79,39 +79,6 @@ const PendingDeliveries = () => {
       extra: false,
     },
   };
-
-  const records = [
-    {
-      orderID: "GG-1240",
-      customerName: "Dulshan Alahakoon",
-      amount: "LKR 4500.00",
-    },
-    {
-      orderID: "GG-1284",
-      customerName: "Gayan Alahakoon",
-      amount: "LKR 3500.00",
-    },
-    {
-      orderID: "GG-1244",
-      customerName: "Pinidu Alahakoon",
-      amount: "LKR 7500.00",
-    },
-    {
-      orderID: "GG-1260",
-      customerName: "Anura Alahakoon",
-      amount: "LKR 8500.00",
-    },
-    {
-      orderID: "GG-1250",
-      customerName: "Sriyani Munasingha",
-      amount: "LKR 4500.00",
-    },
-    {
-      orderID: "GG-1245",
-      customerName: "Ayesha Dasanayake",
-      amount: "LKR 5500.00",
-    },
-  ];
 
   const extraButtons = [
     {
@@ -151,59 +118,61 @@ const PendingDeliveries = () => {
 
   const arrangeDelivery = (record) => {
     console.log(record.userId);
-    sessionStorage.setItem("currentNewDeliveryEmail", record.userId);
+    sessionStorage.setItem("currentNewDeliveryId", record.userId);
+    sessionStorage.setItem("currentPendingDeliveryRecordID",record._id);
     window.location = "/delivery-new";
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "rgb(207, 210, 207,0.5)",
-        display: "block",
-        margin: "0 auto",
-        paddingTop: '100px',
-        paddingBottom: '150px'
-      }}
-    >
-
-      <Link
+    <div>
+      <DeliveryAdminNavBarGoGo />
+      <div
         style={{
-          marginLeft: "10%",
-          marginTop: "5vh",
-          marginBottom: "1vh",
+          backgroundColor: "rgb(207, 210, 207,0.5)",
+          display: "block",
+          margin: "0 auto",
+          paddingTop: "100px",
+          paddingBottom: "150px",
         }}
-        onClick={() => history.goBack()}
-        to="#"
-        className="backLink"
       >
-        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-        &nbsp;Go Back
-      </Link>
-
-      <div style={{ paddingTop: "100px" }}>
-        <div
+        <Link
           style={{
-            backgroundColor: "rgb(207, 210, 207,0.8)",
-            height: "auto",
-            width: "80%",
-            display: "block",
-            margin: "0 auto",
-            paddingLeft: "20px",
-            paddingRight: "20px",
-            paddingBottom: "20px",
+            marginLeft: "10%",
+            marginBottom: "1vh",
           }}
+          onClick={() => history.goBack()}
+          to="#"
+          className="backLink"
         >
-          <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
-            PENDING DELIVERIES
-          </h3>
-          <hr />
-          <br />
-          <ReactDatatable
-            config={config}
-            records={data}
-            columns= {columns}
-            extraButtons={extraButtons}
-          />
+          <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+          &nbsp;Go Back
+        </Link>
+
+        <div style={{ paddingTop: "100px" }}>
+          <div
+            style={{
+              backgroundColor: "rgb(207, 210, 207,0.8)",
+              height: "auto",
+              width: "80%",
+              display: "block",
+              margin: "0 auto",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              paddingBottom: "20px",
+            }}
+          >
+            <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
+              PENDING DELIVERIES
+            </h3>
+            <hr />
+            <br />
+            <ReactDatatable
+              config={config}
+              records={data}
+              columns={columns}
+              extraButtons={extraButtons}
+            />
+          </div>
         </div>
       </div>
     </div>

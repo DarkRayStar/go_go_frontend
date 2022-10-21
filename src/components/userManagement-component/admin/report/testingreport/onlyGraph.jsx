@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./userAdminreport.css"
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -18,10 +15,7 @@ import { Bar } from 'react-chartjs-2';
 
 export default function OnlyGraphUserAdmin(p) {
 
-
   const [total, setTotal] = useState();
-
-
   const [Central, setCentral] = useState();
   const [East, setEast] = useState();
   const [NorthCentral, setNorthCentral] = useState();
@@ -101,14 +95,12 @@ export default function OnlyGraphUserAdmin(p) {
   function getTotalUsers() {
     axios.get("http://localhost:5050/user/get-all").then((res) => {
 
-   
       setAllUsers(res.data);
       setDistrict(res.data.district);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
         count++
-       
       }
       setTotal(count);
 
@@ -119,13 +111,11 @@ export default function OnlyGraphUserAdmin(p) {
   function getALLUsersDistrict() {
     axios.get("http://localhost:5050/user/get-all").then((res) => {
 
-
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
 
       for (let i = 0; i < res.data.length; i++) {
- 
         count++
         setDistrict(res.data[i].district);
       }
@@ -140,22 +130,20 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
-    
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count2 = 0;
+      let count2 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Kandy' || res.data[i].district === 'Matale' || res.data[i].district === 'Nuwara Eliya') {
-
           count2++
           setCentral(count2);
         }
       }
-   
+
     })
   }
 
@@ -166,20 +154,20 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count1 = 0;
+      let count1 = 0;
       for (let i = 0; i < res.data.length; i++) {
         count1++
         setDistrict(res.data[i].district);
       }
 
-      var count3 = 0;
+      let count3 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Batticaloa' || res.data[i].district === 'Ampara' || res.data[i].district === 'Trincomalee') {
           count3++
           setEast(count3);
         }
       }
- 
+
     })
   }
 
@@ -189,13 +177,13 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count1 = 0;
+      let count1 = 0;
       for (let i = 0; i < res.data.length; i++) {
         count1++
         setDistrict(res.data[i].district);
       }
 
-      var count4 = 0;
+      let count4 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Anuradhapura' || res.data[i].district === 'Polonnaruwa') {
           count4++
@@ -212,14 +200,13 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
-     
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count5s = 0;
+      let count5s = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Jaffna' || res.data[i].district === 'Kilinochchi' || res.data[i].district === 'Mannar' || res.data[i].district === 'Vavuniya' || res.data[i].district === 'Mullaitivu') {
 
@@ -227,7 +214,7 @@ export default function OnlyGraphUserAdmin(p) {
           setNorth(count5s);
         }
       }
-   
+
     })
   }
 
@@ -239,17 +226,16 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
 
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count6 = 0;
+      let count6 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Kurunegala' || res.data[i].district === 'Puttalam') {
-        
           count6++
           setNorthWest(count6);
         }
@@ -265,16 +251,15 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count7 = 0;
+      let count7 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Ratnapura' || res.data[i].district === 'Kegalle') {
-    
           count7++
           setSabaragamuwa(count7);
         }
@@ -290,22 +275,20 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
-
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count8 = 0;
+      let count8 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Galle' || res.data[i].district === 'Matara' || res.data[i].district === 'Hambantota') {
-
           count8++
           setSouth(count8);
         }
       }
-  
+
     })
   }
 
@@ -315,17 +298,15 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
-
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count9 = 0;
+      let count9 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Badulla' || res.data[i].district === 'Moneragala') {
-
           count9++
           setUva(count9);
         }
@@ -340,22 +321,20 @@ export default function OnlyGraphUserAdmin(p) {
 
       setAllUsers(res.data);
 
-      var count = 0;
+      let count = 0;
       for (let i = 0; i < res.data.length; i++) {
-    
         count++
         setDistrict(res.data[i].district);
       }
 
-      var count10 = 0;
+      let count10 = 0;
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].district === 'Colombo' || res.data[i].district === 'Gampaha' || res.data[i].district === 'Kalutara') {
-   
           count10++
           setWest(count10);
         }
       }
-  
+
     })
   }
 
@@ -411,6 +390,8 @@ export default function OnlyGraphUserAdmin(p) {
       </div>
 
 
+      <div style={{ marginBottom: "" }}>
+      </div>
     </div>
 
   )

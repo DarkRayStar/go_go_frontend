@@ -97,14 +97,14 @@ export default function OrderedReport(p) {
         ],
     };
 
-    for (var i = 0; i < cartItems.length; i++) {
+    for (let i = 0; i < cartItems.length; i++) {
         labels.push(cartItems[i].itemName);
         sum = (cartItems[i].price * cartItems[i].orderedQuanity)
         data.datasets[0].data.push(sum);
     };
 
     const total = () => {
-        for (var i = 0; i < cartItems.length; i++) {
+        for (let i = 0; i < cartItems.length; i++) {
             tot = tot + (cartItems[i].price * cartItems[i].orderedQuanity)
         };
         return tot

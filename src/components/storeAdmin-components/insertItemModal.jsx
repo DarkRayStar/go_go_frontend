@@ -5,13 +5,13 @@ import Swal from "sweetalert2";
 function InsertItemModal() {
 
     //state variables
-    var [itemName, setName] = useState();
-    var [description, setDescription] = useState();
-    var [specifications, setSpecifications] = useState();
-    var [price, setPrice] = useState();
-    var [quantity, setQuantity] = useState();
-    var [images, setImages] = useState();
-    var [offer, setOffer] = useState();
+    const [itemName, setName] = useState();
+    const [description, setDescription] = useState();
+    const [specifications, setSpecifications] = useState();
+    const [price, setPrice] = useState();
+    const [quantity, setQuantity] = useState();
+    const [images, setImages] = useState();
+    const [offer, setOffer] = useState();
 
     // Dealing with field changes to update state
     const nameUpdate = (event) => {
@@ -119,11 +119,11 @@ function InsertItemModal() {
                     </Col>
                 </Row>
                 <Row>
-                    
-                        <Form.Group className="mb-3" >
-                            <Form.Label> Specifications </Form.Label>
-                            <Form.Control onChange={specificationsUpdate} type="text" placeholder="Enter specifications" required />
-                        </Form.Group>
+
+                    <Form.Group className="mb-3" >
+                        <Form.Label> Specifications </Form.Label>
+                        <Form.Control onChange={specificationsUpdate} type="text" placeholder="Enter specifications" required />
+                    </Form.Group>
                 </Row>
                 <Row>
                     <center>

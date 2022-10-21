@@ -6,14 +6,14 @@ import Swal from "sweetalert2";
 const UpdateItemModal = ({ test }) => {
 
     //state variables
-    var [item, setItem] = useState([]);
-    var [itemName, setName] = useState();
-    var [description, setDescription] = useState();
-    var [specifications, setSpecifications] = useState();
-    var [price, setPrice] = useState();
-    var [quantity, setQuantity] = useState();
-    var [images, setImages] = useState();
-    var [offer, setOffer] = useState();
+    const [item, setItem] = useState([]);
+    const [itemName, setName] = useState();
+    const [description, setDescription] = useState();
+    const [specifications, setSpecifications] = useState();
+    const [price, setPrice] = useState();
+    const [quantity, setQuantity] = useState();
+    const [images, setImages] = useState();
+    const [offer, setOffer] = useState();
 
     // Dealing with field changes to update state
     const nameUpdate = (event) => {

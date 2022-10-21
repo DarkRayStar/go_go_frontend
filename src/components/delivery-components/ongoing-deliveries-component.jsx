@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import ReactDatatable from "@ashvin27/react-datatable";
 import axios from "axios";
-import Navbar from "../navbar.component";
 import { Link, useHistory } from "react-router-dom";
 import "./delivery-styles.css";
 import { useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import DeliveryAdminNavBarGoGo from "../navigatonBar/deliveryAdminNav";
 
 const OngoingDeliveries = () => {
   let history = useHistory();
@@ -25,7 +25,6 @@ const OngoingDeliveries = () => {
       const ongoingList = [];
 
       for (let x = 0; x < res.data.length; x++) {
-        console.log(res.data[x].status);
         if (res.data[x].status === "Ongoing") {
           ongoingList.push(res.data[x]);
         }
@@ -84,41 +83,44 @@ const OngoingDeliveries = () => {
       sortable: false,
       cell: (record) => {
         return (
-          <div style={{ textAlign: "center" }}>
-            <Fragment>
-              <button
-                style={{ marginRight: "5px", color: "white" }}
-                name="update"
-                className="btn warning btn-sm"
-                onClick={() => updateRecord(record)}
-              >
-                UPDATE
-              </button>
-              <button
-                style={{ marginRight: "5px", color: "white" }}
-                name="view"
-                className="btn info btn-sm"
-                onClick={() => viewDelivery(record)}
-              >
-                VIEW
-              </button>
-              <button
-                style={{ marginRight: "5px", color: "white" }}
-                name="delivered"
-                className="success btn  btn-sm"
-                onClick={() => markAsDelivered(record)}
-              >
-                DELIVERED
-              </button>
-              <button
-                style={{ color: "white" }}
-                name="cancel"
-                className="btn danger btn-sm"
-                onClick={() => cancelDelivery(record)}
-              >
-                CANCEL
-              </button>
-            </Fragment>
+          <div>
+            <DeliveryAdminNavBarGoGo  />
+            <div style={{ textAlign: "center" }}>
+              <Fragment>
+                <button
+                  style={{ marginRight: "5px", color: "white" }}
+                  name="update"
+                  className="btn warning btn-sm"
+                  onClick={() => updateRecord(record)}
+                >
+                  UPDATE
+                </button>
+                <button
+                  style={{ marginRight: "5px", color: "white" }}
+                  name="view"
+                  className="btn info btn-sm"
+                  onClick={() => viewDelivery(record)}
+                >
+                  VIEW
+                </button>
+                <button
+                  style={{ marginRight: "5px", color: "white" }}
+                  name="delivered"
+                  className="success btn  btn-sm"
+                  onClick={() => markAsDelivered(record)}
+                >
+                  DELIVERED
+                </button>
+                <button
+                  style={{ color: "white" }}
+                  name="cancel"
+                  className="btn danger btn-sm"
+                  onClick={() => cancelDelivery(record)}
+                >
+                  CANCEL
+                </button>
+              </Fragment>
+            </div>
           </div>
         );
       },
@@ -135,51 +137,6 @@ const OngoingDeliveries = () => {
     },
   };
 
-  // const records = [
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  //   {
-  //     deliveryID: "DEL-12040",
-  //     customerName: "Dulshan Alahakoon",
-  //     fee: "LKR 300.00",
-  //     service: "DOMEX",
-  //     trackingID: "DMX-115425",
-  //   },
-  // ];
-
   const extraButtons = [
     {
       className: "btn btn-primary buttons-pdf",
@@ -193,7 +150,6 @@ const OngoingDeliveries = () => {
         </span>,
       ],
       onClick: (event) => {
-        console.log(event);
       },
     },
     {
@@ -208,10 +164,8 @@ const OngoingDeliveries = () => {
         </span>,
       ],
       onClick: (event) => {
-        console.log(event);
       },
       onDoubleClick: (event) => {
-        console.log("doubleClick");
       },
     },
   ];
@@ -222,7 +176,7 @@ const OngoingDeliveries = () => {
   };
 
   const markAsDelivered = (record) => {
-    var answer = window.confirm(
+    const answer = window.confirm(
       `Are you sure to mark the delivery bearing Tracking ID: ${record.trackingID} as completed?`
     );
     if (answer) {
@@ -235,9 +189,8 @@ const OngoingDeliveries = () => {
           `http://localhost:5050/delivery/updateDeliveryStatus/${record._id}`,
           delivery
         )
-        .then((res) => console.log(res.data));
 
-        location.reload()
+      location.reload();
     }
   };
 
@@ -247,7 +200,7 @@ const OngoingDeliveries = () => {
   };
 
   const cancelDelivery = (record) => {
-    var answer = window.confirm(
+    const answer = window.confirm(
       `Are you sure to cancel delivery bearing Tracking ID: ${record.trackingID}?`
     );
     if (answer) {
@@ -260,9 +213,8 @@ const OngoingDeliveries = () => {
           `http://localhost:5050/delivery/updateDeliveryStatus/${record._id}`,
           delivery
         )
-        .then((res) => console.log(res.data));
 
-        location.reload()
+      location.reload();
     }
   };
 
@@ -279,7 +231,7 @@ const OngoingDeliveries = () => {
       <Link
         style={{
           marginLeft: "10%",
-          marginTop: "5vh",
+          marginTop: "2vh",
           marginBottom: "1vh",
         }}
         onClick={() => history.goBack()}

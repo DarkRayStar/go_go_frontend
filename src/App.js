@@ -19,17 +19,9 @@ import UserProfile from "./components/userManagement-component/profile/profile";
 import UpdateUserProfile from "./components/userManagement-component/updateProfile/updateProfile";
 import userAdminDashboard from "./components/userManagement-component/admin/userAdminDashboard";
 import AllRegisteredMemebersDisplay from "./components/userManagement-component/admin/viewAllMembers/allMembersRetrieve";
-import UserAdminReport from "./components/userManagement-component/admin/report/userAdminReport";
-import PrintingClass from "./components/userManagement-component/admin/report/testingreport/usertreporttesting";
 import UserAdminPrintingReport from "./components/userManagement-component/admin/reportPrint/userAdminReport";
 
-import adminRetrieve from './components/admin-components/admin-retrieve';
-import adminInsert from './components/admin-components/admin-insert';
-import adminUpdate from './components/admin-components/admin-update';
-import HomePage from './components/user-components/HomePage';
-import Navbar from './components/navbar.component';
-import QrGencomponent from './components/admin-components/qr-gencomponent';
-
+//Delivery Service
 import DeliveryDashboard from "./components/delivery-components/delivery-dashboard-component";
 import PendingDeliveries from "./components/delivery-components/pending-deliveries-component";
 import OngoingDeliveries from "./components/delivery-components/ongoing-deliveries-component";
@@ -37,38 +29,23 @@ import CompletedDeliveries from "./components/delivery-components/completed-deli
 import CancelledDeliveries from "./components/delivery-components/cancelled-deliveries-component";
 import NewDelivery from "./components/delivery-components/create-new-delivery-component";
 import UpdateDelivery from "./components/delivery-components/update-delivery-component";
+import DeliveryReport from "./components/delivery-components/delivery-report-component";
 
 //StoreAdmin
 import ItemRetrieve from "./components/storeAdmin-components/itemRetrieve-component";
 import storeAdminDashboard from "./components/storeAdmin-components/storeAdminDashboard";
-
-import bgImage from "./images/bg.jpg";
-
 import FooterComponent from "./components/footer-component/footer.component";
-import NavBarGoGo from "./components/navigatonBar/navbarGoGo";
-import LoginNavBarGoGo from "./components/navigatonBar/loginNav";
-import AdminNavBarGoGo from "./components/navigatonBar/adminNav";
 import HomePageComponent from "./components/storeAdmin-components/homePageComponent";
-import HomeSlider from "./components/storeAdmin-components/homeSlider";
-import HomeCarousel from "./components/storeAdmin-components/homeCarousel";
 import ItemDetails from "./components/storeAdmin-components/itemDetails";
 import DeliveryInformation from "./components/delivery-components/delivery-information-component";
-
 import StoreAdminReport from "./components/storeAdmin-components/storeAdmin-report.component";
 <link rel="stylesheet" href="./" />;
-// import DeliveryInformation from "./components/delivery-components/delivery-information-component";
 
 function App() {
   return (
     <div>
       <Router>
-        <div
-          // background Image
-          style={{
-            // backgroundImage: `url(${bgImage})`,
-            // backgroundRepeat: 'no-repeat',
-            // backgroundSize: 'cover',
-          }}>
+        <div>
 
           {/* user-Management-Routes */}
           <Route path="/" exact component={SignIn} />
@@ -79,16 +56,7 @@ function App() {
           <Route path="/update-user-profile" component={UpdateUserProfile} />
           <Route path="/user-admin-dashboard" component={userAdminDashboard} />
           <Route path="/registered-members" component={AllRegisteredMemebersDisplay} />
-          {/* <Route path="/user-admin-report" component={UserAdminReport} /> */}
-          {/* <Route path="/user-admin-report" component={PrintingClass} /> */}
-           <Route path="/user-admin-report" component={UserAdminPrintingReport} />
-
-
-          <Route path="/home" component={HomePage} />
-          <Route path="/admin-retrieve" component={adminRetrieve} />
-          <Route path="/admin-insert" component={adminInsert} />
-          <Route path="/admin-update/:id" component={adminUpdate} />
-          <Route path="/qrgen" component={QrGencomponent} />
+          <Route path="/user-admin-report" component={UserAdminPrintingReport} />
 
           {/* Customer */}
           <Route path="/cart/view/" component={ViewCart} />
@@ -105,6 +73,7 @@ function App() {
           <Route path="/delivery-new" component={NewDelivery} />
           <Route path="/delivery-update" component={UpdateDelivery} />
           <Route path="/delivery-information" component={DeliveryInformation} />
+          <Route path="/delivery-report" component={DeliveryReport} />
 
           {/* storeAdminroutes */}
           <Route path="/storeAdmin" component={ItemRetrieve} />

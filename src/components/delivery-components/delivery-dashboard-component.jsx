@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Navbar from "../navbar.component";
 import Grid from "@mui/material/Grid";
 import "./delivery-styles.css";
+import DeliveryAdminNavBarGoGo from "../navigatonBar/deliveryAdminNav";
 
 const DeliveryDashboard = () => {
   const [one, setOne] = useState("Hello Function Component!");
@@ -26,21 +26,25 @@ const DeliveryDashboard = () => {
     window.location = "/delivery-cancelled";
   };
 
-  const goToReport = () => {
-    // window.location = "/delivery-pending";
+  const goToInsights = () => {
+    window.location = "/delivery-report";
   };
+
 
   return (
     <div>
-      <div style={{ width: "90%", margin: 'auto' }}>
+      <DeliveryAdminNavBarGoGo  />
+      <div style={{ width: "90%", margin: "auto" }}>
         <div style={{ marginTop: "120px" }}>
           <h4>Welcome, Delivery Admin!</h4>
         </div>
-        <div style={{ marginTop: "5px" }}>
-          <h3>DELIVERY MANAGER</h3>
-        </div>
         <div
-          style={{ backgroundColor: "rgb(207, 210, 207,0.5)", height: "60vh", marginTop: '50px', marginBottom: '20vh' }}
+          style={{
+            backgroundColor: "rgb(207, 210, 207,0.5)",
+            height: "60vh",
+            marginTop: "50px",
+            marginBottom: "20vh",
+          }}
         >
           <Grid container>
             <Grid item xs={12} sx={{ marginBottom: "7vh" }}>
@@ -135,7 +139,7 @@ const DeliveryDashboard = () => {
                   width: "80%",
                   borderRadius: "70px",
                 }}
-                onClick={() => goToReport()}
+                onClick={() => goToInsights()}
               >
                 VIEW INSIGHTS
               </button>

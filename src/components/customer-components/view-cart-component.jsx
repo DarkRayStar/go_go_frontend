@@ -42,9 +42,9 @@ function ViewCart() {
             text: "Do you want to delete the selected item?",
             icon: 'warning',
             showDenyButton: true,
-            showCancelButton: true,
             confirmButtonText: 'Delete',
-            denyButtonText: `Don't delete`,
+            denyButtonText: `Cancel`,
+            timer: 5000,
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
@@ -56,6 +56,7 @@ function ViewCart() {
                         method: 'DELETE',
                         url: `http://localhost:5050/cart/${id}`
                     }),
+                    window.location = '/cart/view/'
                 )
             } else if (result.isDenied) {
                 Swal.fire(
@@ -87,10 +88,10 @@ function ViewCart() {
                     confirmButtonText: 'Go to Favourite',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire('', '', 'success')
                         window.location = '/fav/view/'
                     }
                 })
+
             }
 
         } catch (error) {
@@ -120,13 +121,13 @@ function ViewCart() {
             objectItem = responseItem.data
             objectCart = response.data
 
-            for (var i = 0; i < objectCart.length; i++) {
+            for (let i = 0; i < objectCart.length; i++) {
                 sum = sum + (objectCart[i].price * objectCart[i].orderedQuanity)
             }
             sessionStorage.setItem("totalPayemt", sum);
 
-            for (var j = 0; j < objectCart.length; j++) {
-                for (var k = 0; k < objectItem.length; k++) {
+            for (let j = 0; j < objectCart.length; j++) {
+                for (let k = 0; k < objectItem.length; k++) {
                     if (objectCart[j].itemId === objectItem[k]._id) {
 
                         if (objectCart[j].orderedQuanity < objectItem[k].quantity) {
@@ -142,7 +143,7 @@ function ViewCart() {
                 }
             }
 
-            sessionStorage.setItem('itemID', JSON.stringify(iId))
+            sessionStorage.setItem('itemId', JSON.stringify(iId))
             sessionStorage.setItem('ordQty', JSON.stringify(OQty))
 
         } catch (error) {
@@ -160,7 +161,7 @@ function ViewCart() {
                             <MDBCardBody className="p-0">
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
-                                        <div className="p-5">
+                                        <div className="p-5" >
                                             <div >
 
                                                 <MDBTypography >
@@ -207,7 +208,7 @@ function ViewCart() {
                                                                             orderedQuanity: e.target.value,
                                                                         }
 
-                                                                        const response = await axios.post(`http://localhost:5050/cart/update/${cartItem._id}`, data)
+                                                                        await axios.post(`http://localhost:5050/cart/update/${cartItem._id}`, data)
 
                                                                     } catch (error) {
                                                                         alert(error);
@@ -228,7 +229,7 @@ function ViewCart() {
                                                 </div>
                                             ))}
 
-                                            <center><button onClick={() => finalTotal()} className='btn btn-secondary' style={{ marginBottom: "50px" }}>Proceed to Checkout</button ></center>
+                                            <center><button onClick={() => finalTotal()} className='btn btn-secondary' style={{ marginBottom: "50px" }} >Proceed to Checkout</button ></center>
                                         </div>
                                     </MDBCol>
 
