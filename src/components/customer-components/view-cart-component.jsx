@@ -42,9 +42,9 @@ function ViewCart() {
             text: "Do you want to delete the selected item?",
             icon: 'warning',
             showDenyButton: true,
-            showCancelButton: true,
             confirmButtonText: 'Delete',
-            denyButtonText: `Don't delete`,
+            denyButtonText: `Cancel`,
+            timer: 5000,
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
@@ -56,6 +56,7 @@ function ViewCart() {
                         method: 'DELETE',
                         url: `http://localhost:5050/cart/${id}`
                     }),
+                    window.location = '/cart/view/'
                 )
             } else if (result.isDenied) {
                 Swal.fire(
@@ -87,10 +88,10 @@ function ViewCart() {
                     confirmButtonText: 'Go to Favourite',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire('', '', 'success')
                         window.location = '/fav/view/'
                     }
                 })
+
             }
 
         } catch (error) {
@@ -160,7 +161,7 @@ function ViewCart() {
                             <MDBCardBody className="p-0">
                                 <MDBRow className="g-0">
                                     <MDBCol lg="12">
-                                        <div className="p-5">
+                                        <div className="p-5" >
                                             <div >
 
                                                 <MDBTypography >
@@ -228,7 +229,7 @@ function ViewCart() {
                                                 </div>
                                             ))}
 
-                                            <center><button onClick={() => finalTotal()} className='btn btn-secondary' style={{ marginBottom: "50px" }}>Proceed to Checkout</button ></center>
+                                            <center><button onClick={() => finalTotal()} className='btn btn-secondary' style={{ marginBottom: "50px" }} >Proceed to Checkout</button ></center>
                                         </div>
                                     </MDBCol>
 
