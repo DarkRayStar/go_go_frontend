@@ -123,7 +123,7 @@ export default function DeliveryInformation() {
         <Link
           style={{
             marginLeft: "10%",
-            marginTop: "2vh",
+            marginTop: "0vh",
             marginBottom: "3vh",
           }}
           onClick={() => history.goBack()}
