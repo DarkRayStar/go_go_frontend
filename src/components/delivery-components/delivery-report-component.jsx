@@ -192,7 +192,7 @@ function DeliveryReport() {
         <Link
           style={{
             marginLeft: "3%",
-            marginTop: "6vh",
+            marginTop: "10vh",
             marginBottom: "1vh",
           }}
           onClick={() => history.goBack()}
