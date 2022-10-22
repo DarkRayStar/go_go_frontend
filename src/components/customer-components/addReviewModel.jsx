@@ -22,7 +22,7 @@ function AddReviewsModel() {
     const getItem = async () => {
         try {
             const response = await axios.get('http://localhost:5050/cart/' + id);
-            setItemId(response.data._id);
+            setItemId(response.data.itemId);
             setName(response.data.itemName);
 
         } catch (err) {
@@ -48,6 +48,7 @@ function AddReviewsModel() {
                 itemName: itemName,
                 review: review,
                 userId: JSON.parse(sessionStorage.getItem("loggeduser"))._id,
+
             })
         })
             .then(() => {
