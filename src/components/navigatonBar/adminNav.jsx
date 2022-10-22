@@ -9,8 +9,8 @@ function AdminNavBarGoGo() {
 				<nav className={styles.navbar}>
 					<h1 style={{ color: "white", marginLeft: '20px' }}>Go Go Gadgets Store</h1>
 					<nav>
-						<a href='/#'>DASHBOARD</a>
-						<a href='/#'>ABOUT US</a>
+						<a href='#'>DASHBOARD</a>
+						<a href='#'>ABOUT US</a>
 						<a href='/'>LOGOUT</a>
 					</nav>
 				</nav>
