@@ -43,7 +43,12 @@ function ItemDetails() {
             for (let i = 0; i < response.data.length; i++) {
                 tempReview.push(response.data[i].review);
             }
-            setReviews(tempReview);
+            if (tempReview[0] == null){
+                setReviews(["Currently no reviews for this item"]);
+            }else{
+                setReviews(tempReview);
+            }
+            // console.log('a',tempReview);
         } catch (err) {
             console.log(err);
         }
