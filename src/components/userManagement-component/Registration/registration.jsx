@@ -232,6 +232,8 @@ const Registration = () => {
                                             type="text"
                                             placeholder='00000'
                                             name='zipCode'
+                                            maxLength="5"
+                                            title="Cannot exceed 5 characters."
                                             onChange={handleChange}
                                             value={data.zipCode}
                                             required
