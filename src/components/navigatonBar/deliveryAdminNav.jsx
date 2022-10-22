@@ -7,9 +7,9 @@ function DeliveryAdminNavBarGoGo() {
     <header className="fixed-top">
       <div className={styles.main_container}>
         <nav className={styles.navbar}>
-          <img src={logo} style={{ width: "50px", height: "50px" }}></img>
+          <img src={logo} style={{ width: "50px", height: "50px", marginLeft: "70px" }}></img>
           <h4
-            style={{ color: "white", marginLeft: "-572px", marginTop: "7px" }}
+            style={{ color: "white", marginLeft: "-580px", marginTop: "7px" }}
           >
             Go Go Gadgets Store
           </h4>
