@@ -14,8 +14,8 @@ function NavBarGoGo() {
 					<nav >
 						<a href="/cart/view/" className="space"><AddShoppingCart /></a>
 						<a href='/userHome' className="space">SHOP</a>
-						<a href='/#' className="space">ABOUT US</a>
-						<a href='/#' className="space">SUPPORT</a>
+						<a href='#' className="space">ABOUT US</a>
+						<a href='#' className="space">SUPPORT</a>
 						<a href='/user-profile' >MY ACCOUNT</a>
 					</nav>
 				</nav>

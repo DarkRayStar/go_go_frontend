@@ -86,6 +86,7 @@ function UserProfile(props) {
 
                         setTimeout(() => {
                             window.location = "/"
+                            sessionStorage.clear();
                         }, 3000)
 
                     })

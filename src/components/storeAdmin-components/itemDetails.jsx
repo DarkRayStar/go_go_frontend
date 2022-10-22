@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import NavBarGoGo from '../navigatonBar/navbarGoGo';
-
+import Swal from "sweetalert2";
 
 
 function ItemDetails() {
@@ -40,7 +40,7 @@ function ItemDetails() {
         let tempReview = [];
         try {
             const response = await axios.get("http://localhost:5050/reviews/itemreviews/" + id);
-            for (let i = 0 ; i < response.data.length ; i++){
+            for (let i = 0; i < response.data.length; i++) {
                 tempReview.push(response.data[i].review);
             }
             setReviews(tempReview);
@@ -84,7 +84,11 @@ function ItemDetails() {
                 const response = await axios.post("http://localhost:5050/cart/add", item)
                 const response1 = await axios.post(`http://localhost:5050/storeAdmin/update/${id}`, item)
                 if (response.status === 200 || response1.status === 200) {
-                    alert("Item added to the cart!!!");
+                    Swal.fire(
+                        'Done!',
+                        'Item added to the cart!',
+                        'success'
+                    )
                 }
             }
 
@@ -117,7 +121,7 @@ function ItemDetails() {
                             </MDBCardTitle>
                             <hr className='hrtopic'></hr>
                             <MDBCardText className='item_des'>
-                                    {item.description}
+                                {item.description}
                             </MDBCardText>
                             <div>
                                 <Row>
@@ -144,7 +148,7 @@ function ItemDetails() {
                             </MDBCardTitle>
                             <hr className='hrtopic'></hr>
                             <MDBCardText className='item_specifications'>
-                                    {item.specifications}
+                                {item.specifications}
                             </MDBCardText>
                         </MDBCardBody>
 
@@ -158,16 +162,16 @@ function ItemDetails() {
                             </MDBCardTitle>
                             <hr className='hrtopic'></hr>
                             <div className='item_specifications'>
-                                    {
-                                    reviews.map((review,index) => 
+                                {
+                                    reviews.map((review, index) =>
                                         <div key={index}>
-                                            <MDBCardText > 
-                                            {review}
-                                        </MDBCardText>
-                                        <hr></hr>
+                                            <MDBCardText >
+                                                {review}
+                                            </MDBCardText>
+                                            <hr></hr>
                                         </div>
                                     )
-                                    }
+                                }
                             </div>
                         </MDBCardBody>
 
