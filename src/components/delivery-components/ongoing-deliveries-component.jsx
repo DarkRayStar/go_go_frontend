@@ -7,6 +7,7 @@ import { useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import DeliveryAdminNavBarGoGo from "../navigatonBar/deliveryAdminNav";
+import Swal from "sweetalert2";
 
 const OngoingDeliveries = () => {
   let history = useHistory();
@@ -78,7 +79,7 @@ const OngoingDeliveries = () => {
       key: "action",
       text: "UPDATE DELIVERY STATUS",
       className: "address",
-      width: 400,
+      width: 450,
       align: "center",
       sortable: false,
       cell: (record) => {
@@ -250,8 +251,8 @@ const OngoingDeliveries = () => {
             width: "80%",
             display: "block",
             margin: "0 auto",
-            paddingLeft: "20px",
-            paddingRight: "20px",
+            paddingLeft: "10px",
+            paddingRight: "10px",
             paddingBottom: "20px",
           }}
         >

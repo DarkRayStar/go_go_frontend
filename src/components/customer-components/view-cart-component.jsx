@@ -83,9 +83,9 @@ function ViewCart() {
 
             if (response.status === 200) {
                 Swal.fire({
-                    title: 'Item was added to the Favourite!',
+                    title: 'Item was added to the Favourites!',
                     showCancelButton: true,
-                    confirmButtonText: 'Go to Favourite',
+                    confirmButtonText: 'Go to Favourites',
                 }).then((result) => {
                     if (result.isConfirmed) {
                         window.location = '/fav/view/'

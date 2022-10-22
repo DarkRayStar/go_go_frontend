@@ -10,7 +10,7 @@ function FooterComponent() {
             <div className='footergogo1'>
                 <footer className="bg-dark text-white">
                     <div className="p-4 pb-0">
-                        <div style={{ float: "left", marginTop: "7px", marginLeft: "100px" }}>
+                        <div style={{ float: "left", marginTop: "7px", marginLeft: "20px" }}>
                             <h5>GoGo Gadgets Store </h5>
                         </div>
                         <section className="mb-4" style={{ marginLeft: "1100px" }}>
