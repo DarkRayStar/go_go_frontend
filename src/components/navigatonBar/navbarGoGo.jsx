@@ -5,6 +5,14 @@ import logo from "./images/logo.png";
 
 function NavBarGoGo() {
 
+	function handleScroll() {
+		window.scroll({
+			top: document.body.scrollHeight,
+			left: 0,
+			behavior: 'smooth',
+		});
+	}
+
 	return (
 		<header className="fixed-top" >
 			<div className={styles.main_container}>
@@ -14,8 +22,8 @@ function NavBarGoGo() {
 					<nav >
 						<a href="/cart/view/" className="space"><AddShoppingCart /></a>
 						<a href='/userHome' className="space">SHOP</a>
-						<a href='#' className="space">ABOUT US</a>
-						<a href='#' className="space">SUPPORT</a>
+						<a onClick={handleScroll} className="space">ABOUT US</a>
+						<a onClick={handleScroll} className="space">SUPPORT</a>
 						<a href='/user-profile' >MY ACCOUNT</a>
 					</nav>
 				</nav>
