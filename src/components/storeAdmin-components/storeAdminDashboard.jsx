@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import "./storeAdmin.css";
 import Grid from "@mui/material/Grid";
+import AdminNav from '../navigatonBar/adminNav';
 
 function storeAdminDashboard() {
+
+    const [user] = useState(JSON.parse(window.sessionStorage.getItem("loggeduser")));
+    console.log('a',user);
 
     const viewItem = () => {
         window.location = "/storeAdmin"
     }
 
+    const navigateReport = () => {
+        window.location = "/storeAdminReport"
+    }
+
     return (
         <>
+        <AdminNav/>
             <div className="container bkgrnd" style={{ maxWidth: "80%" }}>
-                <hr></hr>
-                <h5 style={{ marginTop: '100px' }}>Welcome, John !</h5>
+                <h5 style={{ marginTop: '100px' }}>Welcome, {user.firstName} !</h5>
                 <h4 > Store Admin</h4>
                 <div className='container dshbrd'>
                     
@@ -34,10 +42,11 @@ function storeAdminDashboard() {
                                     height: "15vh",
                                     width: "80%",
                                     borderRadius: "70px",
+                                    fontSize:"20px"
                                 }}
                                 onClick={() => viewItem()}
                             >
-                                View Items
+                                VIEW ITEMS
                             </button>
                         </Grid>
                         <Grid item xs={4}>
@@ -49,9 +58,10 @@ function storeAdminDashboard() {
                                     height: "15vh",
                                     width: "80%",
                                     borderRadius: "70px",
+                                    fontSize:"20px"
                                 }}
                             >
-                                Add Items
+                                ADD ITEMS
                             </button>
                         </Grid>
                         <Grid item xs={4}>
@@ -63,9 +73,11 @@ function storeAdminDashboard() {
                                     height: "15vh",
                                     width: "80%",
                                     borderRadius: "70px",
+                                    fontSize:"20px"
                                 }}
+                                onClick={() => navigateReport()}
                             >
-                                Generate Reports
+                                GENERATE REPORTS
                             </button>
                         </Grid>
                        

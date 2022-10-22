@@ -39,7 +39,7 @@ const SignIn = () => {
         if (res.user.email === "kamal@gmail.com") {
           window.location = "/user-admin-dashboard";
         } else if (res.user.email === "tharinduadmin@gmail.com") {
-          window.location = "/storeAdmin";
+          window.location = "/storeAdmindash";
         } else if (res.user.email === "dulshanalaha@gmail.com") {
           window.location = "/delivery-home";
         } else {

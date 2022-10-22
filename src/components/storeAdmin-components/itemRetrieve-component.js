@@ -153,9 +153,9 @@ const ModalContent = () => {
             <Modal.Body className="show-grid">
                 <UpdateItemModal />
             </Modal.Body>
-            <Modal.Footer>
+            {/* <Modal.Footer>
                 <Button variant="secondary" onClick={closeUpdateModal}> Close Button </Button>
-            </Modal.Footer>
+            </Modal.Footer> */}
         </Modal>
     )
 }
@@ -211,9 +211,9 @@ return (
                 <Modal.Body className="show-grid">
                     <InsertItemModal />
                 </Modal.Body>
-                <Modal.Footer>
+                {/* <Modal.Footer>
                     <Button variant="secondary" onClick={closeInsertModal}> Close Button </Button>
-                </Modal.Footer>
+                </Modal.Footer> */}
             </Modal>
 
 
