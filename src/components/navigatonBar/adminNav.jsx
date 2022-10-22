@@ -17,7 +17,7 @@ function AdminNavBarGoGo() {
 					<nav>
 						<a href='#'>DASHBOARD</a>
 						<a href='#'>ABOUT US</a>
-						<a onClick={logoutButton}>LOGOUT</a>
+						<a href='#' onClick={logoutButton}>LOGOUT</a>
 					</nav>
 				</nav>
 			</div>
