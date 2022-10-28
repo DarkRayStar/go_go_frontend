@@ -101,6 +101,8 @@ export default function UserAdminPrintingReport(p) {
     function getTotalUsers() {
         axios.get("http://localhost:5050/user/get-all").then((res) => {
 
+        console.log("all users" , res.data)
+
             setAllUsers(res.data);
             setDistrict(res.data.district);
 
